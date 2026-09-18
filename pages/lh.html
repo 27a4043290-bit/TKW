@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Muse Xin Chao</title>
+    <!-- Thư viện Icon Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="container">
+        <!-- Cột trái: Thông tin địa chỉ & Bản đồ -->
+        <div class="left-col">
+            <h1 class="main-title">THE MUSE XIN CHÀO</h1>
+
+            <h2 class="section-title">Địa chỉ Hà Nội</h2>
+
+            <ul class="info-list">
+                <li class="info-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>12 Chùa Bộc, P.Kim Liên, Hà Nội</span>
+                </li>
+                <li class="info-item">
+                    <i class="fa-solid fa-phone"></i>
+                    <a href="tel:18008287">1800 8287</a>
+                </li>
+                <li class="info-item">
+                    <i class="fa-regular fa-envelope"></i>
+                    <a href="mailto:contact@themuse.com">contact@themuse.com</a>
+                </li>
+            </ul>
+
+            <div class="map-box">
+               <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1862.2943621420238!2d105.82839504232807!3d21.009117075758724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ac8006cc07f5%3A0x5295d70e63fa239d!2zTmcuIDEyIFAuIENow7lhIELhu5ljLCBLaW0gTGnDqm4sIEjDoCBO4buZaSwgVmlldG5hbQ!5e0!3m2!1sen!2s!4v1789714944226!5m2!1sen!2s" width="420" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe> 
+            </div>
+        </div>
+
+        <!-- Cột phải: Form gửi phản hồi -->
+        <div class="right-col">
+            <p class="form-desc">
+                Quý khách vui lòng điền thông tin theo mẫu bên dưới. Mọi thắc mắc liên quan đến sản phẩm, dịch vụ, chúng mình <span class="highlight">sẽ cố gắng phản hồi trong thời gian sớm nhất.</span>
+            </p>
+
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <input type="text" placeholder="Họ và tên" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" placeholder="Số điện thoại" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="Tiêu đề">
+                </div>
+                <div class="form-group">
+                    <textarea placeholder="Nội dung" required></textarea>
+                </div>
+
+                <!-- Khung Xác minh Captcha -->
+                <div class="recaptcha-box">
+                    <div class="recaptcha-left">
+                        <input type="checkbox" id="robot">
+                        <label for="robot">Tôi không phải là người máy</label>
+                    </div>
+                </div>
+
+                <div class="btn-container">
+                    <button type="submit" class="submit-btn">Gửi &rarr;</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
