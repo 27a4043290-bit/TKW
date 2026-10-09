@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff8E7;
+            margin: 0;
+            color: #001F3F;
+        }
+
+        h1 {
+            background-color: #001F3F;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin: 0;
+        }
+
+        h2 {
+            text-align: center;
+            color: #001F3F;
+            margin-top: 30px;
+        }
+
+        /* Danh sách sản phẩm */
+        .sanpham {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            padding: 15px;
+        }
+
+        .item {
+            background-color: white;
+            width: 220px;
+            padding: 15px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px #cccccc;
+        }
+
+        .item img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .gia {
+            color: #001F3F;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        button {
+            background-color: #001F3F;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 3px;
+        }
+
+        button:hover {
+            background-color: #fff8E7;
+            color: #001F3F;
+            border: 1px solid #001F3F;
+        }
+
+        /* Giỏ hàng */
+        .giohang {
+            background-color: white;
+            max-width: 850px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px #cccccc;
+        }
+
+        .sanpham-trong-gio {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-bottom: 1px solid #dddddd;
+            padding: 15px 0;
+        }
+
+        .sanpham-trong-gio img {
+            width: 90px;
+            height: 90px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .thongtin {
+            flex: 1;
+        }
+
+        .xoa {
+            background-color: #e74c3c;
+        }
+
+        .tongtien {
+            text-align: right;
+            font-size: 22px;
+            font-weight: bold;
+            color: #001F3F;
+            margin-top: 25px;
+        }
+
+        .xoahet {
+            background-color: #e74c3c;
+        }
+
+        .trong {
+            text-align: center;
+            color: #777777;
+            padding: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .giohang {
+                margin: 15px;
+                padding: 12px;
+            }
+
+            .sanpham-trong-gio {
+                gap: 8px;
+            }
+
+            .sanpham-trong-gio img {
+                width: 65px;
+                height: 65px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>🍰 Cửa Hàng Bánh Ngọt The Muse</h1>
+
+    <h2>Danh sách sản phẩm</h2>
+
+    <div class="sanpham">
+
+        <!-- Bánh Mousse có hai kích thước -->
+        <div class="item">
+            <img
+                src="https://the350f.com/wp-content/uploads/2025/05/CT-Dau-4.jpg"
+                alt="Bánh Mousse dâu"
+            >
+
+            <h3>Bánh Mousse dâu</h3>
+
+            <p>Chọn kích thước:</p>
+
+            <select id="kichthuoc1">
+                <option value="10">10cm - 65.000 VNĐ</option>
+                <option value="16">16cm - 165.000 VNĐ</option>
+            </select>
+
+            <br><br>
+
+            <button onclick="themBanhMoussedau()">
+                Thêm vào giỏ
+            </button>
+        </div>
+
+        <!-- Bánh croissant -->
+        <div class="item">
+            <img
+                src="https://cdn.prod.website-files.com/649249d29a20bd6bc3deac48/6a548dd6e92c95e5de77d0d0_6a45c2408e13312e04f1ef90_3700000162_Croissant.png"
+                alt="Bánh croissant"
+            >
+
+            <h3>Bánh Croissant</h3>
+
+            <p>Chọn kích thước:</p>
+
+            <select id="kichthuoc2">
+                <option value="60">60g - 25.000 VNĐ</option>
+                <option value="100">100g - 40.000 VNĐ</option>
+            </select>
+
+            <br><br>
+
+            <button onclick="themBanhCroissant()">
+                Thêm vào giỏ
+            </button>
+        </div>
+
+        <!-- Bánh Trung thu vị buởi hồng-->
+        <div class="item">
+            <img
+                src="https://www.the350f.com/wp-content/uploads/2026/08/TT26-BN-Buoi-hong-2-scaled.jpg"
+                alt="Bánh Trung thu vị bưởi hồng"
+            >
+
+            <h3>Bánh Trung thu vị bưởi hồng</h3>
+
+            <p>Chọn kích thước:</p>
+
+            <select id="kichthuoc3">
+                <option value="150">150g - 95.000 VNĐ</option>
+                <option value="250">250g - 155.000 VNĐ</option>
+            </select>
+
+            <br><br>
+
+            <button onclick="themBanhTrungThu()">
+                Thêm vào giỏ
+            </button>
+        </div>
+
+         <!-- Bánh Donut-->
+        <div class="item">
+            <img
+                src="https://donutelier.co.uk/wp-content/uploads/2023/06/Fraiser_Donut.png"
+                alt="Bánh Donut"
+            >
+
+            <h3>Bánh Donut</h3>
+
+            <p>Chọn kích thước:</p>
+
+            <select id="kichthuoc4">
+                <option value="6">6cm  - 22.000 VNĐ</option>
+                <option value="9">9cm - 32.000 VNĐ</option>
+            </select>
+
+            <br><br>
+
+            <button onclick="themBanhDonut()">
+                Thêm vào giỏ
+            </button>
+        </div>
+    </div>
+
+    <h2>🛒 Giỏ hàng của bạn</h2>
+
+    <div class="giohang">
+
+        <div id="giohang">
+            <p class="trong">Giỏ hàng đang trống!</p>
+        </div>
+
+        <p class="tongtien">
+            Tổng tiền: <span id="tongtien">0 VNĐ</span>
+        </p>
+
+        <div style="text-align: right;">
+            <button class="xoa" onclick="xoaTatCa()">
+                Xóa tất cả
+            </button>
+
+            <button onclick="datHang()">
+                Đặt hàng
+            </button>
+        </div>
+
+    </div>
+
+    <script>
+        // Danh sách sản phẩm
+        var sanPham = [
+             {
+                id: 1,
+                ten: "Bánh Mousse hương dâu",
+                gia: 65000,
+                anh: "https://the350f.com/wp-content/uploads/2025/05/CT-Dau-4.jpg"
+            },
+            {
+                id: 2,
+                ten: "Bánh Croissant",
+                gia: 25000,
+                anh: "https://cdn.prod.website-files.com/649249d29a20bd6bc3deac48/6a548dd6e92c95e5de77d0d0_6a45c2408e13312e04f1ef90_3700000162_Croissant.png"
+            },
+            {
+                id: 3,
+                ten: "Bánh Trung thu vị bưởi hồng",
+                gia: 95000,
+                anh: "https://www.the350f.com/wp-content/uploads/2026/08/TT26-BN-Buoi-hong-2-scaled.jpg"
+            },
+            {
+                id: 4,
+                ten: "Bánh Donut",
+                gia: 22000,
+                anh: "https://donutelier.co.uk/wp-content/uploads/2023/06/Fraiser_Donut.png"
+            }
+        ];
+
+        // Giỏ hàng ban đầu rỗng
+        var gioHang = [];
+
+        // Thêm bánh Mousse dâu theo kích thước đã chọn
+        function themBanhMoussedau() {
+
+            var kichThuoc = document.getElementById("kichthuoc1").value;
+
+            var gia;
+
+            if (kichThuoc == "10") {
+                gia = 65000;
+            } else {
+                gia = 165000;
+            }
+
+            var tenBanh = "Bánh Mousse " + kichThuoc + "cm";
+
+            // Tìm bánh cùng kích thước trong giỏ
+            var daCo = gioHang.find(function(sp) {
+                return sp.ten == tenBanh;
+            });
+
+            if (daCo != undefined) {
+
+                daCo.soLuong++;
+
+            } else {
+
+                gioHang.push({
+                    id: Number(kichThuoc),
+                    ten: tenBanh,
+                    gia: gia,
+                    anh: "https://the350f.com/wp-content/uploads/2025/05/CT-Dau-4.jpg",
+                    soLuong: 1
+                });
+
+            }
+
+            hienThiGioHang();
+        }
+
+        // Thêm croissant 
+        function themBanhCroissant(id) {
+
+            var kichThuoc = document.getElementById("kichthuoc2").value;
+
+            var gia;
+
+            if (kichThuoc == "60") {
+                gia = 25000;
+            } else {
+                gia = 40000;
+            }
+
+            var tenBanh = "Bánh Croissant " + kichThuoc + "g";
+
+            // Tìm bánh cùng kích thước trong giỏ
+            var daCo = gioHang.find(function(sp) {
+                return sp.ten == tenBanh;
+            });
+
+            if (daCo != undefined) {
+
+                daCo.soLuong++;
+
+            } else {
+
+                gioHang.push({
+                    id: Number(kichThuoc),
+                    ten: tenBanh,
+                    gia: gia,
+                    anh: "https://cdn.prod.website-files.com/649249d29a20bd6bc3deac48/6a548dd6e92c95e5de77d0d0_6a45c2408e13312e04f1ef90_3700000162_Croissant.png",
+                    soLuong: 1
+                });
+
+            }
+
+            hienThiGioHang();
+        }
+        //Thêm bánh Trung thu
+        function themBanhTrungThu(id) {
+
+            var kichThuoc = document.getElementById("kichthuoc3").value;
+
+            var gia;
+
+            if (kichThuoc == "150") {
+                gia = 95000;
+            } else {
+                gia = 155000;
+            }
+
+            var tenBanh = "Bánh Trung Thu " + kichThuoc + "g";
+
+            // Tìm bánh cùng kích thước trong giỏ
+            var daCo = gioHang.find(function(sp) {
+                return sp.ten == tenBanh;
+            });
+
+            if (daCo != undefined) {
+
+                daCo.soLuong++;
+
+            } else {
+
+                gioHang.push({
+                    id: Number(kichThuoc),
+                    ten: tenBanh,
+                    gia: gia,
+                    anh: "https://www.the350f.com/wp-content/uploads/2026/08/TT26-BN-Buoi-hong-2-scaled.jpg",
+                    soLuong: 1
+                });
+
+            }
+
+            hienThiGioHang();
+        }
+        //Thêm bánh Donut
+        function themBanhDonut(id) {
+
+            var kichThuoc = document.getElementById("kichthuoc4").value;
+
+            var gia;
+
+            if (kichThuoc == "6") {
+                gia = 22000;
+            } else {
+                gia = 32000;
+            }
+
+            var tenBanh = "Bánh Donut " + kichThuoc + "cm";
+
+            // Tìm bánh cùng kích thước trong giỏ
+            var daCo = gioHang.find(function(sp) {
+                return sp.ten == tenBanh;
+            });
+
+            if (daCo != undefined) {
+
+                daCo.soLuong++;
+
+            } else {
+
+                gioHang.push({
+                    id: Number(kichThuoc),
+                    ten: tenBanh,
+                    gia: gia,
+                    anh: "https://donutelier.co.uk/wp-content/uploads/2023/06/Fraiser_Donut.png",
+                    soLuong: 1
+                });
+
+            }
+
+            hienThiGioHang();
+        }
+
+        // Hiển thị giỏ hàng và tính tiền
+        function hienThiGioHang() {
+
+            var noiDung = "";
+            var tongTien = 0;
+
+            if (gioHang.length == 0) {
+
+                noiDung = '<p class="trong">Giỏ hàng đang trống!</p>';
+
+            } else {
+
+                for (var i = 0; i < gioHang.length; i++) {
+
+                    var sp = gioHang[i];
+
+                    var thanhTien = sp.gia * sp.soLuong;
+
+                    tongTien = tongTien + thanhTien;
+
+                    noiDung += `
+                        <div class="sanpham-trong-gio">
+
+                            <img src="${sp.anh}" alt="${sp.ten}">
+
+                            <div class="thongtin">
+                                <h3>${sp.ten}</h3>
+
+                                <p>${sp.gia.toLocaleString("vi-VN")} VNĐ</p>
+
+                                <button onclick="thayDoiSoLuong(${i}, -1)">
+                                    -
+                                </button>
+
+                                <span>${sp.soLuong}</span>
+
+                                <button onclick="thayDoiSoLuong(${i}, 1)">
+                                    +
+                                </button>
+
+                                <br>
+
+                                <button class="xoa" onclick="xoaSanPham(${i})">
+                                    Xóa sản phẩm
+                                </button>
+                            </div>
+
+                            <strong>
+                                ${thanhTien.toLocaleString("vi-VN")} VNĐ
+                            </strong>
+
+                        </div>
+                    `;
+                }
+            }
+
+            document.getElementById("giohang").innerHTML = noiDung;
+
+            document.getElementById("tongtien").innerHTML =
+                tongTien.toLocaleString("vi-VN") + " VNĐ";
+        }
+
+        // Tăng hoặc giảm số lượng
+        function thayDoiSoLuong(index, thayDoi) {
+
+            gioHang[index].soLuong += thayDoi;
+
+            if (gioHang[index].soLuong <= 0) {
+                gioHang.splice(index, 1);
+            }
+
+            hienThiGioHang();
+        }
+
+        // Xóa một sản phẩm
+        function xoaSanPham(index) {
+
+            gioHang.splice(index, 1);
+
+            hienThiGioHang();
+        }
+
+        // Xóa toàn bộ giỏ hàng
+        function xoaTatCa() {
+
+            if (gioHang.length == 0) {
+                alert("Giỏ hàng đang trống!");
+                return;
+            }
+
+            if (confirm("Bạn có muốn xóa tất cả sản phẩm không?")) {
+
+                gioHang = [];
+
+                hienThiGioHang();
+            }
+        }
+
+        // Đặt hàng
+        function datHang() {
+
+            if (gioHang.length == 0) {
+
+                alert("Bạn chưa chọn sản phẩm!");
+
+            } else {
+
+                alert("Đặt hàng thành công! Cảm ơn bạn.");
+
+            }
+        }
+
+        // Hiển thị giỏ hàng ban đầu
+        hienThiGioHang();
+    </script>
+
+</body>
+</html>
+</body>
+</html>
