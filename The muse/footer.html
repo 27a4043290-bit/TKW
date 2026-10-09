@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Cai dat chung */
+        * {
+            box-sizing: border-box;
+        }
+        banner-image {
+      width: 5px; 
+      height: 3px; 
+      object-fit: contain ; 
+      
+      /* Bo tròn riêng góc trên bên phải */
+      border-top-right-radius: 100% 80%;
+      
+      /* Giữ nguyên các góc khác vuông vức */
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+        body {
+            margin: 0;
+            font-family: "Times New Roman", serif;
+            background-color: #fff8E7;
+            color: #001F3F;
+        }
+
+        /* Chan trang */
+        .chantrang {
+            background-color: #fff8E7;
+            color: #001F3F;
+            margin-top: 60px;
+        }
+
+        /* Duong ke trang tri */
+        .chantrang-duongke {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 0 6%;
+        }
+
+        .chantrang-duongke::before,
+        .chantrang-duongke::after {
+            content: "";
+            height: 1px;
+            background-color: #9C7952;
+            flex: 1;
+        }
+
+        .chantrang-duongke span {
+            color: #9C7952;
+            font-size: 25px;
+        }
+
+        /* Bo cuc 4 cot */
+        .chantrang-noidung {
+            display: grid;
+            grid-template-columns: 1.4fr 0.9fr 1fr 1.3fr;
+            gap: 35px;
+            padding: 45px 6% 50px;
+        }
+
+        /* Tieu de */
+        .chantrang h2 {
+            font-size: 18px;
+            letter-spacing: 2px;
+            margin: 0 0 25px;
+        }
+
+        .chantrang h2::after {
+            content: "";
+            display: block;
+            width: 45px;
+            height: 3px;
+            background-color: #9C7952;
+            margin-top: 15px;
+        }
+
+        /* Logo */
+        .chantrang-logo {
+            font-size: 40px;
+            letter-spacing: 5px;
+            margin: 0;
+        }
+
+        .chantrang-slogan {
+            color: #9C7952;
+            letter-spacing: 2px;
+            font-size: 13px;
+            margin: 8px 0 25px;
+        }
+
+        .chantrang-gioithieu {
+            line-height: 1.8;
+            font-size: 17px;
+            margin: 0;
+        }
+
+        /* Danh sach lien ket */
+        .chantrang-danhsach {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .chantrang-danhsach li {
+            margin-bottom: 17px;
+        }
+
+        .chantrang a {
+            color: #001F3F;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .chantrang a:hover {
+            color: #B68B55;
+        }
+
+        /* Mang xa hoi */
+        .chantrang-mangxh {
+            display: flex;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .chantrang-mangxh a {
+            width: 42px;
+            height: 42px;
+            border: 1px solid #9C7952;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #9C7952;
+            font-size: 17px;
+            font-weight: bold;
+        }
+
+        .chantrang-mangxh a:hover {
+            background-color: #172A46;
+            color: #FFF9F0;
+        }
+
+        /* Thong tin lien he */
+        .chantrang-lienhe p {
+            line-height: 1.7;
+            margin: 0 0 15px;
+            font-size: 16px;
+            overflow-wrap: anywhere;
+        }
+
+        /* Thanh ban quyen */
+        .chantrang-ban-quyen {
+            background-color: #172A46;
+            color: #FFF9F0;
+            padding: 22px 4%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .chantrang-ban-quyen p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .chantrang-loichuc {
+            color: #FFF9F0;
+            font-style: italic;
+        }
+
+        /* May tinh bang */
+        @media (max-width: 1000px) {
+            .chantrang-noidung {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 35px;
+            }
+        }
+
+        /* Dien thoai */
+        @media (max-width: 600px) {
+            .chantrang-noidung {
+                grid-template-columns: 1fr;
+                padding: 35px 7%;
+            }
+
+            .chantrang-logo {
+                font-size: 30px;
+            }
+
+            .chantrang-ban-quyen {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+        bieu-tuong {
+            width: 100px;
+            height: 100px;
+            background-color: #172A46;
+            color: #FFF9F0;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 40px;
+            margin: 50px auto;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        /* Khi di chuột vào biểu tượng */
+        .bieu-tuong:hover {
+            background-color: #9C7952;
+            transform: scale(1.1);
+        }
+
+        /* Ảnh bánh ban đầu bị ẩn */
+        .anh-banh {
+            width: 200px;
+            border-radius: 15px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: 0.4s;
+            margin: 0 auto;
+        }
+
+        /* Khi di chuột vào biểu tượng thì ảnh hiện ra */
+        .bieu-tuong:hover + .anh-banh {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- CHAN TRANG THE MUSE -->
+    <footer class="chantrang">
+
+        <!-- Duong ke trang tri -->
+        <div class="chantrang-duongke">
+            <span>❧</span>
+        </div>
+
+        <div class="chantrang-noidung">
+
+            <!-- Cot 1: Thuong hieu -->
+            <div>
+                <h1 class="chantrang-logo">THE MUSE</h1>
+
+                <p class="chantrang-slogan">
+                    A LITTLE PIECE OF HAPPINESS
+                </p>
+
+                <p class="chantrang-gioithieu">
+                    The Muse mang đến những chiếc bánh ngọt tinh tế,
+                    được làm thủ công với tất cả tình yêu và sự trân trọng
+                    dành cho những khoảnh khắc ngọt ngào của bạn.
+                </p>
+                <div class="chantrang-mangxh">
+                    <a href="#" title="Facebook">f</a>
+                    <a href="#" title="Instagram">◎</a>
+                    <a href="#" title="TikTok">♪</a>
+                    <a href="#" title="YouTube">▶</a>
+                </div>  
+            </div>
+
+            <!-- Cot 4: Lien he -->
+           <div class="chantrang-lienhe" id="lienhe">
+           <a href="lienhe.html" style="font-size: 24px; font-weight: bold; text-decoration: none;">Liên hệ</a>
+
+    <p> 
+        📍 12 Chùa Bộc,<br>
+        &nbsp;&nbsp;&nbsp; P. Kim Liên, Đống Đa,<br>
+        &nbsp;&nbsp;&nbsp; Hà Nội
+    </p>
+
+    <p>
+        ☎ <a href="tel:0826590133">0826590133</a>
+    </p>
+
+    <p>
+        ✉ <a href="mailto:contact@themuse.com">
+            contact@themuse.com
+        </a>
+    </p>
+    <!-- Ban quyen -->
+        <div class="chantrang-ban-quyen">
+            <p>© 2026 The Muse. All rights reserved.</p>
+
+            <p class="chantrang-loichuc">
+                Ngọt ngào hơn mỗi ngày　────　♡
+            </p>
+        </div>
+        <img src="https://cdn.phototourl.com/member/2026-10-09-beee0a97-5ba7-41a4-bd72-f271276aec38.png" 
+        alt="Banner" class="banner-image" width="400" height="200" title="Banner The Muse">
+        
+    </div>
+
+    </footer>
+</body>
+</html>
