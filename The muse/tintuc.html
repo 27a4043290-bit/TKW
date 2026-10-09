@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tin tức | The Muse</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;800&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+/* --- base.css --- */
+/* Biến màu, cỡ lề, reset — dùng "vw" và clamp() để tự co giãn theo màn hình */
+:root{--navy:#0a1a3a;--red:#d1381b;--cream:#fff8f2;--peach:#fdebd8;--gold:#f0c674;--grey:#7a7a7a;--serif:"Playfair Display",Georgia,serif;--sans:Roboto,Arial,sans-serif;--gap:clamp(14px,2.6vw,40px);--pad:clamp(16px,5vw,80px)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{font-family:var(--sans);color:var(--navy);background:#fff;line-height:1.5;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+.wrap{width:min(1400px,100% - 2*var(--pad));margin:0 auto}
+.page{background:var(--cream)}
+h1.title,h2.title{font-family:var(--serif);font-weight:800;color:var(--navy)}
+h1.title{font-size:clamp(28px,3.6vw,38px);padding:clamp(28px,5.5vw,70px) 0 clamp(18px,2.8vw,34px)}
+.date{display:inline-block;background:var(--cream);color:var(--grey);border-radius:20px;padding:4px 12px;font-size:clamp(14px,1.4vw,16px)}
+/* Ảnh: lấp đầy khung chứa (khung có tỉ lệ cố định nên không bị méo ở mọi cỡ màn hình) */
+.ph{background:linear-gradient(135deg,#1f7a3d,#7ed957);width:100%;height:100%;object-fit:cover;display:block}
+.im,.cover,.pic{position:relative;overflow:hidden}
+.im .ph,.cover .ph,.pic .ph{position:absolute;inset:0}
+
+/* --- components.css --- */
+/* Breadcrumb, thẻ bài viết (card), nút nổi */
+.crumb{background:var(--peach);padding:clamp(10px,1.6vw,14px) 0;color:var(--grey);font-size:clamp(14px,1.5vw,16px)}
+.card{background:var(--cream);border-radius:18px;overflow:hidden;display:block;height:100%}
+.card .im{aspect-ratio:320/213}
+.card .b{padding:clamp(18px,2.4vw,34px) clamp(16px,1.6vw,20px)}
+.card h4{font-weight:500;font-size:clamp(16px,1.35vw,18px);margin-top:14px;line-height:1.45}
+.float{position:fixed;right:clamp(6px,1vw,10px);bottom:clamp(14px,4vw,70px);display:flex;flex-direction:column;gap:clamp(10px,1.4vw,20px);z-index:30}
+.float a,.float button{width:clamp(44px,4.4vw,58px);height:clamp(44px,4.4vw,58px);border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font-weight:500;border:0;font-size:clamp(14px,1.4vw,18px);cursor:pointer}
+.float .top{background:#fff;color:var(--navy);box-shadow:0 2px 10px rgba(0,0,0,.12);font-size:clamp(18px,2vw,24px)}
+
+/* --- list.css --- */
+/* Trang danh sách: bài nổi bật, 2 bài phụ, lưới bài */
+.hero{display:grid;grid-template-columns:minmax(0,1040fr) minmax(0,320fr);gap:var(--gap);padding-bottom:clamp(36px,6vw,80px)}
+.hero-main{display:grid;grid-template-columns:minmax(0,680fr) minmax(0,360fr);background:#fff;border-radius:18px;overflow:hidden;min-height:clamp(260px,32vw,452px)}
+.hero-main .txt{align-self:center;padding:clamp(18px,3vw,32px)}
+.hero-main h3{font-weight:500;font-size:clamp(16px,1.5vw,18px);margin:12px 0 14px;line-height:1.45}
+.hero-main p{font-size:clamp(14px,1.4vw,17px);line-height:1.5;display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden}
+.hero-side{display:flex;flex-direction:column;gap:var(--gap);min-width:0}
+.side{background:#fff;border-radius:14px;overflow:hidden;flex:1;min-width:0;display:flex;flex-direction:column}
+.side .im{flex:1;min-height:clamp(70px,9vw,154px)}
+.side span{display:block;padding:10px 20px;font-size:clamp(14px,1.4vw,17px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.list{background:#fff;padding:clamp(32px,5vw,60px) 0 clamp(44px,7vw,90px)}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--gap)}
+.pager{display:flex;justify-content:center;gap:10px;margin-top:50px}
+.pager button{width:40px;height:40px;border-radius:50%;border:1px solid var(--gold);background:#fff;color:var(--navy);cursor:pointer}
+.pager button.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+
+/* --- detail.css --- */
+/* Trang chi tiết bài viết và mục Tin tức khác */
+.detail{padding:clamp(20px,6vw,80px) 0}
+.article{max-width:1096px;margin:0 auto;background:#fff;border-radius:20px;padding:clamp(16px,3vw,32px);position:relative}
+.fb{width:48px;height:48px;border-radius:50%;background:#fff;display:grid;place-items:center;box-shadow:0 2px 8px rgba(0,0,0,.1);transition:.2s;margin-bottom:16px}
+.fb:hover{background:#1877f2}.fb:hover svg{fill:#fff}
+.fb svg{width:20px;fill:#0a1a3a}
+@media(min-width:1280px){.fb{position:absolute;left:-72px;top:0;margin:0}}   /* màn hình rộng: nút nằm bên trái bài; màn hình nhỏ: nằm trên tiêu đề */
+.article h1{font-family:var(--serif);font-weight:800;font-size:clamp(24px,3.4vw,38px);line-height:1.25;margin-bottom:clamp(18px,3vw,34px)}
+.meta{display:flex;align-items:center;flex-wrap:wrap;gap:6px 16px;color:var(--grey);margin-bottom:22px}
+.meta em{font-style:normal;color:var(--gold)}.meta hr{flex:1;min-width:40px;border:0;border-top:1px solid #ddd}
+.sapo{font-size:clamp(15px,1.4vw,16px);margin-bottom:18px}
+.cover{border-radius:14px;aspect-ratio:1032/560;margin-bottom:24px}
+.body h3{font-family:var(--serif);font-size:clamp(20px,2.2vw,24px);margin:28px 0 12px}
+.body .pic{aspect-ratio:16/9;border-radius:14px;margin:20px 0}
+.body p{margin-bottom:16px;font-size:clamp(15px,1.4vw,16px);line-height:1.7}
+/* Tin tức khác: số thẻ hiển thị thay đổi theo màn hình (4 / 3 / 2 / 1) */
+.other{padding:clamp(40px,7vw,80px) 0 clamp(90px,9vw,90px);position:relative}
+.other h2{text-align:center;font-size:clamp(26px,3.2vw,36px);margin-bottom:clamp(26px,4.5vw,60px)}
+.track{overflow:hidden;width:min(1400px,100% - 2*var(--pad));margin:0 auto}
+.rail{display:flex;gap:var(--gap);transition:transform .4s}
+.rail .card{flex:0 0 calc((100% - 3*var(--gap))/4);height:auto}
+.arr{position:absolute;bottom:clamp(24px,3vw,34px);width:44px;height:44px;border:0;border-radius:8px;background:#8d8d8d;color:#fff;cursor:pointer;font-size:22px}
+.arr:disabled{opacity:.4;cursor:default}
+.arr.l{left:calc(50% - 52px)}.arr.r{left:calc(50% + 8px)}   /* mặc định: 2 nút ở giữa, bên dưới */
+@media(min-width:1400px){.other{padding-bottom:90px}.arr{bottom:auto;top:56%;width:38px;height:38px}.arr.l{left:calc((100% - min(1400px,100% - 2*var(--pad)))/2 - 52px)}.arr.r{left:calc((100% + min(1400px,100% - 2*var(--pad)))/2 + 14px)}}
+
+/* --- responsive.css --- */
+/* Điều chỉnh theo cỡ màn hình: laptop nhỏ / tablet / điện thoại */
+@media(max-width:1100px){
+  .hero{grid-template-columns:minmax(0,1fr)}
+  .hero-side{flex-direction:row}
+  .side .im{min-height:clamp(100px,18vw,170px)}
+  .grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .rail .card{flex-basis:calc((100% - 2*var(--gap))/3)}
+}
+@media(max-width:820px){
+  .hero-main{grid-template-columns:minmax(0,1fr);min-height:0}
+  .hero-main .im{aspect-ratio:16/10}
+  .hero-main p{-webkit-line-clamp:4}
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .rail .card{flex-basis:calc((100% - var(--gap))/2)}
+}
+@media(max-width:520px){
+  .hero-side{flex-direction:column}
+  .side .im{aspect-ratio:16/8;flex:none;min-height:0}
+  .grid{grid-template-columns:minmax(0,1fr)}
+  .rail .card{flex-basis:100%}
+  .card .im{aspect-ratio:16/10}
+  .article{border-radius:14px}
+  .cover{aspect-ratio:4/3}
+}
+
+/* Ẩn/hiện các khối khi chuyển trang */
+[hidden]{display:none!important}
+/* Icon trong các nút nổi (Messenger) */
+.float svg{width:clamp(22px,2.2vw,28px);height:clamp(22px,2.2vw,28px);fill:#fff}
+</style>
+</head>
+<body>
+<!-- Thanh breadcrumb -->
+<div class="crumb"><div class="wrap"><a href="#">Trang chủ</a> &nbsp;/&nbsp; <a href="#">Tin tức</a></div></div>
+
+<main class="page">
+
+  <!-- ========== TRANG DANH SÁCH TIN TỨC ========== -->
+  <div class="view" id="view-list">
+    <div class="wrap">
+      <h1 class="title">Tin tức</h1>
+
+      <!-- Bài nổi bật + 2 bài phụ -->
+      <section class="hero">
+        <a class="hero-main" href="#bai/Mouse-xu-huong" -slug="Mouse-xu-huong" data-date="1.10.2026" data-title="BST Mousse The Muse: Khi nghệ thuật trở thành nguồn cảm hứng cho bánh ngọt">
+          <div class="im"><img class="ph" src="image/mouse2.jpg" alt="Bánh mousse The Muse"></div>
+          <div class="txt"><span class="date">1.10.2026</span><h3>BST Mousse The Muse: Khi nghệ thuật trở thành nguồn cảm hứng cho bánh ngọt</h3><p>Lấy cảm hứng từ những sắc màu, đường nét và khoảnh khắc giàu cảm xúc, The Muse giới thiệu bộ sưu tập mousse mới – nơi nghệ thuật được chuyển hóa thành những tầng hương vị tinh tế, hiện đại.</p></div>
+        </a>
+        <div class="hero-side">
+        <a class="side" href="#bai/BST-trung-thu" data-slug="BST-trung-thu" data-date="29.09.2026" data-title="BST Trung thu The Muse: Gói trọn vị trăng trong những tầng mousse">
+          <div class="im"><img class="ph" src="image/BTT2.jpg" alt="Bánh trung thu The Muse"></div>
+          <span>BST Trung thu The Muse: Gói trọn vị trăng trong những tầng mousse</span>
+        </a>
+        <a class="side" href="#bai/croissant" data-slug="kham-pha-emerald" data-date="3.10.2026" data-title="CROISSANT – MỘT CHÚT NƯỚC PHÁP CHO NGÀY MỚI">
+          <div class="im"><img class="ph" src="image/croissant.jpg" alt="Bánh Croissant The Muse"></div>
+          <span>CROISSANT – MỘT CHÚT NƯỚC PHÁP CHO NGÀY MỚI</span>
+        </a>
+        </div>
+      </section>
+    </div>
+
+    <!-- Lưới các bài viết -->
+    <section class="list">
+      <div class="wrap">
+        <div class="grid">
+        <a class="card" href="#bai/mouse" data-slug="mouse" data-date="2.10.2026" data-title="MỘT CHIẾC MOUSSE CÓ GÌ MÀ KHIẾN NGƯỜI TA “MÊ” ĐẾN VẬY?">
+          <div class="im"><img class="ph" src="image/cake.jpg" alt="Bánh The Muse"></div>
+          <div class="b"><span class="date">2.10.2026</span><h4>MỘT CHIẾC MOUSSE CÓ GÌ MÀ KHIẾN NGƯỜI TA “MÊ” ĐẾN VẬY?</h4></div>
+        </a>
+        <a class="card" href="#bai/gen-z" data-slug="gen-z" data-date="29.9.2026" data-title=" NGƯỜI YÊU CÓ THỂ KHÔNG CÓ… NHƯNG BÁNH THÌ NHẤT ĐỊNH PHẢI CÓ">
+          <div class="im"><img class="ph" src="image/banh2.jpg" alt="Bánh The Muse"></div>
+          <div class="b"><span class="date">29.9.2026</span><h4> NGƯỜI YÊU CÓ THỂ KHÔNG CÓ… NHƯNG BÁNH THÌ NHẤT ĐỊNH PHẢI CÓ</h4></div>
+        </a>
+        <a class="card" href="#bai/gay-sot" data-slug="gay-sot" data-date="29.9.2026" data-title="HÔM NAY BẠN ĐÃ TỰ THƯỞNG CHO MÌNH CHƯA?">
+          <div class="im"><img class="ph" src="image/banh4.jpg" alt="Bánh The Muse"></div>
+          <div class="b"><span class="date">29.9.2026</span><h4>HÔM NAY BẠN ĐÃ TỰ THƯỞNG CHO MÌNH CHƯA?</h4></div>
+        </a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ========== CÁC BÀI VIẾT CHI TIẾT (bấm vào bài sẽ hiện) ========== -->
+
+  <!-- Bài viết: BST Mousse The Muse: Khi nghệ thuật trở thành nguồn cảm hứng cho bánh ngọtt -->
+  <section class="view detail" id="bai-Mouse-xu-huong" hidden>
+    <div class="wrap" style="position:relative">
+      <div class="article">
+        <!-- Nút Facebook: sửa href thành link bài đăng trên page Facebook của bạn -->
+        <a class="fb" href="https://www.facebook.com/permalink.php?story_fbid=pfbid02XuYkWFgQCW5ne7oiEMUNLthPCnfWqwehiaGMsPqCQm4WDdxtDtwYGZVBRwpqnqJHl&id=61594695580721" target="_blank" rel="noopener" data-slug="Mouse-xu-huong" data-date="1.10.2026" data-title="BST Mousse The Muse: Khi nghệ thuật trở thành nguồn cảm hứng cho bánh ngọt" target="_blank" rel="noopener" aria-label="Xem bài trên Facebook">
+          <svg viewBox="0 0 24 24"><path d="M14 8V6.5c0-.7.3-1 1-1h2V2h-3a4 4 0 0 0-4 4v2H7v3.5h3V22h4v-10.5h3l.5-3.5z"/></svg>
+        </a>
+        <h1>BST Mousse The Muse: Khi nghệ thuật trở thành nguồn cảm hứng cho bánh ngọt</h1>
+        <div class="meta"><em>Tin tức</em><span>1.10.2026</span><hr></div>
+        <p class="sapo">Lấy cảm hứng từ những sắc màu, đường nét và khoảnh khắc giàu cảm xúc, The Muse giới thiệu bộ sưu tập mousse mới – nơi nghệ thuật được chuyển hóa thành những tầng hương vị tinh tế, hiện đại.</p>
+        <div class="cover"><img class="ph" src="image/mouse2.jpg" alt="Bánh mousse The Muse"></div>
+        <div class="body">
+          <p>Mỗi chiếc bánh mousse tại The Muse không chỉ được tạo nên từ những nguyên liệu được lựa chọn kỹ lưỡng, mà còn bắt đầu từ một câu chuyện.</p>
+          <p>Đó có thể là cảm hứng từ một gam màu, một khoảnh khắc trong ngày hay đơn giản là cảm giác bình yên khi thưởng thức một món bánh yêu thích. Với BST mousse mới, The Muse lựa chọn nghệ thuật làm điểm khởi đầu để kể câu chuyện riêng bằng hương vị.Đó có thể là cảm hứng từ một gam màu, một khoảnh khắc trong ngày hay đơn giản là cảm giác bình yên khi thưởng thức một món bánh yêu thích. Với BST mousse mới, The Muse lựa chọn nghệ thuật làm điểm khởi đầu để kể câu chuyện riêng bằng hương vị.</p>
+          <h3>Nghệ thuật: nguồn cảm hứng cho những tầng mousse</h3>
+          <p>Mousse vốn được yêu thích bởi kết cấu mềm mịn, nhẹ nhàng cùng khả năng kết hợp đa dạng giữa nhiều tầng hương vị. Đây cũng chính là chất liệu để The Muse tự do khám phá và tạo nên những sản phẩm mang dấu ấn riêng.</p>
+          <p>Thay vì chỉ tập trung vào một hương vị đơn lẻ, mỗi chiếc mousse được xây dựng như một tổng thể với nhiều lớp kết hợp hài hòa: từ phần cốt bánh mềm, lớp mousse mượt mà đến nhân trái cây hoặc lớp phủ tạo điểm nhấn.</p>
+          <p>The Muse quan niệm rằng một chiếc bánh đẹp không chỉ nằm ở hình thức bên ngoài. Đằng sau mỗi đường nét, màu sắc hay lớp bánh là sự cân nhắc về hương vị, kết cấu và cảm xúc mà sản phẩm muốn mang đến cho người thưởng thức.</p>
+          <p>Bởi vậy, nghệ thuật tại The Muse không chỉ được nhìn thấy mà còn có thể cảm nhận bằng vị giác.</p>
+          <div class="pic"><img class="ph" src="image/mouse3.jpg" alt="Bánh mousse The Muse"></div>
+          <h3>Những tầng hương vị được kể bằng mousse</h3>
+          <p>Trong BST mới, The Muse mang đến những sự kết hợp được xây dựng dựa trên sự cân bằng giữa vị ngọt, vị béo và những điểm nhấn tươi mát từ trái cây.</p>
+          <p>Nếu chocolate mang đến chiều sâu và sự quyến rũ, trái cây lại tạo nên nét tươi sáng, thanh nhẹ. Khi kết hợp cùng lớp mousse mềm mịn, những hương vị tưởng chừng quen thuộc trở nên mới mẻ hơn qua từng tầng bánh.</p>
+          <p>Mỗi lớp mousse được chăm chút để không lấn át lớp còn lại. Cốt bánh tạo nền, mousse mang đến sự mềm mại, phần nhân tạo điểm nhấn và lớp phủ hoàn thiện trải nghiệm.</p>
+          <p>Đó cũng là cách The Muse tạo nên những chiếc bánh có nhiều tầng hương vị nhưng vẫn giữ được sự nhẹ nhàng đặc trưng của mousse.</p>
+          <h3>Tỉ mỉ trong từng chi tiết</h3>
+          <p>Để tạo nên một chiếc mousse hoàn chỉnh, sự chính xác là yếu tố không thể thiếu.</p>
+          <p>Từ việc cân chỉnh tỷ lệ nguyên liệu, kiểm soát kết cấu mousse đến quá trình tạo hình và hoàn thiện, mỗi công đoạn đều đòi hỏi sự cẩn thận.</p>
+          <p>The Muse lựa chọn phong cách trang trí tối giản, tập trung vào màu sắc và hình khối để làm nổi bật vẻ đẹp tự nhiên của từng chiếc bánh.</p>
+          <p>Không quá nhiều chi tiết cầu kỳ, những đường nét tinh gọn cùng bảng màu hài hòa tạo nên diện mạo hiện đại, thanh lịch – đúng với tinh thần mà The Muse theo đuổi.</p>
+          <p>Bên cạnh hình thức, chất lượng nguyên liệu cũng được đặt lên hàng đầu. Các thành phần được lựa chọn nhằm đảm bảo sự cân bằng giữa hương vị và kết cấu, để mỗi miếng bánh khi thưởng thức đều giữ được sự mềm mịn đặc trưng.</p>
+          <h3>Khi một chiếc mousse trở thành món quà của cảm xúc</h3>
+          <p>Một chiếc bánh không nhất thiết phải xuất hiện trong những dịp thật đặc biệt.</p>
+          <p>Đôi khi, đó là món quà dành cho một người bạn.</p>
+          <p>Là chiếc bánh nhỏ trong một buổi hẹn cuối tuần.</p>
+          <p>Là món tráng miệng cho một buổi chiều chậm rãi.</p>
+          <p>Hay đơn giản là phần thưởng dành cho chính mình sau một ngày dài.</p>
+          <div class="pic"><img class="ph" src="image/mouse1.jpg" alt="Bánh mousse The Muse"></div>
+          <p>The Muse tin rằng bánh ngọt không chỉ để thưởng thức mà còn có thể trở thành một phần của những kỷ niệm.</p>
+          <p>Bởi vậy, BST mousse mới được tạo nên với mong muốn mỗi chiếc bánh khi xuất hiện trên bàn tiệc đều có thể góp thêm một chút cảm xúc vào khoảnh khắc ấy.</p>
+          <h3>The Muse – kể chuyện bằng những tầng mousse</h3>
+          <p>Với BST mới, The Muse tiếp tục theo đuổi triết lý tạo nên những chiếc bánh nơi hương vị, thẩm mỹ và cảm xúc cùng tồn tại.</p>
+
+          <p>Không ngừng khám phá những cách kết hợp mới, The Muse mong muốn đưa mousse trở thành nhiều hơn một món tráng miệng – đó là một trải nghiệm nhỏ để người thưởng thức có thể chậm lại, cảm nhận và tận hưởng.</p>
+
+          <p>Từ cảm hứng nghệ thuật đến những tầng mousse mềm mịn, mỗi chiếc bánh là một câu chuyện được kể theo cách rất riêng.</p>
+
+          <p>The Muse – nơi nghệ thuật được nếm bằng vị giác.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Bài viết: BST Trung thu The Muse: Gói trọn vị trăng trong những tầng mousse -->
+  <section class="view detail" id="bai-BST-trung-thu" hidden>
+    <div class="wrap" style="position:relative">
+      <div class="article">
+        <!-- Nút Facebook: sửa href thành link bài đăng trên page Facebook của bạn -->
+        <a class="fb" href="https://www.facebook.com/permalink.php?story_fbid=pfbid0NqGSYXRwLVdLW3PA4JRoRmGGAaMA3FmYKRbbgCFsodvVbjHVgZZ6Stmrb3nizoMdl&id=61594695580721" target="_blank" rel="noopener" data-slug="BST-trung-thu" data-date="29.9.2026" data-title="BST Trung thu The Muse: Gói trọn vị trăng trong những tầng mousse" target="_blank" rel="noopener" aria-label="Xem bài trên Facebook">
+          <svg viewBox="0 0 24 24"><path d="M14 8V6.5c0-.7.3-1 1-1h2V2h-3a4 4 0 0 0-4 4v2H7v3.5h3V22h4v-10.5h3l.5-3.5z"/></svg>
+        </a>
+        <h1>BST Trung thu The Muse: Gói trọn vị trăng trong những tầng mousse</h1>
+        <div class="meta"><em>Tin tức</em><span>29.09.2026</span><hr></div>
+        <p class="sapo">Lấy cảm hứng từ những đêm trăng đoàn viên, The Muse giới thiệu BST Trung thu với sự kết hợp giữa hương vị truyền thống và phong cách bánh mousse hiện đại, mang đến một trải nghiệm Trung thu mới mẻ nhưng vẫn trọn vẹn cảm xúc.</p>
+        <div class="cover"><img class="ph" src="image/BTT2.jpg" alt="Bánh trung thu The Muse"></div>
+        <div class="body">
+          <p>Trung thu từ lâu đã trở thành một trong những dịp lễ gắn liền với ký ức sum vầy của người Việt. Đó là ánh trăng sáng, những câu chuyện bên mâm trà và khoảnh khắc mọi người cùng trao nhau những món quà mang theo lời chúc bình an.</p>
+          <p>Với mong muốn kể lại câu chuyện Trung thu bằng một ngôn ngữ mới, The Muse mang đến BST bánh Trung thu được lấy cảm hứng từ vẻ đẹp của mùa trăng, kết hợp tinh thần truyền thống với dấu ấn hiện đại đặc trưng của thương hiệu.</p>
+          <h3>Mùa trăng – nguồn cảm hứng cho BST Trung thu The Muse</h3>
+          <p>Nếu những chiếc bánh Trung thu truyền thống gợi nhắc về ký ức tuổi thơ, thì The Muse lựa chọn một cách tiếp cận mới: giữ lại những giá trị quen thuộc nhưng thể hiện chúng qua góc nhìn trẻ trung và tinh tế hơn.</p>
+          <p>BST Trung thu lần này được xây dựng xoay quanh hình ảnh mặt trăng, ánh sáng và sự đoàn viên. Từ tên gọi, màu sắc đến thiết kế hộp bánh đều được thống nhất trong một câu chuyện về mùa trăng.</p>
+          <p>Những gam màu nhẹ nhàng kết hợp cùng các chi tiết lấy cảm hứng từ ánh trăng tạo nên diện mạo thanh lịch, hiện đại. Hộp bánh không chỉ đóng vai trò bảo quản sản phẩm mà còn được thiết kế như một món quà có thể trao gửi trong những dịp đặc biệt.</p>
+          <p>Bởi với The Muse, một món quà Trung thu không chỉ cần ngon mà còn cần truyền tải được tấm lòng của người trao và cảm xúc của người nhận.</p>
+          <h3>Những chiếc bánh được chăm chút từ hương vị đến diện mạo</h3>
+          <p>Đằng sau mỗi chiếc bánh là sự tỉ mỉ trong từng công đoạn.</p>
+          <div class="pic"><img class="ph" src="image/BTT1.jpg" alt="Bánh trung thu The Muse"></div>
+          <p>Từ việc lựa chọn nguyên liệu, cân chỉnh công thức đến tạo hình và hoàn thiện, mỗi sản phẩm đều được chăm chút để đảm bảo sự đồng nhất về chất lượng.</p>
+          <p>Phần vỏ bánh được hoàn thiện với độ mềm vừa phải, bao bọc phần nhân đậm đà bên trong. Các loại nhân được cân bằng về độ ngọt để khi kết hợp cùng trà hoặc cà phê vẫn giữ được sự hài hòa.</p>
+          <p>Bên cạnh hương vị, thiết kế cũng là một phần quan trọng trong trải nghiệm Trung thu.</p>
+          <p>Hộp bánh The Muse được xây dựng theo phong cách tối giản nhưng tinh tế, sử dụng hình ảnh ánh trăng làm điểm nhấn. Những chi tiết trang trí được tiết chế để tạo cảm giác hiện đại, phù hợp với cả những buổi đoàn viên gia đình và những món quà dành tặng đối tác, bạn bè.</p>
+          <h3>Một hộp bánh – nhiều câu chuyện được trao gửi</h3>
+          <p>Trung thu không chỉ là dịp để thưởng thức bánh.</p>
+          <p>Đó còn là lúc người ta nhớ đến gia đình, những người thân yêu và những mối quan hệ đáng trân trọng.</p>
+          <p>Một hộp bánh được gửi đi có thể là lời hỏi thăm dành cho cha mẹ, lời cảm ơn dành cho người đồng hành hay lời chúc bình an gửi đến một người bạn.</p>
+          <p>The Muse mong muốn mỗi hộp bánh Trung thu khi được trao đi sẽ mang theo một câu chuyện riêng.</p>
+          <h3>The Muse – viết tiếp câu chuyện mùa trăng bằng một ngôn ngữ mới</h3>
+          <p>Không cố gắng thay thế những giá trị truyền thống, The Muse lựa chọn cách tiếp nối chúng bằng một diện mạo mới.</p>
+          <p>BST Trung thu là sự kết hợp giữa những hương vị thân thuộc của mùa trăng và tinh thần hiện đại mà The Muse theo đuổi – nơi mỗi chiếc bánh được tạo nên từ sự chỉn chu, sáng tạo và cảm xúc.</p>
+          <p>Bởi sau tất cả, Trung thu vẫn là câu chuyện về đoàn viên.</p>
+          <p>Và đôi khi, chỉ cần một hộp bánh nhỏ, một ấm trà và những người mình yêu thương bên cạnh, mùa trăng đã trở nên trọn vẹn.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Bài viết: CROISSANT – MỘT CHÚT NƯỚC PHÁP CHO NGÀY MỚI-->
+  <section class="view detail" id="bai-croissant" hidden>
+    <div class="wrap" style="position:relative">
+      <div class="article">
+        <!-- Nút Facebook: sửa href thành link bài đăng trên page Facebook của bạn -->
+        <a class="fb" href="https://www.facebook.com/permalink.php?story_fbid=pfbid02XuYkWFgQCW5ne7oiEMUNLthPCnfWqwehiaGMsPqCQm4WDdxtDtwYGZVBRwpqnqJHl&id=61594695580721" target="_blank" rel="noopener" data-slug="croissant" data-date="3.10.2026" data-title="CROISSANT – MỘT CHÚT NƯỚC PHÁP CHO NGÀY MỚI" target="_blank" rel="noopener" aria-label="Xem bài trên Facebook">
+          <svg viewBox="0 0 24 24"><path d="M14 8V6.5c0-.7.3-1 1-1h2V2h-3a4 4 0 0 0-4 4v2H7v3.5h3V22h4v-10.5h3l.5-3.5z"/></svg>
+        </a>
+        <h1>CROISSANT – MỘT CHÚT NƯỚC PHÁP CHO NGÀY MỚI</h1>
+        <div class="meta"><em>Tin tức</em><span>3.10.2026</span><hr></div>
+        <p class="sapo">Có những buổi sáng không cần quá vội.</p>
+        <div class="cover"><img class="ph" src="image/croissant.jpg" alt="Bánh Croissant The Muse"></div>
+        <div class="body">
+          <p>Có những buổi sáng không cần quá vội.</p>
+          <p>Chỉ cần một tách cà phê nóng, một chiếc croissant vàng ươm và vài phút thật chậm để tận hưởng ngày mới.</p>
+          <p>Croissant chinh phục người yêu bánh bởi những lớp bột mỏng xếp chồng, phần vỏ ngoài vàng giòn và bên trong mềm xốp, thơm mùi bơ.</p>
+          <p>Mỗi lần cắn xuống là một chút giòn tan.</p>
+          <p>Mỗi lớp bánh lại mở ra một chút béo thơm.</p>
+          <p>Và rồi chỉ cần thêm một ngụm cà phê…</p>
+          <h3>Một buổi sáng bình thường cũng trở nên thật “chill”.</h3>
+          <p>Tại The Muse, croissant được chăm chút để giữ trọn nét quyến rũ vốn có của dòng bánh này – từ những lớp bánh vàng óng đến kết cấu nhẹ, xốp và thơm bơ.</p>
+          <p>Ăn sáng thật ngon.</p>
+          <p>Uống cà phê thật chậm.</p>
+          <p>Và bắt đầu ngày mới theo cách của riêng bạn.</p>
+          <p>Ghé The Muse để thưởng thức một chiếc croissant vừa ra lò và tìm cho mình một góc nhỏ thật bình yên.</p>
+          <p><b>Nếu được chọn, bạn sẽ ăn croissant cùng Cà phê hay Trà ?</b></p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Bài viết: MỘT CHIẾC MOUSSE CÓ GÌ MÀ KHIẾN NGƯỜI TA “MÊ” ĐẾN VẬY? -->
+  <section class="view detail" id="bai-mouse" hidden>
+    <div class="wrap" style="position:relative">
+      <div class="article">
+        <!-- Nút Facebook: sửa href thành link bài đăng trên page Facebook của bạn -->
+        <a class="fb" href="https://www.facebook.com/permalink.php?story_fbid=pfbid0LL8P6tJm432zjUxQhYdLzw1s2f5x95HuzHfZu6c5kEtfRHwYe1NBDvEJ95Ae1sapl&id=61594695580721" target="_blank" rel="noopener" aria-label="Xem bài trên Facebook">
+          <svg viewBox="0 0 24 24"><path d="M14 8V6.5c0-.7.3-1 1-1h2V2h-3a4 4 0 0 0-4 4v2H7v3.5h3V22h4v-10.5h3l.5-3.5z"/></svg>
+        </a>
+        <h1>MỘT CHIẾC MOUSSE CÓ GÌ MÀ KHIẾN NGƯỜI TA “MÊ” ĐẾN VẬY?</h1>
+        <div class="meta"><em>Tin tức</em><span>2.10.2026</span><hr></div>
+        <p class="sapo">Nhìn bên ngoài, mousse có thể trông khá đơn giản. Nhưng ẩn bên trong một chiếc bánh nhỏ lại là cả một thế giới của nhiều tầng hương vị và kết cấu.</p>
+        <div class="cover"><img class="ph" src="image/cake.jpg" alt="Bánh The Muse"></div>
+        <div class="body">
+          <p>Nhìn bên ngoài, mousse có thể trông khá đơn giản. Nhưng ẩn bên trong một chiếc bánh nhỏ lại là cả một thế giới của nhiều tầng hương vị và kết cấu.</p>
+          <p>Nội dung chi tiết của bài viết đang được cập nhật.</p>
+          <p>Một lớp cốt bánh mềm làm nền.</p>
+          <p>Một lớp mousse mịn, nhẹ và tan dần trong miệng.</p>
+          <p>Một chút trái cây tạo vị tươi mới.</p>
+          <p>Và đôi khi là một lớp nhân bất ngờ ở chính giữa.</p>
+          <p>Điều thú vị của mousse nằm ở sự cân bằng.</p>
+          <p>Không quá ngọt.</p>
+          <p>Không quá béo.</p>
+          <p>Không quá nặng vị.</p>
+          <p>Mỗi lớp được tạo ra để bổ trợ cho lớp còn lại, để khi thưởng thức, bạn không chỉ cảm nhận một hương vị mà là cả một hành trình nhỏ qua từng tầng bánh.</p>
+          <p>Đó cũng là điều The Muse luôn theo đuổi: tạo nên những chiếc mousse có diện mạo tinh tế, hương vị hài hòa và đủ đặc biệt để khiến bạn muốn thưởng thức thêm một miếng nữa.</p>
+          <p>Vậy nếu hôm nay được chọn MỘT vị mousse cho mình…</p>
+          <p>Bạn sẽ chọn Chocolate, Dâu hay Matcha ?</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Bài viết:  NGƯỜI YÊU CÓ THỂ KHÔNG CÓ… NHƯNG BÁNH THÌ NHẤT ĐỊNH PHẢI CÓ -->
+  <section class="view detail" id="bai-gen-z" hidden>
+    <div class="wrap" style="position:relative">
+      <div class="article">
+        <!-- Nút Facebook: sửa href thành link bài đăng trên page Facebook của bạn -->
+        <a class="fb" href="https://www.facebook.com/permalink.php?story_fbid=pfbid02bEdiUkFSkfRsXKHdGs9vZgW2G2cWx3aQs5p2LyBeinm7izwEQR6Q1XGzaWY1B4WYl&id=61594695580721" target="_blank" rel="noopener" aria-label="Xem bài trên Facebook">
+          <svg viewBox="0 0 24 24"><path d="M14 8V6.5c0-.7.3-1 1-1h2V2h-3a4 4 0 0 0-4 4v2H7v3.5h3V22h4v-10.5h3l.5-3.5z"/></svg>
+        </a>
+        <h1> NGƯỜI YÊU CÓ THỂ KHÔNG CÓ… NHƯNG BÁNH THÌ NHẤT ĐỊNH PHẢI CÓ</h1>
+        <div class="meta"><em>Tin tức</em><span>29.9.2026</span><hr></div>
+        <div class="cover"><img class="ph" src="image/banh2.jpg" alt="Bánh The Muse"></div>
+        <div class="body">
+          <p>Valentine? Không người yêu.</p>
+          <p>Cuối tuần? Không có kèo.</p>
+          <p>Tối nay? Chẳng biết làm gì.</p>
+          <p>THÌ ĂN BÁNH.</p>
+          <div class="pic"><img class="ph" src="image/banh3.jpg" alt="BánhThe Muse">< /div>
+          <p>Dâu cho những tâm hồn thích sự ngọt ngào.</p>
+          <p>Chocolate cho team “đắng một chút mới cuốn”.</p>
+          <p> Cheese cho hội mê béo ngậy.</p>
+          <div class="pic"><img class="ph" src="image/banh1.jpg" alt="Bánh The Muse"></div>
+          <p>Và tất nhiên… một chiếc bánh + một ly cà phê = combo chân ái.</p>
+          <p>Đừng chờ ai đó mua bánh cho mình.</p>
+          <p>Tự mua cũng được.</p>
+          <p>Tự ăn cũng được.</p>
+          <p>Tự vui càng được.</p>
+          <p>Ghé <b>The Muse</b> và chọn chiếc bánh dành riêng cho mood hôm nay!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Bài viết: HÔM NAY BẠN ĐÃ TỰ THƯỞNG CHO MÌNH CHƯA?-->
+  <section class="view detail" id="bai-gay-sot" hidden>
+    <div class="wrap" style="position:relative">
+      <div class="article">
+        <!-- Nút Facebook: sửa href thành link bài đăng trên page Facebook của bạn -->
+        <a class="fb" href="https://www.facebook.com/permalink.php?story_fbid=pfbid02pNbLJm31zSpcAehp8pNHCnGotuLPMPEsP69Tit938qzgh53awnvFSQcE5LTt15D5l&id=61594695580721" target="_blank" rel="noopener" aria-label="Xem bài trên Facebook">
+          <svg viewBox="0 0 24 24"><path d="M14 8V6.5c0-.7.3-1 1-1h2V2h-3a4 4 0 0 0-4 4v2H7v3.5h3V22h4v-10.5h3l.5-3.5z"/></svg>
+        </a>
+        <h1>HÔM NAY BẠN ĐÃ TỰ THƯỞNG CHO MÌNH CHƯA?</h1>
+        <div class="meta"><em>Tin tức</em><span>29.9.2026</span><hr></div>
+        <p class="sapo">Có những ngày chẳng cần một lý do đặc biệt để ăn bánh.</p>
+        <div class="cover"><img class="ph" src="image/banh4.jpg" alt="Bánh The Muse"></div>
+        <div class="body">
+          <p>Có những ngày chẳng cần một lý do đặc biệt để ăn bánh.</p>
+          <p>Không sinh nhật, không kỷ niệm, cũng chẳng cần chờ đến cuối tuần.</p>
+          <p>Chỉ đơn giản là hôm nay bạn đã đủ bận rộn rồi — vậy nên hãy cho mình một chút ngọt ngào.</p>
+          <p>Một miếng bánh mềm xốp, lớp kem vừa đủ béo, chút hương thơm nhẹ nhàng…</p>
+          <p>Đôi khi, một món bánh nhỏ cũng đủ khiến một ngày bình thường trở nên dễ chịu hơn.</p>
+          <div class="pic"><img class="ph" src="image/banh5.jpg" alt="Bánh The Muse"></div>
+          <p><b>Bánh dành cho những buổi chiều cần được chữa lành.</b></p>
+          <p><b>Bánh cho những cuộc gặp gỡ lâu ngày mới có.</b></p>
+          <p><b>Bánh cho những cột mốc đáng nhớ.</b></p>
+          <p><b>Và cũng là bánh cho chính bạn — vì bạn xứng đáng.</b></p>
+          <div class="pic"><img class="ph" src="image/banh6.jpg" alt="Bánh The Muse"></div>
+          <p>Nếu hôm nay chưa biết chọn vị gì, cứ để The Muse lo nhé!</p>
+          <p>Ghé tiệm, chọn một chiếc bánh bạn thích và mang về một chút niềm vui.</p>
+          <p>Ghé The Muse để thưởng thức những chiếc bánh được làm bằng thật nhiều sự chăm chút.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Bài viết: Emerald Melon Cake: Thanh mát vị nhiệt đới với diện mạo Haute Pâtisserie từ The 350F -->
+  <section class="view detail" id="bai-haute-patisserie" hidden>
+    <div class="wrap" style="position:relative">
+      <div class="article">
+        <!-- Nút Facebook: sửa href thành link bài đăng trên page Facebook của bạn -->
+        <a class="fb" href="https://www.facebook.com/TEN_PAGE_CUA_BAN/posts/ID_BAI_VIET" target="_blank" rel="noopener" aria-label="Xem bài trên Facebook">
+          <svg viewBox="0 0 24 24"><path d="M14 8V6.5c0-.7.3-1 1-1h2V2h-3a4 4 0 0 0-4 4v2H7v3.5h3V22h4v-10.5h3l.5-3.5z"/></svg>
+        </a>
+        <h1>Emerald Melon Cake: Thanh mát vị nhiệt đới với diện mạo Haute Pâtisserie từ The 350F</h1>
+        <div class="meta"><em>Tin tức</em><span>30.10.2025</span><hr></div>
+        <p class="sapo">Vị nhiệt đới thanh mát trong diện mạo Haute Pâtisserie.</p>
+        <div class="cover"><div class="ph"></div></div>
+        <div class="body">
+          <p>Vị nhiệt đới thanh mát trong diện mạo Haute Pâtisserie.</p>
+          <p>Nội dung chi tiết của bài viết đang được cập nhật.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Bài viết: The 350F mang nét đẹp văn hóa Việt vào bộ sưu tập Trung thu -->
+  <section class="view detail" id="bai-net-dep-van-hoa" hidden>
+    <div class="wrap" style="position:relative">
+      <div class="article">
+        <!-- Nút Facebook: sửa href thành link bài đăng trên page Facebook của bạn -->
+        <a class="fb" href="https://www.facebook.com/TEN_PAGE_CUA_BAN/posts/ID_BAI_VIET" target="_blank" rel="noopener" aria-label="Xem bài trên Facebook">
+          <svg viewBox="0 0 24 24"><path d="M14 8V6.5c0-.7.3-1 1-1h2V2h-3a4 4 0 0 0-4 4v2H7v3.5h3V22h4v-10.5h3l.5-3.5z"/></svg>
+        </a>
+        <h1>The 350F mang nét đẹp văn hóa Việt vào bộ sưu tập Trung thu</h1>
+        <div class="meta"><em>Tin tức</em><span>27.09.2025</span><hr></div>
+        <p class="sapo">Bộ sưu tập Trung thu đậm bản sắc văn hóa.</p>
+        <div class="cover"><div class="ph"></div></div>
+        <div class="body">
+          <p>Bộ sưu tập Trung thu đậm bản sắc văn hóa.</p>
+          <p>Nội dung chi tiết của bài viết đang được cập nhật.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Bài viết: Trung thu, mùa đoàn viên, mùa giữ trọn hương vị truyền thống -->
+  <section class="view detail" id="bai-trung-thu-doan-vien" hidden>
+    <div class="wrap" style="position:relative">
+      <div class="article">
+        <!-- Nút Facebook: sửa href thành link bài đăng trên page Facebook của bạn -->
+        <a class="fb" href="https://www.facebook.com/TEN_PAGE_CUA_BAN/posts/ID_BAI_VIET" target="_blank" rel="noopener" aria-label="Xem bài trên Facebook">
+          <svg viewBox="0 0 24 24"><path d="M14 8V6.5c0-.7.3-1 1-1h2V2h-3a4 4 0 0 0-4 4v2H7v3.5h3V22h4v-10.5h3l.5-3.5z"/></svg>
+        </a>
+        <h1>Trung thu, mùa đoàn viên, mùa giữ trọn hương vị truyền thống</h1>
+        <div class="meta"><em>Tin tức</em><span>23.09.2025</span><hr></div>
+        <p class="sapo">Mùa đoàn viên cùng những chiếc bánh Trung thu.</p>
+        <div class="cover"><div class="ph"></div></div>
+        <div class="body">
+          <p>Mùa đoàn viên cùng những chiếc bánh Trung thu.</p>
+          <p>Nội dung chi tiết của bài viết đang được cập nhật.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Bài viết: BST Trung thu The 350F: lấy văn hóa làm cảm hứng -->
+  <section class="view detail" id="bai-bst-trung-thu" hidden>
+    <div class="wrap" style="position:relative">
+      <div class="article">
+        <!-- Nút Facebook: sửa href thành link bài đăng trên page Facebook của bạn -->
+        <a class="fb" href="https://www.facebook.com/TEN_PAGE_CUA_BAN/posts/ID_BAI_VIET" target="_blank" rel="noopener" aria-label="Xem bài trên Facebook">
+          <svg viewBox="0 0 24 24"><path d="M14 8V6.5c0-.7.3-1 1-1h2V2h-3a4 4 0 0 0-4 4v2H7v3.5h3V22h4v-10.5h3l.5-3.5z"/></svg>
+        </a>
+        <h1>BST Trung thu The 350F: lấy văn hóa làm cảm hứng</h1>
+        <div class="meta"><em>Tin tức</em><span>18.09.2025</span><hr></div>
+        <p class="sapo">Bộ sưu tập lấy cảm hứng từ hoa văn truyền thống.</p>
+        <div class="cover"><div class="ph"></div></div>
+        <div class="body">
+          <p>Bộ sưu tập lấy cảm hứng từ hoa văn truyền thống.</p>
+          <p>Nội dung chi tiết của bài viết đang được cập nhật.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Bài viết: Tiệm bánh siêu hot The 350F có gì đặc biệt? -->
+  <section class="view detail" id="bai-tiem-banh-sieu-hot" hidden>
+    <div class="wrap" style="position:relative">
+      <div class="article">
+        <!-- Nút Facebook: sửa href thành link bài đăng trên page Facebook của bạn -->
+        <a class="fb" href="https://www.facebook.com/TEN_PAGE_CUA_BAN/posts/ID_BAI_VIET" target="_blank" rel="noopener" aria-label="Xem bài trên Facebook">
+          <svg viewBox="0 0 24 24"><path d="M14 8V6.5c0-.7.3-1 1-1h2V2h-3a4 4 0 0 0-4 4v2H7v3.5h3V22h4v-10.5h3l.5-3.5z"/></svg>
+        </a>
+        <h1>Tiệm bánh siêu hot The 350F có gì đặc biệt?</h1>
+        <div class="meta"><em>Tin tức</em><span>21.05.2025</span><hr></div>
+        <p class="sapo">Không gian tiệm bánh mới của The 350F.</p>
+        <div class="cover"><div class="ph"></div></div>
+        <div class="body">
+          <p>Không gian tiệm bánh mới của The 350F.</p>
+          <p>Nội dung chi tiết của bài viết đang được cập nhật.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TIN TỨC KHÁC (JavaScript tự điền thẻ bài) ========== -->
+  <section class="other" id="other" hidden>
+    <h2 class="title">Tin tức khác</h2>
+    <button class="arr l" id="prev" aria-label="Trước">‹</button>
+    <div class="track"><div class="rail" id="rail"></div></div>
+    <button class="arr r" id="next" aria-label="Sau">›</button>
+  </section>
+</main>
+
+<!-- Các nút nổi bên phải -->
+<div class="float">
+  <a href="tel:0826590133" aria-label="Gọi điện">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M160.2 25C152.3 6.1 131.7-3.9 112.1 1.4l-5.5 1.5c-64.6 17.6-119.8 80.2-103.7 156.4 37.1 175 174.8 312.7 349.8 349.8 76.3 16.2 138.8-39.1 156.4-103.7l1.5-5.5c5.4-19.7-4.7-40.3-23.5-48.1l-97.3-40.5c-16.5-6.9-35.6-2.1-47 11.8l-38.6 47.2C233.9 335.4 177.3 277 144.8 205.3L189 169.3c13.9-11.3 18.6-30.4 11.8-47L160.2 25z"/></svg>
+  </a>
+  <a href="https://m.me/61594695580721" target="_blank" rel="noopener" aria-label="Messenger">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M256.6 8c-140 0-248.6 102.3-248.6 240.6 0 72.3 29.7 134.8 78.1 177.9 8.3 7.5 6.6 11.9 8 58.2 .1 3.2 1 6.4 2.6 9.2s3.9 5.2 6.7 6.9 5.9 2.8 9.1 3 6.5-.3 9.5-1.6C174.9 479 175.6 477.2 184.6 479.6 337.8 521.8 504 423.7 504 248.6 504 110.3 396.6 8 256.6 8zM405.8 193.1l-73 115.6c-2.8 4.3-6.4 8.1-10.6 11s-9.1 4.8-14.1 5.8-10.3 .8-15.3-.4-9.7-3.4-13.8-6.4l-58.1-43.5c-2.6-1.9-5.8-3-9-3s-6.4 1.1-9 3l-78.4 59.4c-10.5 7.9-24.2-4.6-17.1-15.7l73-115.6c2.8-4.3 6.4-8.1 10.6-11s9.1-4.8 14.1-5.8 10.3-.8 15.3 .4 9.7 3.4 13.9 6.4l58.1 43.5c2.6 1.9 5.8 3 9 3s6.4-1.1 9-3l78.4-59.4c10.4-8 24.1 4.5 17.1 15.6z"/></svg>
+  </a>
+  <button class="top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Lên đầu trang">⌃</button>
+</div>
+
+<script>
+/* ============================================================
+   PHẦN JAVASCRIPT — xử lý chuyển trang và mục "Tin tức khác"
+   ============================================================ */
+const $ = s => document.querySelector(s);
+const views = document.querySelectorAll('.view');      // trang danh sách + các bài viết
+const other = $('#other'), rail = $('#rail'), prev = $('#prev'), next = $('#next');
+// Lấy thông tin 11 bài từ phần HTML của trang danh sách (data-slug, data-date, data-title)
+const items = [...document.querySelectorAll('#view-list [data-slug]')].map(e => ({
+  ...e.dataset,
+  img: e.querySelector('img') ? e.querySelector('img').getAttribute('src') : ''
+}));
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+let pos = 0, count = 0;
+
+// 1) Chuyển trang: #bai/ten-bai → hiện bài đó, còn lại → hiện danh sách
+function route() {
+  const slug = location.hash.startsWith('#bai/') ? location.hash.slice(5) : '';
+  const target = document.getElementById(slug ? 'bai-' + slug : 'view-list') || $('#view-list');
+  views.forEach(v => v.hidden = v !== target);
+  const isArticle = target.id !== 'view-list';
+  other.hidden = !isArticle;
+  if (isArticle) buildOther(slug);
+  document.title = (isArticle ? target.querySelector('h1').textContent : 'Tin tức') + ' | The Muse';
+  scrollTo(0, 0);
+}
+
+// 2) Mục "Tin tức khác": tạo thẻ các bài còn lại
+function buildOther(slug) {
+  const list = items.filter(x => x.slug !== slug);
+  count = list.length; pos = 0;
+  rail.innerHTML = list.map(x => `<a class="card" href="#bai/${x.slug}"><div class="im">${x.img ? `<img class="ph" src="${esc(x.img)}" alt="${esc(x.title)}">` : '<div class="ph"></div>'}</div>
+    <div class="b"><span class="date">${esc(x.date)}</span><h4>${esc(x.title)}</h4></div></a>`).join('');
+  slide();
+}
+
+// 3) Nút mũi tên trượt qua lại — tự đo độ rộng thẻ nên đúng với mọi cỡ màn hình
+const step = () => rail.children.length > 1 ? rail.children[1].offsetLeft - rail.children[0].offsetLeft : rail.clientWidth;
+const perView = () => Math.max(1, Math.round(rail.parentElement.clientWidth / step()));   // số thẻ đang hiện (4/3/2/1)
+const maxPos = () => Math.max(0, count - perView());
+function slide() {
+  pos = Math.min(pos, maxPos());
+  rail.style.transform = `translateX(${-pos * step()}px)`;
+  prev.disabled = pos === 0; next.disabled = pos >= maxPos();
+}
+prev.onclick = () => { pos = Math.max(0, pos - 1); slide(); };
+next.onclick = () => { pos = Math.min(maxPos(), pos + 1); slide(); };
+
+addEventListener('hashchange', route);
+addEventListener('resize', slide);
+route();
+</script>
+</body>
+</html>
