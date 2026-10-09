@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Muse - Đăng ký</title>
+
+    <style>
+        /* nền bên ngoài */
+        body {
+            font-family: Arial;
+            background-color: #white;
+            margin: 0;
+        }
+
+        /* nền khung bên phải */
+        .container {
+            width: 800px;
+            margin: 50px auto;
+            background-color: #white ;
+            display: flex;
+            /* đổ bóng khung */
+            box-shadow: 0 0 15px #001F3F;
+            border-radius: 30px;
+            overflow: hidden;
+        }
+
+
+        /* BÊN TRÁI */
+        .left {
+            width: 40%;
+            /* nền khung trái */
+            background-color: #001F3F;
+            /*màu chữ khung trái*/
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .left img {
+            width: 180px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            font-size: 30px;
+            font-weight: bold;
+            font-family: Georgia;
+            margin-bottom: 20px;
+        }
+
+        .left p {
+            line-height: 1.6;
+        }
+
+
+        /* BÊN PHẢI */
+        .right {
+            width: 60%;
+            padding: 40px;
+        }
+        /* màu chữ đăng kí, đăng nhập */
+        h1 {
+            color: #001F3F;
+            text-align: center;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            /* màu khung ô đăng kí */
+            background-color: #001F3F;
+            /* màu chữ đăng kí trong ô */
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        /* đổi màu khi di chuyển đến ô đăng kí */
+        button:hover {
+            background-color: #7bb4e3;
+        }
+        /* màu dòng cuối cùng */
+        .link {
+            text-align: center;
+            color: #696969;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    
+    <!-- BÊN TRÁI -->
+    
+
+    <div class="left">
+
+        
+        <!-- HÌNH ẢNH SHOP -->
+        <img
+            src="https://cdn.phototourl.com/free/2026-09-18-ab64919c-e796-4604-b1cd-8c489a2b4020.png"
+            alt="The Muse">
+
+        
+
+                <p>
+            Khám phá những chiếc bánh ngọt handmade thơm ngon, được làm từ nguyên liệu tự nhiên và tinh tế như một món quà cho mọi khoảnh khắc đặc biệt.
+        </p>
+        <ul >
+            <li>
+                Bánh ngọt handmade mỗi ngày
+            </li>
+            <li>
+            Giao hàng nhanh và tiện lợi
+            </li>
+            <li>
+            Ưu đãi thành viên hấp dẫn
+            </li>
+        </ul>
+    </div>
+
+
+
+    <!-- BÊN PHẢI -->
+   
+
+    <div class="right">
+
+
+        <!-- FORM ĐĂNG KÝ -->
+
+        <div id="register">
+
+            <h1>Đăng ký</h1>
+
+            <label>Họ:</label>
+            <input
+                type="text"
+                id="ho"
+                placeholder="Nhập họ">
+
+
+            <label>Tên:</label>
+            <input
+                type="text"
+                id="ten"
+                placeholder="Nhập tên">
+
+
+            <label>Email:</label>
+            <input
+                type="email"
+                id="email"
+                placeholder="example@gmail.com">
+
+
+            <label>Số điện thoại:</label>
+            <input
+                type="text"
+                id="phone"
+                placeholder="0987654321">
+
+
+            <label>Mật khẩu:</label>
+            <input
+                type="password"
+                id="matkhau"
+                placeholder="Nhập mật khẩu">
+
+
+            <label>Nhập lại mật khẩu:</label>
+            <input
+                type="password"
+                id="nhaplaimatkhau"
+                placeholder="Nhập lại mật khẩu">
+
+
+            <button onclick="dangKy()">
+                Đăng ký
+            </button>
+
+
+            <p
+                class="link"
+                onclick="hienDangNhap()">
+
+                Đã có tài khoản?
+                <b>Đăng nhập</b>
+
+            </p>
+
+        </div>
+
+
+
+        <!-- FORM ĐĂNG NHẬP -->
+
+        <div id="login" class="hidden">
+
+            <h1>Đăng nhập</h1>
+
+
+            <label>Email:</label>
+
+            <input
+                type="email"
+                id="loginEmail"
+                placeholder="Nhập email">
+
+
+            <label>Mật khẩu:</label>
+
+            <input
+                type="password"
+                id="loginPassword"
+                placeholder="Nhập mật khẩu">
+
+
+            <button onclick="dangNhap()">
+                Đăng nhập
+            </button>
+
+
+            <p
+                class="link"
+                onclick="hienDangKy()">
+
+                Chưa có tài khoản?
+                <b>Đăng ký ngay</b>
+
+            </p>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+
+    // HIỆN FORM ĐĂNG NHẬP
+
+    function hienDangNhap() {
+
+        document
+            .getElementById("register")
+            .classList.add("hidden");
+
+        document
+            .getElementById("login")
+            .classList.remove("hidden");
+
+    }
+
+    
+    // HIỆN FORM ĐĂNG KÝ
+    
+
+    function hienDangKy() {
+
+        document
+            .getElementById("login")
+            .classList.add("hidden");
+
+        document
+            .getElementById("register")
+            .classList.remove("hidden");
+
+    }
+
+
+    // ĐĂNG KÝ
+   
+
+    function dangKy() {
+
+
+        var ho =
+            document.getElementById("ho").value;
+
+        var ten =
+            document.getElementById("ten").value;
+
+        var email =
+            document.getElementById("email").value;
+
+        var phone =
+            document.getElementById("phone").value;
+
+        var matkhau =
+            document.getElementById("matkhau").value;
+
+        var nhaplaimatkhau =
+            document.getElementById("nhaplaimatkhau").value;
+
+
+
+        // Kiểm tra nhập đầy đủ
+
+        if (
+            ho == "" ||
+            ten == "" ||
+            email == "" ||
+            phone == "" ||
+            matkhau == ""
+        ) {
+
+            alert("Vui lòng nhập đầy đủ thông tin!");
+
+            return;
+        }
+
+
+
+        // Kiểm tra mật khẩu
+
+        if (matkhau != nhaplaimatkhau) {
+
+            alert("Mật khẩu không giống nhau!");
+
+            return;
+        }
+
+
+
+        // Lưu thông tin
+
+        localStorage.setItem("ho", ho);
+
+        localStorage.setItem("ten", ten);
+
+        localStorage.setItem("email", email);
+
+        localStorage.setItem("phone", phone);
+
+        localStorage.setItem("matkhau", matkhau);
+
+
+
+        alert("Đăng ký thành công!");
+
+
+
+        // Chuyển sang đăng nhập
+
+        hienDangNhap();
+
+
+        // Điền sẵn email
+
+        document
+            .getElementById("loginEmail")
+            .value = email;
+
+    }
+
+
+    // ĐĂNG NHẬP
+   
+
+    function dangNhap() {
+
+
+        var email =
+            document
+            .getElementById("loginEmail")
+            .value;
+
+
+        var matkhau =
+            document
+            .getElementById("loginPassword")
+            .value;
+
+
+
+        // Lấy thông tin đã lưu
+
+        var emailDaLuu =
+            localStorage.getItem("email");
+
+        var matkhauDaLuu =
+            localStorage.getItem("matkhau");
+
+
+
+        // Kiểm tra tài khoản
+
+        if (
+            email == emailDaLuu &&
+            matkhau == matkhauDaLuu
+        ) {
+
+            var ten =
+                localStorage.getItem("ten");
+
+
+            alert(
+                "Đăng nhập thành công!\n" +
+                "Xin chào " + ten
+            );
+
+        }
+
+        else {
+
+            alert(
+                "Email hoặc mật khẩu không đúng!"
+            );
+
+        }
+
+    }
+
+</script>
+
+
+</body>
+
+</html>
