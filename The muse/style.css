@@ -1,0 +1,116 @@
+/* Nhập font Playfair Display (mềm mại, sang trọng) và Plus Jakarta Sans (dễ đọc) */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap');
+
+/* Nền trang web */
+body {
+    background-color: #f7f8fa;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    margin: 0;
+    padding: 40px 20px;
+    color: #222222;
+}
+
+/* Khung chứa rộng vừa phải */
+.policy-container {
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+/* Tiêu đề "Chính sách bán hàng" */
+h1 {
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    color: #031527;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+/* Thẻ Ô bo tròn góc */
+details {
+    background-color: #ffffff;
+    border-radius: 12px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    border: 1px solid #ebebeb;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+/* Thanh tiêu đề của từng ô (khi chưa mở) */
+summary {
+    padding: 20px 28px;
+    cursor: pointer;
+    font-family: 'Playfair Display', serif;
+    font-size: 19px;
+    font-weight: 600;
+    color: #031527; /* Màu xanh đen mặc định */
+    display: flex;
+    align-items: center;
+    user-select: none;
+    list-style: none;
+    transition: color 0.25s ease, border-color 0.25s ease;
+}
+
+/* Ẩn dấu tam giác mặc định */
+summary::-webkit-details-marker {
+    display: none;
+}
+
+summary .number {
+    margin-right: 14px;
+    font-family: 'Playfair Display', serif;
+}
+
+summary .title {
+    flex-grow: 1;
+    font-family: 'Playfair Display', serif;
+}
+
+/* Mũi tên góc phải mặc định (Màu xanh đen) */
+summary::after {
+    content: '';
+    display: inline-block;
+    width: 9px;
+    height: 9px;
+    border-right: 2px solid #031527;
+    border-bottom: 2px solid #031527;
+    transform: rotate(45deg);
+    transition: transform 0.25s ease, border-color 0.25s ease;
+    margin-left: 15px;
+}
+
+
+/* =================================================== */
+/* 🔥 HIỆU ỨNG KHI NHẤP MỞ MỤC (DETAILS OPEN) 🔥 */
+/* =================================================== */
+
+/* 1. Tiêu đề chuyển sang màu VÀNG & thêm DÒNG KẺ VÀNG bên dưới */
+details[open] summary {
+    color: #e2b15b; /* Màu vàng sang trọng */
+    border-bottom: 1px solid #f3e5c8; /* Đường kẻ vàng gạch ngang */
+}
+
+/* 2. Mũi tên chuyển màu VÀNG và xoay ngược lên góc trên */
+details[open] summary::after {
+    border-color: #e2b15b;
+    transform: rotate(-135deg);
+}
+
+/* Nội dung chi tiết bên trong ô */
+.policy-content {
+    padding: 24px 28px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 14.5px;
+    line-height: 1.75;
+    color: #2c2c2c;
+}
+
+.policy-content p {
+    margin: 0 0 16px 0;
+}
+
+.policy-content strong {
+    color: #000000;
+    font-weight: 700;
+}
