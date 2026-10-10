@@ -95,7 +95,7 @@
         }
 
         .tienich button:hover {
-            color: #B68B55;
+            color: #001F3F;
         }
 
         /* Hieu ung hien thi cac hop chuc nang */
@@ -104,7 +104,7 @@
             max-width: 500px;
             margin: 20px auto;
             padding: 25px;
-            background-color: #FFFFFF;
+            background-color: white;
             border: 1px solid #fff8E7;
             color: #001F3F;
         }
@@ -120,7 +120,7 @@
             padding: 12px;
             margin-bottom: 12px;
             border: 1px solid #001F3F;
-            background-color: #FFF9F0;
+            background-color: #fff8E7;
             font-family: "Times New Roman", serif;
             font-size: 16px;
         }
@@ -137,7 +137,8 @@
         }
 
         .nut-chuc-nang:hover {
-            background-color: #9c7952;
+            background-color: #fff8E7;
+            color:#001F3F;
         }
 
         .nut-dong {
@@ -150,16 +151,38 @@
             font-family: "Times New Roman", serif;
             font-size: 15px;
         }
+        .close-btn:hover {
+         color: #001F3F;
+      }
 
-        #ketqua,
-        #thongbao-taikhoan {
-            line-height: 1.5;
-            overflow-wrap: anywhere;
-        }
-
+       
         .anhbia {
             height: 430px;
             background-image: url("https://cdn.phototourl.com/member/2026-10-09-3abcb040-0f09-4b33-ad46-e898fb5f4f66.png");
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+        .anhbia1{
+            
+            height: 330px;
+            background-image: url("https://cdn.phototourl.com/member/2026-10-10-7fe2ff2e-dc86-4eb5-8f21-09b5ab7ca65e.png");
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+        .anhbia2{
+            
+            height: 330px;
+            background-image: url("https://cdn.phototourl.com/member/2026-10-10-ce154b6e-0e4c-44c0-aa81-05cbcd14d432.png");
             background-size: cover;
             background-position: center;
             display: flex;
@@ -263,18 +286,21 @@
 
         <!-- Menu -->
         <div class="menu">
-            <a href="#">Trang chủ</a>
-            <a href="#gioithieu">Giới thiệu</a>
-            <a href="#sanpham">Sản phẩm</a>
-            <a href="#bosuutap">Bộ sưu tập</a>
-            <a href="#lienhe">Liên hệ</a>
+            <a href="gioithieu.html">Giới thiệu</a>
+            <a href="sanpham.html">Sản phẩm</a>
+            <a href="The muse/chinhsach.html">Chính sách</a>           
+            <a href="The muse/tk-theo-yc.html">Thiết kế theo yêu cầu</a>
+            <a href="The muse/tintuc.html">Tin tức</a>
+            <a href="The muse/lienhe.html">Liên hệ</a>
         </div>
 
         <!-- Ba bieu tuong moi -->
         <div class="tienich">
 
             <!-- Tim kiem -->
-            <button onclick="moChucNang('timkiem')" title="Tìm kiếm">
+            <button onclick="moChucNang('timkiem')" title="Tìm kiếm" 
+            onmouseover="this.style.color='#C9A45C'"
+            onmouseout="this.style.color='#001F3F'">
                 <svg viewBox="0 0 24 24" fill="none"
                      stroke="currentColor" stroke-width="1.8">
                     <circle cx="10.5" cy="10.5" r="6.5"/>
@@ -283,24 +309,29 @@
             </button>
 
             <!-- Tai khoan -->
-            <button onclick="moChucNang('taikhoan')"
-                    title="Đăng nhập / Đăng ký">
+            <a href="dangnhap.html" title="Đăng nhập / Đăng ký"
+            style="color: #001F3F;"
+            onmouseover="this.style.color='#C9A45C'"
+            onmouseout="this.style.color='#001F3F'">
                 <svg viewBox="0 0 24 24" fill="none"
-                     stroke="currentColor" stroke-width="1.8">
-                    <circle cx="12" cy="8" r="4"/>
-                    <path d="M4 21v-2a8 8 0 0 1 16 0v2"/>
-                </svg>
-            </button>
+                   stroke="currentColor" stroke-width="1.8">
+                   <circle cx="12" cy="8" r="4"/>
+                   <path d="M4 21v-2a8 8 0 0 1 16 0v2"/>
+               </svg>
+            </a>
 
-            <!-- Gio hang -->
-            <button onclick="moChucNang('giohang')" title="Giỏ hàng">
-                <svg viewBox="0 0 24 24" fill="none"
-                     stroke="currentColor" stroke-width="1.8">
-                    <circle cx="9" cy="21" r="1"/>
-                    <circle cx="19" cy="21" r="1"/>
-                    <path d="M2 2h3l3 14h11l3-10H6"/>
+<!-- Gio hang -->
+            <a href="giohang.html" title="Giỏ hàng"
+            style="color: #001F3F;"
+            onmouseover="this.style.color='#C9A45C'"
+            onmouseout="this.style.color='#001F3F'">
+                 <svg viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="1.8">
+                   <circle cx="9" cy="21" r="1"/>
+                   <circle cx="19" cy="21" r="1"/>
+                   <path d="M2 2h3l3 14h11l3-10H6"/>
                 </svg>
-            </button>
+            </a>
 
         </div>
     </div>
@@ -317,50 +348,10 @@
         </button>
 
         <p id="ketqua"></p>
-
-        <button class="nut-dong" onclick="dongChucNang()">
-            Đóng
+        <button class="close-btn" onclick="dongChucNang()">&times;
+            
         </button>
-    </div>
-
-    <!-- Hop dang nhap va dang ky -->
-    <div class="khung-chuc-nang" id="taikhoan">
-        <h2>ĐĂNG NHẬP / ĐĂNG KÝ</h2>
-
-        <input type="text" id="tentaikhoan"
-               placeholder="Tên đăng nhập">
-
-        <input type="email" id="email"
-               placeholder="Email">
-
-        <input type="password" id="matkhau"
-               placeholder="Mật khẩu">
-
-        <button class="nut-chuc-nang" onclick="dangKy()">
-            Đăng ký
-        </button>
-
-        <button class="nut-chuc-nang" onclick="dangNhap()">
-            Đăng nhập
-        </button>
-
-        <p id="thongbao-taikhoan"></p>
-
-        <button class="nut-dong" onclick="dongChucNang()">
-            Đóng
-        </button>
-    </div>
-
-    <!-- Hop gio hang -->
-    <div class="khung-chuc-nang" id="giohang">
-        <h2>GIỎ HÀNG CỦA BẠN</h2>
-
-        <p>Giỏ hàng hiện đang trống.</p>
-        <p>Bạn có thể thêm chức năng chọn bánh và đặt hàng tại đây.</p>
-
-        <button class="nut-dong" onclick="dongChucNang()">
-            Đóng
-        </button>
+        
     </div>
 
     <!-- Anh bia va loi gioi thieu -->
@@ -384,10 +375,21 @@
 
         </div>
     </div>
-    <div id="sanpham"></div>
-    <div id="bosuutap"></div>
-    <div id="lienhe"></div>
 
+    <br> 
+     </div>
+        <div class="anhbia1">  
+       </div>
+    </div>
+ 
+    <br>
+
+     </div>
+        <div class="anhbia2">  
+       </div>
+    </div>
+
+    
     <script>
         // Mo hop chuc nang duoc chon
         function moChucNang(id) {
@@ -404,8 +406,6 @@
         // Dong tat ca cac hop
         function dongChucNang() {
             document.getElementById("timkiem").style.display = "none";
-            document.getElementById("taikhoan").style.display = "none";
-            document.getElementById("giohang").style.display = "none";
         }
 
         // Xu ly tim kiem
@@ -421,35 +421,7 @@
                     '". Khi có danh sách sản phẩm, kết quả bánh sẽ hiển thị tại đây.';
             }
         }
-
-        // Xu ly dang ky giao dien
-        function dangKy() {
-            let ten = document.getElementById("tentaikhoan").value.trim();
-            let email = document.getElementById("email").value.trim();
-            let matKhau = document.getElementById("matkhau").value;
-
-            if (ten === "" || email === "" || matKhau === "") {
-                document.getElementById("thongbao-taikhoan").textContent =
-                    "Vui lòng nhập đầy đủ tên đăng nhập, email và mật khẩu.";
-            } else {
-                document.getElementById("thongbao-taikhoan").textContent =
-                    "Đã nhập thông tin. Chức năng tạo và lưu tài khoản thật cần được xây dựng thêm.";
-            }
-        }
-
-        // Xu ly dang nhap giao dien
-        function dangNhap() {
-            let ten = document.getElementById("tentaikhoan").value.trim();
-            let matKhau = document.getElementById("matkhau").value;
-
-            if (ten === "" || matKhau === "") {
-                document.getElementById("thongbao-taikhoan").textContent =
-                    "Vui lòng nhập tên đăng nhập và mật khẩu.";
-            } else {
-                document.getElementById("thongbao-taikhoan").textContent =
-                    "Giao diện đã nhận thông tin. Chức năng xác thực tài khoản cần được xây dựng thêm.";
-            }
-        }
+    
     </script>
 
 </body>
