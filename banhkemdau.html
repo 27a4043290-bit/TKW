@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chi tiết sản phẩm - The Muse</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial;
+    color: #001F3F;
+}
+
+.product, .related {
+    background: #fff8E7;
+    padding: 40px 8%;
+}
+
+.product {
+    display: flex;
+    gap: 30px;
+}
+
+.main-img {
+    width: 40%;
+     object-fit: cover;
+    border-radius: 10px;
+}
+
+.info {
+    flex: 1;
+}
+
+h1, h2 {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.price {
+    color: #71432e;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+select, button {
+    padding: 10px;
+    cursor: pointer;
+}
+
+button {
+    border: none;
+    background: #001f3f;
+    color: white;
+    margin: 5px 0;
+}
+
+.buy {
+    width: 100%;
+}
+
+.details {
+    background: #fff8E7;
+    padding: 25px 9%;
+    line-height: 1.7;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.card {
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    overflow: hidden;
+    text-align: center;
+}
+
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.card p {
+    color: #bd3d23;
+    font-weight: bold;
+}
+
+@media (max-width: 650px) {
+    .product {
+        flex-direction: column;
+    }
+
+    .main-img {
+        width: 100%;
+    }
+
+    .products {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- CHI TIẾT BÁNH -->
+<div class="product">
+    <img class="main-img" src="https://donutelier.co.uk/wp-content/uploads/2023/06/Fraiser_Donut.png" alt="Bánh Kem Dâu">
+
+    <div class="info">
+        <h1>Kem dâu</h1>
+        <p class="price" id="price">22,000 VND</p>
+        
+
+        <p>
+            Mứt dâu tây, kem Chantilly và dâu tây tươi thái lát. 
+        </p>
+
+        <p>Size:
+    <select id="size" onchange="doiGia()">
+        <option value="22000">6 cm</option>
+        <option value="32000" selected>9 cm</option>
+    </select>
+</p>
+
+
+        <p>Số lượng:
+            <button onclick="doiSL(-1)">−</button>
+            <span id="sl">1</span>
+            <button onclick="doiSL(1)">+</button>
+        </p>
+
+        <button class="buy" onclick="mua()">Thêm vào giỏ hàng</button>
+        <button class="buy" onclick="mua()">Mua ngay</button>
+    </div>
+</div>
+
+<!-- THÔNG TIN BÁNH -->
+<div class="details">
+    <h2>Mô tả sản phẩm</h2>
+    <p>Bánh su kem dâu tây là món bánh ngọt hấp dẫn, kết hợp giữa lớp vỏ bánh mềm xốp, nhân kem béo mịn và những lát dâu tây tươi mọng..</p>
+
+    <h3>Cấu trúc bánh:</h3>
+    <ul>
+        <li>Lớp vỏ bánh hình tròn, mềm xốp, có màu vàng nâu nhẹ ở phần đáy và phủ một lớp đường bột mịn trên bề mặt.</li>
+        <li>Phần nhân kem trắng mịn, béo ngậy nằm bên trong, tạo độ mềm mại và vị ngọt dịu cho bánh.</li>
+        <li>Những lát dâu tây đỏ tươi được xếp xen kẽ quanh phần kem, mang đến vị chua ngọt tự nhiên và màu sắc bắt mắt.</li>
+    </ul>
+
+    <h3>Hướng dẫn sử dụng:</h3>
+    <ul>
+        <li>Bảo quản bánh trong hộp kín ở ngăn mát tủ lạnh, duy trì nhiệt độ từ 2–5°C để giữ độ tươi ngon của kem và dâu tây</li>
+        <li>Nên sử dụng bánh trong vòng 24 giờ kể từ khi mua hoặc chế biến để đảm bảo hương vị và chất lượng tốt nhất.</li>
+        <li>Tránh để bánh ở nhiệt độ phòng quá 2 giờ, hạn chế tiếp xúc trực tiếp với ánh nắng và không nên cấp đông vì có thể làm thay đổi kết cấu kem, vỏ bánh và dâu tây.</li>
+    </ul>
+</div>
+
+<!-- SẢN PHẨM LIÊN QUAN -->
+<div class="related">
+    <h2>Sản phẩm liên quan</h2>
+
+    <div class="products">
+        <div class="card">
+            <img src="image/banh2.jpg" alt="bánh a">
+            <h3> bánh 2 </h3>
+            <p>80,000 VND</p>
+        </div>
+
+        <div class="card">
+            <img src="image/banh3.jpg" alt="bánh b">
+            <h3>bánh b</h3>
+            <p>80,000 VND</p>
+        </div>
+
+        <div class="card">
+            <img src="image/banh4.jpg" alt="bánh c">
+            <h3> bánh c</h3>
+            <p>50,000 VND</p>
+        </div>
+
+        <div class="card">
+            <img src="image/banh5.jpg" alt="bánh d">
+            <h3>bánh d</h3>
+            <p>52,000 VND</p>
+        </div>
+    </div>
+</div>
+
+<script>
+let soLuong = 1;
+
+function doiSL(n) {
+    soLuong += n;
+    if (soLuong < 1) soLuong = 1;
+    document.getElementById("sl").innerText = soLuong;
+}
+
+function doiGia() {
+    let gia = Number(document.getElementById("size").value);
+    document.getElementById("price").innerText =
+        (gia * soLuong).toLocaleString("vi-VN") + " VND";
+}
+
+function mua() {
+    alert("Bạn đã chọn mua " + soLuong + " bánh ChocoFlan!");
+}
+</script>
+
+</body>
+</html>
