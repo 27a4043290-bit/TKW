@@ -6,61 +6,165 @@
     <title>Document</title>
 </head>
      <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             font-family: "Times New Roman", serif;
             background-color: #FFF8E7;
             color: #001F3F;
             margin: 0;
-            padding: 30px;
+            padding: 40px 20px;
         }
 
         h1 {
             text-align: center;
+            color: #001F3F;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .sub-title {
+            text-align: center;
+            color: #8A5A2B;
+            font-style: italic;
+            font-size: 16px;
+            margin-top: 0;
+            margin-bottom: 30px;
         }
 
         .khung {
-            max-width: 850px;
-            margin: 30px auto;
-            background-color: white;
-            padding: 25px;
-            border-radius: 10px;
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 31, 63, 0.08);
+            border: 1px solid #f3e7cc;
         }
 
         .trong {
             text-align: center;
-            padding: 35px 10px;
+            padding: 45px 20px;
         }
 
+        .trong h2 {
+            color: #001F3F;
+            margin-bottom: 10px;
+        }
+
+        .trong p {
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        /* Nút chung */
         .nut {
             display: inline-block;
             background-color: #001F3F;
             color: white;
-            padding: 12px 18px;
-            border: none;
+            padding: 12px 25px;
+            border: 1px solid #001F3F;
+            border-radius: 6px;
             text-decoration: none;
             cursor: pointer;
-            margin: 8px 3px;
+            font-family: "Times New Roman", serif;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 31, 63, 0.15);
         }
+
         .nut:hover {
-            background-color: #fff8E7;
+            background-color: #8A5A2B;
+            border-color: #8A5A2B;
+            color: #fff8E7;
+            transform: translateY(-2px);
+        }
+
+        /* Thẻ sản phẩm trong giỏ */
+        .san-pham {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            border-bottom: 1px solid #eee;
+            padding: 20px 0;
+            gap: 15px;
+        }
+
+        .san-pham:first-child {
+            padding-top: 0;
+        }
+
+        .thong-tin-sp {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .thong-tin-sp h3 {
+            margin: 0 0 6px 0;
+            font-size: 18px;
             color: #001F3F;
         }
 
-        .san-pham {
-            border-bottom: 1px solid #ddd;
-            padding: 15px 0;
+        .thong-tin-sp p {
+            margin: 4px 0;
+            font-size: 15px;
+            color: #555;
+        }
+
+        /* Khu vực điều khiển số lượng */
+        .dieu-khien-soluong {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #fff8E7;
+            padding: 6px 12px;
+            border-radius: 25px;
+            border: 1px solid #e6d5b8;
         }
 
         .nut-nho {
-            padding: 5px 10px;
+            width: 28px;
+            height: 28px;
+            background-color: #001F3F;
+            color: white;
+            border: none;
+            border-radius: 50%;
             cursor: pointer;
-            margin: 0 5px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
         }
 
-        .tong-tien {
-            text-align: right;
-            font-size: 20px;
+        .nut-nho:hover {
+            background-color: #8A5A2B;
+        }
+
+        .so-luong-text {
             font-weight: bold;
+            font-size: 16px;
+            min-width: 20px;
+            text-align: center;
+        }
+
+        .thanh-tien-col {
+            text-align: right;
+            min-width: 130px;
+        }
+
+        .thanh-tien-col p {
+            margin: 0 0 8px 0;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .thanh-tien-col b {
+            font-size: 17px;
+            color: #8A5A2B;
         }
 
         .nut-xoa {
@@ -69,6 +173,80 @@
             border: none;
             background: none;
             text-decoration: underline;
+            font-family: "Times New Roman", serif;
+            font-size: 14px;
+            padding: 0;
+            margin-top: 6px;
+            display: block;
+            margin-left: auto;
+        }
+
+        .nut-xoa:hover {
+            color: #d90429;
+        }
+
+        /* Tổng tiền & thanh hành động cuối */
+        .khung-tong-ket {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 2px dashed #e6d5b8;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 20px;
+        }
+
+        .tong-tien {
+            font-size: 22px;
+            font-weight: bold;
+            color: #001F3F;
+            margin: 0;
+        }
+
+        .tong-tien span {
+            color: #8A5A2B;
+        }
+
+        .hanh-dong {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .nut-phu {
+            background-color: transparent;
+            color: #9B2226;
+            border: 1px solid #9B2226;
+        }
+
+        .nut-phu:hover {
+            background-color: #9B2226;
+            color: white;
+            border-color: #9B2226;
+        }
+
+        /* Responsive cho thiết bị di động */
+        @media (max-width: 600px) {
+            .san-pham {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .thanh-tien-col {
+                text-align: left;
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .nut-xoa {
+                margin-left: 0;
+            }
+            .khung-tong-ket {
+                align-items: center;
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -76,6 +254,7 @@
 <body>
 
     <h1>GIỎ HÀNG CỦA BẠN</h1>
+    <p class="sub-title">❧ Ngọt ngào hơn mỗi ngày ❧</p>
 
     <div class="khung">
         <div id="noiDungGioHang"></div>
@@ -94,10 +273,9 @@
                 noiDung.innerHTML = `
                     <div class="trong">
                         <h2>Giỏ hàng đang trống!</h2>
-                        <p>Bạn chưa chọn sản phẩm nào.</p>
-
+                        <p>Bạn chưa chọn chiếc bánh ngọt nào cho khoảnh khắc hôm nay.</p>
                         <a class="nut" href="sanpham.html">
-                            Quay lại trang sản phẩm
+                            Khám phá bộ sưu tập bánh
                         </a>
                     </div>
                 `;
@@ -110,57 +288,46 @@
             for (var i = 0; i < gioHang.length; i++) {
                 var sp = gioHang[i];
                 var thanhTien = sp.gia * sp.soLuong;
-
                 tongTien += thanhTien;
 
                 html += `
                     <div class="san-pham">
-                        <h3>${sp.ten}</h3>
-                        <p>Kích thước: ${sp.kichThuoc}</p>
-                        <p>Đơn giá: ${sp.gia.toLocaleString("vi-VN")}đ</p>
+                        <div class="thong-tin-sp">
+                            <h3>${sp.ten}</h3>
+                            <p>Kích thước: <b>${sp.kichThuoc}</b></p>
+                            <p>Đơn giá: ${sp.gia.toLocaleString("vi-VN")}đ</p>
+                        </div>
 
-                        <p>
-                            Số lượng:
+                        <div class="dieu-khien-soluong">
+                            <button class="nut-nho" onclick="thayDoiSoLuong(${i}, -1)">-</button>
+                            <span class="so-luong-text">${sp.soLuong}</span>
+                            <button class="nut-nho" onclick="thayDoiSoLuong(${i}, 1)">+</button>
+                        </div>
 
-                            <button class="nut-nho"
-                                onclick="thayDoiSoLuong(${i}, -1)">
-                                -
-                            </button>
-
-                            ${sp.soLuong}
-
-                            <button class="nut-nho"
-                                onclick="thayDoiSoLuong(${i}, 1)">
-                                +
-                            </button>
-                        </p>
-
-                        <p>
-                            Thành tiền:
+                        <div class="thanh-tien-col">
+                            <p>Thành tiền:</p>
                             <b>${thanhTien.toLocaleString("vi-VN")}đ</b>
-                        </p>
-
-                        <button class="nut-xoa"
-                            onclick="xoaSanPham(${i})">
-                            Xóa sản phẩm
-                        </button>
+                            <button class="nut-xoa" onclick="xoaSanPham(${i})">Xóa sản phẩm</button>
+                        </div>
                     </div>
                 `;
             }
 
             html += `
-                <p class="tong-tien">
-                    Tổng tiền: ${tongTien.toLocaleString("vi-VN")}đ
-                </p>
+                <div class="khung-tong-ket">
+                    <p class="tong-tien">
+                        Tổng thanh toán: <span>${tongTien.toLocaleString("vi-VN")}đ</span>
+                    </p>
 
-                <div style="text-align:center;">
-                    <a class="nut" href="sanpham.html">
-                        Tiếp tục mua hàng
-                    </a>
+                    <div class="hanh-dong">
+                        <a class="nut" href="sanpham.html">
+                            Tiếp tục mua hàng
+                        </a>
 
-                    <button class="nut" onclick="xoaTatCa()">
-                        Xóa toàn bộ giỏ hàng
-                    </button>
+                        <button class="nut nut-phu" onclick="xoaTatCa()">
+                            Xóa toàn bộ giỏ hàng
+                        </button>
+                    </div>
                 </div>
             `;
 
@@ -169,7 +336,6 @@
 
         function thayDoiSoLuong(index, thayDoi) {
             var gioHang = layGioHang();
-
             gioHang[index].soLuong += thayDoi;
 
             if (gioHang[index].soLuong <= 0) {
@@ -182,21 +348,20 @@
 
         function xoaSanPham(index) {
             var gioHang = layGioHang();
-
             gioHang.splice(index, 1);
-
             localStorage.setItem("gioHangTheMuse", JSON.stringify(gioHang));
             hienThiGioHang();
         }
 
         function xoaTatCa() {
-            localStorage.removeItem("gioHangTheMuse");
-            hienThiGioHang();
+            if (confirm("Bạn có chắc chắn muốn xóa toàn bộ giỏ hàng không?")) {
+                localStorage.removeItem("gioHangTheMuse");
+                hienThiGioHang();
+            }
         }
 
         hienThiGioHang();
     </script>
-
 
 </body>
 </html>
