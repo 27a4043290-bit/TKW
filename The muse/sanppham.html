@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sản phẩm - The Muse</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Be+Vietnam+Pro:wght@400;500;600&display=swap">
+<style>
+/* ===== 1. Biến màu & font: sửa ở đây là đổi cả trang ===== */
+:root{
+  --navy:#0e2240;      /* chữ, viền, thanh "Thêm vào giỏ" */
+  --red:#c8341d;       /* giá, nhãn Hot, gạch chân menu */
+  --cream:#fdf3e8;     /* nền nút danh mục, nhãn Mới */
+  --gold:#f2b866;      /* viền trái nút danh mục */
+  --line:#dcdcdc;
+  --font-title:"Playfair Display",Georgia,serif;
+  --font-body:"Be Vietnam Pro",Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);color:var(--navy);background:#fff}
+a{color:inherit;text-decoration:none}
+
+/* ===== 2. Thanh breadcrumb (đường dẫn) ===== */
+.breadcrumb{background:#fde9d7;padding:18px 5vw;font-size:18px;color:#6b6b6b}
+.breadcrumb a:hover{color:var(--red)}
+.breadcrumb span{margin:0 8px}
+
+/* ===== 3. Khung trang: cột trái (danh mục) + cột phải (sản phẩm) ===== */
+.container{max-width:1400px;margin:0 auto;padding:0 20px}
+.page-title{font-family:var(--font-title);font-size:36px;padding:40px 0 28px;border-bottom:1px solid var(--line)}
+.layout{display:grid;grid-template-columns:320px 1fr;gap:40px;padding:40px 0 80px}
+
+.sidebar{position:sticky;top:24px;align-self:start;display:flex;flex-direction:column;gap:20px}
+.cat-btn{display:flex;align-items:center;gap:18px;padding:16px 20px;background:var(--cream);
+  border-left:3px solid var(--gold);border-radius:6px;font-weight:600;font-size:17px;text-transform:uppercase}
+.cat-btn.active{background:var(--navy);color:#fff;border-left-color:var(--red)}
+
+/* ===== 4. Mỗi nhóm bánh = 1 section ===== */
+.group{scroll-margin-top:24px;margin-bottom:60px}
+/* Đường kẻ vàng ngăn giữa các nhóm bánh (không có ở nhóm đầu tiên) */
+.group + .group{border-top:1px solid var(--gold);padding-top:50px}
+.group h2{font-family:var(--font-title);font-size:24px;margin-bottom:26px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
+
+/* ===== 5. Thẻ sản phẩm ===== */
+.card{position:relative;display:flex;flex-direction:column;border:1px solid var(--navy);
+  border-radius:40px;overflow:hidden;background:#fff}
+.thumb{position:relative;aspect-ratio:4/5;background:linear-gradient(160deg,#e8d9c4,#b9926a)}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.badges{position:absolute;top:20px;left:20px;display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.badge{font-size:12px;font-weight:500;padding:5px 12px;border-radius:4px}
+.badge.hot{background:var(--red);color:#fff}
+.badge.new{background:#f9d9a0;color:var(--navy)}
+.info{padding:22px 16px 26px;text-align:center}
+.info h3{font-family:var(--font-title);font-size:22px;margin-bottom:22px}
+.price{font-weight:500;font-size:16px}
+.price b{color:var(--red);font-weight:600}
+
+/* Thanh "Thêm vào giỏ hàng" trượt lên khi rê chuột */
+.add{position:absolute;left:0;right:0;bottom:0;background:var(--navy);color:#fff;border:0;
+  padding:22px;font:500 15px var(--font-body);cursor:pointer;transform:translateY(100%);
+  transition:transform .25s}
+.card:hover .add,.card:focus-within .add{transform:none}
+.card:focus-visible{outline:3px solid var(--gold)}
+
+/* ===== 6. Responsive ===== */
+@media(max-width:1000px){
+  .layout{grid-template-columns:1fr;gap:24px}
+  .sidebar{position:static;flex-direction:row;overflow-x:auto}
+  .cat-btn{white-space:nowrap;font-size:14px}
+  .grid{grid-template-columns:repeat(2,1fr);gap:20px}
+}
+@media(max-width:560px){.grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.add{transition:none}}
+</style>
+</head>
+<body>
+
+<nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Trang chủ</a><span>/</span>Sản phẩm</nav>
+
+<main class="container">
+  <h1 class="page-title">Sản phẩm</h1>
+  <div class="layout">
+    <aside class="sidebar" id="sidebar"></aside>
+    <div id="products"></div>
+  </div>
+</main>
+
+<script>
+/* ===== 7. DỮ LIỆU SẢN PHẨM =====
+   "id" sẽ được truyền sang trang chi tiết: chitietsanpham.html?id=tiramisu */
+const categories = [
+  { key:"mousse",   name:"Bánh Mousse",    items:[
+    {id:"chocoflan",  name:"ChocoFlan",         price:55000, img:"https://the350f.com/wp-content/uploads/2026/04/ChocoFlan-CT-2.jpg",  hot:true, isNew:true},
+    {id:"tiramisu",   name:"Tiramisu",          price:60000, img:"https://the350f.com/wp-content/uploads/2025/05/ChiTietTiramisu-1.jpg" },
+    {id:"mousse-dua-luoi", name:"Mousse Dưa lưới", price:65000, img:"https://the350f.com/wp-content/uploads/2025/05/CT-Dua-1.jpg", hot:true, isNew:true},
+    {id:"mousse-dau", name:"Mousse Dâu", price:65000, img:"https://the350f.com/wp-content/uploads/2025/05/CT-Dau-4.jpg" },
+    {id:"mousse-tra-nhan", name:"Mousse Trà Nhãn", price:65000, img:"https://the350f.com/wp-content/uploads/2026/07/Tra-nhan-2026-2.jpg", hot:true, isNew:true},
+    {id:"mousse-xoai", name:"Mousse Xoài", price:60000, img:"https://the350f.com/wp-content/uploads/2025/05/Ban-sao-cua-_IMG2338-copy.jpg", hot:true },
+    {id:"mousse-buoi-hong", name:"Mousse Bưởi hồng", price:65000, img:"https://the350f.com/wp-content/uploads/2025/05/CTBuoiHong-5.jpg", hot:true, isNew:true},
+    {id:"mousse-blueberry", name:"Mousse Blueberry", price:70000, img:"https://the350f.com/wp-content/uploads/2025/05/CTVietQuat-1.jpg", isNew:true},
+    {id:"chocolate-berry-cake", name:"Chocolate Berry Cake", price:75000, img:"https://i.pinimg.com/736x/f4/0a/86/f40a86432e2ab8a5eb860fdb02238925.jpg", hot:true, isNew:true}
+  ]},
+  { key:"croissant", name:"Bánh Croissant", items:[
+    {id:"croissant-xoan-oc",     name:"Croissant xoắn ốc nhân hạt dẻ cười",       price:35000, img:"https://cdn.prod.website-files.com/649249d29a20bd6bc3deac48/6a46975f52af1711c7dc1600_3700000836_Pistachio%20Spiral%20Croissant-p-1080.png", hot:true, isNew:true},
+    {id:"croissant-det", name:"Croissant dẹt nhân hồ đào", price:38000, img:"https://cdn.prod.website-files.com/649249d29a20bd6bc3deac48/6a45b8828cc62e907ddd502d_3700000241_Pecan%20Croissant%20Flattie-p-1080.png", hot:true, isNew:true},
+    {id:"croissant-dau-tay", name:"Croissant dâu tây",   price:40000, img:"https://cdn.prod.website-files.com/649249d29a20bd6bc3deac48/6a45b8236752bb28f2776279_3700000259_Strawberry%20Croissant-p-1080.png", hot:true},
+    {id:"croissant", name:"Croissant", price:25000, img:"https://cdn.prod.website-files.com/649249d29a20bd6bc3deac48/6a548dd6e92c95e5de77d0d0_6a45c2408e13312e04f1ef90_3700000162_Croissant.png" },
+    {id:"croissant-socola", name:"Croissant Socola", price:32000, img:"https://cdn.prod.website-files.com/649249d29a20bd6bc3deac48/6a45c2bcb85541162d5929f9_3700000140_Chocolate%20Croissant-p-1080.png", hot:true },
+    {id:"croissant-mix", name:"Croissant tỏi và phô mai", price:35000, img:"https://cdn.prod.website-files.com/649249d29a20bd6bc3deac48/6a45c180284a7ed709e0194b_3700000173_Garlic%20%26%20Cheese%20Croissant-p-1080.png", hot:true, isNew:true},
+    {id:"croissant-xoai", name:"Croissant xoài", price:35000, img:"https://cdn.prod.website-files.com/649249d29a20bd6bc3deac48/6a45b6e6bc36a25478984c18_3700000846_Mango%20Croissant-p-1080.png", hot:true, isNew:true},
+    {id:"croissant-hanh-nhan", name:"Croissant hạnh nhân", price:38000, img:"https://cdn.prod.website-files.com/649249d29a20bd6bc3deac48/6a548dd000b9a2a6ce26c608_6a45c4ba58a52c888a9803b1_3700000097_Almond%2520Croissant.png", hot:true, isNew:true},
+    {id:"croissant-nho-kho", name:"Croissant nho khô", price:30000, img:"https://cdn.prod.website-files.com/649249d29a20bd6bc3deac48/6a548dd7b7f7970558675894_6a45b8d45fcbf292913b0653_3700000227_Pain%2520Aux%2520Raisin.png", hot:true, isNew:true}
+  ]},
+  { key:"trungthu", name:"Bánh Trung thu", items:[
+    {id:"giftset-6", name:"Giftset 6 Hộp Thiếc", price:650000, img:"https://www.the350f.com/wp-content/uploads/2025/07/Chi-Tiet-Hop-6-3-scaled.jpg", hot:true, isNew:true},
+    {id:"banh-thap-cam-xa-xiu", name:"Thập cẩm xá xíu", price:95000, img:"https://www.the350f.com/wp-content/uploads/2025/07/TT26-BN-Xa-Xiu-1-scaled.jpg", hot:true, isNew:true},
+    {id:"banh-thap-cam-ngu-hat", name:"Thập cẩm ngũ hạt", price:100000, img:"https://www.the350f.com/wp-content/uploads/2025/07/TT26-BN-Ngu-Vi-1-scaled.jpg", hot:true},
+    {id:"banh-buoi-hong", name:"Bưởi hồng", price:95000, img:"https://www.the350f.com/wp-content/uploads/2026/08/TT26-BN-Buoi-hong-2-scaled.jpg", hot:true, isNew:true},
+    {id:"banh-oi-hong-dau-tam", name:"Ổi hồng dâu tằm", price:100000, img:"https://www.the350f.com/wp-content/uploads/2025/07/TT26-Oi-Hong-scaled.jpg", hot:true, isNew:true},
+    {id:"banh-tao-do", name:"Táo đỏ", price:105000, img:"https://www.the350f.com/wp-content/uploads/2025/07/TT26-BN-Tao-do-1-scaled.jpg", hot:true, isNew:true},
+    {id:"banh-vai-thieu-thanh-long-do", name:"Vải thiều thanh long đỏ", price:105000, img:"https://www.the350f.com/wp-content/uploads/2026/08/TT26-Vai-Thieu-Thanh-Long-2-1-scaled.jpg", hot:true, isNew:true}
+  ]},
+  { key:"donut",    name:"Bánh Donut",     items:[
+    {id:"donut-kem-dau",   name:"Donut kem dâu",   price:22000, img:"https://donutelier.co.uk/wp-content/uploads/2023/06/Fraiser_Donut.png", hot:true},
+    {id:"donut-kem-banh-quy-vani",  name:"Donut kem bánh quy vani",  price:24000, img:"https://donutelier.co.uk/wp-content/uploads/2022/11/Vanilla_Cookie_Cream_Donut.png", hot:true},
+    {id:"donut-matcha-dau-tay",  name:"Donut matcha dâu tây",  price:25000, img:"https://donutelier.co.uk/wp-content/uploads/2026/07/Strawberry-matcha-for-web-1.jpg", isNew:true},
+    {id:"macaron-dau", name:"Bánh macaron vị dâu", price:28000, img:"https://donutelier.co.uk/wp-content/uploads/2025/07/Berry-Macaron.jpg", hot:true, isNew:true},
+    {id:"donut-rochers-gianduja", name:"Donut Rochers Gianduja", price:30000, img:"https://donutelier.co.uk/wp-content/uploads/2024/03/Roshers.jpg", hot:true, isNew:true},
+    {id:"banh-quy", name:"Bánh quy kem vani socola", price:24000, img:"https://donutelier.co.uk/wp-content/uploads/2026/07/Vanilla-Choc-Ice-Cream-Cookie-for-Web.jpg", hot:true, isNew:true},
+    {id:"donut-kem-vani-dau", name:"Donut kem vani dâu", price:25000, img:"https://donutelier.co.uk/wp-content/uploads/2026/07/Vanilla-Berry-Ice-Cream-Donut-for-Web.jpg", hot:true, isNew:true},
+    {id:"donut-kem-dulcey", name:"Donut kem Dulcey", price:28000, img:"https://donutelier.co.uk/wp-content/uploads/2026/07/Dulcey-Ice-Cream-Donut-for-Web.jpg", hot:true, isNew:true}
+  ]}
+];
+
+const fmt = n => n.toLocaleString("en-US") + "VND";
+
+/* ===== 8. Tự sinh HTML từ dữ liệu ===== */
+document.getElementById("sidebar").innerHTML = categories
+  .map((c,i)=>`<a class="cat-btn${i?'':' active'}" href="#${c.key}" data-key="${c.key}">${c.name.replace("Bánh ","")}</a>`).join("");
+
+document.getElementById("products").innerHTML = categories.map(c => `
+  <section class="group" id="${c.key}">
+    <h2>${c.name}</h2>
+    <div class="grid">
+      ${c.items.map(p => `
+        <article class="card">
+          <a href="chitietsanpham.html?id=${p.id}" aria-label="Xem chi tiết ${p.name}">
+            <div class="thumb">
+              <img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.remove()">
+              <div class="badges">
+                ${p.hot ? '<span class="badge hot">Hot</span>' : ''}
+                ${p.isNew ? '<span class="badge new">Mới</span>' : ''}
+              </div>
+            </div>
+            <div class="info">
+              <h3>${p.name}</h3>
+              <p class="price">Giá từ: <b>${fmt(p.price)}</b></p>
+            </div>
+          </a>
+          <button class="add" type="button" data-id="${p.id}">Thêm vào giỏ hàng</button>
+        </article>`).join("")}
+    </div>
+  </section>`).join("");
+
+/* ===== 9. Menu trái sáng theo mục đang cuộn tới ===== */
+const btns = document.querySelectorAll(".cat-btn");
+const spy = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) btns.forEach(b => b.classList.toggle("active", b.dataset.key === e.target.id));
+  });
+}, {rootMargin:"-30% 0px -60% 0px"});
+document.querySelectorAll(".group").forEach(g => spy.observe(g));
+
+/* ===== 10. Nút giỏ hàng (tạm thời chỉ báo, làm giỏ hàng sau) ===== */
+document.addEventListener("click", e => {
+  const b = e.target.closest(".add");
+  if (b) alert("Đã thêm vào giỏ: " + b.dataset.id);
+});
+</script>
+</body>
+</html>

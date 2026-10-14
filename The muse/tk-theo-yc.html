@@ -49,8 +49,26 @@ textarea.in{min-height:100px;resize:vertical}
 .btn{background:var(--ink);color:var(--bg);border:0;border-radius:6px;padding:12px 24px;font-size:12px;cursor:pointer;font-weight:500}
 .btn.o{background:none;color:var(--ink);border:1px solid var(--line)}
 aside{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;align-self:start;position:sticky;top:16px}
-
-/* ===== ĐÃ SỬA: khung ảnh minh họa — tự cao theo bức tranh bánh, không còn cố định 210px ===== */
+/* ===== 2. Thanh breadcrumb (đường dẫn) ===== */
+.crumb{
+  background:#fde9d7;      /* nền kem đào */
+  padding:18px 0;
+  color:#6b6b6b;           /* chữ xám cho trang hiện tại */
+}
+.crumb .wrap{
+  max-width:1400px;
+  margin:0 auto;
+  padding:0 20px;
+}
+.crumb a{
+  color:#6b6b6b;
+  text-decoration:none;
+  transition:color .2s;
+}
+.crumb a:hover{
+  color:#c8341d;           /* rê chuột vào thì đỏ */
+}
+/* ===== khung ảnh minh họa — tự cao theo bức tranh bánh, không còn cố định 210px ===== */
 .prev{border-radius:10px;background:linear-gradient(#efe6e6,#f8f2f0);padding:8px 4px;margin-bottom:14px}
 
 .box{border:1px solid var(--line);border-radius:8px;padding:12px;font-size:12px}
@@ -65,6 +83,10 @@ aside .btn{width:100%;padding:14px}
 .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:8px;display:none}
 </style></head>
 <body>
+<!-- Thanh breadcrumb -->
+<div class="crumb"><div class="wrap">
+  <a href="index.html">Trang chủ</a> &nbsp;/&nbsp; Thiết kế theo yêu cầu </div></div>
+  
 <main>
  <section class="hero">
   <h1 class="serif">Nướng Sáng Tạo Bánh Độc Bản</h1>
@@ -93,8 +115,8 @@ aside .btn{width:100%;padding:14px}
      </div>
      <h4>Tầng nghệ thuật</h4>
      <div class="opts" data-k="tier">
-      <button class="opt t on" data-v="1" data-p="930000"><b>1 Tầng Tinh Tế</b><small>1–2 người · 50.000đ</small></button>
-      <button class="opt t" data-v="2" data-p="1850000"><b>2 Tầng Haute Couture</b><small>3–4 người · 70.000đ</small></button>
+      <button class="opt t on" data-v="1" data-p="50000"><b>1 Tầng Tinh Tế</b><small>1–2 người · 50.000đ</small></button>
+      <button class="opt t" data-v="2" data-p="70000"><b>2 Tầng Haute Couture</b><small>3–4 người · 70.000đ</small></button>
      </div>
     </div>
 
@@ -105,7 +127,7 @@ aside .btn{width:100%;padding:14px}
      <div class="opts" data-k="cot">
       <button class="opt on" data-v="Vanilla" data-p="0"><b>Vanilla</b><small>Mềm, thơm bơ</small></button>
       <button class="opt" data-v="Chocolate" data-p="50000"><b>Chocolate</b><small>+50.000đ</small></button>
-      <button class="opt" data-v="Red Velvet" data-p="80000"><b>Red Velvet</b><small>+60.000đ</small></button>
+      <button class="opt" data-v="Red Velvet" data-p="60000"><b>Red Velvet</b><small>+60.000đ</small></button>
      </div>
      <h4>Lớp nhân</h4>
      <div class="opts" data-k="nhan">
@@ -122,7 +144,7 @@ aside .btn{width:100%;padding:14px}
      <div class="opts" data-k="kem">
       <button class="opt on" data-v="Buttercream" data-p="0"><b>Buttercream</b><small>Béo mịn</small></button>
       <button class="opt" data-v="Whipping cream" data-p="0"><b>Whipping cream</b><small>Nhẹ, thanh</small></button>
-      <button class="opt" data-v="Fondant" data-p="100000"><b>Fondant</b><small>+60.000đ</small></button>
+      <button class="opt" data-v="Fondant" data-p="60000"><b>Fondant</b><small>+60.000đ</small></button>
      </div>
      <h4>Màu sắc</h4>
      <div class="swatches" data-k="mau">
@@ -138,11 +160,11 @@ aside .btn{width:100%;padding:14px}
      <p class="sub">Điểm xuyết những chi tiết nhỏ để hoàn thiện tác phẩm.</p>
      <p class="hint">Có thể chọn nhiều mục. Bấm lần nữa để bỏ chọn.</p>
      <div class="opts" data-k="deco" data-multi>
-      <button class="opt" data-v="Hoa tươi" data-i="🌸" data-p="120000"><span class="ico">🌸</span><b>Hoa tươi</b><small>+80.000đ</small></button>
-      <button class="opt" data-v="Macaron" data-i="🍪" data-p="90000"><span class="ico">🍪</span><b>Macaron</b><small>+60.000đ</small></button>
+      <button class="opt" data-v="Hoa tươi" data-i="🌸" data-p="80000"><span class="ico">🌸</span><b>Hoa tươi</b><small>+80.000đ</small></button>
+      <button class="opt" data-v="Macaron" data-i="🍪" data-p="60000"><span class="ico">🍪</span><b>Macaron</b><small>+60.000đ</small></button>
       <button class="opt" data-v="Trái cây tươi" data-i="🍓" data-p="60000"><span class="ico">🍓</span><b>Trái cây tươi</b><small>+60.000đ</small></button>
       <button class="opt" data-v="Vàng lá ăn được" data-i="✨" data-p="150000"><span class="ico">✨</span><b>Vàng lá ăn được</b><small>+150.000đ</small></button>
-      <button class="opt" data-v="Topper chữ" data-i="🎀" data-p="50000"><span class="ico">🎀</span><b>Topper chữ</b><small>+50.000đ</small></button>
+      <button class="opt" data-v="Topper chữ" data-i="🎀" data-p="30000"><span class="ico">🎀</span><b>Topper chữ</b><small>+30.000đ</small></button>
      </div>
     </div>
    </div>
