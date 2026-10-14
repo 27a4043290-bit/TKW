@@ -1,0 +1,234 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE MUSE </title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: #001F3F;
+            background: #fff8E7
+;
+        }
+
+        /* Thanh menu */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 6%;
+            
+        }
+        /* màu chữ trên header */
+        header nav a {
+            text-decoration: none;
+            color: #001F3F;
+            margin-right: 20px;
+            font-size: 14px;
+        }
+
+        .logo {
+            font-size: 30px;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+
+        /* Banner */
+        .banner {
+            height: 480px;
+            background:
+                linear-gradient(#0002, #0002),
+                url("https://cdn.upanhlaylink.com/i/ClH8AYbi.png")
+                center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .banner h1 {
+            font-size: 48px;
+            color: #f3f5f3;
+            margin-bottom: 18px;
+        }
+
+        .banner p {
+            font-size: 17px;
+            color: #edebeb;
+            margin-bottom: 25px;
+        }
+
+        .banner a {
+            background: #071e38;
+            color: white;
+            padding: 14px 28px;
+            text-decoration: none;
+            font-size: 12px;
+            letter-spacing: 2px;
+        }
+
+        /* Danh mục sản phẩm */
+        .categories {
+            padding: 55px 5%;
+        }
+
+        .categories h2 {
+            text-align: center;
+            font-size: 30px;
+            margin-bottom: 35px;
+        }
+
+        .product-list {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
+        }
+
+        .product {
+            border-radius: 16px;
+            overflow: hidden;
+            text-align: center;
+            transition: 0.3s;
+            background: white;
+        }
+
+    
+        .product img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .product h3 {
+            font-size: 19px;
+            padding: 18px 8px;
+        }
+
+        .product p {
+            color:  #001F3F;
+            font-size: 14px;
+            padding-bottom: 20px;
+        }
+
+        /* Phần giới thiệu */
+        .intro {
+            background: #fff7ee;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .intro h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .intro p {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        footer {
+            background: #071e38;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            font-size: 14px;
+        }
+
+        
+        
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <!-- chỗ điền link-->
+        <nav>
+            <a href="#">Trang chủ</a>
+            <a href="#danh-muc">Sản phẩm</a>
+            <a href="#Tin-tuc">Tin tức</a>
+            <a href="#gioi-thieu">Giới thiệu</a>
+        </nav>
+        <!--logo shop không nền-->
+        <img src="https://cdn.upanhlaylink.com/i/w7LAN7XV.png"
+                     alt="The Mouse" ưidth ="250" height="150">
+
+        <nav>
+            <a href="#chinh-sach">Chính sách</a>
+            <a href="#lien-he">Liên hệ </a>
+            <a href="#đặt bánh ">Đặt bánh</a>
+        </nav>
+    </header>
+
+    <section class="banner">
+        <h1>A Little Taste of Inspiration</h1>
+        <p>Gói trọn yêu thương, nướng bằng tâm hồn</p>
+        <a href="#danh-muc">KHÁM PHÁ SẢN PHẨM</a>
+    </section>
+
+    <section class="categories" id="danh-muc">
+        <h2>Danh mục sản phẩm</h2>
+
+        <div class="product-list">
+
+            <div class="product">
+                <img src="https://the350f.com/wp-content/uploads/2026/04/ChocoFlan-CT-4.jpg"
+                     alt="Bánh Mousse">
+                <h3>01. Bánh Mousse</h3>
+                <p>Mềm mịn, ngọt ngào</p>
+            </div>
+
+            <div class="product">
+                <img src="https://product.hstatic.net/200000411281/product/croisant_4_f14139911d9a4fd7b7ee046a1bfd49c2_master.png"
+                     alt="Bánh Croissant">
+                <h3>02. Bánh Croissant</h3>
+                <p>Giòn xốp, thơm bơ</p>
+            </div>
+
+            <div class="product">
+                <img src="https://www.the350f.com/wp-content/uploads/2025/07/Chi-Tiet-Hop-6-3-scaled.jpg"
+                     alt="Bánh Moon Cake">
+                <h3>03. Bánh Moon Cake</h3>
+                <p>Tròn đầy, đậm vị</p>
+            </div>
+
+            <div class="product">
+                <img src="https://assets.slerp.com/uploads/images/setting/f57196ef-a810-4d7e-a730-69aa21d95737/f57196ef-a810-4d7e-a730-69aa21d95737_a68df2dd-5a92-4a2d-b12c-e157c81c6f88.jpeg_original.jpeg?v=63908495981"
+                     alt="Bánh Donut">
+                <h3>04. Bánh Donut</h3>
+                <p>Rực rỡ, hấp dẫn</p>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="intro" id="gioi-thieu">
+        <h2>Ngọt ngào trong từng khoảnh khắc</h2>
+        <p>
+            THE MUSE mang đến những chiếc bánh thơm ngon,
+            được chăm chút tỉ mỉ từ nguyên liệu đến hương vị.
+            <br>
+            Mỗi chiếc bánh là một trải nghiệm ngọt ngào.
+        </p>
+    </section>
+
+    <footer id="lien-he">
+        <p>THE MUSE Bakery | Hương vị của sự tinh tế</p>
+        <p>Hotline: 0123 456 789</p>
+    </footer>
+
+</body>
+</html>
