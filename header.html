@@ -4,10 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    
-</head>
-<body>
-     <style>
+    <style> 
         /* Cai dat chung */
         * {
             box-sizing: border-box;
@@ -27,12 +24,12 @@
             text-align: center;
             padding: 10px;
             font-size: 30px;
-            letter-spacing: 2px;
+            letter-spacing: 5px;
         }
 
         /* Phan dau trang */
         .dautrang {
-            padding: 20px 6%;
+            padding: 20px 20%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -154,8 +151,7 @@
         .close-btn:hover {
          color: #001F3F;
       }
-
-       
+      
         .anhbia {
             height: 430px;
             background-image: url("https://cdn.phototourl.com/member/2026-10-09-3abcb040-0f09-4b33-ad46-e898fb5f4f66.png");
@@ -167,30 +163,95 @@
             text-align: center;
             padding: 20px;
         }
-        .anhbia1{
-            
-            height: 330px;
-            background-image: url("https://cdn.phototourl.com/member/2026-10-10-7fe2ff2e-dc86-4eb5-8f21-09b5ab7ca65e.png");
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 20px;
-        }
-        .anhbia2{
-            
-            height: 330px;
-            background-image: url("https://cdn.phototourl.com/member/2026-10-10-ce154b6e-0e4c-44c0-aa81-05cbcd14d432.png");
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 20px;
-        }
+        /* Sản phẩm nổi bật */
+    .sanpham-noibat {
+    padding: 35px 5% 50px;
+    background-color: #fff8E7;
+    max-width: 1300px; 
+    margin: 0 0 5px;;
+}
+
+    .sanpham-noibat h2 {
+    text-align: center;
+    font-family: "Times New Roman", cursive;
+    font-size: 40px;
+    margin-bottom: 50px;
+    color: #001F3F; 
+}
+
+.danhsach-banh {
+    display: flex;
+    gap: 50px;
+    overflow-x: auto;
+    padding: 0 0 10px;
+}
+
+.the-banh {
+    flex: 0 0 calc((100% - 50px) / 5);
+    height: 450px;
+    min-width: 250px;
+    border: 1px solid #001F3F;
+    border-radius: 30px;
+    overflow: hidden;
+    text-align: center;
+    background-color: white;
+    position: relative;
+}
+
+.anh-sanpham {
+    width: 100%;      
+    height: 320px;     
+    object-fit: cover; 
+    display: block;
+}
+
+.nhan-banh {
+    position: absolute;
+    top: 30px;
+    left: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+}
+
+.nhan-banh span {
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+.nhan-hot {
+    background-color: #D43D20;
+    color: white;
+}
+
+.nhan-moi {
+    background-color: #FFD58A;
+    color: #001F3F;
+}
+
+.thongtin-banh {
+    padding: 25px 30px 10px;
+}
+
+.thongtin-banh h3 {
+    font-size: 20px;
+    margin: 0 0 5px;
+    min-height: 26px;
+}
+.thongtin-banh h2{
+    box-sizing: border-box;
+    background-color: #fff8E7;
+    padding: 10px 5px; 
+    font-size: 17px;   
+    margin: 0 auto 50px;  
+    color: #ce3f32;
+    text-align: center;
+    white-space: nowrap;
+}
+
+
 
         /* Noi dung tren anh bia */
         .noidung {
@@ -205,7 +266,7 @@
         }
 
         .noidung h2 {
-            font-size: 38px;
+            font-size: 30px;
             margin: 15px 0;
         }
 
@@ -228,50 +289,13 @@
         .nut:hover {
             background-color: #9C7952;
         }
+   
 
-        /* Tren dien thoai */
-        @media (max-width: 900px) {
-            .dautrang {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
-            .logo {
-                text-align: center;
-                width: 100%;
-            }
-
-            .menu {
-                justify-content: center;
-                line-height: 2;
-            }
-
-            .menu a {
-                font-size: 15px;
-            }
-
-            .tienich {
-                justify-content: center;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .anhbia {
-                height: 350px;
-            }
-
-            .noidung {
-                padding: 20px;
-            }
-
-            .noidung h2 {
-                font-size: 28px;
-            }
-        }
+       
     </style>
 </head>
-
 <body>
+    
 
     <!-- Thanh thong bao -->
     <div class="thongbao">
@@ -320,7 +344,7 @@
                </svg>
             </a>
 
-<!-- Gio hang -->
+            <!-- Gio hang -->
             <a href="giohang.html" title="Giỏ hàng"
             style="color: #001F3F;"
             onmouseover="this.style.color='#C9A45C'"
@@ -369,25 +393,95 @@
                 và mỗi hương vị là một niềm vui.
             </p>
 
-            <a href="#sanpham" class="nut">
+            <a href="sanpham.html" class="nut">
                 KHÁM PHÁ BÁNH NGỌT
             </a>
+            
 
         </div>
     </div>
+    <!-- Sản phẩm nổi bật -->
+<div class="sanpham-noibat" id="sanpham">
 
-    <br> 
-     </div>
-        <div class="anhbia1">  
-       </div>
-    </div>
- 
-    <br>
+    <h2>Sản phẩm nổi bật</h2>
 
-     </div>
-        <div class="anhbia2">  
-       </div>
+    <div class="danhsach-banh">
+
+        <!-- Bánh 1 -->
+        <div class="the-banh">
+            <div class="nhan-banh">
+                <span class="nhan-hot">Hot</span>
+                <span class="nhan-moi">Mới</span>
+            </div>
+
+            <img src="https://the350f.com/wp-content/uploads/2026/04/ChocoFlan-CT-2.jpg"
+                 alt="ChocoFlan"
+                 class="anh-sanpham">
+
+            <div class="thongtin-banh">
+                <h3>ChocoFlan</h3>
+                    <h2>Giá từ: 55.000 VND</h2>
+                    
+            </div>
+           
+        </div>
+
+        <!-- Bánh 2 -->
+        <div class="the-banh">
+            <div class="nhan-banh">
+                <span class="nhan-hot">Hot</span>
+                <span class="nhan-moi">Mới</span>
+            </div>
+
+            <img src="https://cdn.prod.website-files.com/649249d29a20bd6bc3deac48/6a46975f52af1711c7dc1600_3700000836_Pistachio%20Spiral%20Croissant-p-1080.png"
+                 alt="Bánh croissant"
+                 class="anh-sanpham">
+                 
+
+            <div class="thongtin-banh">
+                <h3>Bánh croissant</h3> 
+                    <h2> Giá từ: 35.000 VND</h2>
+            </div>
+        </div>
+
+        <!-- Bánh 3 -->
+        <div class="the-banh">
+            <div class="nhan-banh">
+                <span class="nhan-hot">Hot</span>
+                <span class="nhan-moi">Mới</span>
+            </div>
+
+            <img src="https://www.the350f.com/wp-content/uploads/2025/07/Chi-Tiet-Hop-6-3-scaled.jpg"
+                 alt="Bánh trung thu"
+                 class="anh-sanpham">
+
+            <div class="thongtin-banh">
+                <h3>Bánh trung thu</h3>
+                    <h2> Giá từ: 650.000 VND</h2>
+                
+            </div>
+        </div>
+
+        <!-- Bánh 4 -->
+        <div class="the-banh">
+            <div class="nhan-banh">
+                <span class="nhan-hot">Hot</span>
+                <span class="nhan-moi">Mới</span>
+            </div>
+
+            <img src="https://donutelier.co.uk/wp-content/uploads/2023/06/Fraiser_Donut.png"
+                 alt="Bánh Donut"
+                 class="anh-sanpham">
+
+            <div class="thongtin-banh">
+                <h3>Bánh Donut</h3>
+                    <h2>Giá từ: 22.000 VND</h2>
+               
+            </div>
+        </div>
+
     </div>
+</div>
 
     
     <script>
