@@ -6,246 +6,147 @@
     <title>Document</title>
 </head>
      <style>
-        * {
-            box-sizing: border-box;
-        }
-
         body {
             font-family: "Times New Roman", serif;
-            background-color: #FFF8E7;
+            background: #FFF8E7;
             color: #001F3F;
             margin: 0;
-            padding: 40px 20px;
+            text-align: center;
+            
         }
 
-        h1 {
+        header {
+            background: #001F3F;
+            color: #FFF8E7;
+            padding: 20px;
             text-align: center;
+        }
+        .nd-giohang {
             color: #001F3F;
-            letter-spacing: 2px;
-            margin-bottom: 8px;
+            font-size: 18px;
+            margin-top: 0; 
+            text-align: center;
+            font-size:25px;
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: bold;
+             padding: 20px;
         }
 
-        .sub-title {
+        nav {
+            background: #E8D8B9;
+            padding: 20px;
             text-align: center;
+        }
+
+        nav a {
+            color: #001F3F;
+            text-decoration: none;
+            margin: 15px;
+            font-weight: bold;
+        }
+        nav a:hover{
             color: #8A5A2B;
-            font-style: italic;
-            font-size: 16px;
-            margin-top: 0;
-            margin-bottom: 30px;
+
+        }
+
+        h2 {
+            text-align: center;
+            margin: 50px 0;
         }
 
         .khung {
-            max-width: 900px;
-            margin: 0 auto;
-            background-color: #ffffff;
-            padding: 35px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 31, 63, 0.08);
-            border: 1px solid #f3e7cc;
-        }
-
-        .trong {
-            text-align: center;
-            padding: 45px 20px;
-        }
-
-        .trong h2 {
-            color: #001F3F;
-            margin-bottom: 10px;
-        }
-
-        .trong p {
-            color: #666;
-            margin-bottom: 25px;
-        }
-
-        /* Nút chung */
-        .nut {
-            display: inline-block;
-            background-color: #001F3F;
-            color: white;
-            padding: 12px 25px;
-            border: 1px solid #001F3F;
-            border-radius: 6px;
-            text-decoration: none;
-            cursor: pointer;
-            font-family: "Times New Roman", serif;
-            font-size: 16px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0, 31, 63, 0.15);
-        }
-
-        .nut:hover {
-            background-color: #8A5A2B;
-            border-color: #8A5A2B;
-            color: #fff8E7;
-            transform: translateY(-2px);
-        }
-
-        /* Thẻ sản phẩm trong giỏ */
-        .san-pham {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            border-bottom: 1px solid #eee;
-            padding: 20px 0;
-            gap: 15px;
-        }
-
-        .san-pham:first-child {
-            padding-top: 0;
-        }
-
-        .thong-tin-sp {
-            flex: 1;
-            min-width: 250px;
-        }
-
-        .thong-tin-sp h3 {
-            margin: 0 0 6px 0;
-            font-size: 18px;
-            color: #001F3F;
-        }
-
-        .thong-tin-sp p {
-            margin: 4px 0;
-            font-size: 15px;
-            color: #555;
-        }
-
-        /* Khu vực điều khiển số lượng */
-        .dieu-khien-soluong {
-            display: flex;
-            align-items: center;
-            gap: 10px;
             background: #fff8E7;
-            padding: 6px 12px;
-            border-radius: 25px;
-            border: 1px solid #e6d5b8;
-        }
-
-        .nut-nho {
-            width: 28px;
-            height: 28px;
-            background-color: #001F3F;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: 0.2s;
-        }
-
-        .nut-nho:hover {
-            background-color: #8A5A2B;
-        }
-
-        .so-luong-text {
-            font-weight: bold;
-            font-size: 16px;
-            min-width: 20px;
+            max-width: 900px;
+            margin: auto;
+            padding: 50px;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px #ddd;
+            font-size:25px;
+            display:flex;
             text-align: center;
+            height:200px;
+            
         }
+        
 
-        .thanh-tien-col {
-            text-align: right;
-            min-width: 130px;
-        }
-
-        .thanh-tien-col p {
-            margin: 0 0 8px 0;
-            font-size: 14px;
-            color: #666;
-        }
-
-        .thanh-tien-col b {
-            font-size: 17px;
-            color: #8A5A2B;
-        }
-
-        .nut-xoa {
-            color: #9B2226;
-            cursor: pointer;
-            border: none;
-            background: none;
-            text-decoration: underline;
-            font-family: "Times New Roman", serif;
-            font-size: 14px;
-            padding: 0;
-            margin-top: 6px;
-            display: block;
-            margin-left: auto;
-        }
-
-        .nut-xoa:hover {
-            color: #d90429;
-        }
-
-        /* Tổng tiền & thanh hành động cuối */
-        .khung-tong-ket {
-            margin-top: 25px;
-            padding-top: 20px;
-            border-top: 2px dashed #e6d5b8;
+        .sanpham {
             display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            gap: 20px;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            padding: 18px 0;
+            border-bottom: 1px solid #ddd;
         }
 
-        .tong-tien {
+        .thongtin {
+            flex: 1;
+        }
+
+        .gia {
+            color: #8A5A2B;
+            font-weight: bold;
+        }
+
+        button {
+            background: #001F3F;
+            color: #fff8E7;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 3px;
+            font-size:20px;
+        }
+
+        button:hover {
+            background:#8A5A2B;
+            color: #fff8E7;
+
+        }
+         .anhnen {
+            height: 430px;
+            background-image: url("https://the350f.com/wp-content/uploads/2026/07/Tra-nhan-2026-2.jpg");
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .xoa {
+            background: #9B3333;
+        }
+
+        .tong {
+            text-align: right;
             font-size: 22px;
             font-weight: bold;
-            color: #001F3F;
-            margin: 0;
+            margin-top: 25px;
         }
 
-        .tong-tien span {
-            color: #8A5A2B;
-        }
-
-        .hanh-dong {
+        .nut {
             display: flex;
-            gap: 15px;
+            justify-content: space-between;
             flex-wrap: wrap;
-            justify-content: center;
-            width: 100%;
+            gap: 10px;
+            margin-top: 25px;
         }
 
-        .nut-phu {
-            background-color: transparent;
-            color: #9B2226;
-            border: 1px solid #9B2226;
+        .rong {
+            text-align: center;
+            padding: 35px 10px;
         }
 
-        .nut-phu:hover {
-            background-color: #9B2226;
-            color: white;
-            border-color: #9B2226;
-        }
-
-        /* Responsive cho thiết bị di động */
         @media (max-width: 600px) {
-            .san-pham {
-                flex-direction: column;
-                align-items: flex-start;
+            .sanpham {
+                flex-wrap: wrap;
             }
-            .thanh-tien-col {
-                text-align: left;
-                width: 100%;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-            }
-            .nut-xoa {
-                margin-left: 0;
-            }
-            .khung-tong-ket {
-                align-items: center;
-                text-align: center;
+
+            .khung {
+                margin: 10px;
+                padding: 15px;
             }
         }
     </style>
@@ -253,115 +154,143 @@
 
 <body>
 
-    <h1>GIỎ HÀNG CỦA BẠN</h1>
-    <p class="sub-title">❧ Ngọt ngào hơn mỗi ngày ❧</p>
-
-    <div class="khung">
-        <div id="noiDungGioHang"></div>
+    <header>
+        <h1>THE MUSE</h1>
+    </header>
+    <div class="nd-giohang"> 
+        Giỏ hàng của bạn 
     </div>
 
+    <nav>
+         <a href="gioithieu.html">Giới thiệu</a>
+            <a href="sanpham.html">Sản phẩm</a>
+            <a href="The muse/chinhsach.html">Chính sách</a>
+            <a href="The muse/tk-theo-yc.html">Thiết kế theo yêu cầu</a>
+            <a href="The muse/tintuc.html">Tin tức</a>
+            <a href="The muse/lienhe.html">Liên hệ</a>
+    </nav>
+<div class="anhnen"> 
+
+    
+
+    <div class="khung">
+        <div id="danhsach"></div>
+        <div id="tongtien"></div>
+        <div id="nut"></div>
+    </div>
+</div>
     <script>
         function layGioHang() {
-            return JSON.parse(localStorage.getItem("gioHangTheMuse")) || [];
+            return JSON.parse(localStorage.getItem("gioHang")) || [];
         }
 
         function hienThiGioHang() {
-            var gioHang = layGioHang();
-            var noiDung = document.getElementById("noiDungGioHang");
+            let gioHang = layGioHang();
+            let danhsach = document.getElementById("danhsach");
+            let tongtien = document.getElementById("tongtien");
+            let nut = document.getElementById("nut");
+
+            danhsach.innerHTML = "";
+            tongtien.innerHTML = "";
+            nut.innerHTML = "";
 
             if (gioHang.length === 0) {
-                noiDung.innerHTML = `
-                    <div class="trong">
-                        <h2>Giỏ hàng đang trống!</h2>
-                        <p>Bạn chưa chọn chiếc bánh ngọt nào cho khoảnh khắc hôm nay.</p>
-                        <a class="nut" href="sanpham.html">
-                            Khám phá bộ sưu tập bánh
-                        </a>
+                danhsach.innerHTML = `
+                    <div class="rong">
+                        <h3>Giỏ hàng đang trống!</h3>
+                        <p>Hãy chọn những chiếc bánh bạn yêu thích nhé.</p>
+                        <button onclick="location.href='sanpham.html'">
+                            Quay lại mua hàng
+                        </button>
                     </div>
                 `;
                 return;
             }
 
-            var html = "";
-            var tongTien = 0;
+            let tong = 0;
 
-            for (var i = 0; i < gioHang.length; i++) {
-                var sp = gioHang[i];
-                var thanhTien = sp.gia * sp.soLuong;
-                tongTien += thanhTien;
+            gioHang.forEach(function(sp, index) {
+                let thanhTien = sp.gia * sp.soLuong;
+                tong += thanhTien;
 
-                html += `
-                    <div class="san-pham">
-                        <div class="thong-tin-sp">
+                danhsach.innerHTML += `
+                    <div class="sanpham">
+                        <div class="thongtin">
                             <h3>${sp.ten}</h3>
-                            <p>Kích thước: <b>${sp.kichThuoc}</b></p>
-                            <p>Đơn giá: ${sp.gia.toLocaleString("vi-VN")}đ</p>
+                            <p>Kích thước: ${sp.kichThuoc || sp.size}</p>
+                            <p>Đơn giá:
+                                <span class="gia">
+                                    ${sp.gia.toLocaleString("vi-VN")}đ
+                                </span>
+                            </p>
+                            <p>Thành tiền:
+                                <span class="gia">
+                                    ${thanhTien.toLocaleString("vi-VN")}đ
+                                </span>
+                            </p>
                         </div>
 
-                        <div class="dieu-khien-soluong">
-                            <button class="nut-nho" onclick="thayDoiSoLuong(${i}, -1)">-</button>
-                            <span class="so-luong-text">${sp.soLuong}</span>
-                            <button class="nut-nho" onclick="thayDoiSoLuong(${i}, 1)">+</button>
-                        </div>
-
-                        <div class="thanh-tien-col">
-                            <p>Thành tiền:</p>
-                            <b>${thanhTien.toLocaleString("vi-VN")}đ</b>
-                            <button class="nut-xoa" onclick="xoaSanPham(${i})">Xóa sản phẩm</button>
+                        <div>
+                            <button onclick="thayDoiSoLuong(${index}, -1)">−</button>
+                            <strong>${sp.soLuong}</strong>
+                            <button onclick="thayDoiSoLuong(${index}, 1)">+</button>
+                            <br>
+                            <button class="xoa" onclick="xoaSanPham(${index})">
+                                Xóa
+                            </button>
                         </div>
                     </div>
                 `;
-            }
+            });
 
-            html += `
-                <div class="khung-tong-ket">
-                    <p class="tong-tien">
-                        Tổng thanh toán: <span>${tongTien.toLocaleString("vi-VN")}đ</span>
-                    </p>
-
-                    <div class="hanh-dong">
-                        <a class="nut" href="sanpham.html">
-                            Tiếp tục mua hàng
-                        </a>
-
-                        <button class="nut nut-phu" onclick="xoaTatCa()">
-                            Xóa toàn bộ giỏ hàng
-                        </button>
-                    </div>
+            tongtien.innerHTML = `
+                <div class="tong">
+                    Tổng tiền: ${tong.toLocaleString("vi-VN")}đ
                 </div>
             `;
 
-            noiDung.innerHTML = html;
+            nut.innerHTML = `
+                <div class="nut">
+                    <button onclick="location.href='sanpham.html'">
+                        ← Tiếp tục mua hàng
+                    </button>
+                    <button class="xoa" onclick="xoaTatCa()">
+                        Xóa tất cả
+                    </button>
+                </div>
+            `;
         }
 
         function thayDoiSoLuong(index, thayDoi) {
-            var gioHang = layGioHang();
+            let gioHang = layGioHang();
+
             gioHang[index].soLuong += thayDoi;
 
             if (gioHang[index].soLuong <= 0) {
                 gioHang.splice(index, 1);
             }
 
-            localStorage.setItem("gioHangTheMuse", JSON.stringify(gioHang));
+            localStorage.setItem("gioHang", JSON.stringify(gioHang));
             hienThiGioHang();
         }
 
         function xoaSanPham(index) {
-            var gioHang = layGioHang();
+            let gioHang = layGioHang();
+
             gioHang.splice(index, 1);
-            localStorage.setItem("gioHangTheMuse", JSON.stringify(gioHang));
+
+            localStorage.setItem("gioHang", JSON.stringify(gioHang));
             hienThiGioHang();
         }
 
         function xoaTatCa() {
-            if (confirm("Bạn có chắc chắn muốn xóa toàn bộ giỏ hàng không?")) {
-                localStorage.removeItem("gioHangTheMuse");
+            if (confirm("Bạn có chắc muốn xóa tất cả sản phẩm?")) {
+                localStorage.removeItem("gioHang");
                 hienThiGioHang();
             }
         }
 
         hienThiGioHang();
     </script>
-
 </body>
 </html>

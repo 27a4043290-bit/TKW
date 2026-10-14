@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Times New Roman", serif;
+            background: #fff8E7;
+            color: #001F3F;
+        }
+
+        header {
+            background: #001F3F;
+            color: #FFF8E7;
+            text-align: center;
+            padding: 25px 15px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 36px;
+            letter-spacing: 5px;
+        }
+
+        header p {
+            margin-bottom: 0;
+            letter-spacing: 2px;
+        }
+
+        nav {
+            background: #E8D8B9;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav a {
+            color: #001F3F;
+            text-decoration: none;
+            margin: 0 18px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #8A5A2B;
+        }
+
+        .gioithieu {
+            text-align: center;
+            padding: 40px 20px 20px;
+        }
+
+        .gioithieu h2 {
+            font-size: 30px;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+
+        .gioithieu p {
+            max-width: 650px;
+            margin: auto;
+            line-height: 1.7;
+            color: #66533D;
+            padding:10px;
+        }
+
+        .danhsach {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: auto;
+            padding: 30px 25px 50px;
+        }
+
+        .sanpham {
+            background: #FFFFFF;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px #00000012;
+            transition: 0.3s;
+        }
+
+        .sanpham:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px #00000020;
+        }
+
+        .anh-banh {
+            width: 100%;
+            height: 245px;
+            object-fit: cover;
+            display: block;
+            background: #E8D8B9;
+        }
+
+        .thongtin {
+            padding: 20px;
+        }
+
+        .thongtin h3 {
+            font-size: 22px;
+            margin: 0 0 12px;
+        }
+
+        .mota {
+            color: #66533D;
+            font-size: 15px;
+            line-height: 1.6;
+            min-height: 95px;
+        }
+
+        .nhan {
+            display: inline-block;
+            background: #F1E3C8;
+            color: #76502A;
+            padding: 5px 10px;
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+
+        label {
+            display: block;
+            margin-top: 12px;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        select, input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #D6C6A8;
+            border-radius: 5px;
+            background: #FFFCF5;
+            color: #001F3F;
+            font-family: inherit;
+            font-size: 15px;
+        }
+
+        .gia {
+            color: #8A5A2B;
+            font-size: 23px;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 5px;
+            background: #001F3F;
+            color: white;
+            font-family: inherit;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #8A5A2B;
+        }
+
+        footer {
+            background: #001F3F;
+            color: #FFF8E7;
+            text-align: center;
+            padding: 25px 15px;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 900px) {
+            .danhsach {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 600px) {
+            .danhsach {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 7px;
+            }
+
+            .mota {
+                min-height: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>THE MUSE</h1>
+        <p>A LITTLE PIECE OF HAPPINESS</p>
+    </header>
+
+    <nav>
+         <a href="gioithieu.html">Giới thiệu</a>
+            <a href="sanpham.html">Sản phẩm</a>
+            <a href="The muse/chinhsach.html">Chính sách</a>
+            <a href="The muse/tk-theo-yc.html">Thiết kế theo yêu cầu</a>
+            <a href="The muse/tintuc.html">Tin tức</a>
+            <a href="The muse/lienhe.html">Liên hệ</a>
+    </nav>
+
+    <section class="gioithieu">
+        <h2>BÁNH TRUNG THU</h2>
+        <p>
+            Mùa trăng thêm trọn vẹn với những chiếc bánh trung thu
+            được tuyển chọn tinh tế, kết hợp hương vị truyền thống
+            và cảm hứng hiện đại. The Muse gửi trao vị ngọt
+            qua từng chiếc bánh.
+        </p>
+    </section>
+
+    <div class="danhsach">
+
+        <!-- Bánh 1: Thập cẩm xá xíu -->
+        <div class="sanpham">
+            <img class="anh-banh"
+                src="https://www.the350f.com/wp-content/uploads/2025/07/TT26-BN-Xa-Xiu-1-scaled.jpg"
+                alt="Bánh trung thu thập cẩm xá xíu">
+
+            <div class="thongtin">
+                <span class="nhan">HƯƠNG VỊ ĐẶC SẮC</span>
+                <h3>Thập cẩm xá xíu</h3>
+
+                <p class="mota">
+                    Lớp vỏ bánh nướng vàng ruộm kết hợp cùng xá xíu,
+                    trứng vịt muối, lạp xưởng, hạt dưa và nhiều
+                    nguyên liệu tinh tuyển, tạo nên vị mặn ngọt hài hòa.
+                </p>
+
+                <label>Kích thước bánh</label>
+                <select id="size1" onchange="doiGia('size1', 'gia1')">
+                    <option value="95000">150g - 95.000đ</option>
+                    <option value="155000">250g - 155.000đ</option>
+                </select>
+
+                <p class="gia" id="gia1">95.000đ</p>
+
+                <label>Số lượng</label>
+                <input type="number" id="sl1" value="1" min="1" max="99">
+
+                <button onclick="themGioHang('Thập cẩm xá xíu', 'size1', 'sl1')">
+                    🛒 Thêm vào giỏ hàng
+                </button>
+            </div>
+        </div>
+
+        <!-- Bánh 2: Thập cẩm ngũ hạt -->
+        <div class="sanpham">
+            <img class="anh-banh"
+                src="https://www.the350f.com/wp-content/uploads/2025/07/TT26-BN-Ngu-Vi-1-scaled.jpg"
+                alt="Bánh trung thu thập cẩm ngũ hạt">
+
+            <div class="thongtin">
+                <span class="nhan">VỊ TRUYỀN THỐNG</span>
+                <h3>Thập cẩm ngũ hạt</h3>
+
+                <p class="mota">
+                    Hương thơm của rượu, mỡ phần, bột nếp và hoa bưởi
+                    hòa quyện với lá chanh, lạp xưởng, hạt dưa,
+                    hạt bí, vừng và hạt điều.
+                </p>
+
+                <label>Kích thước bánh</label>
+                <select id="size2" onchange="doiGia('size2', 'gia2')">
+                    <option value="100000">150g - 100.000đ</option>
+                    <option value="165000">250g - 165.000đ</option>
+                </select>
+
+                <p class="gia" id="gia2">100.000đ</p>
+
+                <label>Số lượng</label>
+                <input type="number" id="sl2" value="1" min="1" max="99">
+
+                <button onclick="themGioHang('Thập cẩm ngũ hạt', 'size2', 'sl2')">
+                    🛒 Thêm vào giỏ hàng
+                </button>
+            </div>
+        </div>
+
+        <!-- Bánh 3: Bưởi hồng -->
+        <div class="sanpham">
+            <img class="anh-banh"
+                src="https://www.the350f.com/wp-content/uploads/2026/08/TT26-BN-Buoi-hong-2-scaled.jpg"
+                alt="Bánh trung thu bưởi hồng">
+
+            <div class="thongtin">
+                <span class="nhan">HƯƠNG VỊ THANH NHÃ</span>
+                <h3>Bưởi hồng</h3>
+
+                <p class="mota">
+                    Hương bưởi thanh mát kết hợp cùng mật ong dịu ngọt,
+                    được bao bọc trong lớp vỏ bánh nướng truyền thống
+                    mềm mịn, tạo nên hương vị hài hòa và tinh tế.
+                </p>
+
+                <label>Kích thước bánh</label>
+                <select id="size3" onchange="doiGia('size3', 'gia3')">
+                    <option value="95000">150g - 95.000đ</option>
+                    <option value="155000">250g - 155.000đ</option>
+                </select>
+
+                <p class="gia" id="gia3">95.000đ</p>
+
+                <label>Số lượng</label>
+                <input type="number" id="sl3" value="1" min="1" max="99">
+
+                <button onclick="themGioHang('Bưởi hồng', 'size3', 'sl3')">
+                    🛒 Thêm vào giỏ hàng
+                </button>
+            </div>
+        </div>
+
+        <!-- Bánh 4: Ổi hồng dâu tằm -->
+        <div class="sanpham">
+            <img class="anh-banh"
+                src="https://www.the350f.com/wp-content/uploads/2025/07/TT26-Oi-Hong-scaled.jpg"
+                alt="Bánh trung thu ổi hồng dâu tằm">
+
+            <div class="thongtin">
+                <span class="nhan">CẢM HỨNG TỪ THIÊN NHIÊN</span>
+                <h3>Ổi hồng dâu tằm</h3>
+
+                <p class="mota">
+                    Sự kết hợp giữa trái cây nhiệt đới và quả mọng,
+                    với nhân dâu tằm ở trung tâm và lớp vỏ đậu trắng
+                    mềm mịn, mang đến hương vị thanh nhẹ, tinh tế.
+                </p>
+
+                <label>Kích thước bánh</label>
+                <select id="size4" onchange="doiGia('size4', 'gia4')">
+                    <option value="100000">150g - 100.000đ</option>
+                    <option value="165000">250g - 165.000đ</option>
+                </select>
+
+                <p class="gia" id="gia4">100.000đ</p>
+
+                <label>Số lượng</label>
+                <input type="number" id="sl4" value="1" min="1" max="99">
+
+                <button onclick="themGioHang('Ổi hồng dâu tằm', 'size4', 'sl4')">
+                    🛒 Thêm vào giỏ hàng
+                </button>
+            </div>
+        </div>
+
+        <!-- Bánh 5: Táo đỏ -->
+        <div class="sanpham">
+            <img class="anh-banh"
+                src="https://www.the350f.com/wp-content/uploads/2025/07/TT26-BN-Tao-do-1-scaled.jpg"
+                alt="Bánh trung thu táo đỏ">
+
+            <div class="thongtin">
+                <span class="nhan">VỊ NGỌT DỊU</span>
+                <h3>Táo đỏ</h3>
+
+                <p class="mota">
+                    Hạt sen và táo đỏ kết hợp cùng các nguyên liệu
+                    được tuyển chọn, tạo nên phần nhân hài hòa,
+                    vị ngọt vừa phải và hương táo tự nhiên.
+                </p>
+
+                <label>Kích thước bánh</label>
+                <select id="size5" onchange="doiGia('size5', 'gia5')">
+                    <option value="105000">150g - 105.000đ</option>
+                    <option value="170000">250g - 170.000đ</option>
+                </select>
+
+                <p class="gia" id="gia5">105.000đ</p>
+
+                <label>Số lượng</label>
+                <input type="number" id="sl5" value="1" min="1" max="99">
+
+                <button onclick="themGioHang('Táo đỏ', 'size5', 'sl5')">
+                    🛒 Thêm vào giỏ hàng
+                </button>
+            </div>
+        </div>
+
+        <!-- Bánh 6: Vải thiều thanh long đỏ -->
+        <div class="sanpham">
+            <img class="anh-banh"
+                src="https://www.the350f.com/wp-content/uploads/2026/08/TT26-Vai-Thieu-Thanh-Long-2-1-scaled.jpg"
+                alt="Bánh trung thu vải thiều thanh long đỏ">
+
+            <div class="thongtin">
+                <span class="nhan">HƯƠNG VỊ SÁNG TẠO</span>
+                <h3>Vải thiều thanh long đỏ</h3>
+
+                <p class="mota">
+                    Hạt sen bùi mịn hòa quyện với hương vải thiều,
+                    thanh long đỏ và mật ong, tạo nên tổng thể
+                    thanh thoát trong lớp vỏ đậu trắng mềm mịn.
+                </p>
+
+                <label>Kích thước bánh</label>
+                <select id="size6" onchange="doiGia('size6', 'gia6')">
+                    <option value="105000">150g - 105.000đ</option>
+                    <option value="175000">250g - 175.000đ</option>
+                </select>
+
+                <p class="gia" id="gia6">105.000đ</p>
+
+                <label>Số lượng</label>
+                <input type="number" id="sl6" value="1" min="1" max="99">
+
+                <button onclick="themGioHang('Vải thiều thanh long đỏ', 'size6', 'sl6')">
+                    🛒 Thêm vào giỏ hàng
+                </button>
+            </div>
+        </div>
+
+        <!-- Bánh 7: Hộp 6 bánh -->
+        <div class="sanpham">
+            <img class="anh-banh"
+                src="https://www.the350f.com/wp-content/uploads/2025/07/Chi-Tiet-Hop-6-3-scaled.jpg"
+                alt="Hộp quà trung thu 6 bánh">
+
+            <div class="thongtin">
+                <span class="nhan">QUÀ TẶNG CAO CẤP</span>
+                <h3>Hộp 6 bánh</h3>
+
+                <p class="mota">
+                    Hộp quà Phú Lục Thanh Âm Tấu với thiết kế
+                    sang trọng, bên trong gồm 6 vị bánh mang
+                    tinh thần thủ công, phù hợp để gửi trao
+                    lời chúc thịnh vượng và viên mãn.
+                </p>
+
+                <label>Kích thước bánh</label>
+                <select id="size7" onchange="doiGia('size7', 'gia7')">
+                    <option value="650000">150g × 6 - 650.000đ</option>
+                    <option value="1050000">250g × 6 - 1.050.000đ</option>
+                </select>
+
+                <p class="gia" id="gia7">650.000đ</p>
+
+                <label>Số lượng hộp</label>
+                <input type="number" id="sl7" value="1" min="1" max="99">
+
+                <button onclick="themGioHang('Hộp 6 bánh', 'size7', 'sl7')">
+                    🛒 Thêm vào giỏ hàng
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <h3>THE MUSE</h3>
+        <p>Ngọt ngào trong từng khoảnh khắc</p>
+        <p>12 Chùa Bộc, P. Kim Liên, Đống Đa, Hà Nội</p>
+        <p>Hotline: 0826590133</p>
+    </footer>
+
+    <script>
+        // Hiển thị giá theo kích thước đã chọn
+        function doiGia(idSize, idGia) {
+            let select = document.getElementById(idSize);
+            let gia = Number(select.value);
+
+            document.getElementById(idGia).innerText =
+                gia.toLocaleString("vi-VN") + "đ";
+        }
+
+        // Thêm bánh vào giỏ hàng
+        function themGioHang(ten, idSize, idSoLuong) {
+            let select = document.getElementById(idSize);
+            let gia = Number(select.value);
+
+            let kichThuoc =
+                select.options[select.selectedIndex].text.split(" - ")[0];
+
+            let soLuong = Number(
+                document.getElementById(idSoLuong).value
+            );
+
+            if (!Number.isInteger(soLuong) || soLuong < 1 || soLuong > 99) {
+                alert("Vui lòng nhập số lượng từ 1 đến 99!");
+                return;
+            }
+
+            let gioHang =
+                JSON.parse(localStorage.getItem("gioHang")) || [];
+
+            // Kiểm tra bánh cùng tên và cùng kích thước
+            let sanPhamCoSan = gioHang.find(function(sp) {
+                return sp.ten === ten &&
+                    (sp.kichThuoc || sp.size) === kichThuoc;
+            });
+
+            if (sanPhamCoSan) {
+                sanPhamCoSan.soLuong += soLuong;
+                sanPhamCoSan.gia = gia;
+            } else {
+                gioHang.push({
+                    ten: ten,
+                    kichThuoc: kichThuoc,
+                    gia: gia,
+                    soLuong: soLuong
+                });
+            }
+
+            localStorage.setItem("gioHang", JSON.stringify(gioHang));
+
+            alert("Đã thêm " + ten + " vào giỏ hàng!");
+        }
+    </script>
+</body>
+</html>
