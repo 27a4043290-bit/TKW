@@ -1,157 +1,254 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Giới thiệu - TheMuse</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Giới thiệu - The Muse</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,500&family=Be+Vietnam+Pro:wght@400;500;600&display=swap">
+<style>
+:root{
+  --navy:#0e2240; --red:#c8341d; --cream:#fdf3e8; --gold:#f2b866; --brown:#9a5b2e; --text:#445066;
+  --font-title:"Playfair Display",Georgia,serif;
+  --font-body:"Be Vietnam Pro",Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);color:var(--text);background:#fffaf5;line-height:1.85;font-size:17px}
+a{color:inherit;text-decoration:none}
+img{display:block;width:100%;object-fit:cover}
+.wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:var(--font-title);color:var(--navy);line-height:1.2}
+h2{font-size:clamp(30px,4vw,46px);margin-bottom:24px}
+h3{font-size:24px;margin-bottom:10px}
+b,strong{color:var(--navy);font-weight:600}
+.eyebrow{display:block;font-size:13px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--red);margin-bottom:16px}
+section{scroll-margin-top:64px}
+ 
+/* Breadcrumb */
+.crumb{background:#fde9d7;padding:16px 0;color:#6b6b6b;font-size:15px}
+.crumb a:hover{color:var(--red)}
+ 
+/* HERO */
+.hero{position:relative;min-height:78vh;display:grid;place-items:center;text-align:center;color:#fff;overflow:hidden}
+.hero img{position:absolute;inset:0;height:100%}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,34,64,.55),rgba(14,34,64,.8))}
+.hero .in{position:relative;z-index:1;max-width:820px;padding:80px 24px}
+.hero .eyebrow{color:var(--gold)}
+.hero h1{color:#fff;font-size:clamp(40px,7vw,84px);margin-bottom:22px}
+.hero p{font-size:19px;color:#f4e6d6;max-width:620px;margin:0 auto}
+ 
+/* MENU VIÊN THUỐC (dính trên cùng) */
+.pills{position:sticky;top:0;z-index:10;background:rgba(255,250,245,.92);backdrop-filter:blur(8px);border-bottom:1px solid #f0e2d2}
+.pills .wrap{display:flex;gap:10px;justify-content:center;overflow-x:auto;padding:12px 24px}
+.pills a{white-space:nowrap;font-size:14px;font-weight:500;color:var(--navy);padding:9px 20px;border:1px solid #e8d6c2;border-radius:999px;transition:.2s}
+.pills a:hover{background:var(--cream)}
+.pills a.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+ 
+/* GIỚI THIỆU */
+.intro{padding:100px 0 80px}
+.intro .wrap{max-width:760px}
+.intro p{margin-bottom:20px}
+.lead{font-family:var(--font-title);font-style:italic;font-size:clamp(24px,3vw,32px);line-height:1.5;color:var(--navy)}
+.pull{margin-top:40px;padding:28px 0 0;border-top:2px solid var(--gold);font-family:var(--font-title);font-size:24px;line-height:1.5;color:var(--navy)}
+.pull b{font-weight:600}
+ 
+/* SỨ MỆNH - TẦM NHÌN */
+.mv{padding:90px 0 80px;background:var(--cream)}
+.mv h2{max-width:760px}
+.row{display:grid;grid-template-columns:260px 1fr;gap:40px;padding:36px 0;border-top:1px solid #e8cfae}
+.row h3{font-size:34px;color:var(--brown)}
+.row p + p{margin-top:12px}
+.band{background:var(--navy);color:#cfd6e4;padding:90px 0}
+.band h2{color:#fff;text-align:center;margin-bottom:50px}
+.vals{list-style:none;display:grid;grid-template-columns:repeat(5,1fr);gap:28px}
+.vals li{border-top:1px solid rgba(242,184,102,.5);padding-top:20px;font-size:15px;line-height:1.7}
+.vals span{display:block;font-family:var(--font-title);font-size:44px;color:var(--gold);line-height:1;margin-bottom:12px}
+.vals h3{color:#fff;font-size:20px}
+ 
+/* NGUYÊN LIỆU */
+.ingr{padding:100px 0}
+.ingr .wrap{display:grid;grid-template-columns:5fr 6fr;gap:70px;align-items:center}
+.arch{height:560px;border-radius:300px 300px 24px 24px}
+.ingr p{margin-bottom:16px}
+ 
+/* QUY TRÌNH */
+.proc{padding:100px 0;background:var(--cream)}
+.proc .wrap{display:grid;grid-template-columns:5fr 6fr;gap:70px}
+.proc .left{position:sticky;top:110px;align-self:start}
+ol{list-style:none;counter-reset:s;position:relative;padding-left:70px}
+ol::before{content:"";position:absolute;left:21px;top:10px;bottom:10px;width:2px;background:#e8cfae}
+ol li{counter-increment:s;position:relative;margin-bottom:38px}
+ol li::before{content:counter(s);position:absolute;left:-70px;top:-2px;width:44px;height:44px;border-radius:50%;
+  background:var(--red);color:#fff;display:grid;place-items:center;font-weight:600;box-shadow:0 0 0 6px var(--cream)}
+ 
+/* KHÔNG GIAN */
+.space{padding:100px 0}
+.center{max-width:760px;margin:0 auto;text-align:center}
+.center p{margin-bottom:18px}
+.sign{margin-top:40px;padding-top:28px;border-top:2px solid var(--gold);font-family:var(--font-title);font-size:clamp(24px,3vw,30px);line-height:1.5;color:var(--navy);font-weight:600}
+.sign em{font-style:normal;font-weight:inherit}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin:70px 0 60px;align-items:start}
+.gallery figure:nth-child(2){margin-top:50px}
+.gallery img{height:420px;border-radius:200px 200px 24px 24px}
+.gallery figcaption{padding:18px 6px 0;font-size:15px;line-height:1.7}
+ 
+/* Hiệu ứng hiện dần (chỉ chạy khi có JS) */
+.js .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s,transform .8s}
+.js .reveal.in-view{opacity:1;transform:none}
+ 
+@media(max-width:900px){
+  .row,.ingr .wrap,.proc .wrap{grid-template-columns:1fr;gap:24px}
+  .row h3{font-size:28px}
+  .vals{grid-template-columns:1fr 1fr}
+  .arch{height:380px}
+  .proc .left{position:static}
+  .gallery{grid-template-columns:1fr}.gallery figure:nth-child(2){margin-top:0}
+  .gallery img{height:340px}
+  .pills .wrap{justify-content:flex-start}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.js .reveal{opacity:1;transform:none;transition:none}}
+</style>
 </head>
 <body>
-    <header>
-    <a href="#">The Muse</a>
-    <nav>
-      <ul>
-        <li><a href="#cau-chuyen-thuong-hieu">Câu chuyện thương hiệu</a></li>
-        <li><a href="#su-menh-tam-nhin-gia-tri">Sứ mệnh - Tầm nhìn</a></li>
-        <li><a href="#nguyen-lieu-chat-luong">Nguyên liệu & Chất lượng</a></li>
-        <li><a href="#quy-trinh-lam-banh">Quy trình làm bánh</a></li>
-        <li><a href="#khong-gian-cua-hang">Không gian cửa hàng</a></li>
-      </ul>
-    </nav>
-  </header> 
-  <main>
-
-    <!-- ===== 1. Câu chuyện thương hiệu ===== -->
-    <section id="cau-chuyen-thuong-hieu">
-      <h1>CÂU CHUYỆN CỦA MUSE</h1>
-      <div style="text-align: center;">
-      <img src="https://i.pinimg.com/736x/f2/43/d9/f243d935fe7dbd7a29a9fba8d9179c4c.jpg" alt="Người sáng lập The Muse bên lò nướng"
-      style="width: 100%; height: 400px; object-fit: cover;">
-      </div>
-      <p>Có những ngày ta cần một điều thật nhỏ để khiến mình vui hơn — một chiếc bánh ngọt, một tách cà phê hay đơn giản là một khoảng thời gian được chậm lại.</p>
-      <p><b>The Muse</b> được tạo nên từ chính những khoảnh khắc ấy.</p>
-      <p>Trong nghệ thuật, “Muse” là nguồn cảm hứng khơi nguồn cho những ý tưởng đẹp. Với chúng tôi, mỗi chiếc bánh cũng là một cách để lưu giữ và trao gửi cảm xúc. Từ một buổi sáng bình yên, một cuộc hẹn cùng người thương, một món quà dành cho bạn bè đến những dịp đặc biệt trong cuộc sống, Muse mong muốn trở thành một phần nhỏ nhưng đáng nhớ trong câu chuyện của mỗi người.</p>
-      <p>Chúng tôi tin rằng một chiếc bánh ngon không chỉ được tạo nên từ công thức và nguyên liệu, mà còn từ sự chăm chút, tinh tế và tình yêu dành cho từng chi tiết.</p>
-      <p><b>The Muse – nơi những chiếc bánh kể câu chuyện của riêng bạn.</b></p>
-    </section>
-    <!-- ===== 2. Sứ mệnh - Tầm nhìn - Giá trị cốt lõi ===== -->
-    <section id="su-menh-tam-nhin-gia-tri">
-      <h2>BA ĐIỀU DẪN LỖI MỌI CHIẾC BÁNH RỜI KHỎI LÒ CỦA CHÚNG TÔI</h2>
-
-      <article>
-        <h3>Sứ mệnh</h3>
-        <p>Mang đến những chiếc bánh có chất lượng tốt, hương vị tinh tế và hình thức đẹp mắt, để mỗi lần thưởng thức tại Muse không chỉ là một trải nghiệm ẩm thực mà còn là một khoảnh khắc tận hưởng và kết nối.</p>
-      </article>
-
-      <article>
-        <h3>Tầm nhìn</h3>
+<script>document.documentElement.classList.add("js")</script>
+ 
+<nav class="crumb"><div class="wrap"><a href="index.html">Trang chủ</a> &nbsp;/&nbsp; Giới thiệu</div></nav>
+ 
+<!-- HERO -->
+<div class="hero">
+  <img src="https://i.pinimg.com/736x/f2/43/d9/f243d935fe7dbd7a29a9fba8d9179c4c.jpg" alt="Người sáng lập The Muse bên lò nướng">
+  <div class="in">
+    <span class="eyebrow">The Muse</span>
+    <h1>Giới thiệu</h1>
+    <p>Nơi những chiếc bánh kể câu chuyện của riêng bạn.</p>
+  </div>
+</div>
+ 
+<!-- MENU NHẢY MỤC -->
+<nav class="pills"><div class="wrap">
+  <a href="#cau-chuyen-thuong-hieu">Câu chuyện của Muse</a>
+  <a href="#su-menh-tam-nhin-gia-tri">Sứ mệnh - Tầm nhìn - Giá trị cốt lõi</a>
+  <a href="#nguyen-lieu-chat-luong">Nguyên liệu &amp; Chất lượng</a>
+  <a href="#quy-trinh-lam-banh">Quy trình làm bánh</a>
+  <a href="#khong-gian-cua-hang">Không gian cửa hàng</a>
+</div></nav>
+ 
+<main>
+ 
+<!-- ===== 1. Câu chuyện thương hiệu ===== -->
+<section class="intro" id="cau-chuyen-thuong-hieu"><div class="wrap reveal">
+  <span class="eyebrow">Câu chuyện thương hiệu</span>
+  <h2>Câu chuyện của Muse</h2>
+  <p class="lead">Có những ngày ta cần một điều thật nhỏ để khiến mình vui hơn — một chiếc bánh ngọt, một tách cà phê hay đơn giản là một khoảng thời gian được chậm lại.</p>
+  <p><b>The Muse</b> được tạo nên từ chính những khoảnh khắc ấy.</p>
+  <p>Trong nghệ thuật, “Muse” là nguồn cảm hứng khơi nguồn cho những ý tưởng đẹp. Với chúng tôi, mỗi chiếc bánh cũng là một cách để lưu giữ và trao gửi cảm xúc. Từ một buổi sáng bình yên, một cuộc hẹn cùng người thương, một món quà dành cho bạn bè đến những dịp đặc biệt trong cuộc sống, Muse mong muốn trở thành một phần nhỏ nhưng đáng nhớ trong câu chuyện của mỗi người.</p>
+  <p>Chúng tôi tin rằng một chiếc bánh ngon không chỉ được tạo nên từ công thức và nguyên liệu, mà còn từ sự chăm chút, tinh tế và tình yêu dành cho từng chi tiết.</p>
+  <p class="pull"><b>The Muse – nơi những chiếc bánh kể câu chuyện của riêng bạn.</b></p>
+</div></section>
+ 
+<!-- ===== 2. Sứ mệnh - Tầm nhìn - Giá trị cốt lõi ===== -->
+<section id="su-menh-tam-nhin-gia-tri">
+  <div class="mv"><div class="wrap reveal">
+    <span class="eyebrow">Sứ mệnh · Tầm nhìn · Giá trị cốt lõi</span>
+    <h2>Ba điều dẫn lối mọi chiếc bánh rời khỏi lò của chúng tôi</h2>
+    <div class="row">
+      <h3>Sứ mệnh</h3>
+      <p>Mang đến những chiếc bánh có chất lượng tốt, hương vị tinh tế và hình thức đẹp mắt, để mỗi lần thưởng thức tại Muse không chỉ là một trải nghiệm ẩm thực mà còn là một khoảnh khắc tận hưởng và kết nối.</p>
+    </div>
+    <div class="row">
+      <h3>Tầm nhìn</h3>
+      <div>
         <p>Trở thành một thương hiệu bánh được yêu thích bởi thế hệ trẻ – nơi khách hàng có thể tìm thấy những sản phẩm vừa ngon, vừa đẹp và một không gian đủ thoải mái để tận hưởng những khoảnh khắc của riêng mình.</p>
         <p>The Muse hướng đến việc xây dựng một thương hiệu bánh hiện đại, chú trọng chất lượng sản phẩm, trải nghiệm khách hàng và không ngừng sáng tạo để tạo nên những hương vị mới.</p>
-      </article>
-
-      <article>
-        <h3>Giá trị cốt lõi</h3>
-       <ul>
-    <li>
-      <h4>01. Chất lượng</h4>
-      <p>Chúng tôi đặt chất lượng lên hàng đầu, từ nguyên liệu, công thức đến từng công đoạn làm bánh.</p>
-    </li>
-    <li>
-      <h4>02. Tận tâm</h4>
-      <p>Mỗi chiếc bánh được chăm chút bằng sự tỉ mỉ và trách nhiệm, bởi chúng tôi hiểu rằng phía sau mỗi đơn hàng là một câu chuyện và một cảm xúc được gửi gắm.</p>
-    </li>
-    <li>
-      <h4>03. Sáng tạo</h4>
-      <p>Chúng tôi không ngừng thử nghiệm những hương vị, cách kết hợp và thiết kế mới để mỗi sản phẩm đều mang một dấu ấn riêng.</p>
-    </li>
-    <li>
-      <h4>04. Tinh tế</h4>
-      <p>Từ hương vị, hình thức đến cách phục vụ và không gian, chúng tôi theo đuổi sự tinh tế trong từng chi tiết nhỏ.</p>
-    </li>
-    <li>
-      <h4>05. Kết nối</h4>
-      <p>Bánh không chỉ để thưởng thức. Đó còn là cách chúng ta trao nhau lời chúc, sự quan tâm và những khoảnh khắc đáng nhớ.</p>
-    </li>
-  </ul>
-</section>
-      </article>
-    </section>
-     <!-- ===== 3. Nguyên liệu & Chất lượng ===== -->
-    <section id="nguyen-lieu-chat-luong">
-      <h2>KHÔNG CÓ NGHUYÊN LIỆU NÀO GỌI LÀ "TẠM ỔN"</h2>
-      <div style="text-align: center;">
-      <img src="https://daylambanh.edu.vn/wp-content/uploads/2019/06/nguyen-lieu-thay-the-trong-lam-banh.jpg" alt="Bơ, trứng, vani nguyên liệu làm bánh"
-      style="width: 100%; height: 400px; object-fit: cover;">
       </div>
-      <p>Một chiếc bánh ngon bắt đầu từ những nguyên liệu tốt.</p>
-
-      <p>Tại Muse, chúng tôi ưu tiên lựa chọn những nguyên liệu có nguồn gốc rõ ràng và được kiểm soát kỹ lưỡng trước khi đưa vào sử dụng. Từ bột mì, trứng, sữa, bơ đến chocolate, trái cây và các nguyên liệu tạo hương vị, tất cả đều được lựa chọn dựa trên tiêu chí chất lượng – an toàn – phù hợp với từng công thức.</p>
-
-      <p>Chúng tôi hạn chế việc sử dụng các nguyên liệu không cần thiết để giữ được hương vị tự nhiên và cân bằng của bánh. Mỗi công thức đều được thử nghiệm và điều chỉnh để tạo nên sự hài hòa giữa vị ngọt, độ béo, độ mềm và hương thơm.</p>
-
-      <p>Đặc biệt, bánh được sản xuất theo từng mẻ nhỏ để đảm bảo độ tươi ngon khi đến tay khách hàng.</p>
-
-      <p><b>Tươi mới mỗi ngày. Chỉn chu trong từng thành phần. Trọn vẹn trong từng chiếc bánh.</b></p>
-    </section>
-     <!-- ===== 4. Quy trình làm bánh ===== -->
-    <section id="quy-trinh-lam-banh">
-      <h2>TỪ QUY TRÌNH ĐẾN CHIẾC BÁNH</h2>
-      <p>Đằng sau một chiếc bánh đẹp là rất nhiều công đoạn được thực hiện với sự cẩn thận và chính xác.</p>
-      <ol>
-        <li>
-          <h3>Chọn nguyên liệu</h3>
-          <p>Những nguyên liệu cần thiết được kiểm tra và chuẩn bị trước khi bắt đầu mỗi mẻ bánh.</p>
-        </li>
-        <li>
-          <h3>Chuẩn bị & định lượng</h3>
-          <p>Nguyên liệu được cân đo theo công thức để đảm bảo tỷ lệ chính xác và duy trì hương vị ổn định.</p>
-        </li>
-        <li>
-          <h3>Trộn & tạo hình</h3>
-          <p>Các nguyên liệu được xử lý theo từng công thức riêng. Đây là bước đòi hỏi sự chính xác để tạo nên kết cấu và độ mềm mong muốn của bánh.</p>
-        </li>
-        <li>
-          <h3>Nướng</h3>
-          <p>Bánh được nướng ở nhiệt độ và thời gian phù hợp với từng loại sản phẩm. Chúng tôi kiểm tra từng mẻ để đảm bảo bánh đạt độ chín và màu sắc tiêu chuẩn.</p>
-        </li>
-        <li>
-          <h3>Trang trí</h3>
-          <p>Sau khi hoàn thiện phần bánh, từng sản phẩm được trang trí và hoàn thiện bằng những chi tiết phù hợp với phong cách của The Muse.</p>
-        </li>
-        <li>
-            <h3>Kiểm tra & Đóng gói</h3>
-            <p>Trước khi đến tay khách hàng, mỗi chiếc bánh đều được kiểm tra về hình thức và chất lượng, sau đó được đóng gói cẩn thận.</p>
-        </li>
-      </ol>
-      <p><b>Từ căn bếp của Muse đến bàn tiệc của bạn – mỗi chiếc bánh đều được hoàn thiện bằng sự chăm chút.</b></p>
-    </section>
-      <!-- ===== 5. Không gian cửa hàng ===== -->
-    <section id="khong-gian-cua-hang">
-      <h2>KHÔNG GIAN MUSE</h2>
-      <p>Muse không chỉ là nơi để mua một chiếc bánh.</p>
-      <p>Chúng tôi muốn tạo nên một không gian nơi bạn có thể ngồi xuống, thưởng thức một món ngọt và tạm gác lại những vội vàng bên ngoài.</p>
-      <p>Không gian Muse được xây dựng theo phong cách tối giản, hiện đại và ấm áp, với những gam màu nhẹ nhàng cùng cách bài trí tinh tế. Mỗi góc nhỏ đều được chăm chút để tạo nên cảm giác thoải mái nhưng vẫn giữ được nét đặc trưng của thương hiệu.</p>
-      <p>Bạn có thể ghé Muse cho một buổi sáng bắt đầu bằng cà phê và bánh ngọt, một buổi chiều trò chuyện cùng bạn bè, một buổi hẹn đặc biệt hay đơn giản là tìm một góc nhỏ để dành thời gian cho chính mình.</p>
-
-      <h2>MỘT GÓC NHỎ CHO MỌI CẢM XÚC</h2>
-      <ul>
-        <li><span aria-hidden="true">🍰</span> <strong>Quầy bánh</strong> – nơi những chiếc bánh mới được trưng bày mỗi ngày.</li>
-        <div style="text-align: center;">
-      <img src="https://i.pinimg.com/1200x/d2/4a/69/d24a699d01fef0c67abe1e814a82bb5d.jpg" alt="Góc quầy bánh"
-      style="width: 100%; height: 400px; object-fit: cover;">
-        </div>
-        <li><span aria-hidden="true">🪑</span> <strong>Không gian thư giãn</strong> – phù hợp cho những cuộc trò chuyện và những khoảng thời gian riêng.</li>
-        <div style="text-align: center;">
-      <img src="https://i.pinimg.com/1200x/d0/50/2d/d0502d8f917fd83613fbe4484705c77c.jpg" alt="Khu vực ngồi tại cửa hàng"
-      style="width: 100%; height: 400px; object-fit: cover;">
-        </div>
-        <li><span aria-hidden="true">📸</span> <strong>Góc nhỏ mang dấu ấn The Muse</strong> – để mỗi lần ghé thăm đều có thể lưu lại một khoảnh khắc đáng nhớ.</li>
-        <div style="text-align: center;">
-      <img src="https://i.pinimg.com/736x/77/16/95/77169529dfee1283682a2610efdc8531.jpg" alt="Bếp mở của cửa hàng"
-      style="width: 100%; height: 400px; object-fit: cover;">
-        </div>
-      <p>Cửa hàng đầu tiên của The Muse nằm trên một con phố nhỏ, có bếp mở để khách có thể nhìn thấy bánh đang được làm ra mỗi ngày.</p>
-      <p>Chúng tôi giữ không gian đủ nhỏ để mọi người có thể trò chuyện, đủ ấm để bạn muốn nán lại thêm một tách trà sau khi chọn xong chiếc bánh của mình.</p>
-      <p><b>The Muse – Come for the cake, stay for the moment.</b></p>
-    </section>
+    </div>
+  </div></div>
+ 
+  <div class="band"><div class="wrap reveal">
+    <h2>Giá trị cốt lõi</h2>
+    <ul class="vals">
+      <li><span>01</span><h3>Chất lượng</h3><p>Chúng tôi đặt chất lượng lên hàng đầu, từ nguyên liệu, công thức đến từng công đoạn làm bánh.</p></li>
+      <li><span>02</span><h3>Tận tâm</h3><p>Mỗi chiếc bánh được chăm chút bằng sự tỉ mỉ và trách nhiệm, bởi chúng tôi hiểu rằng phía sau mỗi đơn hàng là một câu chuyện và một cảm xúc được gửi gắm.</p></li>
+      <li><span>03</span><h3>Sáng tạo</h3><p>Chúng tôi không ngừng thử nghiệm những hương vị, cách kết hợp và thiết kế mới để mỗi sản phẩm đều mang một dấu ấn riêng.</p></li>
+      <li><span>04</span><h3>Tinh tế</h3><p>Từ hương vị, hình thức đến cách phục vụ và không gian, chúng tôi theo đuổi sự tinh tế trong từng chi tiết nhỏ.</p></li>
+      <li><span>05</span><h3>Kết nối</h3><p>Bánh không chỉ để thưởng thức. Đó còn là cách chúng ta trao nhau lời chúc, sự quan tâm và những khoảnh khắc đáng nhớ.</p></li>
+    </ul>
+  </div></div>
+</section>
+ 
+<!-- ===== 3. Nguyên liệu & Chất lượng ===== -->
+<section class="ingr" id="nguyen-lieu-chat-luong"><div class="wrap reveal">
+  <img class="arch" src="https://daylambanh.edu.vn/wp-content/uploads/2019/06/nguyen-lieu-thay-the-trong-lam-banh.jpg" alt="Bơ, trứng, vani nguyên liệu làm bánh">
+  <div>
+    <span class="eyebrow">Nguyên liệu &amp; Chất lượng</span>
+    <h2>Không có nguyên liệu nào gọi là "tạm ổn"</h2>
+    <p>Một chiếc bánh ngon bắt đầu từ những nguyên liệu tốt.</p>
+    <p>Tại Muse, chúng tôi ưu tiên lựa chọn những nguyên liệu có nguồn gốc rõ ràng và được kiểm soát kỹ lưỡng trước khi đưa vào sử dụng. Từ bột mì, trứng, sữa, bơ đến chocolate, trái cây và các nguyên liệu tạo hương vị, tất cả đều được lựa chọn dựa trên tiêu chí chất lượng – an toàn – phù hợp với từng công thức.</p>
+    <p>Chúng tôi hạn chế việc sử dụng các nguyên liệu không cần thiết để giữ được hương vị tự nhiên và cân bằng của bánh. Mỗi công thức đều được thử nghiệm và điều chỉnh để tạo nên sự hài hòa giữa vị ngọt, độ béo, độ mềm và hương thơm.</p>
+    <p>Đặc biệt, bánh được sản xuất theo từng mẻ nhỏ để đảm bảo độ tươi ngon khi đến tay khách hàng.</p>
+    <p><b>Tươi mới mỗi ngày. Chỉn chu trong từng thành phần. Trọn vẹn trong từng chiếc bánh.</b></p>
+  </div>
+</div></section>
+ 
+<!-- ===== 4. Quy trình làm bánh ===== -->
+<section class="proc" id="quy-trinh-lam-banh"><div class="wrap reveal">
+  <div class="left">
+    <span class="eyebrow">Quy trình làm bánh</span>
+    <h2>Từ quy trình đến chiếc bánh</h2>
+    <p>Đằng sau một chiếc bánh đẹp là rất nhiều công đoạn được thực hiện với sự cẩn thận và chính xác.</p>
+    <p style="margin-top:16px"><b>Từ căn bếp của Muse đến bàn tiệc của bạn – mỗi chiếc bánh đều được hoàn thiện bằng sự chăm chút.</b></p>
+  </div>
+  <ol>
+    <li><h3>Chọn nguyên liệu</h3><p>Những nguyên liệu cần thiết được kiểm tra và chuẩn bị trước khi bắt đầu mỗi mẻ bánh.</p></li>
+    <li><h3>Chuẩn bị &amp; định lượng</h3><p>Nguyên liệu được cân đo theo công thức để đảm bảo tỷ lệ chính xác và duy trì hương vị ổn định.</p></li>
+    <li><h3>Trộn &amp; tạo hình</h3><p>Các nguyên liệu được xử lý theo từng công thức riêng. Đây là bước đòi hỏi sự chính xác để tạo nên kết cấu và độ mềm mong muốn của bánh.</p></li>
+    <li><h3>Nướng</h3><p>Bánh được nướng ở nhiệt độ và thời gian phù hợp với từng loại sản phẩm. Chúng tôi kiểm tra từng mẻ để đảm bảo bánh đạt độ chín và màu sắc tiêu chuẩn.</p></li>
+    <li><h3>Trang trí</h3><p>Sau khi hoàn thiện phần bánh, từng sản phẩm được trang trí và hoàn thiện bằng những chi tiết phù hợp với phong cách của The Muse.</p></li>
+    <li><h3>Kiểm tra &amp; Đóng gói</h3><p>Trước khi đến tay khách hàng, mỗi chiếc bánh đều được kiểm tra về hình thức và chất lượng, sau đó được đóng gói cẩn thận.</p></li>
+  </ol>
+</div></section>
+ 
+<!-- ===== 5. Không gian cửa hàng ===== -->
+<section class="space" id="khong-gian-cua-hang"><div class="wrap reveal">
+  <div class="center">
+    <span class="eyebrow">Không gian cửa hàng</span>
+    <h2>Không gian Muse</h2>
+    <p>Muse không chỉ là nơi để mua một chiếc bánh.</p>
+    <p>Chúng tôi muốn tạo nên một không gian nơi bạn có thể ngồi xuống, thưởng thức một món ngọt và tạm gác lại những vội vàng bên ngoài.</p>
+    <p>Không gian Muse được xây dựng theo phong cách tối giản, hiện đại và ấm áp, với những gam màu nhẹ nhàng cùng cách bài trí tinh tế. Mỗi góc nhỏ đều được chăm chút để tạo nên cảm giác thoải mái nhưng vẫn giữ được nét đặc trưng của thương hiệu.</p>
+    <p>Bạn có thể ghé Muse cho một buổi sáng bắt đầu bằng cà phê và bánh ngọt, một buổi chiều trò chuyện cùng bạn bè, một buổi hẹn đặc biệt hay đơn giản là tìm một góc nhỏ để dành thời gian cho chính mình.</p>
+  </div>
+ 
+  <div class="gallery">
+    <figure><img src="https://i.pinimg.com/1200x/d2/4a/69/d24a699d01fef0c67abe1e814a82bb5d.jpg" alt="Góc quầy bánh"><figcaption><strong>Quầy bánh</strong> – nơi những chiếc bánh mới được trưng bày mỗi ngày.</figcaption></figure>
+    <figure><img src="https://i.pinimg.com/1200x/d0/50/2d/d0502d8f917fd83613fbe4484705c77c.jpg" alt="Khu vực ngồi tại cửa hàng"><figcaption><strong>Không gian thư giãn</strong> – phù hợp cho những cuộc trò chuyện và những khoảng thời gian riêng.</figcaption></figure>
+    <figure><img src="https://i.pinimg.com/736x/77/16/95/77169529dfee1283682a2610efdc8531.jpg" alt="Bếp mở của cửa hàng"><figcaption><strong>Góc nhỏ mang dấu ấn The Muse</strong> – để mỗi lần ghé thăm đều có thể lưu lại một khoảnh khắc đáng nhớ.</figcaption></figure>
+  </div>
+ 
+  <div class="center">
+    <h3 style="font-size:28px">Một góc nhỏ cho mọi cảm xúc</h3>
+    <p>Cửa hàng đầu tiên của The Muse nằm trên một con phố nhỏ, có bếp mở để khách có thể nhìn thấy bánh đang được làm ra mỗi ngày.</p>
+    <p>Chúng tôi giữ không gian đủ nhỏ để mọi người có thể trò chuyện, đủ ấm để bạn muốn nán lại thêm một tách trà sau khi chọn xong chiếc bánh của mình.</p>
+    <p class="sign">The Muse – Come for the cake, <em>stay for the moment.</em></p>
+  </div>
+</div></section>
+ 
+</main>
+ 
+<script>
+/* Menu sáng theo mục đang đọc */
+const links=document.querySelectorAll(".pills a");
+const spy=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting) links.forEach(a=>a.classList.toggle("active",a.getAttribute("href")==="#"+e.target.id));
+}),{rootMargin:"-35% 0px -55% 0px"});
+document.querySelectorAll("section[id]").forEach(s=>spy.observe(s));
+ 
+/* Hiện dần khi cuộn tới */
+const show=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){e.target.classList.add("in-view");show.unobserve(e.target)}
+}),{threshold:.12});
+document.querySelectorAll(".reveal").forEach(el=>show.observe(el));
+</script>
 </body>
 </html>
+ 
