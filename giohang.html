@@ -8,21 +8,26 @@
      <style>
         body {
             font-family: "Times New Roman", serif;
-            background: #FFF8E7;
-            color: #001F3F;
+            background: #001F3F;
+            color: #fff8E7;
             margin: 0;
             text-align: center;
             
         }
 
-        header {
+        .thongbao1 {
             background: #001F3F;
-            color: #FFF8E7;
-            padding: 20px;
+            color: #fff8E7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 18px;
             text-align: center;
+            font-size: 30px;
         }
         .nd-giohang {
-            color: #001F3F;
+            color: #fff8E7;
             font-size: 18px;
             margin-top: 0; 
             text-align: center;
@@ -33,13 +38,13 @@
         }
 
         nav {
-            background: #E8D8B9;
+            background: #fff8E7;
             padding: 20px;
             text-align: center;
         }
 
         nav a {
-            color: #001F3F;
+            color: #fff8E7;
             text-decoration: none;
             margin: 15px;
             font-weight: bold;
@@ -55,123 +60,116 @@
         }
 
         .khung {
-            background: #fff8E7;
-            max-width: 900px;
-            margin: auto;
-            padding: 50px;
-            border-radius: 12px;
-            box-shadow: 0 3px 10px #ddd;
-            font-size:25px;
-            display:flex;
-            text-align: center;
-            height:200px;
-            
-        }
+    background: #fff8E7;
+    color: #001F3F;
+    width: 90%;
+    max-width: 1000px;
+    margin: auto;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px #ddd;
+    font-size: 18px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    box-sizing: border-box;
+    height: auto;
+    min-height: 200px;
+}
+
+#danhsach, #tongtien, #nut {
+    width: 100%;
+    box-sizing: border-box;
+    
+
+}
+
+.anhnen {
+    min-height: 430px;
+    height: auto;
+    background-image: url("https://the350f.com/wp-content/uploads/2026/07/Tra-nhan-2026-2.jpg");
+    background-size: cover;
+    background-position: center;
+    padding: 40px 0;
+    box-sizing: border-box;
+}
+
+.sanpham {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 0;
+    border-bottom: 1px solid #ccc;
+    text-align: left;
+}
+
+.anh-sanpham {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+
+.thongtin {
+    flex: 1;
+}
+
+.gia {
+    color: #8A5A2B;
+    font-weight: bold;
+}
+
+.tong {
+    text-align: right;
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 25px;
+}
+
+.nut {
+    
+    background-color: #001F3F;
+    color: #FFF8E7;
+    padding: 10px;
+    border: none;
+    
+    cursor: pointer;
+    font-family: "Times New Roman", serif;
+    font-size: 30px;
+    margin: 3px;
+
+}
+button:hover {
+    background-color: #8A5A2B;
+    color: #FFF8E7;
+}
+
+.rong {
+    text-align: center;
+    padding: 35px 10px;
+}
+
         
-
-        .sanpham {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 15px;
-            padding: 18px 0;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .thongtin {
-            flex: 1;
-        }
-
-        .gia {
-            color: #8A5A2B;
-            font-weight: bold;
-        }
-
-        button {
-            background: #001F3F;
-            color: #fff8E7;
-            padding: 8px 12px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin: 3px;
-            font-size:20px;
-        }
-
-        button:hover {
-            background:#8A5A2B;
-            color: #fff8E7;
-
-        }
-         .anhnen {
-            height: 430px;
-            background-image: url("https://the350f.com/wp-content/uploads/2026/07/Tra-nhan-2026-2.jpg");
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 20px;
-        }
-
-        .xoa {
-            background: #9B3333;
-        }
-
-        .tong {
-            text-align: right;
-            font-size: 22px;
-            font-weight: bold;
-            margin-top: 25px;
-        }
-
-        .nut {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 25px;
-        }
-
-        .rong {
-            text-align: center;
-            padding: 35px 10px;
-        }
-
-        @media (max-width: 600px) {
-            .sanpham {
-                flex-wrap: wrap;
-            }
-
-            .khung {
-                margin: 10px;
-                padding: 15px;
-            }
-        }
     </style>
 </head>
 
 <body>
 
-    <header>
-        <h1>THE MUSE</h1>
-    </header>
+    <div class thongbao1>
+        <a href="header.html">
+         <img src="https://cdn.phototourl.com/member/2026-10-15-9326430f-fdc1-453e-bd4f-98518ae7bc1c.png"
+                     alt="The Muse" width ="150" height="120">
+        </a>
+    </div>
     <div class="nd-giohang"> 
         Giỏ hàng của bạn 
     </div>
 
-    <nav>
-         <a href="gioithieu.html">Giới thiệu</a>
-            <a href="sanpham.html">Sản phẩm</a>
-            <a href="The muse/chinhsach.html">Chính sách</a>
-            <a href="The muse/tk-theo-yc.html">Thiết kế theo yêu cầu</a>
-            <a href="The muse/tintuc.html">Tin tức</a>
-            <a href="The muse/lienhe.html">Liên hệ</a>
-    </nav>
+   
 <div class="anhnen"> 
-
-    
 
     <div class="khung">
         <div id="danhsach"></div>
@@ -210,38 +208,53 @@
             let tong = 0;
 
             gioHang.forEach(function(sp, index) {
-                let thanhTien = sp.gia * sp.soLuong;
-                tong += thanhTien;
+    let thanhTien = sp.gia * sp.soLuong;
+    tong += thanhTien;
 
-                danhsach.innerHTML += `
-                    <div class="sanpham">
-                        <div class="thongtin">
-                            <h3>${sp.ten}</h3>
-                            <p>Kích thước: ${sp.kichThuoc || sp.size}</p>
-                            <p>Đơn giá:
-                                <span class="gia">
-                                    ${sp.gia.toLocaleString("vi-VN")}đ
-                                </span>
-                            </p>
-                            <p>Thành tiền:
-                                <span class="gia">
-                                    ${thanhTien.toLocaleString("vi-VN")}đ
-                                </span>
-                            </p>
-                        </div>
+    danhsach.innerHTML += `
+        <div class="sanpham">
 
-                        <div>
-                            <button onclick="thayDoiSoLuong(${index}, -1)">−</button>
-                            <strong>${sp.soLuong}</strong>
-                            <button onclick="thayDoiSoLuong(${index}, 1)">+</button>
-                            <br>
-                            <button class="xoa" onclick="xoaSanPham(${index})">
-                                Xóa
-                            </button>
-                        </div>
-                    </div>
-                `;
-            });
+            <img
+                src="${sp.anh || sp.hinhAnh || sp.image || 'https://placehold.co/120x120?text=The+Muse'}"
+                alt="${sp.ten}"
+                class="anh-sanpham"
+            >
+
+            <div class="thongtin">
+                <h3>${sp.ten}</h3>
+
+                <p>Kích thước: ${sp.kichThuoc || sp.size || 'Chưa có'}</p>
+
+                <p>Đơn giá:
+                    <span class="gia">
+                        ${sp.gia.toLocaleString("vi-VN")}đ
+                    </span>
+                </p>
+
+                <p>Thành tiền:
+                    <span class="gia">
+                        ${thanhTien.toLocaleString("vi-VN")}đ
+                    </span>
+                </p>
+            </div>
+
+            <div>
+                <button onclick="thayDoiSoLuong(${index}, -1)">−</button>
+
+                <strong>${sp.soLuong}</strong>
+
+                <button onclick="thayDoiSoLuong(${index}, 1)">+</button>
+
+                <br>
+
+                <button class="xoa" onclick="xoaSanPham(${index})">
+                    Xóa
+                </button>
+            </div>
+
+        </div>
+    `;
+});
 
             tongtien.innerHTML = `
                 <div class="tong">
