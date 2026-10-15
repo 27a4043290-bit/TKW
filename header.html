@@ -18,12 +18,21 @@
 
         /* Thanh thong bao */
         .thongbao {
-            background-color: #001F3F;
+            background: #001F3F;
             color: #fff8E7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 18px;
             text-align: center;
-            padding: 10px;
             font-size: 30px;
-            letter-spacing: 5px;
+           
+        }
+        .thongbao:hover {
+            color: #fff8E7;
+            text-decoration: none;
+            display:flex;
         }
 
         /* Dau trang */
@@ -33,6 +42,8 @@
             justify-content: space-between;
             align-items: center;
             gap: 20px;
+            justify-content: center;
+            
         }
 
         .menu {
@@ -41,12 +52,16 @@
             justify-content: center;
             flex-wrap: wrap;
             gap: 18px;
+            text-align: center;
         }
 
         .menu a {
             color: #001F3F;
             font-size: 17px;
             text-decoration: none;
+            text-align: center;
+            justify-content: center;
+
         }
 
         .tienich {
@@ -328,29 +343,17 @@
             z-index: 101;
         }
 
-        @media (max-width: 800px) {
-            .dautrang {
-                flex-direction: column;
-            }
-
-            .menu {
-                gap: 12px;
-            }
-
-            .menu a {
-                font-size: 16px;
-            }
-
-            .thongbao {
-                font-size: 24px;
-            }
-        }
+      
     </style>
 </head>
 
 <body>
 
-    <div class="thongbao">THE MUSE</div>
+    <div class="thongbao">
+         <img src="https://cdn.upanhlaylink.com/i/w7LAN7XV.png"
+                     alt="The Mouse" width ="150" height="90">
+       
+    </a></div>
 
     <!-- Dau trang -->
     <div class="dautrang">
