@@ -1,0 +1,304 @@
+
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+
+<!-- SỬA TÊN WEB -->
+
+
+
+<title>ChocoFlan </title>
+
+<style>
+   
+body {
+    margin: 0;
+    font-family: Arial;
+    color: #001F3F;
+    background: #fff8E7;
+}
+
+.product, .related {
+    background: #fff8E7;
+    padding: 40px 8%;
+}
+
+.product {
+    display: flex;
+    gap: 30px;
+}
+
+.main-img {
+    width: 40%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.info {
+    flex: 1;
+}
+
+h1, h2 {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.price {
+    color: #71432e;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+select, button {
+    padding: 10px;
+    cursor: pointer;
+}
+
+button {
+    border: none;
+    background: #001f3f;
+    color: white;
+    margin: 5px 0;
+}
+
+.buy {
+    width: 100%;
+}
+
+.details {
+    background: #fff8E7;
+    padding: 25px 9%;
+    line-height: 1.7;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.card {
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    overflow: hidden;
+    text-align: center;
+    background: #fffdf7;
+    padding: 10px;
+    box-sizing: border-box;
+    transition: 0.3s;
+}
+
+.card img {
+    display: block;
+    width: 100%;
+    height: 150px;
+    object-fit: contain;
+    border-radius: 8px;
+    margin: 0 auto;
+}
+
+.card h3 {
+    font-size: 16px;
+    margin: 12px 0;
+}
+
+.card p {
+    color: #bd3d23;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+@media (max-width: 650px) {
+    .product {
+        flex-direction: column;
+    }
+
+    .main-img {
+        width: 100%;
+    }
+
+    .products {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- CHI TIẾT BÁNH -->
+<div class="product">
+    
+
+
+    <!-- SỬA ẢNH BÁNH -->
+
+
+
+    <img class="main-img" src="https://the350f.com/wp-content/uploads/2026/04/ChocoFlan-CT-2.jpg" alt="ChocoFlan">
+
+
+
+
+
+
+      <!-- SỬA TÊN BÁNH, GIÁ TIỀN , MÔ TẢ SẢN PHẨM -->
+
+
+
+
+    <div class="info">
+        <h1>ChocoFlan</h1>
+        <p class="price" id="price">120,000 VND</p>
+        
+
+        <p>
+            Lớp bông lan cacao mềm xốp, thoảng hương cà phê nồng nàn, nâng đỡ lớp flan êm mát với kết cấu mịn mượt như lụa và vị béo ngậy tròn đầy. Phủ trên cùng là lớp caramel từ đường thốt nốt, nâu cánh gián óng ánh, mang vị ngọt thanh đặc trưng. Chỉ cần một muỗng nhỏ với đủ ba tầng bánh cùng chút kem trang trí, cảm giác mềm tan sẽ lan nhẹ nơi đầu lưỡi, để lại dư vị béo thơm vấn vương thật lâu trong khoang miệng. 
+
+
+        </p>
+
+
+
+
+
+
+
+        <!-- SỬA SIZE BÁNH, GIÁ TIỀN TỪNG SIZE -->
+
+
+
+
+        <p>Size:
+    <select id="size" onchange="doiGia()">
+        <option value="120000">10 cm</option>
+        <option value="150000" selected>16 cm</option>
+    </select>
+</p>
+
+
+        <p>Số lượng:
+            <button onclick="doiSL(-1)">−</button>
+            <span id="sl">1</span>
+            <button onclick="doiSL(1)">+</button>
+        </p>
+
+        <button class="buy" onclick="mua()">Thêm vào giỏ hàng</button>
+        <button class="buy" onclick="muaNgay()">Mua ngay</button>
+
+    </div>
+</div>
+
+<!-- THÔNG TIN BÁNH -->
+
+
+
+
+<!-- SỬA MÔ TẢ SẢN PHẨM -->
+
+
+
+
+<div class="details">
+   
+
+    <h3>Cấu trúc bánh:</h3>
+    <ul>
+        <li>Lớp 1: Bánh bông lan cacao thơm hương cà phê.</li>
+        <li>Lớp 2: Flan mịn mượt như nhung cùng vị béo ngậy đậm đà.</li>
+        <li>Lớp 3: Caramel làm từ đường Thốt nốt với sắc nâu cánh gián óng ánh với vị ngọt thơm đặc trưng.</li>
+    </ul>
+
+
+
+
+<!-- SỬA HƯỚNG DẪN SỬ DỤNG -->
+
+
+
+
+
+    <h3>Hướng dẫn sử dụng:</h3>
+    <ul>
+        <li>Bảo quản bánh trong hộp kín ở ngăn mát tủ lạnh, duy trì nhiệt độ từ 2–5°C để giữ độ tươi ngon của kem và dâu tây</li>
+        <li>Nên sử dụng bánh trong vòng 24 giờ kể từ khi mua hoặc chế biến để đảm bảo hương vị và chất lượng tốt nhất.</li>
+        <li>Tránh để bánh ở nhiệt độ phòng quá 2 giờ, hạn chế tiếp xúc trực tiếp với ánh nắng và không nên cấp đông vì có thể làm thay đổi kết cấu kem, vỏ bánh và dâu tây.</li>
+    </ul>
+</div>
+
+<!-- SẢN PHẨM LIÊN QUAN -->
+
+
+
+
+
+<!-- SỬA HÌNH ẢNH, TÊN, GIÁ TIỀN CỦA 4 SẢN PHẨM LIÊN QUAN -->
+
+
+
+
+
+<div class="related">
+    <h2>Sản phẩm liên quan</h2>
+
+    <div class="products">
+        <div class="card">
+            
+            <a href="D:\Vs code\Thiết kế web\blt TKW\The muse\tk-theo-yc.html"><img src="https://donutelier.co.uk/wp-content/uploads/2022/11/Vanilla_Cookie_Cream_Donut.png" alt="bánh a" ></a>
+            <h3> Kem bánh quy vani  </h3>
+            <p>24,000 VND</p>
+            
+        </div>
+
+        <div class="card">
+            <a href="D:\Vs code\Thiết kế web\blt TKW\The muse\tk-theo-yc.html"><img src="https://donutelier.co.uk/wp-content/uploads/2026/07/Strawberry-matcha-for-web-1.jpg" alt="bánh b"></a>
+            <h3>Matcha dâu tây</h3>
+            <p>25,000 VND</p>
+        </div>
+
+        <div class="card">
+            <a href="D:\Vs code\Thiết kế web\blt TKW\The muse\tk-theo-yc.html"><img src="https://donutelier.co.uk/wp-content/uploads/2025/07/Berry-Macaron.jpg" alt="bánh c"></a>
+            <h3> Bánh Macaron vị dâu</h3>
+            <p>50,000 VND</p>
+        </div>
+
+        <div class="card">
+            <a href="D:\Vs code\Thiết kế web\blt TKW\The muse\tk-theo-yc.html"><img src="https://donutelier.co.uk/wp-content/uploads/2026/07/Vanilla-Choc-Ice-Cream-Cookie-for-Web.jpg" alt="bánh d"></a>
+            <h3>Rochers Gianduja</h3>
+            <p>28,000 VND</p>
+        </div>
+    </div>
+</div>
+
+<script>
+let soLuong = 1;
+
+function doiSL(n) {
+    soLuong += n;
+    if (soLuong < 1) soLuong = 1;
+    document.getElementById("sl").innerText = soLuong;
+    doiGia();
+}
+
+function doiGia() {
+    let gia = Number(document.getElementById("size").value);
+    document.getElementById("price").innerText =
+        (gia * soLuong).toLocaleString("vi-VN") + " VND";
+}
+
+function mua() {
+    alert("Bạn đã chọn mua " + soLuong + " bánh Kem dâu!");
+}
+
+function muaNgay() {
+    window.location.href = "file:///D:/Vs%20code/Thi%E1%BA%BFt%20k%E1%BA%BF%20web/blt%20TKW/The%20muse/thanhtoan.html";
+}
+</script> 
+
+</body>
+</html>
