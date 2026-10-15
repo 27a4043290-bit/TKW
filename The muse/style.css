@@ -1,0 +1,31 @@
+ /* ===== Màu sắc dùng chung ===== */
+:root {
+  --bg: #fff7f0;       /* nền ngoài */
+  --card: #ffffff;     /* nền khung trắng */
+  --bar: #ffefd9;      /* nền thanh đường dẫn */
+  --ink: #0b1a33;      /* màu chữ */
+  --muted: #7a7f8a;    /* chữ mờ */
+  --line: #e8e1d8;     /* đường kẻ */
+  --accent: #fdc86e;   /* màu vàng nút bấm */
+  --price: #d2411e;    /* màu nhấn cam đỏ */
+  --err: #c62828;      /* màu báo lỗi */
+  --ok: #2e7d32;       /* màu báo thành công*/
+
+  --font-main: Roboto, Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+/* áp dụng cho MỌI trang (bỏ .contact-page) */
+body {
+  margin: 0;
+  background: var(--bg);
+  font-family: var(--font-main);
+  color: var(--ink);
+  min-height: 100vh;
+}
+
+input, button, textarea, select {
+  font-family: inherit;
+  color: inherit;
+}
