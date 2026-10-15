@@ -4,20 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Giới thiệu - The Muse</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 <style>
 :root{
-  --bg:#fff7f0;       /* nền ngoài */
-  --card:#ffffff;     /* nền khung trắng */
-  --bar:#ffefd9;      /* nền thanh đường dẫn */
-  --ink:#0b1a33;      /* màu chữ */
-  --muted:#7a7f8a;    /* chữ mờ */
-  --line:#e8e1d8;     /* đường kẻ */
-  --accent:#fdc86e;   /* màu vàng nút bấm */
-  --price:#d2411e;    /* màu nhấn cam đỏ */
-  --err:#c62828;      /* màu báo lỗi */
-  --ok:#2e7d32;       /* màu báo thành công */
-  --font:"Roboto",Arial,sans-serif;
+ :root{--gap:clamp(14px,2.6vw,40px);--pad:clamp(16px,5vw,80px)}
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -117,6 +108,7 @@ ol li::before{content:counter(s);position:absolute;left:-70px;top:-2px;width:44p
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.js .reveal{opacity:1;transform:none;transition:none}}
 </style>
 <link rel="stylesheet" href="header.css">
+<script src="float.js" defer></script>
 </head>
 <body>
 <div id="site-header"></div>

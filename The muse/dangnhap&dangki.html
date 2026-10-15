@@ -20,6 +20,30 @@
             box-shadow: 0 0 10px #ccc;
             border-radius: 15px;
         }
+        .container {
+    width: 350px;
+    margin: 30px auto;
+    padding: 25px;
+    background: white;
+    box-shadow: 0 0 10px #ccc;
+    border-radius: 15px;
+}
+
+        .container button {
+            width: 100%;
+            padding: 12px;
+            background: var(--accent);
+            color: var(--ink);
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background .2s, color .2s;
+        }
+        .container button:hover {
+            background: var(--price);
+            color: #fff;
+        }
 
         h1 {
             color: #001F3F;
@@ -53,10 +77,13 @@
             display: none;
         }
     </style>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="header.css">
+<script src="float.js" defer></script>
 </head>
-
 <body>
-
+<div id="site-header"></div>
+<script src="header.js"></script>
 <div class="container">
 
     <!-- ĐĂNG KÝ -->
@@ -159,6 +186,12 @@
             alert("Email hoặc mật khẩu không đúng!");
         }
     }
+function theoLienKet() {
+    if (location.hash === "#dang-nhap") hienDangNhap();
+    else hienDangKy();
+}
+theoLienKet();
+addEventListener("hashchange", theoLienKet);
 </script>
 
 </body>

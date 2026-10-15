@@ -2,20 +2,11 @@
 <html lang="vi"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Muse – Custom Cake</title>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 <style>
 :root{
-  --bg:#fff7f0;       /* nền ngoài */
-  --card:#ffffff;     /* nền khung trắng */
-  --bar:#ffefd9;      /* nền thanh đường dẫn */
-  --ink:#0b1a33;      /* màu chữ */
-  --muted:#7a7f8a;    /* chữ mờ */
-  --line:#e8e1d8;     /* đường kẻ */
-  --accent:#fdc86e;   /* màu vàng nút bấm */
-  --price:#d2411e;    /* màu nhấn cam đỏ */
-  --err:#c62828;      /* màu báo lỗi */
-  --ok:#2e7d32;       /* màu báo thành công */
-  --font:"Roboto",Arial,sans-serif;
+ :root{--gap:clamp(14px,2.6vw,40px);--pad:clamp(16px,5vw,80px)}
 }
 *{box-sizing:border-box}
 [hidden]{display:none!important}
@@ -81,6 +72,7 @@ aside .btn{width:100%;padding:14px}
 .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 18px;border-radius:8px;display:none}
 </style>
 <link rel="stylesheet" href="header.css">
+<script src="float.js" defer></script>
 </head>
 <body>
 <div id="site-header"></div>
