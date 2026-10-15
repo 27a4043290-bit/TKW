@@ -4,65 +4,69 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sản phẩm - The Muse</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Be+Vietnam+Pro:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap">
 <style>
 /* ===== 1. Biến màu & font: sửa ở đây là đổi cả trang ===== */
 :root{
-  --navy:#0e2240;      /* chữ, viền, thanh "Thêm vào giỏ" */
-  --red:#c8341d;       /* giá, nhãn Hot, gạch chân menu */
-  --cream:#fdf3e8;     /* nền nút danh mục, nhãn Mới */
-  --gold:#f2b866;      /* viền trái nút danh mục */
-  --line:#dcdcdc;
-  --font-title:"Playfair Display",Georgia,serif;
-  --font-body:"Be Vietnam Pro",Arial,sans-serif;
+  --bg:#fff7f0;       /* nền ngoài */
+  --card:#ffffff;     /* nền khung trắng */
+  --bar:#ffefd9;      /* nền thanh đường dẫn */
+  --ink:#0b1a33;      /* màu chữ */
+  --muted:#7a7f8a;    /* chữ mờ */
+  --line:#e8e1d8;     /* đường kẻ */
+  --accent:#fdc86e;   /* màu vàng nút bấm */
+  --price:#d2411e;    /* màu nhấn cam đỏ */
+  --err:#c62828;      /* màu báo lỗi */
+  --ok:#2e7d32;       /* màu báo thành công */
+  --font:"Roboto",Arial,sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:var(--font-body);color:var(--navy);background:#fff}
+body{font-family:var(--font);color:var(--ink);background:var(--bg)}
 a{color:inherit;text-decoration:none}
 
 /* ===== 2. Thanh breadcrumb (đường dẫn) ===== */
-.breadcrumb{background:#fde9d7;padding:18px 5vw;font-size:18px;color:#6b6b6b}
-.breadcrumb a:hover{color:var(--red)}
+.breadcrumb{background:var(--bar);padding:18px 5vw;font-size:18px;color:var(--muted)}
+.breadcrumb a:hover{color:var(--price)}
 .breadcrumb span{margin:0 8px}
 
 /* ===== 3. Khung trang: cột trái (danh mục) + cột phải (sản phẩm) ===== */
 .container{max-width:1400px;margin:0 auto;padding:0 20px}
-.page-title{font-family:var(--font-title);font-size:36px;padding:40px 0 28px;border-bottom:1px solid var(--line)}
+.page-title{font-size:36px;padding:40px 0 28px;border-bottom:1px solid var(--line)}
 .layout{display:grid;grid-template-columns:320px 1fr;gap:40px;padding:40px 0 80px}
 
 .sidebar{position:sticky;top:24px;align-self:start;display:flex;flex-direction:column;gap:20px}
-.cat-btn{display:flex;align-items:center;gap:18px;padding:16px 20px;background:var(--cream);
-  border-left:3px solid var(--gold);border-radius:6px;font-weight:600;font-size:17px;text-transform:uppercase}
-.cat-btn.active{background:var(--navy);color:#fff;border-left-color:var(--red)}
+.cat-btn{display:flex;align-items:center;gap:18px;padding:16px 20px;background:var(--bar);
+  border-left:3px solid var(--accent);border-radius:6px;font-weight:600;font-size:17px;text-transform:uppercase}
+.cat-btn.active{background:var(--ink);color:#fff;border-left-color:var(--price)}
 
 /* ===== 4. Mỗi nhóm bánh = 1 section ===== */
 .group{scroll-margin-top:24px;margin-bottom:60px}
 /* Đường kẻ vàng ngăn giữa các nhóm bánh (không có ở nhóm đầu tiên) */
-.group + .group{border-top:1px solid var(--gold);padding-top:50px}
-.group h2{font-family:var(--font-title);font-size:24px;margin-bottom:26px}
+.group + .group{border-top:1px solid var(--accent);padding-top:50px}
+.group h2{font-size:24px;margin-bottom:26px}
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
 
 /* ===== 5. Thẻ sản phẩm ===== */
-.card{position:relative;display:flex;flex-direction:column;border:1px solid var(--navy);
-  border-radius:40px;overflow:hidden;background:#fff}
+.card{position:relative;display:flex;flex-direction:column;border:1px solid var(--ink);
+  border-radius:40px;overflow:hidden;background:var(--card)}
 .thumb{position:relative;aspect-ratio:4/5;background:linear-gradient(160deg,#e8d9c4,#b9926a)}
 .thumb img{width:100%;height:100%;object-fit:cover;display:block}
 .badges{position:absolute;top:20px;left:20px;display:flex;flex-direction:column;gap:8px;align-items:flex-start}
 .badge{font-size:12px;font-weight:500;padding:5px 12px;border-radius:4px}
-.badge.hot{background:var(--red);color:#fff}
-.badge.new{background:#f9d9a0;color:var(--navy)}
+.badge.hot{background:var(--price);color:#fff}
+.badge.new{background:var(--accent);color:var(--ink)}
 .info{padding:22px 16px 26px;text-align:center}
-.info h3{font-family:var(--font-title);font-size:22px;margin-bottom:22px}
+.info h3{font-size:22px;margin-bottom:22px}
 .price{font-weight:500;font-size:16px}
-.price b{color:var(--red);font-weight:600}
+.price b{color:var(--price);font-weight:600}
 
 /* Thanh "Thêm vào giỏ hàng" trượt lên khi rê chuột */
-.add{position:absolute;left:0;right:0;bottom:0;background:var(--navy);color:#fff;border:0;
-  padding:22px;font:500 15px var(--font-body);cursor:pointer;transform:translateY(100%);
+.add{position:absolute;left:0;right:0;bottom:0;background:var(--ink);color:#fff;border:0;
+  padding:22px;font:500 15px var(--font);cursor:pointer;transform:translateY(100%);
   transition:transform .25s}
 .card:hover .add,.card:focus-within .add{transform:none}
-.card:focus-visible{outline:3px solid var(--gold)}
+.card:focus-visible{outline:3px solid var(--accent)}
 
 /* ===== 6. Responsive ===== */
 @media(max-width:1000px){
@@ -74,8 +78,11 @@ a{color:inherit;text-decoration:none}
 @media(max-width:560px){.grid{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.add{transition:none}}
 </style>
+<link rel="stylesheet" href="header.css">
 </head>
 <body>
+<div id="site-header"></div>
+<script src="header.js"></script>
 
 <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Trang chủ</a><span>/</span>Sản phẩm</nav>
 
