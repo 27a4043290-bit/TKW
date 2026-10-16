@@ -1,0 +1,189 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<link rel="stylesheet" href="D:\Vs code\Thiết kế web\blt TKW\The muse\banh.css">
+
+<!-- SỬA TÊN WEB -->
+
+
+
+<title>Bánh quy kem vani socola - Donut cake</title>
+
+
+</head>
+
+<body>
+
+<!-- CHI TIẾT BÁNH -->
+<div class="product">
+    
+
+
+    <!-- SỬA ẢNH BÁNH -->
+
+
+
+    <img class="main-img" src="https://donutelier.co.uk/wp-content/uploads/2026/07/Vanilla-Choc-Ice-Cream-Cookie-for-Web.jpg" alt="Kem bánh quy vani ">
+
+
+
+
+
+
+      <!-- SỬA TÊN BÁNH, GIÁ TIỀN , MÔ TẢ SẢN PHẨM -->
+
+
+
+
+    <div class="info">
+        <h1>Bánh quy kem vani socola </h1>
+        <p class="price" id="price">24,000 VND</p>
+        
+
+        <p>
+            Bánh quy sô cô la kép HOẶC bánh quy socola chip, kem vani mềm, sốt sô cô la, vụn sô cô la  
+        </p>
+
+
+
+
+
+
+
+        <!-- SỬA SIZE BÁNH, GIÁ TIỀN TỪNG SIZE -->
+
+
+
+
+        <p>Size:
+    <select id="size" onchange="doiGia()">
+        <option value="24000">6 cm</option>
+        <option value="35000" selected>9 cm</option>
+    </select>
+</p>
+
+
+        <p>Số lượng:
+            <button onclick="doiSL(-1)">−</button>
+            <span id="sl">1</span>
+            <button onclick="doiSL(1)">+</button>
+        </p>
+
+        <button class="buy" onclick="mua()">Thêm vào giỏ hàng</button>
+        <button class="buy" onclick="muaNgay()">Mua ngay</button>
+
+    </div>
+</div>
+
+<!-- THÔNG TIN BÁNH -->
+
+
+
+
+<!-- SỬA MÔ TẢ SẢN PHẨM -->
+
+
+
+
+<div class="details">
+    <h2>Mô tả sản phẩm</h2>
+    <p>Một món tráng miệng độc đáo và sang trọng, kết hợp giữa lớp vỏ bánh quy sô cô la chip vàng ươm, một viên kem vani kem mịn, và được rưới sốt sô cô la tan chảy phong phú cùng lớp trang trí sô cô la bào tinh tế.</p>
+
+    <h3>Cấu trúc bánh:</h3>
+    <ul>
+        <li>Lớp đế là một chiếc bánh quy sô cô la chip mềm, ẩm, có kết cấu xốp và giòn ở cạnh, được xếp gọn gàng trong khay giấy trang trí.</li>
+        <li>Một viên kem vani lớn, mịn màng và béo ngậy, được tạo hình gọn gàng, nằm ngay trên lớp đế bánh quy.</li>
+        <li>Toàn bộ bề mặt kem được rưới sốt sô cô la đen đậm đà theo hình xoắn ốc và phủ đầy những mảnh sô cô la bào tinh xảo.</li>
+    </ul>
+
+
+
+
+<!-- SỬA HƯỚNG DẪN SỬ DỤNG -->
+
+
+
+
+
+    <h3>Hướng dẫn sử dụng:</h3>
+    <ul>
+        <li>Bảo quản bánh trong hộp kín ở ngăn mát tủ lạnh, duy trì nhiệt độ từ 2–5°C để giữ độ tươi ngon của kem và dâu tây</li>
+        <li>Nên sử dụng bánh trong vòng 24 giờ kể từ khi mua hoặc chế biến để đảm bảo hương vị và chất lượng tốt nhất.</li>
+        <li>Tránh để bánh ở nhiệt độ phòng quá 2 giờ, hạn chế tiếp xúc trực tiếp với ánh nắng và không nên cấp đông vì có thể làm thay đổi kết cấu kem, vỏ bánh và dâu tây.</li>
+    </ul>
+</div>
+
+<!-- SẢN PHẨM LIÊN QUAN -->
+
+
+
+
+
+<!-- SỬA HÌNH ẢNH, TÊN, GIÁ TIỀN CỦA 4 SẢN PHẨM LIÊN QUAN -->
+
+
+
+
+
+<div class="related">
+    <h2>Sản phẩm liên quan</h2>
+
+    <div class="products">
+        <div class="card">
+            <a href="D:\Vs code\Thiết kế web\blt TKW\The muse\donut\Matchadautay.html"><img src="https://donutelier.co.uk/wp-content/uploads/2026/07/Strawberry-matcha-for-web-1.jpg" alt="bánh b"></a>
+            <h3>Matcha dâu tây</h3>
+            <p>25,000 VND</p>
+        </div>
+
+        <div class="card">
+            <a href="D:\Vs code\Thiết kế web\blt TKW\The muse\donut\banhkemdau.html" ><img src="https://donutelier.co.uk/wp-content/uploads/2023/06/Fraiser_Donut.png" alt="bánh b"></a>
+            <h3>Kem dâu</h3>
+            <p>22,000 VND</p>
+        </div>
+
+        <div class="card">
+            <a href="D:\Vs code\Thiết kế web\blt TKW\The muse\donut\donutkemvani-dâu.html"><img src="https://donutelier.co.uk/wp-content/uploads/2026/07/Vanilla-Berry-Ice-Cream-Donut-for-Web.jpg" alt="bánh c"></a>
+            <h3> Bánh donut kem vani-dâu</h3>
+            <p>25,000 VND</p>
+        </div>
+
+        <div class="card">
+            <a href="D:\Vs code\Thiết kế web\blt TKW\The muse\donut\DonutkemDulcey.html"><img src="https://donutelier.co.uk/wp-content/uploads/2026/07/Dulcey-Ice-Cream-Donut-for-Web.jpg" alt="bánh d"></a>
+            <h3>Bánh Donut kem Dulcey</h3>
+            <p>28,000 VND</p>
+        </div>
+    </div>
+</div>
+
+<script>
+let soLuong = 1;
+
+function doiSL(n) {
+    soLuong += n;
+    if (soLuong < 1) soLuong = 1;
+    document.getElementById("sl").innerText = soLuong;
+    doiGia();
+}
+
+function doiGia() {
+    let gia = Number(document.getElementById("size").value);
+    document.getElementById("price").innerText =
+        (gia * soLuong).toLocaleString("vi-VN") + " VND";
+}
+
+function mua() {
+    alert("Bạn đã chọn mua " + soLuong + " bánh Kem dâu!");
+}
+
+function muaNgay() {
+    window.location.href = "file:///D:/Vs%20code/Thi%E1%BA%BFt%20k%E1%BA%BF%20web/blt%20TKW/The%20muse/thanhtoan.html";
+}
+</script> 
+
+</body>
+</html>
