@@ -1,15 +1,26 @@
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+
+<!-- SỬA TÊN WEB -->
+
+
+
 <title>Bánh kem dâu - Donut cake</title>
 
 <style>
+   
 body {
     margin: 0;
     font-family: Arial;
     color: #001F3F;
+    background: #fff8E7;
 }
 
 .product, .related {
@@ -24,7 +35,7 @@ body {
 
 .main-img {
     width: 40%;
-     object-fit: cover;
+    object-fit: cover;
     border-radius: 10px;
 }
 
@@ -75,17 +86,30 @@ button {
     border-radius: 12px;
     overflow: hidden;
     text-align: center;
+    background: #fffdf7;
+    padding: 10px;
+    box-sizing: border-box;
+    transition: 0.3s;
 }
 
 .card img {
+    display: block;
     width: 100%;
-    height: 180px;
-    object-fit: cover;
+    height: 150px;
+    object-fit: contain;
+    border-radius: 8px;
+    margin: 0 auto;
+}
+
+.card h3 {
+    font-size: 16px;
+    margin: 12px 0;
 }
 
 .card p {
     color: #bd3d23;
     font-weight: bold;
+    margin-bottom: 10px;
 }
 
 @media (max-width: 650px) {
@@ -108,7 +132,24 @@ button {
 
 <!-- CHI TIẾT BÁNH -->
 <div class="product">
+    
+
+
+    <!-- SỬA ẢNH BÁNH -->
+
+
+
     <img class="main-img" src="https://donutelier.co.uk/wp-content/uploads/2023/06/Fraiser_Donut.png" alt="Bánh Kem Dâu">
+
+
+
+
+
+
+      <!-- SỬA TÊN BÁNH, GIÁ TIỀN , MÔ TẢ SẢN PHẨM -->
+
+
+
 
     <div class="info">
         <h1>Kem dâu</h1>
@@ -118,6 +159,17 @@ button {
         <p>
             Mứt dâu tây, kem Chantilly và dâu tây tươi thái lát. 
         </p>
+
+
+
+
+
+
+
+        <!-- SỬA SIZE BÁNH, GIÁ TIỀN TỪNG SIZE -->
+
+
+
 
         <p>Size:
     <select id="size" onchange="doiGia()">
@@ -134,14 +186,24 @@ button {
         </p>
 
         <button class="buy" onclick="mua()">Thêm vào giỏ hàng</button>
-        <button class="buy" onclick="mua()">Mua ngay</button>
+        <button class="buy" onclick="muaNgay()">Mua ngay</button>
+
     </div>
 </div>
 
 <!-- THÔNG TIN BÁNH -->
+
+
+
+
+<!-- SỬA MÔ TẢ SẢN PHẨM -->
+
+
+
+
 <div class="details">
     <h2>Mô tả sản phẩm</h2>
-    <p>Bánh su kem dâu tây là món bánh ngọt hấp dẫn, kết hợp giữa lớp vỏ bánh mềm xốp, nhân kem béo mịn và những lát dâu tây tươi mọng..</p>
+    <p>Bánh su kem dâu tây là món bánh ngọt hấp dẫn, kết hợp giữa lớp vỏ bánh mềm xốp, nhân kem béo mịn và những lát dâu tây tươi mọng.</p>
 
     <h3>Cấu trúc bánh:</h3>
     <ul>
@@ -149,6 +211,15 @@ button {
         <li>Phần nhân kem trắng mịn, béo ngậy nằm bên trong, tạo độ mềm mại và vị ngọt dịu cho bánh.</li>
         <li>Những lát dâu tây đỏ tươi được xếp xen kẽ quanh phần kem, mang đến vị chua ngọt tự nhiên và màu sắc bắt mắt.</li>
     </ul>
+
+
+
+
+<!-- SỬA HƯỚNG DẪN SỬ DỤNG -->
+
+
+
+
 
     <h3>Hướng dẫn sử dụng:</h3>
     <ul>
@@ -159,32 +230,45 @@ button {
 </div>
 
 <!-- SẢN PHẨM LIÊN QUAN -->
+
+
+
+
+
+<!-- SỬA HÌNH ẢNH, TÊN, GIÁ TIỀN CỦA 4 SẢN PHẨM LIÊN QUAN -->
+
+
+
+
+
 <div class="related">
     <h2>Sản phẩm liên quan</h2>
 
     <div class="products">
         <div class="card">
-            <img src="image/banh2.jpg" alt="bánh a">
-            <h3> bánh 2 </h3>
-            <p>80,000 VND</p>
+            
+            <a href="D:\Vs code\Thiết kế web\blt TKW\The muse\donut\kembanhquyvani.html"><img src="https://donutelier.co.uk/wp-content/uploads/2022/11/Vanilla_Cookie_Cream_Donut.png" alt="bánh a" ></a>
+            <h3> Kem bánh quy vani  </h3>
+            <p>24,000 VND</p>
+            
         </div>
 
         <div class="card">
-            <img src="image/banh3.jpg" alt="bánh b">
-            <h3>bánh b</h3>
-            <p>80,000 VND</p>
+            <a href="D:\Vs code\Thiết kế web\blt TKW\The muse\tk-theo-yc.html"><img src="https://donutelier.co.uk/wp-content/uploads/2026/07/Strawberry-matcha-for-web-1.jpg" alt="bánh b"></a>
+            <h3>Matcha dâu tây</h3>
+            <p>25,000 VND</p>
         </div>
 
         <div class="card">
-            <img src="image/banh4.jpg" alt="bánh c">
-            <h3> bánh c</h3>
+            <a href="D:\Vs code\Thiết kế web\blt TKW\The muse\tk-theo-yc.html"><img src="https://donutelier.co.uk/wp-content/uploads/2026/07/Vanilla-Berry-Ice-Cream-Donut-for-Web.jpg" alt="bánh c"></a>
+            <h3> Bánh donut kem vani-dâu</h3>
             <p>50,000 VND</p>
         </div>
 
         <div class="card">
-            <img src="image/banh5.jpg" alt="bánh d">
-            <h3>bánh d</h3>
-            <p>52,000 VND</p>
+            <a href="D:\Vs code\Thiết kế web\blt TKW\The muse\tk-theo-yc.html"><img src="https://donutelier.co.uk/wp-content/uploads/2026/07/Dulcey-Ice-Cream-Donut-for-Web.jpg" alt="bánh d"></a>
+            <h3>Bánh Donut kem Dulcey</h3>
+            <p>28,000 VND</p>
         </div>
     </div>
 </div>
@@ -196,6 +280,7 @@ function doiSL(n) {
     soLuong += n;
     if (soLuong < 1) soLuong = 1;
     document.getElementById("sl").innerText = soLuong;
+    doiGia();
 }
 
 function doiGia() {
@@ -205,9 +290,13 @@ function doiGia() {
 }
 
 function mua() {
-    alert("Bạn đã chọn mua " + soLuong + " bánh ChocoFlan!");
+    alert("Bạn đã chọn mua " + soLuong + " bánh Kem dâu!");
 }
-</script>
+
+function muaNgay() {
+    window.location.href = "file:///D:/Vs%20code/Thi%E1%BA%BFt%20k%E1%BA%BF%20web/blt%20TKW/The%20muse/thanhtoan.html";
+}
+</script> 
 
 </body>
 </html>

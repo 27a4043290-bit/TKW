@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Thanh toán</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- 1) CSS dùng chung  -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- 2) CSS riêng của trang thanh toán -->
+    <style>
+        .checkout-page {
+            font-size: 15px;
+            line-height: 1.4;
+        }
+
+        .checkout-page h1,
+        .checkout-page h2,
+        .checkout-page h3 {
+            font-family: 'Playfair Display', Georgia, serif;
+            margin: 0;
+        }
+
+        /* nút vàng */
+        .checkout-page .btn {
+            background: var(--accent);
+            color: #1a1205;
+            border: 0;
+            border-radius: 8px;
+            font-family: var(--font-main);
+            font-size: 15px;
+            font-weight: 700;
+            padding: 0 20px;
+            height: 46px;
+            cursor: pointer;
+            white-space: nowrap;
+            flex: none;
+        }
+        .checkout-page .btn:hover { filter: brightness(0.95); }
+
+        /* ===== Khung trắng ở giữa ===== */
+        .checkout-page .wrap {
+            max-width: 1000px;
+            margin: 80px auto 40px;
+            background: var(--card);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        .checkout-page .top { padding: 32px 32px 30px; }
+        .checkout-page .top h1 { font-size: 34px; }
+
+        /* ===== Chia 2 cột ===== */
+        .checkout-page .grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+        }
+        .checkout-page .left { min-width: 0; }
+
+        /* ===== Đường kẻ ngày tháng: ngang đúng mép trên ô vàng ===== */
+        .checkout-page .dateline {
+            margin-left: 32px;
+            border-top: 1px solid var(--line);
+            position: relative;
+            height: 0;
+        }
+        .checkout-page .dateline span {
+            position: absolute;
+            top: -10px;
+            left: 0;
+            padding-right: 12px;
+            background: var(--card);
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 20px;
+        }
+
+        /* ===== Form bên trái ===== */
+        .checkout-page .form { padding: 110px 32px 32px 50px; }
+        .checkout-page .form h2 { font-size: 22px; margin-bottom: 18px; }
+        .checkout-page .form h3 { font-size: 19px; margin: 0 0 14px; }
+
+        .checkout-page .row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        /* ===== Ô nhập liệu ===== */
+        .checkout-page label { display: block; font-size: 13px; margin: 12px 0 6px; }
+        .checkout-page label i { color: var(--err); font-style: normal; }
+
+        .checkout-page input[type=text],
+        .checkout-page input[type=tel],
+        .checkout-page input[type=email],
+        .checkout-page input[type=date],
+        .checkout-page select,
+        .checkout-page textarea {
+            width: 100%;
+            height: 46px;
+            padding: 0 16px;
+            border: 1px solid var(--ink);
+            border-radius: 8px;
+            background: #fff;
+        }
+        .checkout-page input::placeholder,
+        .checkout-page textarea::placeholder { color: var(--muted); }
+        .checkout-page .bad { border-color: var(--err) !important; }  /* ô nhập sai */
+
+        .checkout-page .hr { border-top: 1px solid var(--line); margin: 26px 0; }
+        .checkout-page .hint { font-size: 13px; margin-top: 8px; }
+        .checkout-page .fee { font-size: 13px; margin-top: 8px; color: var(--price); font-weight: 500; }
+        .checkout-page .note { font-size: 14px; font-weight: 500; margin: 0 0 4px; }
+        .checkout-page .policy { font-size: 14px; }
+
+        /* ===== Phương thức thanh toán ===== */
+        .checkout-page .pay {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--bg);
+            padding: 16px 20px;
+            border-radius: 8px;
+            margin: 0 0 12px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 15px;
+        }
+        .checkout-page .pay input { accent-color: var(--accent); width: 20px; height: 20px; margin: 0; }
+
+        .checkout-page .chk {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Playfair Display', Georgia, serif;
+            font-weight: 700;
+            font-size: 17px;
+            margin: 6px 0 16px;
+        }
+        .checkout-page .chk input { width: 18px; height: 18px; margin: 0; }
+
+        /* ===== Ô vàng: đơn hàng ===== */
+        .checkout-page .right {
+            padding: 84px 32px 32px;
+            background: var(--bg);
+            min-width: 0;
+            margin: 0 22px 22px 0;
+        }
+        .checkout-page .right h2 { font-size: 21px; margin-bottom: 34px; }
+
+        .checkout-page .item { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 18px; }
+
+        .checkout-page .thumb {
+            width: 100px;
+            height: 100px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #5b3a29, #c58b52);
+            flex: none;
+            display: grid;
+            place-items: center;
+            font-size: 38px;
+            overflow: hidden;
+        }
+        .checkout-page .thumb img { width: 100%; height: 100%; object-fit: cover; }
+
+        .checkout-page .info { flex: 1; min-width: 0; font-weight: 500; font-size: 17px; }
+        .checkout-page .info small { display: block; font-size: 15px; margin-top: 4px; font-weight: 400; }
+
+        .checkout-page .pr { font-weight: 700; white-space: nowrap; }
+        .checkout-page .pr b { color: var(--price); }
+
+        /* nút + - xóa */
+        .checkout-page .qty { display: inline-flex; align-items: center; gap: 8px; margin-top: 8px; }
+        .checkout-page .qty button {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            border: 1px solid var(--ink);
+            background: none;
+            cursor: pointer;
+            font-size: 15px;
+            line-height: 1;
+        }
+        .checkout-page .qty .rm {
+            width: auto;
+            height: auto;
+            border: 0;
+            border-radius: 0;
+            color: var(--muted);
+            text-decoration: underline;
+            font-size: 12px;
+            margin-left: 6px;
+        }
+
+        /* ô lời chúc */
+        .checkout-page textarea {
+            height: 46px;
+            padding: 12px 16px;
+            border-color: var(--accent);
+            background: var(--bg);
+            resize: vertical;
+        }
+
+        /* mã giảm giá */
+        .checkout-page .coupon {
+            display: flex;
+            gap: 12px;
+            border-top: 1px solid var(--line);
+            padding-top: 20px;
+            margin-top: 20px;
+        }
+        .checkout-page .coupon input { flex: 1; min-width: 0; }
+
+        /* bảng tổng tiền */
+        .checkout-page .sum { margin-top: 26px; }
+        .checkout-page .sum div { display: flex; justify-content: space-between; padding: 8px 0; font-size: 16px; }
+        .checkout-page .sum .total { font-weight: 700; font-size: 18px; }
+        .checkout-page .sum .total span:last-child { font-size: 20px; }
+
+        .checkout-page .order { display: block; width: 280px; max-width: 100%; margin: 24px auto 0; height: 48px; }
+        .checkout-page .empty { padding: 24px 0; color: var(--muted); }
+
+        /* thông báo sau khi bấm Đặt hàng */
+        .checkout-page .msg {
+            display: none;
+            margin-top: 16px;
+            padding: 14px;
+            border-radius: 8px;
+            background: #fff;
+            border: 1px solid var(--accent);
+            text-align: center;
+        }
+        .checkout-page .msg.ok  { border-color: var(--ok);  color: var(--ok); }
+        .checkout-page .msg.bad { border-color: var(--err); color: var(--err); }
+
+        /* ===== Điện thoại: xếp 1 cột ===== */
+        @media (max-width: 820px) {
+            .checkout-page .wrap { margin: 0; border-radius: 0; }
+            .checkout-page .top { padding: 20px; }
+            .checkout-page .grid { grid-template-columns: 1fr; }
+            .checkout-page .row { grid-template-columns: 1fr; }
+            .checkout-page .dateline { margin-left: 20px; }
+            .checkout-page .form { padding: 36px 20px 20px; }
+            .checkout-page .right { margin: 0; padding: 24px 20px; }
+        }
+    </style>
+<link rel="stylesheet" href="header.css">
+<script src="float.js" defer></script>
+</head>
+<body>
+<div id="site-header"></div>
+<script src="header.js"></script>
+<main class="checkout-page">
+
+<div class="wrap">
+
+    <!-- ĐẦU TRANG: tiêu đề -->
+    <div class="top">
+        <h1>Thanh toán</h1>
+    </div>
+
+    <div class="grid">
+
+        <!-- ================= CỘT TRÁI ================= -->
+        <div class="left">
+
+            <!-- Dòng ngày: JS tự điền vào #today -->
+            <div class="dateline"><span id="today"></span></div>
+
+            <div class="form">
+                <h2>Thông tin thanh toán</h2>
+
+                <h3>Thông tin tài khoản</h3>
+                <div class="row">
+                    <div>
+                        <label>Họ và tên <i>*</i></label>
+                        <input type="text" id="name" placeholder="Họ tên của bạn">
+                    </div>
+                    <div>
+                        <label>Số điện thoại <i>*</i></label>
+                        <input type="tel" id="phone" placeholder="Số điện thoại">
+                    </div>
+                </div>
+
+                <label>Địa chỉ email (tuỳ chọn)</label>
+                <input type="email" id="email" placeholder="Email của bạn">
+
+                <div class="hr"></div>
+
+                <h3>Thông tin giao hàng</h3>
+
+                <p class="note">Bánh chỉ giao quanh khu vực Hà Nội.</p>
+
+                <label>Quận / Huyện <i>*</i></label>
+                <!-- JS tự thêm danh sách quận huyện vào đây -->
+                <select id="district">
+                    <option value="">Chọn quận / huyện</option>
+                </select>
+                <div class="fee" id="feeHint"></div>
+
+                <label>Địa chỉ cụ thể (số nhà, đường, phường/xã) <i>*</i></label>
+                <input type="text" id="addr" placeholder="Nhập địa chỉ giao hàng">
+
+                <label>Ngày giao <i>*</i></label>
+                <input type="date" id="date">
+                <div class="hint">Nếu cần đặt bánh gấp trong ngày, xin liên hệ hotline: <b>0826590133</b></div>
+
+                <label>Khung giờ giao <i>*</i></label>
+                <select id="slot">
+                    <option value="">Chọn khung giờ</option>
+                    <option>08:00 - 10:00</option>
+                    <option>10:00 - 12:00</option>
+                    <option>13:00 - 15:00</option>
+                    <option>15:00 - 17:00</option>
+                    <option>17:00 - 19:00</option>
+                </select>
+
+                <label>Yêu cầu khác (tuỳ chọn)</label>
+                <input type="text" id="other" placeholder="Nhập yêu cầu khác của bạn">
+
+               
+                <div class="hr"></div>
+
+                <label class="chk"><input type="checkbox" id="vat"> Xuất hóa đơn</label>
+                <p class="policy">
+                    Thông tin cá nhân của bạn sẽ được sử dụng để xử lý đơn hàng, tăng trải nghiệm sử dụng
+                    website, và cho các mục đích cụ thể khác đã được mô tả trong chính sách riêng tư của chúng tôi.
+                </p>
+            </div>
+        </div>
+
+        <!-- ================= CỘT PHẢI: Ô VÀNG ĐƠN HÀNG ================= -->
+        <div class="right">
+            <h2>Đơn hàng của bạn</h2>
+
+            <!-- JS tự vẽ sản phẩm trong giỏ vào đây -->
+            <div id="items"></div>
+
+            <div class="coupon">
+                <input type="text" id="code" placeholder="Nhập mã giảm giá">
+                <button class="btn" id="apply" type="button">Áp dụng</button>
+            </div>
+
+            <div class="sum">
+                <div><span>Tạm tính</span><b id="sub"></b></div>
+                <div><span>Giao hàng</span><span id="ship"></span></div>
+              
+                <div class="total"><span>Tổng</span><span id="tot"></span></div>
+            </div>
+
+            <button class="btn order" id="place" type="button">Đặt hàng</button>
+            <div class="msg" id="msg"></div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+/* =========================================================
+   1. DỮ LIỆU CỐ ĐỊNH
+   ========================================================= */
+const KEY = 'cart';           // tên khóa lưu giỏ hàng trong trình duyệt
+const FEE_IN  = 25000;        
+const FEE_OUT = 35000;        
+          
+
+
+const INNER = ['Ba Đình', 'Hoàn Kiếm', 'Hai Bà Trưng', 'Đống Đa', 'Tây Hồ', 'Cầu Giấy',
+               'Thanh Xuân', 'Hoàng Mai', 'Long Biên', 'Nam Từ Liêm', 'Bắc Từ Liêm', 'Hà Đông'];
+
+
+const OUTER = ['Sơn Tây', 'Ba Vì', 'Phúc Thọ', 'Đan Phượng', 'Hoài Đức', 'Quốc Oai',
+               'Thạch Thất', 'Chương Mỹ', 'Thanh Oai', 'Thường Tín', 'Phú Xuyên', 'Ứng Hòa',
+               'Mỹ Đức', 'Mê Linh', 'Sóc Sơn', 'Đông Anh', 'Gia Lâm', 'Thanh Trì'];
+
+/* =========================================================
+   2. HÀM TIỆN ÍCH
+   ========================================================= */
+const $ = id => document.getElementById(id);
+
+// 420000 -> "420,000VND"
+const fmt = n => n.toLocaleString('en-US') + 'VND';
+
+// chống lỗi khi chèn chữ vào HTML
+const esc = s => String(s).replace(/[&<>"]/g, c =>
+  ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+/* =========================================================
+   3. NGÀY HIỆN TẠI (tự cập nhật mỗi lần mở trang)
+   ========================================================= */
+const d = new Date();
+const p = n => String(n).padStart(2, '0');    // 5 -> "05"
+
+$('today').textContent = p(d.getDate()) + '/' + p(d.getMonth() + 1) + '/' + d.getFullYear();
+
+// Ô "Ngày giao" không cho chọn ngày đã qua
+$('date').min = d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate());
+
+/* =========================================================
+   4. DANH SÁCH QUẬN / HUYỆN HÀ NỘI
+   ========================================================= */
+const ds = $('district');
+
+function themNhom(tenNhom, danhSach) {
+  const nhom = document.createElement('optgroup');
+  nhom.label = tenNhom;
+  danhSach.forEach(ten => {
+    const o = document.createElement('option');
+    o.value = ten;
+    o.textContent = ten;
+    nhom.appendChild(o);
+  });
+  ds.appendChild(nhom);
+}
+
+themNhom('Nội thành (phí ship 25,000VND)', INNER);
+themNhom('Ngoại thành (phí ship 35,000VND)', OUTER);
+
+/* =========================================================
+   5. GIỎ HÀNG (đọc từ localStorage)
+   Nút "Thêm vào giỏ hàng" ở trang sản phẩm sẽ ghi vào khóa 'cart'
+   ========================================================= */
+function loadCart() {
+  try {
+    const c = JSON.parse(localStorage.getItem(KEY) || '[]');
+    if (Array.isArray(c)) return c;
+  } catch (e) {}
+  return [];
+}
+function saveCart(c) {
+  try { localStorage.setItem(KEY, JSON.stringify(c)); } catch (e) {}
+}
+
+let cart = loadCart();   // giỏ trống thì đơn hàng để trống
+let discount = 0;        // số tiền giảm giá
+
+/* =========================================================
+   6. TÍNH PHÍ SHIP
+   ========================================================= */
+function shipFee() {
+  const quan = ds.value;
+  if (!quan) return null;                       // chưa chọn quận
+  return INNER.includes(quan) ? FEE_IN : FEE_OUT;
+}
+
+/* =========================================================
+   7. VẼ LẠI ĐƠN HÀNG + TÍNH TIỀN
+   ========================================================= */
+function render() {
+  const box = $('items');
+
+  if (cart.length === 0) {
+    box.innerHTML = '<div class="empty">Giỏ hàng của bạn đang trống.</div>';
+  } else {
+    box.innerHTML = cart.map((it, i) => `
+      <div class="item">
+        <div class="thumb">${it.img ? `<img src="${esc(it.img)}" alt="">` : '🍰'}</div>
+        <div class="info">
+          ${esc(it.name)}
+          ${it.size ? `<small>Size: <b>${esc(it.size)}</b></small>` : ''}
+          <div class="qty">
+            <button type="button" data-a="-" data-i="${i}">−</button>
+            <span>${it.qty}</span>
+            <button type="button" data-a="+" data-i="${i}">+</button>
+            <button class="rm" type="button" data-a="x" data-i="${i}">Xóa</button>
+          </div>
+        </div>
+        <div class="pr">${it.qty}x <b>${fmt(it.price)}</b></div>
+      </div>`).join('')
+      + `<label>Ghi lời chúc</label>
+         <textarea id="wish" placeholder="Nhập lời chúc của bạn"></textarea>`;
+  }
+
+  // --- Tính tiền ---
+    // --- Tính tiền ---
+  const goc  = cart.reduce((s, it) => s + it.price * it.qty, 0);
+  const sub  = Math.max(goc - discount, 0);          // tạm tính sau giảm giá
+  const fee  = cart.length ? shipFee() : 0;          // giỏ trống thì không tính ship
+  const tong = sub + (fee || 0);                     // tổng = tạm tính + phí ship
+
+  $('sub').textContent  = fmt(sub);
+  $('ship').textContent = fee === null ? 'Chọn quận / huyện' : fmt(fee);
+  $('tot').textContent  = fmt(tong);
+
+  const f = shipFee();
+  $('feeHint').textContent = f === null ? ''
+    : (f === FEE_IN ? 'Giao nội thành: phí ship 25,000VND'
+                    : 'Giao ngoại thành: phí ship 35,000VND');
+}
+
+/* =========================================================
+   8. SỰ KIỆN (khách bấm / chọn)
+   ========================================================= */
+
+// Bấm + / - / Xóa trong đơn hàng
+$('items').addEventListener('click', e => {
+  const b = e.target.closest('button');
+  if (!b) return;
+
+  const i = Number(b.dataset.i);
+  const hanhDong = b.dataset.a;
+  const loiChuc = $('wish') ? $('wish').value : '';   // giữ lại lời chúc đã gõ
+
+  if (hanhDong === '+') cart[i].qty++;
+  else if (hanhDong === '-') cart[i].qty = Math.max(1, cart[i].qty - 1);
+  else cart.splice(i, 1);                              // xóa
+
+  saveCart(cart);
+  render();
+  if ($('wish')) $('wish').value = loiChuc;
+});
+
+// Chọn quận/huyện -> cập nhật phí ship
+ds.addEventListener('change', render);
+
+// Mã giảm giá (mã thử: GIAM10 = giảm 10%)
+$('apply').addEventListener('click', () => {
+  const ma = $('code').value.trim().toUpperCase();
+  discount = 0;
+  if (ma === 'GIAM10') {
+    discount = Math.round(cart.reduce((s, it) => s + it.price * it.qty, 0) * 0.1);
+    alert('Đã áp dụng mã giảm 10%');
+  } else if (ma) {
+    alert('Mã giảm giá không hợp lệ');
+  }
+  render();
+});
+
+// Bấm "Đặt hàng"
+$('place').addEventListener('click', () => {
+  let ok = true;
+
+  // [id ô nhập, hàm kiểm tra]
+  const kiemTra = [
+    ['name',     v => v.trim()],
+    ['phone',    v => /^(0|\+84)\d{9}$/.test(v.replace(/\s/g, ''))],
+    ['district', v => v],
+    ['addr',     v => v.trim()],
+    ['date',     v => v],
+    ['slot',     v => v]
+  ];
+
+  kiemTra.forEach(([id, hopLe]) => {
+    const el = $(id);
+    const dung = hopLe(el.value);
+    el.classList.toggle('bad', !dung);     // sai thì viền đỏ
+    if (!dung) ok = false;
+  });
+
+  const m = $('msg');
+  m.className = 'msg';
+  m.style.display = 'block';
+
+  if (cart.length === 0) {
+    m.textContent = 'Giỏ hàng đang trống.';
+    m.classList.add('bad');
+    return;
+  }
+  if (!ok) {
+    m.textContent = 'Vui lòng điền đầy đủ và đúng các trường bắt buộc (*).';
+    m.classList.add('bad');
+    return;
+  }
+
+  // lấy tổng tiền TRƯỚC khi xóa giỏ
+  m.innerHTML = 'Đặt hàng thành công! Tổng thanh toán: <b>' + $('tot').textContent + '</b>.';
+  m.classList.add('ok');
+
+  cart = [];
+  saveCart(cart);     // xóa giỏ sau khi đặt
+  render();           // vẽ lại đơn hàng thành trống
+});
+
+/* =========================================================
+   9. CHẠY LẦN ĐẦU
+   ========================================================= */
+render();
+
+/* =========================================================
+   10. HÀM THÊM VÀO GIỎ (dùng ở trang sản phẩm)
+   Ví dụ gọi:
+   addToCart({ id:'chocoflan-16', name:'ChocoFlan - 16 cm', size:'16 cm', price:420000, img:'anh.jpg' });
+   ========================================================= */
+function addToCart(item) {
+  const c = loadCart();
+  const co = c.find(x => x.id === item.id);
+  if (co) co.qty += item.qty || 1;
+  else c.push({ ...item, qty: item.qty || 1 });
+  saveCart(c);
+}
+</script>
+
+</body>
+</html>
