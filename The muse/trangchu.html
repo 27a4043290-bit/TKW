@@ -5,9 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trang chủ - The Muse </title>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+
+    <title>Trang chủ - The Muse Patisserie</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;800&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --bg: #fff8E7;
+            --ink: #001F3F;
+            --bar: #f7f3ee;
+            --accent: #b9926a;
+            --price: #b9926a;
+            --card: #ffffff;
+            --line: #e2dacd;
+            --font: 'Roboto', sans-serif;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -15,41 +27,37 @@
         }
 
         body {
-            font-family: Arial, Helvetica, sans-serif;
-            color: #001F3F;
-            background: #fff8E7
-;
+            font-family: var(--font);
+            color: var(--ink);
+            background: var(--bg);
+            overflow-x: hidden;
         }
 
-        /* Thanh menu */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 6%;
-            
-        }
-        /* màu chữ trên header */
-        header nav a {
+        a {
             text-decoration: none;
-            color: #001F3F;
-            margin-right: 20px;
-            font-size: 14px;
+            color: inherit;
         }
 
-        .logo {
-            font-size: 30px;
-            font-weight: bold;
-            letter-spacing: 3px;
+        /* ===== HIỆU ỨNG ANIMAITON KHI CUỘN TỚI (SCROLL REVEAL) ===== */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(45px);
+            transition: opacity 0.8s cubic-bezier(0.165, 0.84, 0.44, 1), 
+                        transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+            will-change: opacity, transform;
         }
 
-        /* Banner */
+        .reveal-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Banner đầu trang */
         .banner {
-            height: 480px;
-            background:
-                linear-gradient(#0002, #0002),
-                url("https://cdn.upanhlaylink.com/i/ClH8AYbi.png")
-                center/cover;
+            height: 520px;
+            background: 
+                linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+                url("https://cdn.upanhlaylink.com/i/ClH8AYbi.png") center/cover no-repeat;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -59,161 +67,820 @@
         }
 
         .banner h1 {
-            font-size: 48px;
-            color: #f3f5f3;
-            margin-bottom: 18px;
-        }
-
-        .banner p {
-            font-size: 17px;
-            color: #edebeb;
-            margin-bottom: 25px;
-        }
-
-        .banner a {
-            background: #071e38;
-            color: white;
-            padding: 14px 28px;
-            text-decoration: none;
-            font-size: 12px;
+            font-size: 52px;
+            color: #ffffff;
+            margin-bottom: 12px;
+            font-weight: 300;
             letter-spacing: 2px;
         }
 
-        /* Danh mục sản phẩm */
-        .categories {
-            padding: 55px 5%;
+        .banner p {
+            font-size: 18px;
+            color: #f0f0f0;
+            margin-bottom: 25px;
+            font-style: italic;
         }
 
-        .categories h2 {
+        .banner a.btn-explore {
+            background: #1a1a1a;
+            color: white;
+            padding: 14px 32px;
+            text-decoration: none;
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .banner a.btn-explore:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+        }
+
+        /* Phần Sản phẩm nổi bật */
+        .featured-section {
+            max-width: 1400px;
+            margin: 70px auto;
+            padding: 0 20px;
             text-align: center;
-            font-size: 30px;
-            margin-bottom: 35px;
         }
 
-        .product-list {
+        .featured-section h2 {
+            font-size: 34px;
+            margin-bottom: 40px;
+            color: var(--ink);
+            font-weight: 700;
+        }
+
+        .product-grid-home {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 22px;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 24px;
+            margin-bottom: 40px;
         }
 
-        .product {
-            border-radius: 16px;
+        .product-card-home {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 20px;
             overflow: hidden;
-            text-align: center;
-            transition: 0.3s;
-            background: white;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            transition: transform 0.35s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
-    
-        .product img {
+        .product-card-home:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 14px 30px rgba(0,0,0,0.08);
+            border-color: var(--accent);
+        }
+
+        .product-card-home .thumb {
+            position: relative;
+            aspect-ratio: 4/5;
+            background: var(--bar);
+            overflow: hidden;
+        }
+
+        .product-card-home .thumb img {
             width: 100%;
-            height: 220px;
+            height: 100%;
             object-fit: cover;
+            display: block;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        .product h3 {
-            font-size: 19px;
-            padding: 18px 8px;
+        .product-card-home:hover .thumb img {
+            transform: scale(1.08);
         }
 
-        .product p {
-            color:  #001F3F;
-            font-size: 14px;
-            padding-bottom: 20px;
+        .badges-home {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            z-index: 2;
         }
 
-        /* Phần giới thiệu */
-        .intro {
-            background: #fff7ee;
-            padding: 50px 20px;
+        .badge-home {
+            font-size: 11px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 4px;
+            color: #fff;
+        }
+        .badge-home.hot { background: #d9534f; }
+        .badge-home.new { background: var(--accent); }
+
+        .product-card-home .info {
+            padding: 16px 12px;
             text-align: center;
         }
 
-        .intro h2 {
-            font-size: 28px;
-            margin-bottom: 15px;
+        .product-card-home h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            min-height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: color 0.2s;
         }
 
-        .intro p {
-            font-size: 16px;
+        .product-card-home:hover h3 {
+            color: var(--accent);
+        }
+
+        .product-card-home .price {
+            font-size: 14px;
+            color: #555;
+        }
+
+        .product-card-home .price b {
+            color: var(--price);
+            font-weight: 700;
+        }
+
+        .btn-more-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .btn-more {
+            display: inline-block;
+            background: #ffecb6;
+            color: #1a1a1a;
+            padding: 12px 36px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+        }
+
+        .btn-more:hover {
+            background: var(--accent);
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(185, 146, 106, 0.3);
+        }
+
+        /* ===== PHẦN: VÌ SAO THE MUSE ĐƯỢC TIN CHỌN? ===== */
+        .why-choose-us {
+            position: relative;
+            width: 100%;
+            min-height: 520px;
+            margin: 60px 0;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+            transition: background-image 0.5s ease-in-out;
+            display: flex;
+            align-items: center;
+            padding: 60px 8%;
+        }
+
+        .why-card {
+            background: #fff7ee;
+            width: 380px;
+            padding: 40px 35px;
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 2;
+            border-bottom: 6px dashed #e8d9c4;
+            transition: all 0.4s ease;
+        }
+
+        .why-card .subtitle {
+            font-size: 15px;
+            color: #001F3F;
+            font-weight: 500;
+            margin-bottom: 6px;
+        }
+
+        .why-card h3 {
+            font-size: 32px;
+            font-weight: 800;
+            color: #001F3F;
+            line-height: 1.25;
+            margin-bottom: 20px;
+        }
+
+        .why-card p {
+            font-size: 14px;
+            color: #444;
+            line-height: 1.7;
+        }
+
+        .why-main-title {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #ffffff;
+            font-size: 36px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.6);
+            z-index: 2;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .why-numbers-nav {
+            position: absolute;
+            right: 8%;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            z-index: 3;
+        }
+
+        .num-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            opacity: 0.5;
+            transition: all 0.3s ease;
+            color: #ffffff;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+        }
+
+        .num-item .num-text {
+            font-size: 32px;
+            font-weight: 800;
+            font-family: serif;
+        }
+
+        .num-item .num-line {
+            width: 30px;
+            height: 1px;
+            background: #ffffff;
+            transition: width 0.3s ease;
+        }
+
+        .num-item .num-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            border: 1px solid #ffffff;
+            background: transparent;
+        }
+
+        .num-item.active {
+            opacity: 1;
+        }
+
+        .num-item.active .num-text {
+            font-size: 42px;
+        }
+
+        .num-item.active .num-line {
+            width: 60px;
+        }
+
+        .num-item.active .num-dot {
+            background: #ffffff;
+        }
+
+        /* ===== KHUNG MÀU RIÊNG CHO PHẦN CÂU CHUYỆN THƯƠNG HIỆU ===== */
+        .story-card-wrapper {
+            max-width: 1300px;
+            margin: 90px auto;
+            padding: 0 20px;
+        }
+
+        .intro-section {
+            background: #fff7ee;
+            border: 1px solid #f0e4d2;
+            border-radius: 28px;
+            padding: 50px;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 50px;
+            align-items: center;
+            box-shadow: 0 10px 35px rgba(185, 146, 106, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .intro-section:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 45px rgba(185, 146, 106, 0.12);
+        }
+
+        .intro-text h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--ink);
+            margin-bottom: 20px;
+            line-height: 1.35;
+        }
+
+        .intro-text p {
+            font-size: 15px;
             color: #555;
             line-height: 1.8;
+            margin-bottom: 16px;
         }
 
-        footer {
-            background: #071e38;
-            color: white;
+        .intro-image {
+            overflow: hidden;
+            border-radius: 20px;
+            height: 340px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .intro-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+
+        .intro-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Khối "Chúng tôi tự tin" */
+        .features-banner {
+            background: #041428;
+            color: #ffffff;
+            padding: 60px 20px;
+            margin: 60px 0;
             text-align: center;
-            padding: 25px;
-            font-size: 14px;
         }
 
-        
-        
+        .features-banner h2 {
+            font-size: 26px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            font-weight: 600;
+        }
+
+        .features-grid {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .feature-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-item span {
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 1.5;
+            color: #ddd;
+        }
+
+        /* Tin tức - Sự kiện */
+        .news-section {
+            max-width: 1300px;
+            margin: 80px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .news-section h2 {
+            font-size: 32px;
+            margin-bottom: 40px;
+            font-weight: 700;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            text-align: left;
+        }
+
+        .news-card {
+            background: var(--bar);
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .news-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+
+        .news-card-img-box {
+            overflow: hidden;
+            width: 100%;
+            height: 180px;
+        }
+
+        .news-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .news-card:hover img {
+            transform: scale(1.06);
+        }
+
+        .news-content {
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            flex: 1;
+        }
+
+        .news-date {
+            font-size: 12px;
+            color: #888;
+        }
+
+        .news-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--ink);
+            line-height: 1.4;
+            transition: color 0.2s ease;
+        }
+
+        .news-card:hover .news-title {
+            color: var(--accent);
+        }
+
+        /* Responsive */
+        @media(max-width: 1200px) {
+            .product-grid-home { grid-template-columns: repeat(3, 1fr); }
+            .features-grid { grid-template-columns: repeat(2, 1fr); }
+            .news-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media(max-width: 900px) {
+            .intro-section {
+                grid-template-columns: 1fr;
+                padding: 30px;
+                gap: 30px;
+            }
+            .intro-image {
+                height: 260px;
+            }
+            .why-choose-us {
+                flex-direction: column;
+                padding: 40px 20px 90px;
+            }
+            .why-card { width: 100%; }
+            .why-numbers-nav {
+                right: 20px;
+                top: auto;
+                bottom: 70px;
+                transform: none;
+                flex-direction: row;
+            }
+            .why-main-title { font-size: 22px; bottom: 15px; }
+        }
+
+        @media(max-width: 800px) {
+            .product-grid-home { grid-template-columns: repeat(2, 1fr); }
+            .news-grid { grid-template-columns: 1fr; }
+        }
+
+        @media(max-width: 500px) {
+            .product-grid-home { grid-template-columns: 1fr; }
+            .features-grid { grid-template-columns: 1fr; }
+            .banner h1 { font-size: 32px; }
+        }
     </style>
-<link rel="stylesheet" href="header.css">
-<script src="float.js" defer ></script>
+    <link rel="stylesheet" href="header.css">
+    <script src="float.js" defer></script>
 </head>
 <body>
-<div id="site-header"></div>
-<script src="header.js"></script>
 
+    <!-- Header tự động nhúng -->
+    <div id="site-header"></div>
+    <script src="header.js"></script>
+
+    <!-- Banner chính -->
     <section class="banner">
-        <h1>A Little Taste of Inspiration</h1>
+        <h1>A Lsittle Taste of Inspiration</h1>
         <p>Gói trọn yêu thương, nướng bằng tâm hồn</p>
-        <a href="D:\Vs code\Thiết kế web\blt TKW\The muse\sanppham.html">KHÁM PHÁ SẢN PHẨM</a>
+        <a href="file:///d%3A/TKW-The%20Muse/themuse/TKW/The%20muse/sanppham.html#mousse" class="btn-explore">KHÁM PHÁ SẢN PHẨM</a>
     </section>
 
-    <section class="categories" id="danh-muc">
+    <!-- Sản phẩm nổi bật (Tự động chuyển động khi cuộn tới) -->
+    <section class="featured-section reveal-on-scroll">
         <h2>Sản phẩm nổi bật</h2>
-
-        <div class="product-list">
-
-            <div class="product">
-                <img src="https://the350f.com/wp-content/uploads/2026/04/ChocoFlan-CT-4.jpg"
-                     alt="Bánh Mousse">
-                <h3>01. Bánh Mousse</h3>
-                <p>Mềm mịn, ngọt ngào</p>
+        <div class="product-grid-home">
+            <!-- Sản phẩm 1 -->
+            <div class="product-card-home">
+                <a href="file:///d%3A/TKW-The%20Muse/themuse/TKW/The%20muse/sanppham.html#mousse">
+                    <div class="thumb">
+                        <img src="https://the350f.com/wp-content/uploads/2026/04/ChocoFlan-CT-2.jpg" alt="ChocoFlan">
+                        <div class="badges-home">
+                            <span class="badge-home hot">Hot</span>
+                            <span class="badge-home new">Mới</span>
+                        </div>
+                    </div>
+                    <div class="info">
+                        <h3>ChocoFlan</h3>
+                        <p class="price">Giá từ: <b>55,000VND</b></p>
+                    </div>
+                </a>
             </div>
 
-            <div class="product">
-                <img src="https://product.hstatic.net/200000411281/product/croisant_4_f14139911d9a4fd7b7ee046a1bfd49c2_master.png"
-                     alt="Bánh Croissant">
-                <h3>02. Bánh Croissant</h3>
-                <p>Giòn xốp, thơm bơ</p>
+            <!-- Sản phẩm 2 -->
+            <div class="product-card-home">
+                <a href="file:///d%3A/TKW-The%20Muse/themuse/TKW/The%20muse/sanppham.html#mousse">
+                    <div class="thumb">
+                        <img src="https://the350f.com/wp-content/uploads/2025/05/CT-Dua-1.jpg" alt="Mousse Dưa lưới">
+                        <div class="badges-home">
+                            <span class="badge-home hot">Hot</span>
+                            <span class="badge-home new">Mới</span>
+                        </div>
+                    </div>
+                    <div class="info">
+                        <h3>Mousse Dưa lưới</h3>
+                        <p class="price">Giá từ: <b>65,000VND</b></p>
+                    </div>
+                </a>
             </div>
 
-            <div class="product">
-                <img src="https://www.the350f.com/wp-content/uploads/2025/07/Chi-Tiet-Hop-6-3-scaled.jpg"
-                     alt="Bánh Moon Cake">
-                <h3>03. Bánh Moon Cake</h3>
-                <p>Tròn đầy, đậm vị</p>
+            
+            
+
+            <!-- Sản phẩm 3 -->
+            <div class="product-card-home">
+                <a href="file:///d%3A/TKW-The%20Muse/themuse/TKW/The%20muse/sanppham.html#croissant">
+                    <div class="thumb">
+                        <img src="https://cdn.prod.website-files.com/649249d29a20bd6bc3deac48/6a46975f52af1711c7dc1600_3700000836_Pistachio%20Spiral%20Croissant-p-1080.png" alt="Croissant xoắn ốc">
+                        <div class="badges-home">
+                            <span class="badge-home hot">Hot</span>
+                            <span class="badge-home new">Mới</span>
+                        </div>
+                    </div>
+                    <div class="info">
+                        <h3>Croissant xoắn ốc nhân hạt dẻ cười</h3>
+                        <p class="price">Giá từ: <b>35,000VND</b></p>
+                    </div>
+                </a>
             </div>
 
-            <div class="product">
-                <img src="https://assets.slerp.com/uploads/images/setting/f57196ef-a810-4d7e-a730-69aa21d95737/f57196ef-a810-4d7e-a730-69aa21d95737_a68df2dd-5a92-4a2d-b12c-e157c81c6f88.jpeg_original.jpeg?v=63908495981"
-                     alt="Bánh Donut">
-                <h3>04. Bánh Donut</h3>
-                <p>Rực rỡ, hấp dẫn</p>
+
+            <!-- Sản phẩm 4 -->
+            <div class="product-card-home">
+                <a href="file:///d%3A/TKW-The%20Muse/themuse/TKW/The%20muse/sanppham.html#trungthu">
+                    <div class="thumb">
+                        <img src="https://www.the350f.com/wp-content/uploads/2025/07/TT26-BN-Xa-Xiu-1-scaled.jpg" alt="Thập cẩm xá xíu">
+                        <div class="badges-home">
+                            <span class="badge-home hot">Hot</span>
+                            <span class="badge-home new">Mới</span>
+                        </div>
+                    </div>
+                    <div class="info">
+                        <h3>Thập cẩm xá xíu</h3>
+                        <p class="price">Giá từ: <b>95,000VND</b></p>
+                    </div>
+                </a>
             </div>
 
+            <!-- Sản phẩm 5 -->
+            <div class="product-card-home">
+                <a href="file:///d%3A/TKW-The%20Muse/themuse/TKW/The%20muse/sanppham.html#donut">
+                    <div class="thumb">
+                        <img src="https://donutelier.co.uk/wp-content/uploads/2023/06/Fraiser_Donut.png" alt="Donut kem dâu">
+                        <div class="badges-home">
+                            <span class="badge-home hot">Hot</span>
+                        </div>
+                    </div>
+                    <div class="info">
+                        <h3>Donut kem dâu</h3>
+                        <p class="price">Giá từ: <b>22,000VND</b></p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="btn-more-container">
+            <a href="file:///d%3A/TKW-The%20Muse/themuse/TKW/The%20muse/sanppham.html#mousse" class="btn-more">Xem thêm →</a>
         </div>
     </section>
 
-    <section class="intro" id="gioi-thieu">
-        <h2>Ngọt ngào trong từng khoảnh khắc</h2>
-        <p>
-            THE MUSE mang đến những chiếc bánh thơm ngon,
-            được chăm chút tỉ mỉ từ nguyên liệu đến hương vị.
-            <br>
-            Mỗi chiếc bánh là một trải nghiệm ngọt ngào.
-        </p>
+    <!-- ===== MỤC MỚI: VÌ SAO THE MUSE ĐƯỢC TIN CHỌN? (CHỌN 01-04 ĐỔI ẢNH & THÔNG TIN) ===== -->
+    <section class="why-choose-us reveal-on-scroll" id="whyChooseSection">
+        <div class="why-card">
+            <div class="subtitle" id="whySubtitle">Liên tục</div>
+            <h3 id="whyTitle">đổi mới, sáng tạo</h3>
+            <p id="whyDesc">The Muse luôn nỗ lực để mang đến những sản phẩm đa dạng, hấp dẫn, phù hợp với nhu cầu thưởng thức của khách hàng.</p>
+        </div>
+
+        <h2 class="why-main-title">VÌ SAO THE MUSE ĐƯỢC TIN CHỌN?</h2>
+
+        <div class="why-numbers-nav">
+            <div class="num-item active" onclick="switchWhyTab(0)">
+                <span class="num-text">01</span>
+                <span class="num-line"></span>
+                <span class="num-dot"></span>
+            </div>
+            <div class="num-item" onclick="switchWhyTab(1)">
+                <span class="num-text">02</span>
+                <span class="num-line"></span>
+                <span class="num-dot"></span>
+            </div>
+            <div class="num-item" onclick="switchWhyTab(2)">
+                <span class="num-text">03</span>
+                <span class="num-line"></span>
+                <span class="num-dot"></span>
+            </div>
+            <div class="num-item" onclick="switchWhyTab(3)">
+                <span class="num-text">04</span>
+                <span class="num-line"></span>
+                <span class="num-dot"></span>
+            </div>
+        </div>
     </section>
 
-    <footer id="lien-he">
-        <p>THE MUSE Bakery | Hương vị của sự tinh tế</p>
-        <p>Hotline: 0123 456 789</p>
-    </footer>
+    <!-- Khung Câu chuyện thương hiệu (Tự động chuyển động khi cuộn tới) -->
+    <div class="story-card-wrapper reveal-on-scroll">
+        <section class="intro-section">
+            <div class="intro-text">
+                <h2>Khởi nguồn với niềm đam mê và tình yêu dành cho bánh trái</h2>
+                <p>The Muse đã từng bước đặt dấu ấn đầu tiên bằng một tiệm bánh online, tập trung vào dòng sản phẩm chủ đạo là bánh Mousse.</p>
+                <p>Với tôn chỉ “Luôn vì khách hàng”, chúng tôi chú trọng vào việc tìm kiếm nguồn nguyên liệu đầu vào chất lượng, kết hợp với tay nghề điêu luyện để mang đến những sản phẩm hoàn hảo nhất.</p>
+                <a href="The muse/sanppham.html" class="btn-more" style="display: inline-block; margin-top: 10px;">Về chúng tôi →</a>
+            </div>
+            <div class="intro-image">
+                <img src="The muse/Image/banh5.jpg">
+            </div>
+        </section>
+    </div>
 
+    <!-- Khối cam kết "Chúng tôi tự tin" (Tự động chuyển động khi cuộn tới) -->
+    <section class="features-banner reveal-on-scroll">
+        <h2>Chúng tôi tự tin</h2>
+        <div class="features-grid">
+            <div class="feature-item">
+                <div style="font-size: 32px;">🏭</div>
+                <span>Nói không với nhà máy</span>
+            </div>
+            <div class="feature-item">
+                <div style="font-size: 32px;">🌿</div>
+                <span>Bao tiêu sản phẩm nguyên vườn</span>
+            </div>
+            <div class="feature-item">
+                <div style="font-size: 32px;">📦</div>
+                <span>Đảm bảo nguồn cung ổn định suốt mùa</span>
+            </div>
+            <div class="feature-item">
+                <div style="font-size: 32px;">⭐</div>
+                <span>Cam kết chất lượng cho mọi sản phẩm</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tin tức - Sự kiện (Tự động chuyển động khi cuộn tới) -->
+    <section class="news-section reveal-on-scroll">
+        <h2>Tin tức - Sự kiện</h2>
+        <div class="news-grid">
+            <div class="news-card">
+                <div class="news-card-img-box">
+                    <img src="The muse/image/mouse2.jpg" alt="News 1">
+                </div>
+                <div class="news-content">
+                    <span class="news-date">12.11.2025</span>
+                    <a href="file:///d%3A/TKW-The%20Muse/themuse/TKW/The%20muse/tintuc.html#bai/Mouse-xu-huong" class="news-title">BST Mousse The Muse: Khi nghệ thuật trở thành nguồn cảm hứng cho bánh ngọt</a>
+                </div>
+            </div>
+            <div class="news-card">
+                <div class="news-card-img-box">
+                    <img src="The muse/image/croissant.jpg" alt="News 2">
+                </div>
+                <div class="news-content">
+                    <span class="news-date">04.11.2025</span>
+                    <a href="file:///d%3A/TKW-The%20Muse/themuse/TKW/The%20muse/tintuc.html#bai/croissant" class="news-title">CROISSANT – MỘT CHÚT NƯỚC PHÁP CHO NGÀY MỚI</a>
+                </div>
+            </div>
+            <div class="news-card">
+                <div class="news-card-img-box">
+                    <img src="The muse/image/BTT2.jpg" alt="News 3">
+                </div>
+                <div class="news-content">
+                    <span class="news-date">30.10.2025</span>
+                    <a href="file:///d%3A/TKW-The%20Muse/themuse/TKW/The%20muse/tintuc.html#bai/BST-trung-thu" class="news-title">BST Trung thu The Muse: Gói trọn vị trăng trong những tầng mousse</a>
+                </div>
+            </div>
+            <div class="news-card">
+                <div class="news-card-img-box">
+                    <img src="The muse/image/cake.jpg">
+                </div>
+                <div class="news-content">
+                    <span class="news-date">29.10.2025</span>
+                    <a href="file:///d%3A/TKW-The%20Muse/themuse/TKW/The%20muse/tintuc.html#bai/mouse" class="news-title">MỘT CHIẾC MOUSSE CÓ GÌ MÀ KHIẾN NGƯỜI TA “MÊ” ĐẾN VẬY?</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer tự động nhúng -->
+    <div id="site-footer"></div>
+    <script src="footer.js"></script>
+
+    <!-- SCRIPT TÍCH HỢP CHUYỂN ĐỘNG KHI CUỘN VÀ TƯƠNG TÁC TAB 01-04 -->
+    <script>
+        const whyData = [
+            {
+                subtitle: "Liên tục",
+                title: "đổi mới, sáng tạo",
+                desc: "The Muse luôn nỗ lực để mang đến những sản phẩm đa dạng, hấp dẫn, phù hợp với nhu cầu thưởng thức của khách hàng.",
+                bg: "https://the350f.com/wp-content/uploads/2026/04/ChocoFlan-CT-4.jpg"
+            },
+            {
+                subtitle: "Tận tâm",
+                title: "nghệ nhân lành nghề",
+                desc: "Đội ngũ thợ làm bánh với nhiều năm kinh nghiệm, tỉ mỉ chăm chút từng đường nét và lớp kem mịn màng.",
+                bg: "https://the350f.com/wp-content/uploads/2025/05/ChiTietTiramisu-1.jpg"
+            },
+            {
+                subtitle: "Nguồn nguyên liệu",
+                title: "chất lượng",
+                desc: "Chúng tôi luôn ưu tiên tìm kiếm và tuyển lựa nguồn nguyên liệu đầu vào chất lượng dựa trên những tiêu chí khắt khe nhất của The Muse.",
+                bg: "https://the350f.com/wp-content/uploads/2025/07/Chi-Tiet-Hop-6-3-scaled.jpg"
+            },
+            {
+                subtitle: "Dịch vụ",
+                title: "trọn vẹn trải nghiệm",
+                desc: "Giao hàng nhanh chóng trong ngày, đảm bảo bánh nguyên vẹn hoàn hảo cùng dịch vụ chăm sóc khách hàng chu đáo.",
+                bg: "https://the350f.com/wp-content/uploads/2025/05/CT-Dua-1.jpg"
+            }
+        ];
+
+        function switchWhyTab(index) {
+            const data = whyData[index];
+            const section = document.getElementById("whyChooseSection");
+            const subtitle = document.getElementById("whySubtitle");
+            const title = document.getElementById("whyTitle");
+            const desc = document.getElementById("whyDesc");
+            const items = document.querySelectorAll(".num-item");
+
+            section.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('${data.bg}')`;
+            subtitle.textContent = data.subtitle;
+            title.textContent = data.title;
+            desc.textContent = data.desc;
+
+            items.forEach((item, i) => {
+                if (i === index) {
+                    item.classList.add("active");
+                } else {
+                    item.classList.remove("active");
+                }
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            // Khởi chạy tab đầu tiên cho phần "Vì sao"
+            switchWhyTab(0);
+
+            // Kích hoạt hiệu ứng cuộn trang
+            const revealElements = document.querySelectorAll(".reveal-on-scroll");
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("is-visible");
+                    }
+                });
+            }, {
+                threshold: 0.12
+            });
+
+            revealElements.forEach(el => observer.observe(el));
+        });
+    </script>
 </body>
 </html>
