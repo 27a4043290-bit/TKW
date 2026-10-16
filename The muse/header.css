@@ -3,7 +3,7 @@
 /* Font riêng cho header (giống kiểu chữ có chân trong ảnh mẫu). Muốn đổi font: sửa tên ở dòng @import và ở --header-font bên dưới */
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&display=swap");
 :root{--header-h:112px}   /* chiều cao header: các trang khác dùng biến này để tránh bị header che */
-
+#site-header{display:contents}
 .site-header{
 --header-font:"Roboto",Arial,sans-serif;   /* font của header */
   --h-bg:var(--card,#ffffff); --h-ink:var(--ink,#0b1a33); --h-muted:var(--muted,#7a7f8a);
