@@ -1,6 +1,6 @@
 /* ===== HEADER DÙNG CHUNG — link vào mọi trang: <link rel="stylesheet" href="header.css"> ===== */
 
-/* Font riêng cho header (giống kiểu chữ có chân trong ảnh mẫu). Muốn đổi font: sửa tên ở dòng @import và ở --header-font bên dưới */
+/* Font riêng cho header . Muốn đổi font: sửa tên ở dòng @import và ở --header-font bên dưới */
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&display=swap");
 :root{--header-h:112px}   /* chiều cao header: các trang khác dùng biến này để tránh bị header che */
 #site-header{display:contents}
