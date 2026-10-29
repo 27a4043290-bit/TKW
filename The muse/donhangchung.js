@@ -1,7 +1,4 @@
 /* ===== ĐƠN HÀNG DÙNG CHUNG — giohang.html, thietke.html và donhang.html cùng đọc/ghi qua file này =====
-   Gắn vào mỗi trang:  <script src="orders.js"></script>
-   Đơn được lưu trong localStorage (trên máy người dùng) với khóa "orders".
-
    Một đơn có dạng:
    - Từ giỏ hàng:  { type:"cart",   items:[{name,size,qty,price,img}], message:"lời chúc", total:123000 }
    - Từ thiết kế:  { type:"custom", design:{shape,tier,cot,nhan,kem,mau,mauHex,deco:[],date,time},
