@@ -1,4 +1,7 @@
- /* ===== Màu sắc dùng chung ===== */
+/* Tải font Roboto cho mọi trang (phải nằm ở dòng đầu của file CSS) */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap");
+
+/* ===== Màu sắc dùng chung ===== */
 :root {
   --bg: #fff7f0;       /* nền ngoài */
   --card: #ffffff;     /* nền khung trắng */
@@ -11,7 +14,11 @@
   --err: #c62828;      /* màu báo lỗi */
   --ok: #2e7d32;       /* màu báo thành công*/
 
-  --font-main: Roboto, Arial, sans-serif;
+  --font: Roboto, Arial, sans-serif;     /* các trang sản phẩm, giỏ hàng... dùng tên này */
+  --font-main: var(--font);              /* giữ tên cũ để các trang khác (liên hệ...) vẫn chạy */
+
+  --gap: clamp(14px, 2.6vw, 40px);       /* khoảng cách giữa các khối */
+  --pad: clamp(16px, 5vw, 80px);         /* lề hai bên trang */
 }
 
 * { box-sizing: border-box; }
@@ -20,7 +27,7 @@
 body {
   margin: 0;
   background: var(--bg);
-  font-family: var(--font-main);
+  font-family: var(--font);
   color: var(--ink);
   min-height: 100vh;
 }

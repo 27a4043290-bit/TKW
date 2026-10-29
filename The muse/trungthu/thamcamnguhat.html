@@ -1,11 +1,190 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<link rel="stylesheet" href="D:\Vs code\Thiết kế web\blt TKW\The muse\banh.css">
+
+<!-- SỬA TÊN WEB -->
+
+
+
+<title>Thập Cẩm Ngũ Hạt - Moon cake</title>
+
+
 </head>
+
 <body>
+
+<!-- CHI TIẾT BÁNH -->
+<div class="product">
     
+
+
+    <!-- SỬA ẢNH BÁNH -->
+
+
+
+    <img class="main-img" src="https://www.the350f.com/wp-content/uploads/2025/07/TT26-BN-Ngu-Vi-1-scaled.jpg" alt="Kem bánh quy vani ">
+
+
+
+
+
+
+      <!-- SỬA TÊN BÁNH, GIÁ TIỀN , MÔ TẢ SẢN PHẨM -->
+
+
+
+
+    <div class="info">
+        <h1>Thập Cẩm Ngũ Hạt </h1>
+        <p class="price" id="price">95,000 VND</p>
+        
+
+        <p>
+           Bánh trung thu Thập cẩm truyền thống. Bánh nướng thập cẩm mang trong mình hương vị gần gũi, tinh tế và đọng lại trong tâm trí thực khách mỗi độ thu. Là sự kết hợp hài hoà giữa hương thơm của rượu, mỡ phần, bột nếp cùng với hương hoa bưởi tươi có trong mứt bí, vị đặc trưng của lá chanh, lạp xưởng, hạt dưa, hạt bí, vị béo bùi của vừng, hạt điều…
+        </p>
+
+
+
+
+
+
+
+        <!-- SỬA SIZE BÁNH, GIÁ TIỀN TỪNG SIZE -->
+
+
+
+
+        <p>Size:
+    <select id="size" onchange="doiGia()">
+        <option value="100000">150g</option>
+        <option value="165000" selected>250g</option>
+    </select>
+</p>
+
+
+        <p>Số lượng:
+            <button onclick="doiSL(-1)">−</button>
+            <span id="sl">1</span>
+            <button onclick="doiSL(1)">+</button>
+        </p>
+
+        <button class="buy" onclick="mua()">Thêm vào giỏ hàng</button>
+        <button class="buy" onclick="muaNgay()">Mua ngay</button>
+
+    </div>
+</div>
+
+<!-- THÔNG TIN BÁNH -->
+
+
+
+
+<!-- SỬA MÔ TẢ SẢN PHẨM -->
+
+
+
+
+<div class="details">
+    <h2>Mô tả sản phẩm</h2>
+    <p>Bánh trung thu Thập Cẩm Ngũ Hạt mang hương vị truyền thống gần gũi và tinh tế, gợi nhớ kí ức mùa thu qua sự kết hợp hài hòa giữa các loại hạt bùi béo, mứt bí thơm hoa bưởi, lạp xưởng và lá chanh đặc trưng.</p>
+
+    <h3>Cấu trúc bánh:</h3>
+    <ul>
+        <li>Bánh sở hữu lớp vỏ bánh nướng truyền thống màu vàng nâu óng ả với hoa văn chạm khắc dập nổi sắc nét, bao bọc cẩn thận phần nhân phong phú bên trong.</li>
+        <li>Nhân bánh là sự quyện hòa giữa vị béo bùi của vừng, hạt điều, hạt dưa, hạt bí cùng lạp xưởng đậm đà và mỡ phần béo ngậy.</li>
+        <li>Tổng thể nhân bánh được nâng tầm nhờ hương thơm quyến rũ của rượu, bột nếp, mứt bí dậy mùi hoa bưởi tươi và lá chanh thái nhỏ đặc trưng.</li>
+    </ul>
+
+
+
+
+<!-- SỬA HƯỚNG DẪN SỬ DỤNG -->
+
+
+
+
+
+    <h3>Hướng dẫn sử dụng:</h3>
+    <ul>
+       <li>Nên bảo quản bánh ở nơi khô ráo, thoáng mát, tránh ánh nắng trực tiếp hoặc lưu trữ trong ngăn mát tủ lạnh nếu đã cắt ra.</li>
+        <li>Sử dụng ngon nhất trước hạn sử dụng in trên bao bì; sau khi mở gói, nên dùng hết trong vòng 1-2 ngày để đảm bảo hương vị tươi ngon</li>
+        <li>Bánh sẽ tuyệt vời hơn khi thưởng thức cùng một ngụm trà xanh hoặc trà ô long ấm nóng để cân bằng vị giác trong đêm rằm Trung thu.</li>
+    </ul>
+</div>
+
+<!-- SẢN PHẨM LIÊN QUAN -->
+
+
+
+
+
+<!-- SỬA HÌNH ẢNH, TÊN, GIÁ TIỀN CỦA 4 SẢN PHẨM LIÊN QUAN -->
+
+
+
+
+
+<div class="related">
+    <h2>Sản phẩm liên quan</h2>
+
+    <div class="products">
+       <div class="card">
+            
+            <a href="D:\Vs code\Thiết kế web\blt TKW\The muse\trungthu\oihongdautam.html"><img src="https://www.the350f.com/wp-content/uploads/2025/07/TT26-Oi-Hong-scaled.jpg" alt="bánh a" ></a>
+            <h3> Ổi Hồng Dâu Tằm  </h3>
+            <p>100,000 VND</p>
+            
+        </div>
+
+        <div class="card">
+            <a href="D:\Vs code\Thiết kế web\blt TKW\The muse\trungthu\taodo.html"><img src="https://www.the350f.com/wp-content/uploads/2025/07/TT26-BN-Tao-do-1-scaled.jpg" alt="bánh b"></a>
+            <h3>Táo Đỏ</h3>
+            <p>105,000 VND</p>
+        </div>
+
+        <div class="card">
+            <a href="D:\Vs code\Thiết kế web\blt TKW\The muse\trungthu\buoihong.html"><img src="https://www.the350f.com/wp-content/uploads/2026/08/TT26-BN-Buoi-hong-2-scaled.jpg" alt="bánh b"></a>
+            <h3>Bưởi hồng</h3>
+            <p>95,000 VND</p>
+        </div>
+
+        <div class="card">
+            <a href="D:\Vs code\Thiết kế web\blt TKW\The muse\trungthu\vaithieuthanhlongdo.html"><img src="https://www.the350f.com/wp-content/uploads/2026/08/TT26-Vai-Thieu-Thanh-Long-2-1-scaled.jpg" alt="bánh c"></a>
+            <h3> Vải Thiều Thanh Long Đỏ</h3>
+            <p>104,000 VND</p>
+        </div>
+    </div>
+</div>
+
+<script>
+let soLuong = 1;
+
+function doiSL(n) {
+    soLuong += n;
+    if (soLuong < 1) soLuong = 1;
+    document.getElementById("sl").innerText = soLuong;
+    doiGia();
+}
+
+function doiGia() {
+    let gia = Number(document.getElementById("size").value);
+    document.getElementById("price").innerText =
+        (gia * soLuong).toLocaleString("vi-VN") + " VND";
+}
+
+function mua() {
+    alert("Bạn đã chọn mua " + soLuong + " bánh Kem dâu!");
+}
+
+function muaNgay() {
+    window.location.href = "file:///D:/Vs%20code/Thi%E1%BA%BFt%20k%E1%BA%BF%20web/blt%20TKW/The%20muse/thanhtoan.html";
+}
+</script> 
+
 </body>
 </html>

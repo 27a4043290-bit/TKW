@@ -1,11 +1,190 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<link rel="stylesheet" href="D:\Vs code\Thiết kế web\blt TKW\The muse\banh.css">
+
+<!-- SỬA TÊN WEB -->
+
+
+
+<title>Táo Đỏ - Moon cake</title>
+
+
 </head>
+
 <body>
+
+<!-- CHI TIẾT BÁNH -->
+<div class="product">
     
+
+
+    <!-- SỬA ẢNH BÁNH -->
+
+
+
+    <img class="main-img" src="https://www.the350f.com/wp-content/uploads/2025/07/TT26-BN-Tao-do-1-scaled.jpg" alt="Kem bánh quy vani ">
+
+
+
+
+
+
+      <!-- SỬA TÊN BÁNH, GIÁ TIỀN , MÔ TẢ SẢN PHẨM -->
+
+
+
+
+    <div class="info">
+        <h1>Táo Đỏ </h1>
+        <p class="price" id="price">105,000 VND</p>
+        
+
+        <p>
+           Lấy hạt sen và táo đỏ - những nguyên liệu quen thuộc trong ẩm thực Á Đông - làm nền hương vị, The 350F kết hợp cùng nhiều nguyên liệu nhập khẩu thượng hạng được tuyển chọn khắt khe từ nhiều vùng nguyên liệu, tạo nên phần nhân hài hòa với vị ngọt vừa phải, thoảng hương táo tự nhiên. Tất cả được bao bọc trong lớp vỏ bánh nướng truyền thống mềm mịn, mang đến tổng thể thanh nhã và tròn vị.  
+        </p>
+
+
+
+
+
+
+
+        <!-- SỬA SIZE BÁNH, GIÁ TIỀN TỪNG SIZE -->
+
+
+
+
+        <p>Size:
+    <select id="size" onchange="doiGia()">
+        <option value="105000">150g</option>
+        <option value="170000" selected>250g</option>
+    </select>
+</p>
+
+
+        <p>Số lượng:
+            <button onclick="doiSL(-1)">−</button>
+            <span id="sl">1</span>
+            <button onclick="doiSL(1)">+</button>
+        </p>
+
+        <button class="buy" onclick="mua()">Thêm vào giỏ hàng</button>
+        <button class="buy" onclick="muaNgay()">Mua ngay</button>
+
+    </div>
+</div>
+
+<!-- THÔNG TIN BÁNH -->
+
+
+
+
+<!-- SỬA MÔ TẢ SẢN PHẨM -->
+
+
+
+
+<div class="details">
+    <h2>Mô tả sản phẩm</h2>
+    <p>Bánh trung thu Táo Đỏ là sự kết hợp tinh tế giữa nguyên liệu quen thuộc trong ẩm thực Á Đông và các thành phần nhập khẩu thượng hạng, mang đến hương vị thanh nhã, tròn vị ôm trọn trong lớp vỏ nướng truyền thống mềm mịn.</p>
+
+    <h3>Cấu trúc bánh:</h3>
+    <ul>
+        <li>Bánh được bao bọc bởi lớp vỏ bánh nướng truyền thống mềm mịn, mang sắc vàng nâu óng ả cùng hoa văn dập nổi sắc nét</li>
+        <li>Lớp nhân hạt sen dẻo mịn làm nền hương vị, được kết hợp cùng các nguyên liệu nhập khẩu thượng hạng chọn lọc khắt khe.</li>
+        <li>Nhân bánh mang vị ngọt vừa phải, dậy lên thoảng hương táo đỏ tự nhiên ngọt thanh và dễ chịu</li>
+    </ul>
+
+
+
+
+<!-- SỬA HƯỚNG DẪN SỬ DỤNG -->
+
+
+
+
+
+    <h3>Hướng dẫn sử dụng:</h3>
+    <ul>
+       <li>Nên bảo quản bánh ở nơi khô ráo, thoáng mát, tránh ánh nắng trực tiếp hoặc lưu trữ trong ngăn mát tủ lạnh nếu đã cắt ra.</li>
+        <li>Sử dụng ngon nhất trước hạn sử dụng in trên bao bì; sau khi mở gói, nên dùng hết trong vòng 1-2 ngày để đảm bảo hương vị tươi ngon</li>
+        <li>Bánh sẽ tuyệt vời hơn khi thưởng thức cùng một ngụm trà xanh hoặc trà ô long ấm nóng để cân bằng vị giác trong đêm rằm Trung thu.</li>
+    </ul>
+</div>
+
+<!-- SẢN PHẨM LIÊN QUAN -->
+
+
+
+
+
+<!-- SỬA HÌNH ẢNH, TÊN, GIÁ TIỀN CỦA 4 SẢN PHẨM LIÊN QUAN -->
+
+
+
+
+
+<div class="related">
+    <h2>Sản phẩm liên quan</h2>
+
+    <div class="products">
+       <div class="card">
+            
+            <a href="D:\Vs code\Thiết kế web\blt TKW\The muse\trungthu\thamcamnguhat.html"><img src="https://www.the350f.com/wp-content/uploads/2025/07/TT26-BN-Ngu-Vi-1-scaled.jpg" alt="bánh a" ></a>
+            <h3> Thập cẩm ngũ hạt  </h3>
+            <p>100,000 VND</p>
+            
+        </div>
+
+        <div class="card">
+            <a href="D:\Vs code\Thiết kế web\blt TKW\The muse\trungthu\buoihong.html"><img src="https://www.the350f.com/wp-content/uploads/2026/08/TT26-BN-Buoi-hong-2-scaled.jpg" alt="bánh b"></a>
+            <h3>Bưởi hồng</h3>
+            <p>95,000 VND</p>
+        </div>
+
+        <div class="card">
+            <a href="D:\Vs code\Thiết kế web\blt TKW\The muse\trungthu\vaithieuthanhlongdo.html"><img src="https://www.the350f.com/wp-content/uploads/2026/08/TT26-Vai-Thieu-Thanh-Long-2-1-scaled.jpg" alt="bánh c"></a>
+            <h3> Vải Thiều Thanh Long Đỏ</h3>
+            <p>104,000 VND</p>
+        </div>
+
+        <div class="card">
+            <a href="D:\Vs code\Thiết kế web\blt TKW\The muse\trungthu\thapcamxaxiu.html"><img src="https://www.the350f.com/wp-content/uploads/2025/07/TT26-BN-Xa-Xiu-1-scaled.jpg" alt="bánh d"></a>
+            <h3>Thập cẩm xá xíu</h3>
+            <p>95,000 VND</p>
+        </div>
+    </div>
+</div>
+
+<script>
+let soLuong = 1;
+
+function doiSL(n) {
+    soLuong += n;
+    if (soLuong < 1) soLuong = 1;
+    document.getElementById("sl").innerText = soLuong;
+    doiGia();
+}
+
+function doiGia() {
+    let gia = Number(document.getElementById("size").value);
+    document.getElementById("price").innerText =
+        (gia * soLuong).toLocaleString("vi-VN") + " VND";
+}
+
+function mua() {
+    alert("Bạn đã chọn mua " + soLuong + " bánh Kem dâu!");
+}
+
+function muaNgay() {
+    window.location.href = "file:///D:/Vs%20code/Thi%E1%BA%BFt%20k%E1%BA%BF%20web/blt%20TKW/The%20muse/thanhtoan.html";
+}
+</script> 
+
 </body>
 </html>

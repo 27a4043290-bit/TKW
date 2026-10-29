@@ -1,11 +1,190 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<link rel="stylesheet" href="D:\Vs code\Thiết kế web\blt TKW\The muse\banh.css">
+
+<!-- SỬA TÊN WEB -->
+
+
+
+<title>Thập cẩm xá xíu - Moon cake</title>
+
+
 </head>
+
 <body>
+
+<!-- CHI TIẾT BÁNH -->
+<div class="product">
     
+
+
+    <!-- SỬA ẢNH BÁNH -->
+
+
+
+    <img class="main-img" src="https://www.the350f.com/wp-content/uploads/2025/07/TT26-BN-Xa-Xiu-1-scaled.jpg" alt="Kem bánh quy vani ">
+
+
+
+
+
+
+      <!-- SỬA TÊN BÁNH, GIÁ TIỀN , MÔ TẢ SẢN PHẨM -->
+
+
+
+
+    <div class="info">
+        <h1>Thập cẩm xá xíu </h1>
+        <p class="price" id="price">95,000 VND</p>
+        
+
+        <p>
+           Nổi bật với lớp vỏ bánh được nướng thủ công vàng ruộm, chiếc bánh Thập cẩm xá xíu gây ấn tượng với sự kết hợp của 16 nguyên liệu tinh tuyển: là Thịt xá xíu thơm lừng, Trứng vịt muối ngậy thơm, Lạp xưởng đậm đà, ... Mai quế ... nồng nàn và rất nhiều nguyên liệu khác như Mỡ đường, Hạt dưa, Mứt tắc, Trần bì… mang đến bản phối hài hòa với vị mặn ngọt đầy tinh tế.
+        </p>
+
+
+
+
+
+
+
+        <!-- SỬA SIZE BÁNH, GIÁ TIỀN TỪNG SIZE -->
+
+
+
+
+        <p>Size:
+    <select id="size" onchange="doiGia()">
+        <option value="100000">150g</option>
+        <option value="155000" selected>250g</option>
+    </select>
+</p>
+
+
+        <p>Số lượng:
+            <button onclick="doiSL(-1)">−</button>
+            <span id="sl">1</span>
+            <button onclick="doiSL(1)">+</button>
+        </p>
+
+        <button class="buy" onclick="mua()">Thêm vào giỏ hàng</button>
+        <button class="buy" onclick="muaNgay()">Mua ngay</button>
+
+    </div>
+</div>
+
+<!-- THÔNG TIN BÁNH -->
+
+
+
+
+<!-- SỬA MÔ TẢ SẢN PHẨM -->
+
+
+
+
+<div class="details">
+    <h2>Mô tả sản phẩm</h2>
+    <p>Bánh trung thu Thập Cẩm Xá Xíu gây ấn tượng sâu sắc nhờ sự kết hợp hài hòa từ 16 nguyên liệu tinh tuyển bao gồm thịt xá xíu, trứng vịt muối, lạp xưởng và rượu mai quế lộ, tất cả được bao bọc trong lớp vỏ nướng thủ công vàng ruộm.</p>
+
+    <h3>Cấu trúc bánh:</h3>
+    <ul>
+        <li>Bánh nổi bật với lớp vỏ bánh nướng thủ công màu vàng ruộm óng ả, ôm trọn phần nhân tròn đầy bên trong.</li>
+        <li>Nhân bánh kết hợp độc đáo giữa thịt xá xíu thơm lừng, trứng vịt muối ngậy thơm, lạp xưởng đậm đà cùng mỡ đường béo ngậy.</li>
+        <li>Sự hòa quyện của rượu mai quế lộ nồng nàn cùng hạt dưa, mứt tắc và trần bì tạo nên một bản phối mặn ngọt vô cùng hài hòa và tinh tế.</li>
+    </ul>
+
+
+
+
+<!-- SỬA HƯỚNG DẪN SỬ DỤNG -->
+
+
+
+
+
+    <h3>Hướng dẫn sử dụng:</h3>
+    <ul>
+       <li>Nên bảo quản bánh ở nơi khô ráo, thoáng mát, tránh ánh nắng trực tiếp hoặc lưu trữ trong ngăn mát tủ lạnh nếu đã cắt ra.</li>
+        <li>Sử dụng ngon nhất trước hạn sử dụng in trên bao bì; sau khi mở gói, nên dùng hết trong vòng 1-2 ngày để đảm bảo hương vị tươi ngon</li>
+        <li>Bánh sẽ tuyệt vời hơn khi thưởng thức cùng một ngụm trà xanh hoặc trà ô long ấm nóng để cân bằng vị giác trong đêm rằm Trung thu.</li>
+    </ul>
+</div>
+
+<!-- SẢN PHẨM LIÊN QUAN -->
+
+
+
+
+
+<!-- SỬA HÌNH ẢNH, TÊN, GIÁ TIỀN CỦA 4 SẢN PHẨM LIÊN QUAN -->
+
+
+
+
+
+<div class="related">
+    <h2>Sản phẩm liên quan</h2>
+
+    <div class="products">
+       <div class="card">
+            
+            <a href="D:\Vs code\Thiết kế web\blt TKW\The muse\trungthu\oihongdautam.html"><img src="https://www.the350f.com/wp-content/uploads/2025/07/TT26-Oi-Hong-scaled.jpg" alt="bánh a" ></a>
+            <h3> Ổi Hồng Dâu Tằm  </h3>     
+            <p>100,000 VND</p>
+            
+        </div>
+
+        <div class="card">
+            <a href="D:\Vs code\Thiết kế web\blt TKW\The muse\trungthu\taodo.html"><img src="https://www.the350f.com/wp-content/uploads/2025/07/TT26-BN-Tao-do-1-scaled.jpg" alt="bánh b"></a>
+            <h3>Táo Đỏ</h3>
+            <p>105,000 VND</p>
+        </div>
+
+        <div class="card">
+            <a href="D:\Vs code\Thiết kế web\blt TKW\The muse\trungthu\buoihong.html"><img src="https://www.the350f.com/wp-content/uploads/2026/08/TT26-BN-Buoi-hong-2-scaled.jpg" alt="bánh b"></a>
+            <h3>Bưởi hồng</h3>
+            <p>95,000 VND</p>      
+        </div>
+
+        <div class="card">
+            <a href="D:\Vs code\Thiết kế web\blt TKW\The muse\trungthu\thamcamnguhat.html"><img src="https://www.the350f.com/wp-content/uploads/2025/07/TT26-BN-Ngu-Vi-1-scaled.jpg" alt="bánh a" ></a>
+            <h3> Thập cẩm ngũ hạt  </h3>
+            <p>100,000 VND</p>
+        </div>
+    </div>
+</div>
+
+<script>
+let soLuong = 1;
+
+function doiSL(n) {
+    soLuong += n;
+    if (soLuong < 1) soLuong = 1;
+    document.getElementById("sl").innerText = soLuong;
+    doiGia();
+}
+
+function doiGia() {
+    let gia = Number(document.getElementById("size").value);
+    document.getElementById("price").innerText =
+        (gia * soLuong).toLocaleString("vi-VN") + " VND";
+}
+
+function mua() {
+    alert("Bạn đã chọn mua " + soLuong + " bánh Kem dâu!");
+}
+
+function muaNgay() {
+    window.location.href = "file:///D:/Vs%20code/Thi%E1%BA%BFt%20k%E1%BA%BF%20web/blt%20TKW/The%20muse/thanhtoan.html";
+}
+</script> 
+
 </body>
 </html>

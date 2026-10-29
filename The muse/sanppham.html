@@ -6,11 +6,9 @@
 <title>Sản phẩm - The Muse</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="header.css">
 <style>
-/* ===== 1. Biến màu & font: sửa ở đây là đổi cả trang ===== */
-:root{
-  :root{--gap:clamp(14px,2.6vw,40px);--pad:clamp(16px,5vw,80px)}
-}
+/* ===== 1. Màu & font nằm trong style.css (--bg, --ink, --price, --font ...) ===== */
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:var(--font);color:var(--ink);background:var(--bg)}
@@ -26,13 +24,13 @@ a{color:inherit;text-decoration:none}
 .page-title{font-size:36px;padding:40px 0 28px;border-bottom:1px solid var(--line)}
 .layout{display:grid;grid-template-columns:320px 1fr;gap:40px;padding:40px 0 80px}
 
-.sidebar{position:sticky;top:calc(var(--header-h) + 24px);align-self:start;display:flex;flex-direction:column;gap:20px}
+.sidebar{position:sticky;top:calc(var(--header-h, 0px) + 24px);align-self:start;display:flex;flex-direction:column;gap:20px}
 .cat-btn{display:flex;align-items:center;gap:18px;padding:16px 20px;background:var(--bar);
   border-left:3px solid var(--accent);border-radius:6px;font-weight:600;font-size:17px;text-transform:uppercase}
 .cat-btn.active{background:var(--ink);color:#fff;border-left-color:var(--price)}
 
 /* ===== 4. Mỗi nhóm bánh = 1 section ===== */
-.group{scroll-margin-top:calc(var(--header-h) + 24px);margin-bottom:60px}
+.group{scroll-margin-top:calc(var(--header-h, 0px) + 24px);margin-bottom:60px}
 /* Đường kẻ vàng ngăn giữa các nhóm bánh (không có ở nhóm đầu tiên) */
 .group + .group{border-top:1px solid var(--accent);padding-top:50px}
 .group h2{font-size:24px;margin-bottom:26px}
@@ -58,6 +56,7 @@ a{color:inherit;text-decoration:none}
   transition:transform .25s}
 .card:hover .add,.card:focus-within .add{transform:none}
 .card:focus-visible{outline:3px solid var(--accent)}
+
 /* Phần dưới thẻ: tên + giá, hoặc danh sách size (cùng nằm 1 ô nên chiều cao không nhảy) */
 .thumb-link{display:block}
 .bottom{display:grid}
@@ -70,7 +69,7 @@ a.info{display:block}
 .card.choosing .info{visibility:hidden}
 .card.choosing .sizes{display:flex}
 .card.choosing .add{display:none}
- 
+
 /* Giỏ hàng trượt ra từ bên phải */
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);opacity:0;pointer-events:none;transition:opacity .3s;z-index:40}
 .overlay.open{opacity:1;pointer-events:auto}
@@ -95,9 +94,10 @@ a.info{display:block}
 .go{display:flex;align-items:center;justify-content:center;gap:8px;margin:14px 0 0 auto;width:fit-content;padding:14px 22px;border-radius:10px;background:var(--accent);color:var(--ink);font-weight:700}
 .go:hover{opacity:.9}
 body.lock{overflow:hidden}
- 
+
 /* Màn hình cảm ứng không có hover: luôn hiện nút thêm vào giỏ */
 @media(hover:none){.add{position:static;transform:none;width:100%}}
+
 /* ===== 6. Responsive ===== */
 @media(max-width:1000px){
   .layout{grid-template-columns:1fr;gap:24px}
@@ -108,7 +108,6 @@ body.lock{overflow:hidden}
 @media(max-width:560px){.grid{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.add{transition:none}}
 </style>
-<link rel="stylesheet" href="header.css">
 <script src="float.js" defer></script>
 </head>
 <body>
@@ -124,6 +123,7 @@ body.lock{overflow:hidden}
     <div id="products"></div>
   </div>
 </main>
+
 <!-- Giỏ hàng trượt bên phải -->
 <div class="overlay" id="overlay"></div>
 <aside class="drawer" id="drawer" aria-label="Giỏ hàng">
@@ -138,17 +138,20 @@ body.lock{overflow:hidden}
     <a class="go" href="giohang.html">Xem giỏ hàng →</a>
   </footer>
 </aside>
+
 <script>
 /* ===== 7. DỮ LIỆU SẢN PHẨM =====
-   "id" sẽ được truyền sang trang chi tiết: chitietsanpham.html?id=tiramisu */
+   "id" sẽ được truyền sang trang chi tiết: chitietsanpham.html?id=tiramisu
+   "sizes" (không bắt buộc): bánh nào có sizes thì khi bấm "Thêm vào giỏ hàng" sẽ hiện các size để chọn.
+   Mỗi size có giá riêng; giá size 20 cm bên dưới là SỐ MẪU, bạn sửa lại giá thật. */
 const categories = [
   { key:"mousse",   name:"Bánh Mousse",    items:[
-    {id:"chocoflan",  name:"ChocoFlan",         price:55000, img:"https://the350f.com/wp-content/uploads/2026/04/ChocoFlan-CT-2.jpg",  hot:true, isNew:true},
-    {id:"tiramisu",   name:"Tiramisu",          price:60000, img:"https://the350f.com/wp-content/uploads/2025/05/ChiTietTiramisu-1.jpg" },
-    {id:"mousse-dua-luoi", name:"Mousse Dưa lưới", price:65000, img:"https://the350f.com/wp-content/uploads/2025/05/CT-Dua-1.jpg", hot:true, isNew:true},
-    {id:"mousse-dau", name:"Mousse Dâu", price:65000, img:"https://the350f.com/wp-content/uploads/2025/05/CT-Dau-4.jpg" },
-    {id:"mousse-tra-nhan", name:"Mousse Trà Nhãn", price:65000, img:"https://the350f.com/wp-content/uploads/2026/07/Tra-nhan-2026-2.jpg", hot:true, isNew:true},
-    {id:"mousse-xoai", name:"Mousse Xoài", price:60000, img:"https://the350f.com/wp-content/uploads/2025/05/Ban-sao-cua-_IMG2338-copy.jpg", hot:true }
+    {id:"chocoflan",  name:"ChocoFlan",         price:55000, sizes:[{label:"20 cm",price:75000},{label:"16 cm",price:55000}], img:"https://the350f.com/wp-content/uploads/2026/04/ChocoFlan-CT-2.jpg",  hot:true, isNew:true},
+    {id:"tiramisu",   name:"Tiramisu",          price:60000, sizes:[{label:"20 cm",price:80000},{label:"16 cm",price:60000}], img:"https://the350f.com/wp-content/uploads/2025/05/ChiTietTiramisu-1.jpg" },
+    {id:"mousse-dua-luoi", name:"Mousse Dưa lưới", price:65000, sizes:[{label:"20 cm",price:85000},{label:"16 cm",price:65000}], img:"https://the350f.com/wp-content/uploads/2025/05/CT-Dua-1.jpg", hot:true, isNew:true},
+    {id:"mousse-dau", name:"Mousse Dâu", price:65000, sizes:[{label:"20 cm",price:85000},{label:"16 cm",price:65000}], img:"https://the350f.com/wp-content/uploads/2025/05/CT-Dau-4.jpg" },
+    {id:"mousse-tra-nhan", name:"Mousse Trà Nhãn", price:65000, sizes:[{label:"20 cm",price:85000},{label:"16 cm",price:65000}], img:"https://the350f.com/wp-content/uploads/2026/07/Tra-nhan-2026-2.jpg", hot:true, isNew:true},
+    {id:"mousse-xoai", name:"Mousse Xoài", price:60000, sizes:[{label:"20 cm",price:80000},{label:"16 cm",price:60000}], img:"https://the350f.com/wp-content/uploads/2025/05/Ban-sao-cua-_IMG2338-copy.jpg", hot:true }
   ]},
   { key:"croissant", name:"Bánh Croissant", items:[
     {id:"croissant-xoan-oc",     name:"Croissant xoắn ốc nhân hạt dẻ cười",       price:35000, img:"https://cdn.prod.website-files.com/649249d29a20bd6bc3deac48/6a46975f52af1711c7dc1600_3700000836_Pistachio%20Spiral%20Croissant-p-1080.png", hot:true, isNew:true},
@@ -177,6 +180,7 @@ const categories = [
 ];
 
 const fmt = n => n.toLocaleString("en-US") + "VND";
+
 /* Tìm kiếm từ header: sanpham.html?q=tiramisu (không phân biệt hoa thường và dấu) */
 const norm = t => t.normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/đ/g,"d").toLowerCase();
 const q = norm(new URLSearchParams(location.search).get("q") || "");
@@ -184,17 +188,19 @@ const shown = categories
   .map(c => ({...c, items: c.items.filter(p => !q || norm(p.name).includes(q))}))
   .filter(c => c.items.length);
 
-/* ===== 8. Tự sinh HTML từ dữ liệu ===== */
-document.getElementById("sidebar").innerHTML = categories
+/* ===== 8. Tự sinh HTML từ dữ liệu (dùng `shown` để tìm kiếm có tác dụng) ===== */
+document.getElementById("sidebar").innerHTML = shown
   .map((c,i)=>`<a class="cat-btn${i?'':' active'}" href="#${c.key}" data-key="${c.key}">${c.name.replace("Bánh ","")}</a>`).join("");
 
-document.getElementById("products").innerHTML = categories.map(c => `
+document.getElementById("products").innerHTML = (shown.length ? shown : [null]).map(c => !c
+  ? `<p style="padding:40px 0;color:var(--muted)">Không tìm thấy bánh phù hợp.</p>`
+  : `
   <section class="group" id="${c.key}">
     <h2>${c.name}</h2>
     <div class="grid">
       ${c.items.map(p => `
         <article class="card">
-          <a href="chitietsanpham.html?id=${p.id}" aria-label="Xem chi tiết ${p.name}">
+          <a class="thumb-link" href="chitietsanpham.html?id=${p.id}" aria-label="Xem chi tiết ${p.name}">
             <div class="thumb">
               <img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.remove()">
               <div class="badges">
@@ -202,11 +208,16 @@ document.getElementById("products").innerHTML = categories.map(c => `
                 ${p.isNew ? '<span class="badge new">Mới</span>' : ''}
               </div>
             </div>
-            <div class="info">
+          </a>
+          <div class="bottom">
+            <a class="info" href="chitietsanpham.html?id=${p.id}">
               <h3>${p.name}</h3>
               <p class="price">Giá từ: <b>${fmt(p.price)}</b></p>
+            </a>
+            <div class="sizes">
+              ${(p.sizes || []).map(z => `<button type="button" class="size" data-id="${p.id}" data-size="${z.label}">${z.label}</button>`).join("")}
             </div>
-          </a>
+          </div>
           <button class="add" type="button" data-id="${p.id}">Thêm vào giỏ hàng</button>
         </article>`).join("")}
     </div>
@@ -224,11 +235,11 @@ document.querySelectorAll(".group").forEach(g => spy.observe(g));
 /* ===== 10. GIỎ HÀNG ===== */
 const getCart = () => { try { return JSON.parse(localStorage.getItem("cart") || "[]").map(x => ({...x, key: x.key || x.id})); } catch { return []; } };
 const setCart = c => localStorage.setItem("cart", JSON.stringify(c));
- 
+
 function findProduct(id){
   for (const c of categories){ const p = c.items.find(x => x.id === id); if (p) return {p, c}; }
 }
- 
+
 // Thêm 1 sản phẩm với đúng giá của size đã chọn. Cùng sản phẩm + cùng size thì tăng số lượng.
 function addToCart(p, size, price){
   const key = p.id + (size ? "|" + size : "");
@@ -238,10 +249,10 @@ function addToCart(p, size, price){
   else cart.push({key, id:p.id, name:p.name, size:size || "", price:price, img:p.img, qty:1});
   setCart(cart);
 }
- 
+
 const TRASH = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14"/></svg>';
 const drawer = document.getElementById("drawer"), overlay = document.getElementById("overlay");
- 
+
 function renderDrawer(){
   const cart = getCart();
   const count = cart.reduce((s,x) => s + x.qty, 0);
@@ -265,15 +276,15 @@ function renderDrawer(){
 }
 function openDrawer(){ renderDrawer(); drawer.classList.add("open"); overlay.classList.add("open"); document.body.classList.add("lock"); }
 function closeDrawer(){ drawer.classList.remove("open"); overlay.classList.remove("open"); document.body.classList.remove("lock"); }
- 
+
 document.addEventListener("click", e => {
   // bấm ra ngoài thẻ thì đóng khung chọn size
   document.querySelectorAll(".card.choosing").forEach(c => { if (!c.contains(e.target)) c.classList.remove("choosing"); });
- 
+
   const add = e.target.closest(".add");
   if (add){
     const card = add.closest(".card");
-    if (card.querySelector(".size")) card.classList.add("choosing");   // có size → hiện 2 size để chọn
+    if (card.querySelector(".size")) card.classList.add("choosing");   // có size → hiện các size để chọn
     else { const p = findProduct(add.dataset.id).p; addToCart(p, "", p.price); openDrawer(); }  // không có size → thêm luôn
     return;
   }
