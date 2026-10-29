@@ -1,0 +1,109 @@
+/* Màu (--bg, --ink, --bar...) và font (--font) nằm trong style.css */
+:root{--font-title:"Playfair Display",Georgia,serif}   /* font tiêu đề; muốn dùng Roboto thì đổi thành var(--font) */
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);color:var(--ink);background:var(--bg);font-size:15px;line-height:1.55}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer}
+.wrap{max-width:1312px;margin:0 auto;padding:0 32px}
+.sf{font-family:var(--font-title)}
+.eye{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.tag{display:inline-block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;padding:5px 10px;border-radius:4px;background:var(--ink);color:#fff}
+.tag.done{background:var(--line);color:var(--ink)}
+.tag.canceled{background:#fde3de;color:#9c2b12}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 22px;border-radius:8px;border:0;
+  font-weight:700;font-size:12px;letter-spacing:.12em;text-transform:uppercase;background:var(--ink);color:#fff}
+.btn:hover{opacity:.9}
+.btn.soft{background:var(--bar);color:var(--ink)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:24px}
+
+/* ===== Breadcrumb ===== */
+.crumb{background:var(--bar);padding:16px 0}
+.crumb .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.crumb a:hover{color:var(--price)}
+.live{display:inline-flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:12px;color:var(--muted)}
+.live i{width:8px;height:8px;border-radius:50%;background:var(--ok)}
+
+/* ===== Tóm tắt đơn ===== */
+.summary{display:grid;grid-template-columns:1fr 520px;gap:40px;align-items:center;background:var(--bar);border-radius:28px;padding:44px 48px;margin-top:32px}
+.summary h1{font-size:clamp(36px,4.4vw,58px);line-height:1.1;font-weight:600;margin-top:18px}
+.summary .date{margin-top:20px;color:var(--muted);display:flex;align-items:center;gap:8px}
+.info{display:grid;grid-template-columns:1fr 1fr;gap:24px;padding:28px}
+.info .v{font-size:22px;margin-top:8px}
+.info small{display:block;font-size:13px;color:var(--muted);margin-top:4px}
+.info .eta{color:var(--price)}
+.info a.link{display:inline-block;font-size:13px;color:var(--price);text-decoration:underline;margin-top:6px}
+
+/* ===== Tiến trình ===== */
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap}
+.sec-head h2{font-size:clamp(30px,3.4vw,46px);font-weight:600;margin-top:10px}
+#tien-trinh{padding-top:72px;scroll-margin-top:24px}
+.steps{position:relative;margin-top:44px}
+.line{position:absolute;top:28px;left:12.5%;right:12.5%;height:2px;background:var(--line)}
+.line b{position:absolute;left:0;top:0;height:2px;background:var(--ink);width:calc(var(--i,0) * 33.333%)}
+.steps ol{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:32px;position:relative}
+.step{text-align:center}
+.ico{width:56px;height:56px;border-radius:14px;margin:0 auto 18px;display:grid;place-items:center;background:var(--bar);color:var(--ink);position:relative}
+.ico svg{width:24px;height:24px}
+.step.done .ico,.step.active .ico{background:var(--ink);color:#fff}
+.ico .dot{position:absolute;top:-4px;right:-4px;width:12px;height:12px;border-radius:50%;background:var(--price);border:2px solid var(--bg)}
+.step h3{font-family:var(--font-title);font-size:20px;margin:6px 0 8px}
+.step.active h3{font-weight:700}
+.step p{font-size:13.5px;color:var(--muted)}
+.step.todo{opacity:.78}
+.step .foot{margin-top:10px}
+.step .ok{color:var(--ok)}
+.step .note{margin-top:12px;text-align:left;background:var(--bar);border-left:3px solid var(--accent);border-radius:6px;padding:10px 12px;font-size:12.5px;color:var(--ink)}
+
+/* ===== Tác phẩm + hỗ trợ ===== */
+.work{display:grid;grid-template-columns:1fr 420px;gap:32px;align-items:start;padding-top:64px}
+.piece{padding:36px}
+.piece-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
+.piece h2{font-size:34px;font-weight:600;margin-top:8px}
+.msg{margin-top:22px;background:var(--bar);border-radius:14px;padding:18px 22px}
+.msg q{display:block;font-family:var(--font-title);font-style:italic;font-size:22px;margin-top:6px;quotes:"“" "”"}
+.photo{margin-top:20px;height:300px;border-radius:18px;background:linear-gradient(160deg,#5a3b2a,#a77a52);position:relative;overflow:hidden}
+.photo img{width:100%;height:100%;object-fit:cover;display:block}
+.photo span{position:absolute;left:18px;bottom:16px;font-size:12px;color:#fff;background:rgba(11,26,51,.7);padding:6px 12px;border-radius:999px}
+.specs{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}
+.specs div{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:14px;text-align:center}
+.specs b{display:block;font-weight:500;margin-top:4px}
+.help{background:var(--ink);color:#fff;border-radius:24px;padding:36px}
+.help .chip{display:inline-block;background:rgba(255,255,255,.12);font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:5px 10px;border-radius:4px}
+.help h2{font-size:34px;font-weight:600;margin-top:18px;line-height:1.2;color:#fff}
+.help p.t{color:#d3d9e6;margin-top:14px}
+.help .btn{background:#fff;color:var(--ink);width:100%;margin-top:24px}
+.help .hot{display:block;text-align:center;font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin-top:16px;color:var(--accent)}
+.chef{display:flex;align-items:center;gap:14px;margin-top:24px;background:rgba(255,255,255,.08);border-radius:14px;padding:16px}
+.chef .av{width:40px;height:40px;border-radius:50%;background:#fff;color:var(--ink);display:grid;place-items:center;font-weight:700}
+.chef small{display:block;font-size:12.5px;color:#d3d9e6}
+.rules{margin-top:20px;background:var(--bar);border-radius:20px;padding:24px}
+.rules p{margin-top:10px;font-size:13.5px}
+.rules p:first-of-type{margin-top:12px}
+
+/* ===== Lịch sử ===== */
+.history{padding:72px 0 96px}
+.tabs{display:flex;gap:10px;flex-wrap:wrap}
+.tabs .btn{font-size:11px}
+.tabs .btn[aria-pressed="false"]{background:var(--bar);color:var(--ink)}
+.list{display:flex;flex-direction:column;gap:16px;margin-top:32px}
+.row{display:flex;align-items:center;gap:20px;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px 24px}
+.row.canceled{background:#fbf3ec}
+.th{width:72px;height:72px;border-radius:12px;flex:none;background:linear-gradient(160deg,#e8d9c4,#b9926a);object-fit:cover}
+.row .main{flex:1;min-width:220px}
+.row .code{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.row .code b{font-family:var(--font-title);font-size:20px}
+.row .meta{font-size:13px;color:var(--muted)}
+.row .side{font-size:13px;color:var(--muted)}
+.empty{padding:32px;text-align:center;color:var(--muted)}
+
+@media(max-width:1000px){
+  .summary,.work{grid-template-columns:1fr}
+  .summary{padding:32px 24px}
+  .info{grid-template-columns:1fr}
+  .steps ol{grid-template-columns:1fr;gap:28px}
+  .line{display:none}
+  .specs{grid-template-columns:1fr}
+  .row{flex-wrap:wrap}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}

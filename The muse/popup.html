@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Xem popup thẻ</title>
+<style>body{font-family:Inter,Arial,sans-serif;margin:0;padding:40px;background:#fbf8f7;color:#1b1b1d;line-height:1.6}h1{font-weight:500}</style>
+<!-- 1) THÊM: giao diện popup -->
+<link rel="stylesheet" href="popup.css">
+</head>
+<body>
+<h1>Trang web của bạn</h1>
+<p>Popup sẽ tự hiện sau khoảng 1 giây khi mở trang.</p>
+<p><button onclick="PopupThe.reset();location.reload()">Xóa ghi nhớ &amp; tải lại (để xem popup lần nữa)</button></p>
+
+<!-- 2) THÊM: cấu hình riêng cho trang này (không bắt buộc, có thể xóa nếu dùng mặc định) -->
+<script>
+  window.POPUP_THE = {
+    title:  'Ưu đãi chào bạn mới',
+    text:   'Giảm 10% cho đơn bánh thiết kế riêng đầu tiên.',
+    button: 'Thiết kế bánh ngay',
+    href:   '#',                 // link của nút bấm
+    image:  '',                  // ảnh bên trái, ví dụ 'image/banh.jpg' (để trống = nền màu)
+    once:   'always'
+  };
+</script>
+<!-- 3) THÊM: bộ popup — đặt trước </body> -->
+<script src="popup.js"></script>
+</body></html>
