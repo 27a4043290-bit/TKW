@@ -3,19 +3,21 @@
    <script src="header.js"></script>
    Muốn thêm/sửa/xóa mục menu thì sửa 2 mảng MENU_LEFT và MENU_RIGHT bên dưới. ===== */
 
+/* ===== HEADER DÙNG CHUNG ===== */
+
 const MENU_LEFT = [
   { label: "Giới thiệu", href: "gioithieu.html", sub: [
-      { label: "Câu chuyện của Muse",                  href: "gioithieu.html#cau-chuyen-thuong-hieu" },
+      { label: "Câu chuyện của Muse",               href: "gioithieu.html#cau-chuyen-thuong-hieu" },
       { label: "Sứ mệnh - Tầm nhìn - Giá trị cốt lõi", href: "gioithieu.html#su-menh-tam-nhin-gia-tri" },
       { label: "Nguyên liệu & Chất lượng",             href: "gioithieu.html#nguyen-lieu-chat-luong" },
-      { label: "Quy trình làm bánh",                   href: "gioithieu.html#quy-trinh-lam-banh" },
+      { label: "Quy trình làm bánh",                    href: "gioithieu.html#quy-trinh-lam-banh" },
       { label: "Không gian cửa hàng",                  href: "gioithieu.html#khong-gian-cua-hang" }
   ]},
-  { label: "Sản phẩm", href: "sanppham.html", sub: [
-      { label: "Bánh Mousse",            href: "sanppham.html#mousse" },
-      { label: "Bánh Croissant",         href: "sanppham.html#croissant" },
-      { label: "Bánh Trung thu",         href: "sanppham.html#trungthu" },
-      { label: "Bánh Donut",             href: "sanppham.html#donut" },
+  { label: "Sản phẩm", href: "sanpham.html", sub: [
+      { label: "Bánh Mousse",            href: "sanpham.html#mousse" },
+      { label: "Bánh Croissant",         href: "sanpham.html#croissant" },
+      { label: "Bánh Trung thu",         href: "sanpham.html#trungthu" },
+      { label: "Bánh Donut",             href: "sanpham.html#donut" },
   ]},
   { label: "Chính sách", href: "chinhsach.html" },
   { label: "Thiết kế",   href: "tk-theo-yc.html" }
@@ -65,7 +67,7 @@ host.innerHTML = `
         <button class="h-link" type="button">VN${ICON.chev}</button>
         <div class="sub"><a href="#">VN</a><a href="#">EN</a></div>
       </div>
-      <div class="account">${ICON.user}<span><a href="dangnhap%26dangky.html#dang-nhap">Đăng nhập</a> <i>/</i> <a href="dangnhap%26dangky.html#dang-ky">Đăng ký</a></span></div>
+      <div class="account">${ICON.user}<span><a href="javascript:void(0)" onclick="moTrangAcc('#dang-nhap')">Đăng nhập</a> <i>/</i> <a href="javascript:void(0)" onclick="moTrangAcc('#dang-ky')">Đăng ký</a></span></div>
     </div>
   </div>
 
@@ -81,11 +83,11 @@ function updateCartCount(){
   const b = document.getElementById("cartCount");
   if (!b) return;
   b.textContent = n;
-  b.dataset.zero = n ? "0" : "1";   // ẩn chấm số khi giỏ trống
+  b.dataset.zero = n ? "0" : "1";
 }
 updateCartCount();
-addEventListener("cart-updated", updateCartCount);   // thêm/xóa ngay trên trang này
-addEventListener("storage", updateCartCount);        // giỏ đổi ở tab khác
+addEventListener("cart-updated", updateCartCount);
+addEventListener("storage", updateCartCount);
 
 /* ---------- Mở/đóng menu, tìm kiếm ---------- */
 const header = document.getElementById("siteHeader");
@@ -96,7 +98,7 @@ document.getElementById("burger").onclick = e => {
   const open = header.classList.toggle("open");
   e.currentTarget.setAttribute("aria-expanded", open);
 };
-// Trên điện thoại: bấm mục có menu con thì mở menu con (thay vì chuyển trang)
+
 header.querySelectorAll(".h-item").forEach(it => {
   const link = it.querySelector(".h-link"), sub = it.querySelector(".sub");
   if (!sub) return;
@@ -116,3 +118,14 @@ document.getElementById("searchInput").addEventListener("keydown", e => {
 document.addEventListener("click", e => {
   if (!header.contains(e.target)) { bar.classList.remove("open"); header.querySelectorAll(".h-item.open").forEach(x => x.classList.remove("open")); }
 });
+
+
+
+
+
+
+
+
+function moTrangAcc(hash) {
+  window.location.href = "dangnhap&dangki.html" + hash;
+}
