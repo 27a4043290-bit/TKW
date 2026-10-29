@@ -1,0 +1,557 @@
+/* thanhtoan.css — CSS trang thanh toán */
+
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500;700&display=swap");
+
+/* ===== 1. MÀU SẮC VÀ FONT CHỮ ===== */
+:root {
+    --bg: #fff7f0;
+    --card: #ffffff;
+    --ink: #0b1a33;
+    --muted: #7a7f8a;
+    --line: #e8e1d8;
+    --accent: #fdc86e;
+    --price: #d2411e;
+    --err: #c62828;
+    --ok: #2e7d32;
+    --font: Roboto, Arial, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* ===== 2. GIAO DIỆN CHUNG ===== */
+body.checkout-body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font);
+}
+
+.checkout-page {
+    font-size: 15px;
+    line-height: 1.4;
+}
+
+.checkout-page [hidden] {
+    display: none !important;
+}
+
+.checkout-page input,
+.checkout-page button,
+.checkout-page select,
+.checkout-page textarea {
+    font-family: inherit;
+    color: inherit;
+}
+
+.checkout-page h1,
+.checkout-page h2,
+.checkout-page h3 {
+    margin: 0;
+    font-family: "Playfair Display", Georgia, serif;
+}
+
+/* ===== 3. NÚT BẤM ===== */
+.checkout-page .btn {
+    height: 46px;
+    padding: 0 20px;
+    border: 0;
+    border-radius: 8px;
+    background: var(--accent);
+    color: #1a1205;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 700;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.checkout-page .btn:hover {
+    filter: brightness(0.95);
+}
+
+/* ===== 4. KHUNG THANH TOÁN ===== */
+.checkout-page .wrap {
+    max-width: 1000px;
+    margin: 80px auto 40px;
+    overflow: hidden;
+    border-radius: 20px;
+    background: var(--card);
+}
+
+.checkout-page .top {
+    padding: 32px;
+}
+
+.checkout-page .top h1 {
+    font-size: 34px;
+}
+
+.checkout-page .grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+}
+
+.checkout-page .left {
+    min-width: 0;
+}
+
+/* ===== 5. ĐƯỜNG KẺ NGÀY ===== */
+.checkout-page .dateline {
+    position: relative;
+    height: 0;
+    margin-left: 32px;
+    border-top: 1px solid var(--line);
+}
+
+.checkout-page .dateline span {
+    position: absolute;
+    top: -10px;
+    left: 0;
+    padding-right: 12px;
+    background: var(--card);
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 20px;
+}
+
+/* ===== 6. FORM THÔNG TIN ===== */
+.checkout-page .form {
+    padding: 110px 32px 32px 50px;
+}
+
+.checkout-page .form h2 {
+    margin-bottom: 18px;
+    font-size: 22px;
+}
+
+.checkout-page .form h3 {
+    margin-bottom: 14px;
+    font-size: 19px;
+}
+
+.checkout-page .row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.checkout-page label {
+    display: block;
+    margin: 12px 0 6px;
+    font-size: 13px;
+}
+
+.checkout-page label i {
+    color: var(--err);
+    font-style: normal;
+}
+
+/* Ô nhập liệu */
+.checkout-page input[type="text"],
+.checkout-page input[type="tel"],
+.checkout-page input[type="email"],
+.checkout-page input[type="date"],
+.checkout-page select,
+.checkout-page textarea {
+    width: 100%;
+    height: 46px;
+    padding: 0 16px;
+    border: 1px solid var(--ink);
+    border-radius: 8px;
+    background: #fff;
+}
+
+.checkout-page input::placeholder,
+.checkout-page textarea::placeholder {
+    color: var(--muted);
+}
+
+.checkout-page .bad {
+    border-color: var(--err) !important;
+}
+
+.checkout-page .hr {
+    margin: 26px 0;
+    border-top: 1px solid var(--line);
+}
+
+.checkout-page .hint,
+.checkout-page .fee {
+    margin-top: 8px;
+    font-size: 13px;
+}
+
+.checkout-page .fee {
+    color: var(--price);
+    font-weight: 500;
+}
+
+.checkout-page .note {
+    margin: 0 0 4px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.checkout-page .policy {
+    font-size: 14px;
+}
+
+/* ===== 7. PHƯƠNG THỨC THANH TOÁN ===== */
+.checkout-page .pay {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    padding: 16px 20px;
+    border-radius: 8px;
+    background: var(--bg);
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.checkout-page .pay input {
+    width: 20px;
+    height: 20px;
+    margin: 0;
+    accent-color: var(--accent);
+}
+
+/* ===== 8. MÃ QR ===== */
+.checkout-page .qr-box {
+    margin-bottom: 12px;
+    padding: 20px;
+    border: 1px dashed var(--accent);
+    border-radius: 12px;
+    background: var(--bg);
+    text-align: center;
+}
+
+.checkout-page .qr-title {
+    margin: 0 0 12px;
+    font-weight: 700;
+}
+
+.checkout-page .qr-frame {
+    display: grid;
+    width: 240px;
+    max-width: 100%;
+    min-height: 120px;
+    margin: 0 auto 16px;
+    padding: 10px;
+    border-radius: 12px;
+    background: #fff;
+    place-items: center;
+}
+
+.checkout-page .qr-frame img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.checkout-page .qr-wait {
+    margin: 0;
+    padding: 24px 8px;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.checkout-page .qr-info {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: left;
+    font-size: 14px;
+}
+
+.checkout-page .qr-info li {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 7px 0;
+    border-top: 1px solid var(--line);
+}
+
+.checkout-page .qr-info li:first-child {
+    border-top: 0;
+}
+
+.checkout-page .qr-info b {
+    text-align: right;
+    word-break: break-all;
+}
+
+.checkout-page .qr-note {
+    margin: 12px 0 0;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* ===== 9. XUẤT HÓA ĐƠN ===== */
+.checkout-page .chk {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 6px 0 16px;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.checkout-page .chk input {
+    width: 18px;
+    height: 18px;
+    margin: 0;
+}
+
+/* ===== 10. KHUNG ĐƠN HÀNG ===== */
+.checkout-page .right {
+    min-width: 0;
+    margin: 0 22px 22px 0;
+    padding: 84px 32px 32px;
+    background: var(--bg);
+}
+
+.checkout-page .right h2 {
+    margin-bottom: 34px;
+    font-size: 21px;
+}
+
+.checkout-page .item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 18px;
+}
+
+.checkout-page .thumb {
+    display: grid;
+    width: 100px;
+    height: 100px;
+    flex: none;
+    overflow: hidden;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #5b3a29, #c58b52);
+    font-size: 38px;
+    place-items: center;
+}
+
+.checkout-page .thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.checkout-page .info {
+    min-width: 0;
+    flex: 1;
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.checkout-page .info small {
+    display: block;
+    margin-top: 4px;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.checkout-page .pr {
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.checkout-page .pr b {
+    color: var(--price);
+}
+
+/* Nút tăng, giảm và xóa sản phẩm */
+.checkout-page .qty {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.checkout-page .qty button {
+    width: 26px;
+    height: 26px;
+    border: 1px solid var(--ink);
+    border-radius: 50%;
+    background: none;
+    font-size: 15px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.checkout-page .qty .rm {
+    width: auto;
+    height: auto;
+    margin-left: 6px;
+    border: 0;
+    border-radius: 0;
+    color: var(--muted);
+    font-size: 12px;
+    text-decoration: underline;
+}
+
+/* Ghi lời chúc */
+.checkout-page textarea {
+    height: 46px;
+    padding: 12px 16px;
+    border-color: var(--accent);
+    background: var(--bg);
+    resize: vertical;
+}
+
+/* ===== 11. MÃ GIẢM GIÁ ===== */
+.checkout-page .coupon {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+}
+
+.checkout-page .coupon input {
+    min-width: 0;
+    flex: 1;
+}
+
+/* ===== 12. TỔNG TIỀN ===== */
+.checkout-page .sum {
+    margin-top: 26px;
+}
+
+.checkout-page .sum div {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 8px 0;
+    font-size: 16px;
+}
+
+.checkout-page .sum .total {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.checkout-page .sum .total span:last-child {
+    font-size: 20px;
+}
+
+.checkout-page .order {
+    display: block;
+    width: 280px;
+    max-width: 100%;
+    height: 48px;
+    margin: 24px auto 0;
+}
+
+.checkout-page .empty {
+    padding: 24px 0;
+    color: var(--muted);
+}
+
+/* ===== 13. THÔNG BÁO LỖI ===== */
+.checkout-page .msg {
+    display: none;
+    margin-top: 16px;
+    padding: 14px;
+    border: 1px solid var(--accent);
+    border-radius: 8px;
+    background: #fff;
+    text-align: center;
+}
+
+.checkout-page .msg.ok {
+    display: block;
+    border-color: var(--ok);
+    color: var(--ok);
+}
+
+.checkout-page .msg.bad {
+    display: block;
+    border-color: var(--err);
+    color: var(--err);
+}
+
+/* ===== 14. GIAO DIỆN ĐIỆN THOẠI ===== */
+@media (max-width: 820px) {
+    .checkout-page .wrap {
+        margin: 0;
+        border-radius: 0;
+    }
+
+    .checkout-page .top {
+        padding: 20px;
+    }
+
+    .checkout-page .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .checkout-page .row {
+        grid-template-columns: 1fr;
+    }
+
+    .checkout-page .dateline {
+        margin-left: 20px;
+    }
+
+    .checkout-page .form {
+        padding: 36px 20px 20px;
+    }
+
+    .checkout-page .right {
+        margin: 0;
+        padding: 24px 20px;
+    }
+}
+/* ===== Thanh điều hướng màu vàng ===== */
+.checkout-page .breadcrumb-bar {
+    width: 100%;
+    padding: 12px 0;
+    background-color: #ffedcf;
+}
+
+.checkout-page .breadcrumb-content {
+    max-width: 1000px;
+    min-height: 18px;
+    margin: 0 auto;
+    padding: 0 16px;
+
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    font-size: 13px;
+}
+
+.checkout-page .breadcrumb-content a {
+    color: #0b1a33;
+    text-decoration: none;
+}
+
+.checkout-page .breadcrumb-content a:hover {
+    text-decoration: underline;
+}
+
+.checkout-page .breadcrumb-content .separator {
+    color: #7a7f8a;
+}
+
+.checkout-page .breadcrumb-content .current {
+    color: #7a7f8a;
+}
+
+/* Giao diện điện thoại */
+@media (max-width: 820px) {
+    .checkout-page .breadcrumb-content {
+        padding: 0 20px;
+    }
+}
