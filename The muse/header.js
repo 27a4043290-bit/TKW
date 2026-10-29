@@ -40,6 +40,9 @@ const ICON = {
 const file = p => (p || "").split("#")[0].split("?")[0];
 const here = file(location.pathname.split("/").pop()) || "index.html";
 
+//  cấp cho thư mục con
+const basePath = document.currentScript ? document.currentScript.src.replace(/header\.js.*$/, '') : '';
+
 function itemHTML(m){
   const active = file(m.href) === here || (m.sub || []).some(s => file(s.href) === here);
   if (!m.sub) return `<div class="h-item${active ? " active" : ""}"><a class="h-link" href="${m.href}">${m.label}</a></div>`;
@@ -56,7 +59,7 @@ host.innerHTML = `
 
   <nav class="left" aria-label="Menu chính">${MENU_LEFT.map(itemHTML).join("")}</nav>
 
-  <a class="logo" href="index.html" aria-label="The Muse - Trang chủ"><img src="image/logo.png" alt="The Muse"></a>
+ <a class="logo" href="${basePath}index.html" aria-label="The Muse - Trang chủ"><img src="${basePath}image/logo.png" alt="The Muse"></a>
 
   <div class="right">
     <nav class="links" aria-label="Menu phụ">${MENU_RIGHT.map(itemHTML).join("")}</nav>

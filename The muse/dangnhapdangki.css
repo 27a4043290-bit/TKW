@@ -1,22 +1,22 @@
 body {
     font-family: Arial;
-    background: #fff8E7;
+    background: #fff7f0;
 }
 
 .container {
     width: 350px;
     margin: 30px auto;
     padding: 25px;
-    background: white;
-    box-shadow: 0 0 10px #ccc;
+    background: #ffffff;
+    box-shadow: 0 0 10px #e8e1d8;
     border-radius: 15px;
 }
 
 .container button {
     width: 100%;
     padding: 12px;
-    background: var(--accent);
-    color: var(--ink);
+    background: #fdc86e;
+    color: #0b1a33;
     border: none;
     border-radius: 8px;
     font-weight: 600;
@@ -25,12 +25,12 @@ body {
 }
 
 .container button:hover {
-    background: var(--price);
-    color: #fff;
+    background: #d2411e;
+    color: #ffffff;
 }
 
 h1 {
-    color: #001F3F;
+    color: #0b1a33;
     text-align: center;
 }
 
@@ -44,8 +44,8 @@ input {
 button {
     width: 100%;
     padding: 12px;
-    background: #001F3F;
-    color: white;
+    background: #fdc86e;
+    color: #0b1a33;
     border: none;
     cursor: pointer;
 }
