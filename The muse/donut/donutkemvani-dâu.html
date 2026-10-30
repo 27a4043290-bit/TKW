@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -6,13 +5,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-<link rel="stylesheet" href="D:\Vs code\Thiết kế web\blt TKW\The muse\banh.css">
+<link rel="stylesheet" href="../banh.css">
+
 
 <!-- SỬA TÊN WEB -->
 
 
 
 <title>Bánh donut kem vani-dâu - Donut cake</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;800&display=swap"
+rel="stylesheet">
+ 
+<!-- CSS -->
+<link rel="stylesheet"
+href="../header.css"> 
+<link rel="stylesheet"
+href="../banh.css">
+ 
+<!-- JavaScript -->
+<script src="../float.js"
+defer></script>
+<script src="../header.js"
+defer></script> 
 
 
 </head>
@@ -136,56 +150,34 @@
     <div class="products">
        <div class="card">
             
-            <a href="D:\Vs code\Thiết kế web\blt TKW\The muse\donut\kembanhquyvani.html"><img src="https://donutelier.co.uk/wp-content/uploads/2022/11/Vanilla_Cookie_Cream_Donut.png" alt="bánh a" ></a>
+            <a href="kembanhquyvani.html"><img src="https://donutelier.co.uk/wp-content/uploads/2022/11/Vanilla_Cookie_Cream_Donut.png" alt="bánh a" ></a>
             <h3> Kem bánh quy vani  </h3>
             <p>24,000 VND</p>
             
         </div>
 
         <div class="card">
-            <a href="D:\Vs code\Thiết kế web\blt TKW\The muse\donut\Matchadautay.html"><img src="https://donutelier.co.uk/wp-content/uploads/2026/07/Strawberry-matcha-for-web-1.jpg" alt="bánh b"></a>
+            <a href="Matchadautay.html"><img src="https://donutelier.co.uk/wp-content/uploads/2026/07/Strawberry-matcha-for-web-1.jpg" alt="bánh b"></a>
             <h3>Matcha dâu tây</h3>
             <p>25,000 VND</p>
         </div>
 
         <div class="card">
-            <a href="D:\Vs code\Thiết kế web\blt TKW\The muse\donut\quykemvanisocola.html"><img src="https://donutelier.co.uk/wp-content/uploads/2026/07/Vanilla-Choc-Ice-Cream-Cookie-for-Web.jpg" alt="bánh c"></a>
+            <a href="quykemvanisocola.html"><img src="https://donutelier.co.uk/wp-content/uploads/2026/07/Vanilla-Choc-Ice-Cream-Cookie-for-Web.jpg" alt="bánh c"></a>
             <h3> Bánh quy kem vani socola</h3>
             <p>24,000 VND</p>
         </div>
 
         <div class="card">
-            <a href="D:\Vs code\Thiết kế web\blt TKW\The muse\donut\DonutkemDulcey.html"><img src="https://donutelier.co.uk/wp-content/uploads/2026/07/Dulcey-Ice-Cream-Donut-for-Web.jpg" alt="bánh d"></a>
+            <a href="DonutkemDulcey.html"><img src="https://donutelier.co.uk/wp-content/uploads/2026/07/Dulcey-Ice-Cream-Donut-for-Web.jpg" alt="bánh d"></a>
             <h3>Bánh Donut kem Dulcey</h3>
             <p>28,000 VND</p>
         </div>
     </div>
 </div>
 
-<script>
-let soLuong = 1;
-
-function doiSL(n) {
-    soLuong += n;
-    if (soLuong < 1) soLuong = 1;
-    document.getElementById("sl").innerText = soLuong;
-    doiGia();
-}
-
-function doiGia() {
-    let gia = Number(document.getElementById("size").value);
-    document.getElementById("price").innerText =
-        (gia * soLuong).toLocaleString("vi-VN") + " VND";
-}
-
-function mua() {
-    alert("Bạn đã chọn mua " + soLuong + " bánh Kem dâu!");
-}
-
-function muaNgay() {
-    window.location.href = "file:///D:/Vs%20code/Thi%E1%BA%BFt%20k%E1%BA%BF%20web/blt%20TKW/The%20muse/thanhtoan.html";
-}
-</script> 
-
+<!-- Nhúng file JavaScript -->
+<script
+src="../chitietsanpham.js"></script>
 </body>
 </html>

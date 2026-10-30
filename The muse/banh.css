@@ -1,12 +1,16 @@
+/* css của chi tiết sản phẩm */
+
+
+
 body {
     margin: 0;
     font-family: Arial;
-    color: #001F3F;
-    background: #fff8E7;
+    color: #0b1a33;
+    background: #fff7f0;
 }
 
 .product, .related {
-    background: #fff8E7;
+    background: #fff7f0;
     padding: 40px 8%;
 }
 
@@ -16,9 +20,10 @@ body {
 }
 
 .main-img {
-    width: 40%;
-    object-fit: cover;
-    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    display: block;
 }
 
 .info {
@@ -30,7 +35,7 @@ h1, h2 {
 }
 
 .price {
-    color: #71432e;
+    color: #d2411e;
     font-size: 24px;
     font-weight: bold;
 }
@@ -42,8 +47,8 @@ select, button {
 
 button {
     border: none;
-    background: #001f3f;
-    color: white;
+    background: #fdc86e;
+    color: #0b1a33;
     margin: 5px 0;
 }
 
@@ -52,7 +57,7 @@ button {
 }
 
 .details {
-    background: #fff8E7;
+    background: #fff7f0;
     padding: 25px 9%;
     line-height: 1.7;
 }
@@ -64,11 +69,11 @@ button {
 }
 
 .card {
-    border: 1px solid #ccc;
+    border: 1px solid #e8e1d8;
     border-radius: 12px;
     overflow: hidden;
     text-align: center;
-    background: #fffdf7;
+    background: #ffffff;
     padding: 10px;
     box-sizing: border-box;
     transition: 0.3s;
@@ -89,7 +94,7 @@ button {
 }
 
 .card p {
-    color: #bd3d23;
+    color: #d2411e;
     font-weight: bold;
     margin-bottom: 10px;
 }
