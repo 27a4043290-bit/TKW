@@ -180,6 +180,19 @@ const categories = [
 ];
 
 const fmt = n => n.toLocaleString("en-US") + "VND";
+/* Sản phẩm nào có trang riêng thì khai báo ở đây; sản phẩm chưa có sẽ dùng trang chung cũ */
+const pages = {
+  "chocoflan":               "banhmousse/chocoflan.html",
+  "tiramisu":                "banhmousse/tiramisu.html",
+  "mousse-dua-luoi":         "banhmousse/moussedualuoi.html",
+  "donut-kem-dau":           "donut/banhkemdau.html",
+  "donut-kem-banh-quy-vani": "donut/kembanhquyvani.html",
+  "donut-matcha-dau-tay":    "donut/Matchadautay.html",
+  "banh-quy":                "donut/quykemvanisocola.html",
+  "donut-kem-vani-dau":      "donut/donutkemvani-dâu.html",
+  "donut-kem-dulcey":        "donut/DonutkemDulcey.html"
+};
+const linkOf = p => pages[p.id] || `chitietsanpham.html?id=${p.id}`;
 
 /* Tìm kiếm từ header: sanpham.html?q=tiramisu (không phân biệt hoa thường và dấu) */
 const norm = t => t.normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/đ/g,"d").toLowerCase();
@@ -200,7 +213,7 @@ document.getElementById("products").innerHTML = (shown.length ? shown : [null]).
     <div class="grid">
       ${c.items.map(p => `
         <article class="card">
-          <a class="thumb-link" href="chitietsanpham.html?id=${p.id}" aria-label="Xem chi tiết ${p.name}">
+          <a class="thumb-link" href="${linkOf(p)}" aria-label="Xem chi tiết ${p.name}">
             <div class="thumb">
               <img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.remove()">
               <div class="badges">
@@ -210,7 +223,7 @@ document.getElementById("products").innerHTML = (shown.length ? shown : [null]).
             </div>
           </a>
           <div class="bottom">
-            <a class="info" href="chitietsanpham.html?id=${p.id}">
+            <a class="info" href="${linkOf(p)}"
               <h3>${p.name}</h3>
               <p class="price">Giá từ: <b>${fmt(p.price)}</b></p>
             </a>
