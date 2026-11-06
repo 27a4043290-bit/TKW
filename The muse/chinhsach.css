@@ -1,0 +1,143 @@
+/* chinhsach.css — CSS của trang Chính sách. */
+
+/* Font: @import phải nằm ở những dòng đầu của file CSS */
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500;700&display=swap");
+
+/* ===== Màu sắc + font dùng chung ===== */
+:root {
+  --bg: #fff7f0;
+  --card: #ffffff;
+  --bar: #ffefd9;
+  --ink: #0b1a33;
+  --muted: #7a7f8a;
+  --line: #e8e1d8;
+  --accent: #fdc86e;
+  --price: #d2411e;
+  --err: #c62828;
+  --ok: #2e7d32;
+
+  --font: Roboto, Arial, sans-serif;
+  --font-main: var(--font);
+  --gap: clamp(14px, 2.6vw, 40px);
+  --pad: clamp(16px, 5vw, 80px);
+}
+
+* { box-sizing: border-box; }
+
+/* Chỉ áp cho trang chính sách để không đè lên body của header */
+body.policy-page {
+  --bg: #f5f5f5;      /* nền xám nhạt riêng của trang này */
+  --line: #eee6da;
+  margin: 0;
+  background: var(--bg);
+  font-family: var(--font);
+  color: var(--ink);
+  min-height: 100vh;
+}
+
+/* ===== THANH ĐƯỜNG DẪN ===== */
+.policy-breadcrumb {
+  background: var(--bar);
+  padding: 12px 20px;
+}
+.policy-breadcrumb-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  font-size: 13px;
+  color: var(--muted);
+}
+.policy-breadcrumb-inner a {
+  color: var(--muted);
+  text-decoration: none;
+}
+.policy-breadcrumb-inner a:hover { color: var(--price); }
+.policy-breadcrumb-inner span { margin: 0 10px; }
+
+/* ===== KHUNG NỘI DUNG ===== */
+.policy-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 56px 20px 80px;
+}
+
+.policy-container h1 {
+  text-align: center;
+  color: var(--ink);
+  font-size: 40px;
+  font-weight: 700;
+  margin: 0 0 36px;
+}
+
+/* ===== CÁC MỤC THU GỌN / MỞ RỘNG ===== */
+.policy-container details {
+  background: var(--card);
+  border-radius: 16px;
+  margin-bottom: 16px;
+  overflow: hidden;
+  scroll-margin-top: 90px;   /* khi nhảy tới mục bằng #muc-xx thì không bị header che */
+}
+
+.policy-container summary {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 0 30px;
+  min-height: 81px;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--ink);
+}
+.policy-container summary::-webkit-details-marker { display: none; }
+.policy-container summary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+
+.policy-container summary .number,
+.policy-container summary .title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 700;
+}
+.policy-container summary .title { flex: 1; }
+
+/* Mũi tên chỉ xuống / lên */
+.policy-container summary::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-right: 2.5px solid var(--ink);
+  border-bottom: 2.5px solid var(--ink);
+  transform: rotate(45deg) translateY(-3px);
+  transition: transform 0.25s ease;
+  margin-right: 6px;
+}
+.policy-container details[open] summary::after {
+  transform: rotate(-135deg) translateY(-3px);
+}
+.policy-container details[open] summary {
+  border-bottom: 1px solid var(--line);
+}
+
+/* ===== NỘI DUNG TRONG MỖI MỤC ===== */
+.policy-content {
+  padding: 24px 30px 28px;
+  font-family: Roboto, Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--ink);
+}
+.policy-content p { margin: 0; }
+.policy-content strong { font-weight: 700; }
+.policy-content em { color: var(--muted); }
+
+/* ===== MÀN HÌNH NHỎ ===== */
+@media (max-width: 600px) {
+  .policy-container { padding: 32px 12px 56px; }
+  .policy-container h1 { font-size: 30px; }
+  .policy-container summary { padding: 0 18px; font-size: 18px; min-height: 68px; }
+  .policy-content { padding: 18px; }
+}

@@ -1,0 +1,257 @@
+/* lienhe.css — CSS của trang Liên hệ.
+   Đã gồm font + màu + nền dùng chung nên trang này chỉ cần link header.css và lienhe.css. */
+
+/* Font: @import phải nằm ở những dòng đầu của file CSS */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@800&display=swap");
+
+/* ===== Màu sắc + font dùng chung ===== */
+:root {
+  --bg: #fff7f0;
+  --card: #ffffff;
+  --bar: #ffefd9;
+  --ink: #0b1a33;
+  --muted: #7a7f8a;
+  --line: #e8e1d8;
+  --accent: #fdc86e;
+  --price: #d2411e;
+  --err: #c62828;
+  --ok: #2e7d32;
+
+  --font: Roboto, Arial, sans-serif;
+  --font-main: var(--font);
+  --gap: clamp(14px, 2.6vw, 40px);
+  --pad: clamp(16px, 5vw, 80px);
+}
+
+* { box-sizing: border-box; }
+
+/* Chỉ áp cho trang liên hệ để không đè lên body của header */
+body.contact-page {
+  margin: 0;
+  background: var(--bg);
+  font-family: var(--font);
+  color: var(--ink);
+  min-height: 100vh;
+}
+
+input, button, textarea, select {
+  font-family: inherit;
+  color: inherit;
+}
+
+/* ===== THANH ĐƯỜNG DẪN ===== */
+.breadcrumb-bar {
+  background: var(--bar);
+  padding: 12px 0;
+  font-size: 14px;
+}
+.breadcrumb-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 36px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.breadcrumb-content a { color: var(--ink); text-decoration: none; }
+.breadcrumb-content a:hover { color: var(--price); }
+.breadcrumb-content .separator { color: var(--muted); }
+.breadcrumb-content .current { color: var(--muted); }
+
+/* ===== KHUNG TRẮNG BO GÓC 2 CỘT ===== */
+.contact-container {
+  max-width: 1100px;
+  margin: 45px auto;
+  padding: 36px;
+  background: var(--card);
+  border-radius: 20px;
+  display: grid;
+  grid-template-columns: 520px 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+/* ===== CỘT TRÁI ===== */
+.left-col h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 800;
+  font-size: 30px;
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin: 40px 0 40px;
+  letter-spacing: -0.5px;
+}
+
+.info-list {
+  list-style: none;
+  margin: 0 0 24px;
+  padding: 0;
+}
+.info-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  padding: 6px 0;
+}
+.info-list i {
+  width: 16px;
+  text-align: center;
+  font-size: 15px;
+  color: var(--ink);
+}
+.info-list a { color: var(--ink); text-decoration: none; }
+.info-list a:hover { color: var(--price); }
+
+.map-box {
+  border-radius: 12px;
+  overflow: hidden;
+  height: 300px;
+}
+.map-box iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+/* ===== CỘT PHẢI ===== */
+.form-desc {
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.4;
+  margin: 28px 0 38px;
+}
+.form-desc .highlight { color: #e02020; }
+
+.form-group { margin-bottom: 12px; }
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  height: 46px;
+  padding: 0 20px;
+  font-size: 16px;
+  background: #fff;
+  border: 1px solid var(--ink);
+  border-radius: 8px;
+  outline: none;
+  transition: border-color .2s, box-shadow .2s;
+}
+.form-group textarea {
+  height: 173px;
+  padding: 12px 20px;
+  resize: vertical;
+}
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #9aa0ab;
+}
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(253, 200, 110, .35);
+}
+
+/* Báo lỗi */
+.error-text {
+  display: none;
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--err);
+}
+.form-group.error input,
+.form-group.error textarea { border-color: var(--err); }
+.form-group.error .error-text { display: block; }
+
+/* ===== NHẮC ĐĂNG NHẬP ===== */
+.login-note {
+  margin: 4px 0 0;
+  padding: 10px 14px;
+  background: var(--bar);
+  border-radius: 8px;
+  font-size: 14px;
+}
+.login-note a,
+.form-msg a {
+  color: var(--price);
+  font-weight: 500;
+}
+
+/* ===== reCAPTCHA + NÚT GỬI ===== */
+.recaptcha-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  margin-top: 16px;
+}
+.recaptcha-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 302px;
+  height: 76px;
+  padding: 0 14px;
+  background: #fff;
+  border: 1px solid #d3d3d3;
+  border-radius: 3px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, .08);
+}
+.recaptcha-left input[type="checkbox"] {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  margin: 0;
+  cursor: pointer;
+  accent-color: var(--ink);
+}
+.recaptcha-left label {
+  font-size: 14px;
+  line-height: 1.3;
+  cursor: pointer;
+}
+.recaptcha-left.error { border-color: var(--err); }
+
+.btn-container {
+  width: 100%;
+  text-align: center;
+}
+.submit-btn {
+  min-width: 92px;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 500;
+  background: var(--accent);
+  color: var(--ink);
+  border: 0;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform .15s, filter .15s;
+}
+.submit-btn:hover { filter: brightness(.96); transform: translateY(-1px); }
+
+/* Thông báo sau khi gửi */
+.form-msg {
+  display: none;
+  margin-top: 14px;
+  text-align: center;
+  font-size: 15px;
+}
+.form-msg.ok  { display: block; color: var(--ok); }
+.form-msg.bad { display: block; color: var(--err); }
+
+/* ===== MÀN HÌNH NHỎ ===== */
+@media (max-width: 960px) {
+  .contact-container {
+    grid-template-columns: 1fr;
+    margin: 24px 16px;
+    padding: 24px;
+  }
+  .left-col h1 { font-size: 30px; margin: 8px 0 24px; }
+  .form-desc { margin: 8px 0 24px; }
+  .map-box { height: 260px; }
+  .breadcrumb-content { padding: 0 16px; }
+}
