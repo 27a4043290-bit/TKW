@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Croissant xoắn ốc nhân hạt dẻ cười</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+<!-- CSS -->
+<link rel="stylesheet" href="../header.css"> 
+<link rel="stylesheet" href="../banh.css">
+
+<!-- JavaScript -->
+<script src="../float.js" defer></script>
+<script src="../header.js" defer></script> 
+</head>
+
+<body>
+
+<!-- THÊM CHỖ CHỨA HEADER -->
+<div id="site-header"></div> 
+
+<!-- CHI TIẾT BÁNH -->
+<div class="product">
+    <img class="main-img" src="https://cdn.prod.website-files.com/649249d29a20bd6bc3deac48/6a46975f52af1711c7dc1600_3700000836_Pistachio%20Spiral%20Croissant-p-1080.png" alt="Croissant xoắn ốc nhân hạt dẻ cười">
+
+    <div class="info">
+        <h1>Croissant xoắn ốc nhân hạt dẻ cười</h1>
+        <p class="price" id="price">35,000 VND</p>
+        
+        <p>Lớp vỏ bánh hình xoắn ốc, ngàn lớp giòn rụm, được nướng chín vàng ươm và phủ một lớp sốt hạt dẻ cười xanh mướt trên bề mặt.</p>
+
+       
+
+        <p>Số lượng:
+            <button onclick="doiSL(-1)">−</button>
+            <span id="sl">1</span>
+            <button onclick="doiSL(1)">+</button>
+        </p>
+
+        <button class="buy" onclick="mua()">Thêm vào giỏ hàng</button>
+        <button class="buy" onclick="muaNgay()">Mua ngay</button>
+    </div>
+</div>
+
+<!-- THÔNG TIN BÁNH -->
+<div class="details">
+    <h2>Mô tả sản phẩm</h2>
+    <p>Bánh Croissant xoắn ốc nhân hạt dẻ cười là món bánh ngọt hấp dẫn, kết hợp giữa lớp vỏ ngàn lớp giòn rụm, nhân kem bùi béo và những vụn hạt dẻ cười rang thơm lừng.</p>
+
+    <h3>Cấu trúc bánh:</h3>
+    <ul>
+        <li>Lớp vỏ bánh hình xoắn ốc, ngàn lớp giòn rụm, được nướng chín vàng ươm và phủ một lớp sốt hạt dẻ cười xanh mướt trên bề mặt.</li>
+        <li>Phần nhân kem hạt dẻ cười sánh mịn, bùi béo tuôn trào bên trong, cân bằng hoàn hảo độ giòn của vỏ bánh và để lại hậu vị ngọt dịu, cuốn hút.</li>
+        <li>Điểm xuyết trên bề mặt là lớp kem phủ và những hạt dẻ cười nghiền nhỏ, mang đến hương thơm lừng, vị bùi ngậy đặc trưng và điểm nhấn thị giác đầy cuốn hút.</li>
+    </ul>
+
+    <h3>Hướng dẫn sử dụng:</h3>
+    <ul>
+        <li>Bảo quản bánh trong hộp kín ở ngăn mát tủ lạnh, duy trì nhiệt độ từ 2–5°C để giữ trọn độ tươi ngon của phần nhân kem hạt dẻ cười</li>
+        <li>Để cảm nhận trọn vẹn độ giòn rụm của vỏ bánh ngàn lớp và vị ngon của nhân kem, nên thưởng thức bánh trong vòng 24 giờ kể từ khi mua.</li>
+        <li>Tránh để bánh ở nhiệt độ phòng quá 2 giờ, hạn chế tiếp xúc trực tiếp với ánh nắng và không nên cấp đông vì có thể làm thay đổi kết cấu của vỏ bánh ngàn lớp và nhân kem hạt dẻ cười.</li>
+    </ul>
+</div>
+
+<!-- SẢN PHẨM LIÊN QUAN -->
+<div class="related">
+    <h2>Sản phẩm liên quan</h2>
+
+    <div class="products">
+        <div class="card">
+            <a href="croissantdetnhanhodao.html"><img src="https://cdn.prod.website-files.com/649249d29a20bd6bc3deac48/6a45b8828cc62e907ddd502d_3700000241_Pecan%20Croissant%20Flattie-p-1080.png" alt="bánh a"></a>
+            <h3> Croissant dẹt nhân hồ đào </h3>
+            <p>38,000 VND</p>
+        </div>
+
+        <div class="card">
+            <a href="croissantdautay.html"><img src="https://cdn.prod.website-files.com/649249d29a20bd6bc3deac48/6a45b8236752bb28f2776279_3700000259_Strawberry%20Croissant-p-1080.png" alt="bánh b"></a>
+            <h3>Croissant dâu tây </h3>
+            <p>40,000 VND</p>
+        </div>
+
+        <div class="card">
+            <a href="croissant.html"><img src="https://cdn.prod.website-files.com/649249d29a20bd6bc3deac48/6a548dd6e92c95e5de77d0d0_6a45c2408e13312e04f1ef90_3700000162_Croissant.png" alt="bánh c"></a>
+            <h3> Croissant</h3>
+            <p>25,000 VND</p>
+        </div>
+
+        <div class="card">
+            <a href="croissanttoivaphomai.html"><img src="https://cdn.prod.website-files.com/649249d29a20bd6bc3deac48/6a45c180284a7ed709e0194b_3700000173_Garlic%20%26%20Cheese%20Croissant-p-1080.png" alt="bánh d"></a>
+            <h3>Croissant tỏi và phô mai</h3>
+            <p>35,000 VND</p>
+        </div>
+    </div>
+</div>
+
+<script src="../chitietsanpham.js"></script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Croissant </title>
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+<!-- CSS -->
+<link rel="stylesheet" href="../header.css"> 
+<link rel="stylesheet" href="../banh.css">
+
+<!-- JavaScript -->
+<script src="../float.js" defer></script>
+<script src="../header.js" defer></script> 
+</head>
+
+<body>
+
+<!-- THÊM CHỖ CHỨA HEADER -->
+<div id="site-header"></div> 
+
+<!-- CHI TIẾT BÁNH -->
+<div class="product">
+    <img class="main-img" src="https://cdn.prod.website-files.com/649249d29a20bd6bc3deac48/6a548dd6e92c95e5de77d0d0_6a45c2408e13312e04f1ef90_3700000162_Croissant.png" alt="Croissant">
+
+    <div class="info">
+        <h1>Croissant</h1>
+        <p class="price" id="price">25,000 VND</p>
+        
+        <p>Sự giòn tan của vô số lớp vỏ ngàn lớp bên ngoài hòa quyện hoàn hảo cùng vị bơi béo thơm nức và độ xốp mềm dai nhẹ của phần ruột bánh bên trong.</p>
+
+       
+
+        <p>Số lượng:
+            <button onclick="doiSL(-1)">−</button>
+            <span id="sl">1</span>
+            <button onclick="doiSL(1)">+</button>
+        </p>
+
+        <button class="buy" onclick="mua()">Thêm vào giỏ hàng</button>
+        <button class="buy" onclick="muaNgay()">Mua ngay</button>
+    </div>
+</div>
+
+<!-- THÔNG TIN BÁNH -->
+<div class="details">
+    <h2>Mô tả sản phẩm</h2>
+    <p>Bánh Croissant truyền thống là món bánh nướng Pháp kinh điển, kết hợp giữa lớp vỏ ngàn lớp giòn rụm thơm bơ và phần ruột bánh xốp mềm, béo ngậy tự nhiên.</p>
+
+    <h3>Cấu trúc bánh:</h3>
+    <ul>
+        <li>Lớp vỏ Croissant ngàn lớp nướng chín vàng ươm, giòn rụm bên ngoài, mềm dai béo ngậy bên trong, ngập tràn hương vị bơ thuần khiết.</li>
+        <li>Phần ruột bánh bồng bềnh, mỏng nhẹ và béo ngậy hương bơ thuần khiết, cân bằng hoàn hảo độ giòn tan của lớp vỏ nướng vàng và để lại hậu vị đượm đà khó quên.</li>
+        <li>Điểm xuyết trên bề mặt là lớp đường bột tuyết mịn màng cùng màu vàng ươm óng ả của bơ nướng, mang đến hương thơm lừng, vị béo ngậy đặc trưng và điểm nhấn thị giác đầy cuốn hút.</li>
+    </ul>
+
+    <h3>Hướng dẫn sử dụng:</h3>
+    <ul>
+        <li>Bảo quản bánh trong túi hoặc hộp kín ở nhiệt độ phòng thoáng mát, tránh ánh nắng trực tiếp và nơi ẩm ướt để giữ trọn độ giòn rụm cùng hương vị bơ thơm nồng.</li>
+        <li>Để cảm nhận trọn vẹn độ giòn rụm của vỏ bánh ngàn lớp và vị béo thơm thuần khiết của bơ Pháp, nên thưởng thức bánh trong vòng 24 giờ kể từ khi mua.</li>
+        <li>Tránh để bánh ở nơi ẩm ướt hoặc dưới ánh nắng trực tiếp quá lâu, hạn chế cấp đông vì có thể làm mất đi độ giòn rụm đặc trưng và kết cấu xốp mềm của phần ruột bánh ngàn lớp.</li>
+    </ul>
+</div>
+
+<!-- SẢN PHẨM LIÊN QUAN -->
+<div class="related">
+    <h2>Sản phẩm liên quan</h2>
+
+    <div class="products">
+        <div class="card">
+            <a href="croissantxoanocnhanhatdecuoi.html"><img src="https://cdn.prod.website-files.com/649249d29a20bd6bc3deac48/6a46975f52af1711c7dc1600_3700000836_Pistachio%20Spiral%20Croissant-p-1080.png" alt="bánh a"></a>
+            <h3> Croissant xoắn ốc nhân hạt dẻ cười </h3>
+            <p>35,000 VND</p>
+        </div>
+
+        <div class="card">
+            <a href="croissantdetnhanhodao.html"><img src="https://cdn.prod.website-files.com/649249d29a20bd6bc3deac48/6a45b8828cc62e907ddd502d_3700000241_Pecan%20Croissant%20Flattie-p-1080.png" alt="bánh b"></a>
+            <h3> Croissant dẹt nhân hồ đào</h3>
+            <p>38,000 VND</p>
+        </div>
+
+        <div class="card">
+            <a href="croissantdautay.html"><img src="https://cdn.prod.website-files.com/649249d29a20bd6bc3deac48/6a45b8236752bb28f2776279_3700000259_Strawberry%20Croissant-p-1080.png" alt="bánh c"></a>
+            <h3> Croissant dâu tây</h3>
+            <p>40,000 VND</p>
+        </div>
+
+        <div class="card">
+            <a href="croissantsocola.html"><img src="https://cdn.prod.website-files.com/649249d29a20bd6bc3deac48/6a45c2bcb85541162d5929f9_3700000140_Chocolate%20Croissant-p-1080.png" alt="bánh d"></a>
+            <h3>Croissant socola</h3>
+            <p>32,000 VND</p>
+        </div>
+    </div>
+</div>
+
+<script src="../chitietsanpham.js"></script>
+</body>
+</html>
