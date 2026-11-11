@@ -60,6 +60,7 @@ document.getElementById('floatMessenger').addEventListener('click', async functi
     'noopener'
   );
 });
+  }
   // Chạy được dù script nằm ở <head> (có hoặc không có defer) hay cuối <body>
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
