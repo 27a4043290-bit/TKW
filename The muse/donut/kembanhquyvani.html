@@ -1,183 +1,167 @@
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Kem bánh quy vani - Donut cake</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+<!-- CSS -->
+<link rel="stylesheet" href="../header.css">
 <link rel="stylesheet" href="../banh.css">
 
-
-<!-- SỬA TÊN WEB -->
-
-
-
-<title>Kem bánh quy vani - Donut cake</title>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;800&display=swap"
-rel="stylesheet">
- 
-<!-- CSS -->
-<link rel="stylesheet"
-href="../header.css"> 
-<link rel="stylesheet"
-href="../banh.css">
- 
 <!-- JavaScript -->
-<script src="../float.js"
-defer></script>
-<script src="../header.js"
-defer></script> 
-
-
+<script src="../float.js" defer></script>
+<script src="../header.js" defer></script>
 </head>
 
 <body>
 
+<!-- CHỖ CHỨA HEADER -->
+<div id="site-header"></div>
+
+<!-- THANH ĐƯỜNG DẪN -->
+<nav class="breadcrumb" aria-label="Đường dẫn">
+    <div class="breadcrumb-inner">
+        <a href="../trangchu.html">Trang chủ</a>
+        <span>/</span>
+        <a href="../sanpham.html">Sản phẩm</a>
+        <span>/</span>
+        <a href="../sanpham.html#mousse">Bánh Mousse</a>
+    </div>
+</nav>
+
 <!-- CHI TIẾT BÁNH -->
-<div class="product">
-    
-
-
-    <!-- SỬA ẢNH BÁNH -->
-
-
-
-    <img class="main-img" src="https://donutelier.co.uk/wp-content/uploads/2022/11/Vanilla_Cookie_Cream_Donut.png" alt="Kem bánh quy vani ">
-
-
-
-
-
-
-      <!-- SỬA TÊN BÁNH, GIÁ TIỀN , MÔ TẢ SẢN PHẨM -->
-
-
-
+<div class="product" data-id="kem-banh-quy-vani">
+    <img class="main-img" src="https://donutelier.co.uk/wp-content/uploads/2022/11/Vanilla_Cookie_Cream_Donut.png" alt="Kem bánh quy vani">
 
     <div class="info">
-        <h1>Kem bánh quy vani </h1>
-        <p class="price" id="price">24,000 VND</p>
         
 
-        <p>
-            Lớp nhân ganache vani, vụn bánh OREO, kem Chantilly và một chiếc bánh quy OREO.  
-        </p>
+        <h1>Kem bánh quy vani</h1>
 
+        <div class="price-box">
+            <span class="price-new" id="price"></span>
+            <span class="price-old an" id="priceOld"></span>
+            <span class="badge-sale an" id="badgeSale"></span>
+        </div>
 
+        <h3 class="ingredients">Lớp nhân ganache vani, vụn bánh OREO, kem Chantilly và một chiếc bánh quy OREO.</h3>
 
+        <p class="desc">Oreo Cream Choux là sự kết hợp tinh tế giữa lớp vỏ su giòn rụm phủ vụn bánh Oreo đăng đắng, kem tươi vanilla mềm mịn và chiếc bánh Oreo nhúng socola trắng cuốn hút đỉnh cao.</p>
 
+        <!-- CHỌN SIZE -->
+        <div class="size-row">
+            <label for="size">Size</label>
+            <select id="size" onchange="doiGia()">
+                <option value="24000" data-old="28000">6 cm</option>
+                <option value="35000" data-old="41000" selected>9 cm</option>
+            </select>
+        </div>
 
+        <!-- KHUNG MUA HÀNG: số lượng + 3 nút nằm chung 1 khung -->
+        <div class="buy-box">
+            <div class="buy-row">
+                <div class="qty">
+                    <button type="button" onclick="doiSL(-1)" aria-label="Giảm số lượng">−</button>
+                    <span id="sl">1</span>
+                    <button type="button" onclick="doiSL(1)" aria-label="Tăng số lượng">+</button>
+                </div>
+                <button type="button" class="btn btn-cart" onclick="mua()">Thêm vào giỏ hàng</button>
+            </div>
 
-
-        <!-- SỬA SIZE BÁNH, GIÁ TIỀN TỪNG SIZE -->
-
-
-
-
-        <p>Size:
-    <select id="size" onchange="doiGia()">
-        <option value="24000">6 cm</option>
-        <option value="35000" selected>9 cm</option>
-    </select>
-</p>
-
-
-        <p>Số lượng:
-            <button onclick="doiSL(-1)">−</button>
-            <span id="sl">1</span>
-            <button onclick="doiSL(1)">+</button>
-        </p>
-
-        <button class="buy" onclick="mua()">Thêm vào giỏ hàng</button>
-        <button class="buy" onclick="muaNgay()">Mua ngay</button>
-
+            <div class="buy-row">
+                <button type="button" class="btn btn-now" onclick="muaNgay()">Mua ngay <span aria-hidden="true">→</span></button>
+            </div>
+        </div>
     </div>
 </div>
 
 <!-- THÔNG TIN BÁNH -->
-
-
-
-
-<!-- SỬA MÔ TẢ SẢN PHẨM -->
-
-
-
-
-<div class="details">
+<section class="details">
     <h2>Mô tả sản phẩm</h2>
-    <p>Oreo Cream Choux là sự kết hợp tinh tế giữa lớp vỏ su giòn rụm phủ vụn bánh Oreo đăng đắng, kem tươi vanilla mềm mịn và chiếc bánh Oreo nhúng socola trắng cuốn hút đỉnh cao.</p>
+    <div class="details-card">
 
-    <h3>Cấu trúc bánh:</h3>
-    <ul>
-        <li>Phần đế là vỏ bánh su (choux) tròn bọc kem, bên ngoài phủ kín lớp vụn bánh Oreo giòn tan hòa quyện cùng chút đường bột bắt mắt</li>
-        <li>Lớp kem tươi nhung mịn được bắt hoa xoắn ốc béo ngậy, dậy hương thơm dịu nhẹ của vanilla.</li>
-        <li>Trên cùng được trang trí bằng một chiếc bánh cookie Oreo nguyên vẹn nhúng một nửa vào lớp socola trắng ngọt ngào.</li>
-    </ul>
+        <p>Oreo Cream Choux là sự kết hợp tinh tế giữa lớp vỏ su giòn rụm phủ vụn bánh Oreo đăng đắng, kem tươi vanilla mềm mịn và chiếc bánh Oreo nhúng socola trắng cuốn hút đỉnh cao.</p>
 
+        <h3>Cấu trúc bánh:</h3>
+        <ul>
+            <li>Phần đế là vỏ bánh su (choux) tròn bọc kem, bên ngoài phủ kín lớp vụn bánh Oreo giòn tan hòa quyện cùng chút đường bột bắt mắt.</li>
+            <li>Lớp kem tươi nhung mịn được bắt hoa xoắn ốc béo ngậy, dậy hương thơm dịu nhẹ của vanilla.</li>
+            <li>Trên cùng được trang trí bằng một chiếc bánh cookie Oreo nguyên vẹn nhúng một nửa vào lớp socola trắng ngọt ngào.</li>
+        </ul>
 
-
-
-<!-- SỬA HƯỚNG DẪN SỬ DỤNG -->
-
-
-
-
-
-    <h3>Hướng dẫn sử dụng:</h3>
-    <ul>
-         <li>Bảo quản bánh trong hộp kín ở ngăn mát tủ lạnh, duy trì nhiệt độ từ 2–5°C để giữ độ tươi ngon của kem </li>
-        <li>Nên sử dụng bánh trong vòng 24 giờ kể từ khi mua hoặc chế biến để đảm bảo hương vị và chất lượng tốt nhất.</li>
-       <li>Tránh để bánh ở nhiệt độ phòng quá 2 giờ, hạn chế tiếp xúc trực tiếp với ánh nắng và không nên cấp đông vì có thể làm thay đổi kết cấu .</li>
-    </ul>
-</div>
+        <h3>Hướng dẫn sử dụng:</h3>
+        <ul>
+            <li>Bảo quản bánh trong hộp kín ở ngăn mát tủ lạnh, duy trì nhiệt độ từ 2–5°C để giữ độ tươi ngon của kem.</li>
+            <li>Nên sử dụng bánh trong vòng 24 giờ kể từ khi mua hoặc chế biến để đảm bảo hương vị và chất lượng tốt nhất.</li>
+            <li>Tránh để bánh ở nhiệt độ phòng quá 2 giờ, hạn chế tiếp xúc trực tiếp với ánh nắng và không nên cấp đông vì có thể làm thay đổi kết cấu bánh.</li>
+        </ul>
+    </div>
+</section>
 
 <!-- SẢN PHẨM LIÊN QUAN -->
-
-
-
-
-
-<!-- SỬA HÌNH ẢNH, TÊN, GIÁ TIỀN CỦA 4 SẢN PHẨM LIÊN QUAN -->
-
-
-
-
-
-<div class="related">
+<section class="related">
     <h2>Sản phẩm liên quan</h2>
 
-    <div class="products">
-        <div class="card">
-            
-            <a href="Matchadautay.html"><img src="https://donutelier.co.uk/wp-content/uploads/2026/07/Strawberry-matcha-for-web-1.jpg" alt="bánh b"></a>
-            <h3>Matcha dâu tây</h3>
-            <p>25,000 VND</p>
-            
+<div class="products">
+    <div class="card" data-sizes="6 cm=25000; 9 cm=36000" data-old="42000" data-tags="hot,new">
+        <a href="Matchadautay.html"><img src="https://donutelier.co.uk/wp-content/uploads/2026/07/Strawberry-matcha-for-web-1.jpg" alt="Matcha dâu tây"></a>
+        <div class="card-body">
+            <div class="card-pick"><h3>Matcha dâu tây</h3></div>
+            <p class="gia"></p>
         </div>
+    </div>
 
-        <div class="card">
-            <a href="banhkemdau.html" ><img src="https://donutelier.co.uk/wp-content/uploads/2023/06/Fraiser_Donut.png" alt="bánh b"></a>
-            <h3>Kem dâu</h3>
-            <p>22,000 VND</p>
+    <div class="card" data-sizes="6 cm=22000; 9 cm=32000" data-old="38000" data-tags="hot">
+        <a href="banhkemdau.html"><img src="https://donutelier.co.uk/wp-content/uploads/2023/06/Fraiser_Donut.png" alt="Kem dâu"></a>
+        <div class="card-body">
+            <div class="card-pick"><h3>Kem dâu</h3></div>
+            <p class="gia"></p>
         </div>
+    </div>
 
-        <div class="card">
-            <a href="donutkemvani-dâu.html"><img src="https://donutelier.co.uk/wp-content/uploads/2026/07/Vanilla-Berry-Ice-Cream-Donut-for-Web.jpg" alt="bánh c"></a>
-            <h3> Bánh donut kem vani-dâu</h3>
-            <p>25,000 VND</p>
+    <div class="card" data-sizes="6 cm=25000; 9 cm=38000" data-old="45000" data-tags="new">
+        <a href="donutkemvani-dâu.html"><img src="https://donutelier.co.uk/wp-content/uploads/2026/07/Vanilla-Berry-Ice-Cream-Donut-for-Web.jpg" alt="Bánh donut kem vani-dâu"></a>
+        <div class="card-body">
+            <div class="card-pick"><h3>Bánh donut kem vani-dâu</h3></div>
+            <p class="gia"></p>
         </div>
+    </div>
 
-        <div class="card">
-            <a href="DonutkemDulcey.html"><img src="https://donutelier.co.uk/wp-content/uploads/2026/07/Dulcey-Ice-Cream-Donut-for-Web.jpg" alt="bánh d"></a>
-            <h3>Bánh Donut kem Dulcey</h3>
-            <p>28,000 VND</p>
+    <div class="card" data-sizes="6 cm=28000; 9 cm=42000" data-old="49000" data-tags="hot,new">
+        <a href="DonutkemDulcey.html"><img src="https://donutelier.co.uk/wp-content/uploads/2026/07/Dulcey-Ice-Cream-Donut-for-Web.jpg" alt="Bánh Donut kem Dulcey"></a>
+        <div class="card-body">
+            <div class="card-pick"><h3>Bánh Donut kem Dulcey</h3></div>
+            <p class="gia"></p>
         </div>
     </div>
 </div>
 
-<!-- Nhúng file JavaScript -->
-<script
-src="../chitietsanpham.js"></script>
+</section>
+
+<!-- KHUNG GIỎ HÀNG TRƯỢT BÊN PHẢI -->
+<div class="cd-overlay" id="cartOverlay"></div>
+<aside class="cd-drawer" id="cartDrawer" aria-label="Giỏ hàng" aria-hidden="true">
+    <div class="cd-head">
+        <button class="cd-back" id="cartClose" type="button" aria-label="Đóng giỏ hàng">←</button>
+        <h2>GIỎ HÀNG</h2>
+    </div>
+
+    <div class="cd-items" id="cartItems"></div>
+
+    <div class="cd-foot">
+        <div class="cd-row"><span>Số lượng</span><span id="cartCountText">0 sản phẩm</span></div>
+        <div class="cd-row cd-big"><span>Tổng thanh toán</span><span id="cartTotal">0VND</span></div>
+        <a class="cd-go" href="../giohang.html">Xem giỏ hàng →</a>
+    </div>
+</aside>
+
+<!-- JS phải nằm SAU khung giỏ hàng -->
+<script src="../chitietsanpham.js"></script>
+
 </body>
 </html>

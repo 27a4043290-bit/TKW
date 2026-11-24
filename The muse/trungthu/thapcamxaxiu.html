@@ -1,184 +1,169 @@
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Thập cẩm xá xíu - Moon cake</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+<!-- CSS -->
+<link rel="stylesheet" href="../header.css">
 <link rel="stylesheet" href="../banh.css">
 
-
-<!-- SỬA TÊN WEB -->
-
-
-
-<title>Thập cẩm xá xíu - Moon cake</title>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;800&display=swap"
-rel="stylesheet">
- 
-<!-- CSS -->
-<link rel="stylesheet"
-href="../header.css"> 
-<link rel="stylesheet"
-href="../banh.css">
- 
 <!-- JavaScript -->
-<script src="../float.js"
-defer></script>
-<script src="../header.js"
-defer></script> 
-
-
+<script src="../float.js" defer></script>
+<script src="../header.js" defer></script>
 </head>
 
 <body>
 
+<!-- CHỖ CHỨA HEADER -->
+<div id="site-header"></div>
+
+<!-- THANH ĐƯỜNG DẪN -->
+<nav class="breadcrumb" aria-label="Đường dẫn">
+    <div class="breadcrumb-inner">
+        <a href="../trangchu.html">Trang chủ</a>
+        <span>/</span>
+        <a href="../sanpham.html">Sản phẩm</a>
+        <span>/</span>
+        <a href="../sanpham.html#trungthu">Bánh Trung thu</a>
+    </div>
+</nav>
+
 <!-- CHI TIẾT BÁNH -->
-<div class="product">
-    
-
-
-    <!-- SỬA ẢNH BÁNH -->
-
-
-
-    <img class="main-img" src="https://www.the350f.com/wp-content/uploads/2025/07/TT26-BN-Xa-Xiu-1-scaled.jpg" alt="Kem bánh quy vani ">
-
-
-
-
-
-
-      <!-- SỬA TÊN BÁNH, GIÁ TIỀN , MÔ TẢ SẢN PHẨM -->
-
-
-
+<div class="product" data-id="thapcamxaxiu">
+    <img class="main-img" src="https://www.the350f.com/wp-content/uploads/2025/07/TT26-BN-Xa-Xiu-1-scaled.jpg" alt="Bánh trung thu Thập cẩm xá xíu">
 
     <div class="info">
-        <h1>Thập cẩm xá xíu </h1>
-        <p class="price" id="price">95,000 VND</p>
-        
+       
 
-        <p>
-           Nổi bật với lớp vỏ bánh được nướng thủ công vàng ruộm, chiếc bánh Thập cẩm xá xíu gây ấn tượng với sự kết hợp của 16 nguyên liệu tinh tuyển: là Thịt xá xíu thơm lừng, Trứng vịt muối ngậy thơm, Lạp xưởng đậm đà, ... Mai quế ... nồng nàn và rất nhiều nguyên liệu khác như Mỡ đường, Hạt dưa, Mứt tắc, Trần bì… mang đến bản phối hài hòa với vị mặn ngọt đầy tinh tế.
-        </p>
+        <h1>Thập cẩm xá xíu</h1>
 
+        <div class="price-box">
+            <span class="price-new" id="price"></span>
+            <span class="price-old an" id="priceOld"></span>
+            <span class="badge-sale an" id="badgeSale"></span>
+        </div>
 
+        <h3 class="ingredients">Thịt xá xíu, trứng vịt muối, lạp xưởng, mỡ đường, hạt dưa, mứt tắc, trần bì và rượu mai quế lộ.</h3>
 
+        <p class="desc">Nổi bật với lớp vỏ bánh được nướng thủ công vàng ruộm, chiếc bánh Thập cẩm xá xíu gây ấn tượng với sự kết hợp của 16 nguyên liệu tinh tuyển: là thịt xá xíu thơm lừng, trứng vịt muối ngậy thơm, lạp xưởng đậm đà, mai quế lộ nồng nàn và rất nhiều nguyên liệu khác như mỡ đường, hạt dưa, mứt tắc, trần bì… mang đến bản phối hài hòa với vị mặn ngọt đầy tinh tế.</p>
 
+        <!-- CHỌN SIZE -->
+        <div class="size-row">
+            <label for="size">Size</label>
+            <select id="size" onchange="doiGia()">
+                <option value="100000" data-old="120000">150g</option>
+                <option value="155000" data-old="180000" selected>250g</option>
+            </select>
+        </div>
 
+        <!-- KHUNG MUA HÀNG -->
+        <div class="buy-box">
+            <div class="buy-row">
+                <div class="qty">
+                    <button type="button" onclick="doiSL(-1)" aria-label="Giảm số lượng">−</button>
+                    <span id="sl">1</span>
+                    <button type="button" onclick="doiSL(1)" aria-label="Tăng số lượng">+</button>
+                </div>
+                <button type="button" class="btn btn-cart" onclick="mua()">Thêm vào giỏ hàng</button>
+            </div>
 
-
-        <!-- SỬA SIZE BÁNH, GIÁ TIỀN TỪNG SIZE -->
-
-
-
-
-        <p>Size:
-    <select id="size" onchange="doiGia()">
-        <option value="100000">150g</option>
-        <option value="155000" selected>250g</option>
-    </select>
-</p>
-
-
-        <p>Số lượng:
-            <button onclick="doiSL(-1)">−</button>
-            <span id="sl">1</span>
-            <button onclick="doiSL(1)">+</button>
-        </p>
-
-        <button class="buy" onclick="mua()">Thêm vào giỏ hàng</button>
-        <button class="buy" onclick="muaNgay()">Mua ngay</button>
-
+            <div class="buy-row">
+                <button type="button" class="btn btn-now" onclick="muaNgay()">Mua ngay <span aria-hidden="true">→</span></button>
+            </div>
+        </div>
     </div>
 </div>
 
 <!-- THÔNG TIN BÁNH -->
-
-
-
-
-<!-- SỬA MÔ TẢ SẢN PHẨM -->
-
-
-
-
-<div class="details">
+<section class="details">
     <h2>Mô tả sản phẩm</h2>
-    <p>Bánh trung thu Thập Cẩm Xá Xíu gây ấn tượng sâu sắc nhờ sự kết hợp hài hòa từ 16 nguyên liệu tinh tuyển bao gồm thịt xá xíu, trứng vịt muối, lạp xưởng và rượu mai quế lộ, tất cả được bao bọc trong lớp vỏ nướng thủ công vàng ruộm.</p>
+    <div class="details-card">
 
-    <h3>Cấu trúc bánh:</h3>
-    <ul>
-        <li>Bánh nổi bật với lớp vỏ bánh nướng thủ công màu vàng ruộm óng ả, ôm trọn phần nhân tròn đầy bên trong.</li>
-        <li>Nhân bánh kết hợp độc đáo giữa thịt xá xíu thơm lừng, trứng vịt muối ngậy thơm, lạp xưởng đậm đà cùng mỡ đường béo ngậy.</li>
-        <li>Sự hòa quyện của rượu mai quế lộ nồng nàn cùng hạt dưa, mứt tắc và trần bì tạo nên một bản phối mặn ngọt vô cùng hài hòa và tinh tế.</li>
-    </ul>
+        <p>Bánh trung thu Thập Cẩm Xá Xíu gây ấn tượng sâu sắc nhờ sự kết hợp hài hòa từ 16 nguyên liệu tinh tuyển bao gồm thịt xá xíu, trứng vịt muối, lạp xưởng và rượu mai quế lộ, tất cả được bao bọc trong lớp vỏ nướng thủ công vàng ruộm.</p>
 
+        <h3>Cấu trúc bánh:</h3>
+        <ul>
+            <li>Bánh nổi bật với lớp vỏ bánh nướng thủ công màu vàng ruộm óng ả, ôm trọn phần nhân tròn đầy bên trong.</li>
+            <li>Nhân bánh kết hợp độc đáo giữa thịt xá xíu thơm lừng, trứng vịt muối ngậy thơm, lạp xưởng đậm đà cùng mỡ đường béo ngậy.</li>
+            <li>Sự hòa quyện của rượu mai quế lộ nồng nàn cùng hạt dưa, mứt tắc và trần bì tạo nên một bản phối mặn ngọt vô cùng hài hòa và tinh tế.</li>
+        </ul>
 
-
-
-<!-- SỬA HƯỚNG DẪN SỬ DỤNG -->
-
-
-
-
-
-    <h3>Hướng dẫn sử dụng:</h3>
-    <ul>
-       <li>Nên bảo quản bánh ở nơi khô ráo, thoáng mát, tránh ánh nắng trực tiếp hoặc lưu trữ trong ngăn mát tủ lạnh nếu đã cắt ra.</li>
-        <li>Sử dụng ngon nhất trước hạn sử dụng in trên bao bì; sau khi mở gói, nên dùng hết trong vòng 1-2 ngày để đảm bảo hương vị tươi ngon</li>
-        <li>Bánh sẽ tuyệt vời hơn khi thưởng thức cùng một ngụm trà xanh hoặc trà ô long ấm nóng để cân bằng vị giác trong đêm rằm Trung thu.</li>
-    </ul>
-</div>
+        <h3>Hướng dẫn sử dụng:</h3>
+        <ul>
+            <li>Nên bảo quản bánh ở nơi khô ráo, thoáng mát, tránh ánh nắng trực tiếp hoặc lưu trữ trong ngăn mát tủ lạnh nếu đã cắt ra.</li>
+            <li>Sử dụng ngon nhất trước hạn sử dụng in trên bao bì; sau khi mở gói, nên dùng hết trong vòng 1-2 ngày để đảm bảo hương vị tươi ngon.</li>
+            <li>Bánh sẽ tuyệt vời hơn khi thưởng thức cùng một ngụm trà xanh hoặc trà ô long ấm nóng để cân bằng vị giác trong đêm rằm Trung thu.</li>
+        </ul>
+    </div>
+</section>
 
 <!-- SẢN PHẨM LIÊN QUAN -->
-
-
-
-
-
-<!-- SỬA HÌNH ẢNH, TÊN, GIÁ TIỀN CỦA 4 SẢN PHẨM LIÊN QUAN -->
-
-
-
-
-
-<div class="related">
+<section class="related">
     <h2>Sản phẩm liên quan</h2>
 
     <div class="products">
-       <div class="card">
-            
-            <a href="oihongdautam.html"><img src="https://www.the350f.com/wp-content/uploads/2025/07/TT26-Oi-Hong-scaled.jpg" alt="bánh a" ></a>
-            <h3> Ổi Hồng Dâu Tằm  </h3>     
-            <p>100,000 VND</p>
-            
+
+        <div class="card" data-sizes="150g=100000; 250g=165000" data-old="190000" data-tags="hot">
+            <a href="oihongdautam.html"><img src="https://www.the350f.com/wp-content/uploads/2025/07/TT26-Oi-Hong-scaled.jpg" alt="Ổi Hồng Dâu Tằm"></a>
+            <div class="card-body">
+                <div class="card-pick"><h3>Ổi Hồng Dâu Tằm</h3></div>
+                <p class="gia"></p>
+            </div>
         </div>
 
-        <div class="card">
-            <a href="taodo.html"><img src="https://www.the350f.com/wp-content/uploads/2025/07/TT26-BN-Tao-do-1-scaled.jpg" alt="bánh b"></a>
-            <h3>Táo Đỏ</h3>
-            <p>105,000 VND</p>
+        <div class="card" data-sizes="150g=105000; 250g=170000" data-old="195000" data-tags="new">
+            <a href="taodo.html"><img src="https://www.the350f.com/wp-content/uploads/2025/07/TT26-BN-Tao-do-1-scaled.jpg" alt="Táo Đỏ"></a>
+            <div class="card-body">
+                <div class="card-pick"><h3>Táo Đỏ</h3></div>
+                <p class="gia"></p>
+            </div>
         </div>
 
-        <div class="card">
-            <a href="buoihong.html"><img src="https://www.the350f.com/wp-content/uploads/2026/08/TT26-BN-Buoi-hong-2-scaled.jpg" alt="bánh b"></a>
-            <h3>Bưởi hồng</h3>
-            <p>95,000 VND</p>      
+        <div class="card" data-sizes="150g=95000; 250g=155000" data-old="180000" data-tags="hot">
+            <a href="buoihong.html"><img src="https://www.the350f.com/wp-content/uploads/2026/08/TT26-BN-Buoi-hong-2-scaled.jpg" alt="Bưởi hồng"></a>
+            <div class="card-body">
+                <div class="card-pick"><h3>Bưởi hồng</h3></div>
+                <p class="gia"></p>
+            </div>
         </div>
 
-        <div class="card">
-            <a href="thamcamnguhat.html"><img src="https://www.the350f.com/wp-content/uploads/2025/07/TT26-BN-Ngu-Vi-1-scaled.jpg" alt="bánh a" ></a>
-            <h3> Thập cẩm ngũ hạt  </h3>
-            <p>100,000 VND</p>
+        <div class="card" data-sizes="150g=100000; 250g=165000" data-old="190000" data-tags="new">
+            <a href="thamcamnguhat.html"><img src="https://www.the350f.com/wp-content/uploads/2025/07/TT26-BN-Ngu-Vi-1-scaled.jpg" alt="Thập cẩm ngũ hạt"></a>
+            <div class="card-body">
+                <div class="card-pick"><h3>Thập cẩm ngũ hạt</h3></div>
+                <p class="gia"></p>
+            </div>
         </div>
-
 
     </div>
-</div>
+</section>
 
-<!-- Nhúng file JavaScript -->
+<!-- KHUNG GIỎ HÀNG TRƯỢT BÊN PHẢI -->
+<div class="cd-overlay" id="cartOverlay"></div>
+
+<aside class="cd-drawer" id="cartDrawer" aria-label="Giỏ hàng" aria-hidden="true">
+    <div class="cd-head">
+        <button class="cd-back" id="cartClose" type="button" aria-label="Đóng giỏ hàng">←</button>
+        <h2>GIỎ HÀNG</h2>
+    </div>
+
+    <div class="cd-items" id="cartItems"></div>
+
+    <div class="cd-foot">
+        <div class="cd-row"><span>Số lượng</span><span id="cartCountText">0 sản phẩm</span></div>
+        <div class="cd-row cd-big"><span>Tổng thanh toán</span><span id="cartTotal">0VND</span></div>
+        <a class="cd-go" href="../giohang.html">Xem giỏ hàng →</a>
+    </div>
+</aside>
+
+<!-- JS phải nằm SAU khung giỏ hàng -->
 <script src="../chitietsanpham.js"></script>
+
 </body>
 </html>
