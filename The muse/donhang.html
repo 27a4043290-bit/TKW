@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Theo dõi đơn hàng - The Muse</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="header.css">
+<link rel="stylesheet" href="donhang.css">
+<style>
+
+</style>
+<script src="float.js" defer></script>
+</head>
+<body>
+<div id="site-header"></div>
+<script src="header.js"></script>
+
+<nav class="crumb" aria-label="Breadcrumb"><div class="wrap">
+  <p class="eye"><a href="trangchu.html">Trang chủ</a> &nbsp;/&nbsp; <a href="#">Tài khoản</a> &nbsp;/&nbsp; <span style="color:var(--ink)">Theo dõi đơn hàng</span></p>
+</div></nav>
+
+<main class="wrap">
+
+  <!-- Tóm tắt đơn -->
+  <section class="summary" aria-labelledby="orderCode">
+    <div>
+      <p style="display:flex;align-items:center;gap:12px"><span class="tag" id="orderTag"></span><span style="color:var(--muted)">Đơn hàng chuyên biệt</span></p>
+      <h1 class="sf" id="orderCode"></h1>
+      <p class="date"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg><span id="placed"></span></p>
+    </div>
+    <div class="card info">
+      <div><p class="eye">Người thực hiện</p><p class="sf v" id="bakerName"></p><small id="bakerMeta"></small></div>
+      <div><p class="eye eta">Dự kiến phục vụ</p><p class="sf v" id="eta"></p><a class="link" href="tel:0826590133">Chọn khung giờ khác</a></div>
+    </div>
+  </section>
+
+  <!-- Tiến trình -->
+  <section id="tien-trinh" aria-labelledby="tt-title">
+    <div class="sec-head">
+      <div><p class="eye">Nhật ký chế tác</p><h2 class="sf" id="tt-title">Tiến Trình Chế Tác &amp; Vận Chuyển</h2></div>
+      <p class="eye" id="coldRoom"></p>
+    </div>
+    <div class="steps">
+      <div class="line" aria-hidden="true"><b id="progress"></b></div>
+      <ol id="steps"></ol>
+    </div>
+  </section>
+
+  <!-- Tác phẩm + hỗ trợ -->
+  <section class="work">
+    <div class="card piece">
+      <div class="piece-head">
+        <div><p class="eye">Tác phẩm đang thực hiện</p><h2 class="sf" id="pName"></h2></div>
+        <span class="tag" id="pQty"></span>
+      </div>
+      <div class="msg"><p class="eye" id="msgLabel"></p><q id="msgText"></q></div>
+      <div class="photo" id="photo"><span id="photoCap"></span></div>
+      <div class="specs" id="specs"></div>
+    </div>
+
+    <div>
+      <div class="help">
+        <span class="chip">Đặc quyền thành viên</span>
+        <h2 class="sf">Hỗ Trợ Riêng &amp; Điều Chỉnh</h2>
+        <p class="t">Bạn cần bổ sung lời nhắn, đổi thiệp đính kèm hoặc dời giờ nhận? Hãy liên hệ thợ bánh trước khi khâu hoàn thiện.</p>
+        <button class="btn" type="button" id="chatBaker"> Chat trực tiếp với thợ bánh</button>
+        <a class="hot" href="tel:0826590133">Hotline ưu tiên: 0826 590 133</a>
+        <div class="chef"><span class="av" id="chefAv"></span><div><b id="chefName" style="font-weight:500"></b><small>Thợ bánh phụ trách đơn của bạn</small></div></div>
+      </div>
+      <div class="rules">
+        <p class="eye" style="color:var(--ink)">Quy chuẩn vận chuyển</p>
+        <p>✓ Xe lạnh giữ 2°C – 6°C suốt hành trình, có theo dõi nhiệt độ.</p>
+        <p>✓ Vui lòng nhận bánh trong vòng 30 phút để giữ trọn chất lượng.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lịch sử -->
+  <section class="history" aria-labelledby="ls-title">
+    <div class="sec-head">
+      <div><p class="eye">Lưu trữ đơn hàng</p><h2 class="sf" id="ls-title">Lịch Sử Đơn Hàng Của Bạn</h2></div>
+      <div class="tabs" id="tabs" role="group" aria-label="Lọc đơn hàng"></div>
+    </div>
+    <div class="list" id="list"></div>
+  </section>
+</main>
+
+<script src="donhangchung.js"></script>
+<script src="donhang.js"></script>
+</body>
+</html>

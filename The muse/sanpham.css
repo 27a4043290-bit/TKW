@@ -1,0 +1,109 @@
+/* ===== 1. Màu & font nằm trong style.css (--bg, --ink, --price, --font ...) ===== */
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);color:var(--ink);background:var(--bg)}
+a{color:inherit;text-decoration:none}
+
+/* ===== 2. Thanh breadcrumb (đường dẫn) ===== */
+/* ===== 2. Thanh breadcrumb (đường dẫn) ===== */
+.breadcrumb {
+    background: var(--bar);
+    padding: 18px 5vw;
+    font-size: 15px;
+    color: var(--muted);
+}
+.breadcrumb a:hover {
+    color: var(--price);
+}
+.breadcrumb span {
+    margin: 0 8px;
+}
+
+/* ===== 3. Khung trang: cột trái (danh mục) + cột phải (sản phẩm) ===== */
+.container{max-width:1400px;margin:0 auto;padding:0 20px}
+.page-title{font-size:36px;padding:40px 0 28px;border-bottom:1px solid var(--line)}
+.layout{display:grid;grid-template-columns:320px 1fr;gap:40px;padding:40px 0 80px}
+
+.sidebar{position:sticky;top:calc(var(--header-h, 0px) + 24px);align-self:start;display:flex;flex-direction:column;gap:20px}
+.cat-btn{display:flex;align-items:center;gap:18px;padding:16px 20px;background:var(--bar);
+  border-left:3px solid var(--accent);border-radius:6px;font-weight:600;font-size:17px;text-transform:uppercase}
+.cat-btn.active{background:var(--ink);color:#fff;border-left-color:var(--price)}
+
+/* ===== 4. Mỗi nhóm bánh = 1 section ===== */
+.group{scroll-margin-top:calc(var(--header-h, 0px) + 24px);margin-bottom:60px}
+/* Đường kẻ vàng ngăn giữa các nhóm bánh (không có ở nhóm đầu tiên) */
+.group + .group{border-top:1px solid var(--accent);padding-top:50px}
+.group h2{font-size:24px;margin-bottom:26px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
+
+/* ===== 5. Thẻ sản phẩm ===== */
+.card{position:relative;display:flex;flex-direction:column;border:1px solid var(--ink);
+  border-radius:40px;overflow:hidden;background:var(--card)}
+.thumb{position:relative;aspect-ratio:4/5;background:linear-gradient(160deg,#e8d9c4,#b9926a)}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.badges{position:absolute;top:20px;left:20px;display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.badge{font-size:12px;font-weight:500;padding:5px 12px;border-radius:4px}
+.badge.hot{background:var(--price);color:#fff}
+.badge.new{background:var(--accent);color:var(--ink)}
+.info{padding:22px 16px 26px;text-align:center}
+.info h3{font-size:22px;margin-bottom:22px}
+.price{font-weight:500;font-size:16px}
+.price b{color:var(--price);font-weight:600}
+
+/* Thanh "Thêm vào giỏ hàng" trượt lên khi rê chuột */
+.add{position:absolute;left:0;right:0;bottom:0;background:var(--ink);color:#fff;border:0;
+  padding:22px;font:500 15px var(--font);cursor:pointer;transform:translateY(100%);
+  transition:transform .25s}
+.card:hover .add,.card:focus-within .add{transform:none}
+.card:focus-visible{outline:3px solid var(--accent)}
+
+/* Phần dưới thẻ: tên + giá, hoặc danh sách size (cùng nằm 1 ô nên chiều cao không nhảy) */
+.thumb-link{display:block}
+.bottom{display:grid}
+.info,.sizes{grid-area:1/1}
+a.info{display:block}
+.sizes{display:none;flex-direction:column;justify-content:center;gap:8px;padding:16px 14px}
+.size{display:flex;justify-content:space-between;align-items:center;width:100%;padding:12px 14px;border:0;border-radius:10px;
+  background:transparent;color:var(--ink);font:500 16px var(--font);cursor:pointer;text-align:left}
+.size:hover,.size:focus-visible{background:var(--bar)}
+.card.choosing .info{visibility:hidden}
+.card.choosing .sizes{display:flex}
+.card.choosing .add{display:none}
+
+/* Giỏ hàng trượt ra từ bên phải */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);opacity:0;pointer-events:none;transition:opacity .3s;z-index:40}
+.overlay.open{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;height:100%;width:min(480px,100%);background:var(--card);z-index:50;
+  display:flex;flex-direction:column;transform:translateX(100%);transition:transform .3s}
+.drawer.open{transform:none}
+.drawer header{position:relative;display:flex;align-items:center;justify-content:center;padding:16px;border-bottom:1px solid var(--line)}
+.drawer h2{font-size:22px;letter-spacing:.04em}
+.back{position:absolute;left:16px;width:40px;height:40px;border:0;border-radius:8px;background:var(--bg);color:var(--ink);font-size:20px;cursor:pointer}
+.d-items{flex:1;overflow-y:auto;padding:0 16px}
+.d-item{display:grid;grid-template-columns:100px 1fr auto;gap:16px;padding:14px 0;border-bottom:1px solid var(--line)}
+.d-item img{width:100px;height:100px;object-fit:cover;border-radius:10px;background:var(--bar)}
+.d-item h3{font-size:17px;font-weight:500;margin:6px 0 14px}
+.d-item .q{font-weight:700}.d-item .q em{font-style:normal;color:var(--price);margin-left:6px}
+.d-del{width:40px;height:40px;border:0;border-radius:8px;background:var(--bg);color:var(--ink);cursor:pointer;display:grid;place-items:center}
+.d-del:hover{color:var(--err)}
+.d-del svg{width:18px;height:18px}
+.d-empty{padding:40px 0;text-align:center;color:var(--muted)}
+.drawer footer{padding:16px;border-top:1px solid var(--line)}
+.drawer .r{display:flex;justify-content:space-between;padding:8px 0}
+.drawer .r.big{font-size:18px;font-weight:700}
+.go{display:flex;align-items:center;justify-content:center;gap:8px;margin:14px 0 0 auto;width:fit-content;padding:14px 22px;border-radius:10px;background:var(--accent);color:var(--ink);font-weight:700}
+.go:hover{opacity:.9}
+body.lock{overflow:hidden}
+
+/* Màn hình cảm ứng không có hover: luôn hiện nút thêm vào giỏ */
+@media(hover:none){.add{position:static;transform:none;width:100%}}
+
+/* ===== 6. Responsive ===== */
+@media(max-width:1000px){
+  .layout{grid-template-columns:1fr;gap:24px}
+  .sidebar{position:static;flex-direction:row;overflow-x:auto}
+  .cat-btn{white-space:nowrap;font-size:14px}
+  .grid{grid-template-columns:repeat(2,1fr);gap:20px}
+}
+@media(max-width:560px){.grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.add{transition:none}}
