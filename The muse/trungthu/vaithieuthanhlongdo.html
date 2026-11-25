@@ -1,184 +1,207 @@
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Vải Thiều Thanh Long Đỏ - Moon cake</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+<!-- CSS -->
+<link rel="stylesheet" href="../header.css">
 <link rel="stylesheet" href="../banh.css">
 
-
-<!-- SỬA TÊN WEB -->
-
-
-
-<title>Vải Thiều Thanh Long Đỏ - Moon cake</title>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;800&display=swap"
-rel="stylesheet">
- 
-<!-- CSS -->
-<link rel="stylesheet"
-href="../header.css"> 
-<link rel="stylesheet"
-href="../banh.css">
- 
 <!-- JavaScript -->
-<script src="../float.js"
-defer></script>
-<script src="../header.js"
-defer></script> 
-
-
+<script src="../float.js" defer></script>
+<script src="../header.js" defer></script>
 </head>
 
 <body>
 
+<!-- CHỖ CHỨA HEADER -->
+<div id="site-header"></div>
+
+<!-- THANH ĐƯỜNG DẪN -->
+<nav class="breadcrumb" aria-label="Đường dẫn">
+    <div class="breadcrumb-inner">
+        <a href="../trangchu.html">Trang chủ</a>
+        <span>/</span>
+        <a href="../sanpham.html">Sản phẩm</a>
+        <span>/</span>
+        <a href="../sanpham.html">Bánh trung thu</a>
+    </div>
+</nav>
+
 <!-- CHI TIẾT BÁNH -->
-<div class="product">
-    
+<div class="product" data-id="vaithieuthanhlongdo">
 
-
-    <!-- SỬA ẢNH BÁNH -->
-
-
-
-    <img class="main-img" src="https://www.the350f.com/wp-content/uploads/2026/08/TT26-Vai-Thieu-Thanh-Long-2-1-scaled.jpg" alt="Kem bánh quy vani ">
-
-
-
-
-
-
-      <!-- SỬA TÊN BÁNH, GIÁ TIỀN , MÔ TẢ SẢN PHẨM -->
-
-
-
+    <img class="main-img" src="https://www.the350f.com/wp-content/uploads/2026/08/TT26-Vai-Thieu-Thanh-Long-2-1-scaled.jpg" alt="Bánh trung thu Vải Thiều Thanh Long Đỏ">
 
     <div class="info">
-        <h1>Vải Thiều Thanh Long Đỏ </h1>
-        <p class="price" id="price">105,000 VND</p>
-        
 
-        <p>
-           Lấy cảm hứng từ những loại nông sản bản địa đặc trưng: hạt sen, vải thiều và thanh long đỏ kết hợp với nhiều nguyên liệu nhập khẩu thượng hạng, toàn bộ đều được tuyển chọn khắt khe nhằm giữ trọn hương vị tự nhiên của từng nguyên liệu. Trên nền nhân hạt sen mịn bùi, hương thơm dịu ngọt của vải thiều hòa quyện cùng phần nhân thanh long đỏ và mật ong, tạo nên tổng thể thanh thoát trong lớp vỏ bánh đậu trắng mềm mịn. 
+        <div class="product-tags">
+            <span class="tag-hot">Hot</span>
+            <span class="tag-new">Mới</span>
+        </div>
+
+        <h1>Vải Thiều Thanh Long Đỏ</h1>
+
+        <div class="price-box">
+            <span class="price-new" id="price"></span>
+            <span class="price-old an" id="priceOld"></span>
+            <span class="badge-sale an" id="badgeSale"></span>
+        </div>
+
+        <h3 class="ingredients">Nhân hạt sen, vải thiều, thanh long đỏ và mật ong trong lớp vỏ bánh đậu trắng mềm mịn.</h3>
+
+        <p class="desc">
+            Lấy cảm hứng từ những loại nông sản bản địa đặc trưng: hạt sen, vải thiều và thanh long đỏ kết hợp với nhiều nguyên liệu nhập khẩu thượng hạng, toàn bộ đều được tuyển chọn khắt khe nhằm giữ trọn hương vị tự nhiên của từng nguyên liệu. Trên nền nhân hạt sen mịn bùi, hương thơm dịu ngọt của vải thiều hòa quyện cùng phần nhân thanh long đỏ và mật ong, tạo nên tổng thể thanh thoát trong lớp vỏ bánh đậu trắng mềm mịn.
         </p>
 
+        <!-- CHỌN SIZE -->
+        <div class="size-row">
+            <label for="size">Size</label>
+            <select id="size" onchange="doiGia()">
+                <option value="105000">150g</option>
+                <option value="165000" selected>250g</option>
+            </select>
+        </div>
 
+        <!-- KHUNG MUA HÀNG -->
+        <div class="buy-box">
 
+            <div class="buy-row">
+                <div class="qty">
+                    <button type="button" onclick="doiSL(-1)" aria-label="Giảm số lượng">−</button>
+                    <span id="sl">1</span>
+                    <button type="button" onclick="doiSL(1)" aria-label="Tăng số lượng">+</button>
+                </div>
 
+                <button type="button" class="btn btn-cart" onclick="mua()">Thêm vào giỏ hàng</button>
+            </div>
 
+            <div class="buy-row">
+                <button type="button" class="btn btn-now" onclick="muaNgay()">Mua ngay <span aria-hidden="true">→</span></button>
+            </div>
 
-
-        <!-- SỬA SIZE BÁNH, GIÁ TIỀN TỪNG SIZE -->
-
-
-
-
-        <p>Size:
-    <select id="size" onchange="doiGia()">
-        <option value="105000">150g</option>
-        <option value="175000" selected>250g</option>
-    </select>
-</p>
-
-
-        <p>Số lượng:
-            <button onclick="doiSL(-1)">−</button>
-            <span id="sl">1</span>
-            <button onclick="doiSL(1)">+</button>
-        </p>
-
-        <button class="buy" onclick="mua()">Thêm vào giỏ hàng</button>
-        <button class="buy" onclick="muaNgay()">Mua ngay</button>
-
+        </div>
     </div>
 </div>
 
 <!-- THÔNG TIN BÁNH -->
-
-
-
-
-<!-- SỬA MÔ TẢ SẢN PHẨM -->
-
-
-
-
-<div class="details">
+<section class="details">
     <h2>Mô tả sản phẩm</h2>
-    <p>Bánh trung thu Vải Thiều Thanh Long Đỏ là sự sáng tạo đầy tinh tế từ những nông sản bản địa đặc trưng, kết hợp hoàn hảo giữa vị ngọt thanh của vải thiều, thanh long đỏ và mật ong cùng lớp vỏ bánh đậu trắng mềm mịn.</p>
 
-    <h3>Cấu trúc bánh:</h3>
-    <ul>
-        <li>Bánh sở hữu lớp vỏ bánh đậu trắng mềm mịn, thanh thoát, ôm trọn phần nhân tròn đầy bên trong.</li>
-        <li>Lớp nhân hạt sen mịn bùi béo nhẹ làm nền hương vị, được tuyển chọn khắt khe cùng các nguyên liệu nhập khẩu thượng hạng.</li>
-        <li>Hương thơm dịu ngọt của vải thiều hòa quyện tinh tế cùng phần nhân thanh long đỏ tươi mát và mật ong ngọt ngào, tạo nên tổng thể hương vị vô cùng thanh thoát.</li>
-    </ul>
+    <div class="details-card">
 
+        <p>Bánh trung thu Vải Thiều Thanh Long Đỏ là sự sáng tạo đầy tinh tế từ những nông sản bản địa đặc trưng, kết hợp hoàn hảo giữa vị ngọt thanh của vải thiều, thanh long đỏ và mật ong cùng lớp vỏ bánh đậu trắng mềm mịn.</p>
 
+        <h3>Cấu trúc bánh:</h3>
+        <ul>
+            <li>Bánh sở hữu lớp vỏ bánh đậu trắng mềm mịn, thanh thoát, ôm trọn phần nhân tròn đầy bên trong.</li>
+            <li>Lớp nhân hạt sen mịn bùi béo nhẹ làm nền hương vị, được tuyển chọn khắt khe cùng các nguyên liệu nhập khẩu thượng hạng.</li>
+            <li>Hương thơm dịu ngọt của vải thiều hòa quyện tinh tế cùng phần nhân thanh long đỏ tươi mát và mật ong ngọt ngào, tạo nên tổng thể hương vị vô cùng thanh thoát.</li>
+        </ul>
 
+        <h3>Hướng dẫn sử dụng:</h3>
+        <ul>
+            <li>Nên bảo quản bánh ở nơi khô ráo, thoáng mát, tránh ánh nắng trực tiếp hoặc lưu trữ trong ngăn mát tủ lạnh nếu đã cắt ra.</li>
+            <li>Sử dụng ngon nhất trước hạn sử dụng in trên bao bì; sau khi mở gói, nên dùng hết trong vòng 1-2 ngày để đảm bảo hương vị tươi ngon.</li>
+            <li>Bánh sẽ tuyệt vời hơn khi thưởng thức cùng một ngụm trà xanh hoặc trà ô long ấm nóng để cân bằng vị giác trong đêm rằm Trung thu.</li>
+        </ul>
 
-<!-- SỬA HƯỚNG DẪN SỬ DỤNG -->
-
-
-
-
-
-    <h3>Hướng dẫn sử dụng:</h3>
-    <ul>
-       <li>Nên bảo quản bánh ở nơi khô ráo, thoáng mát, tránh ánh nắng trực tiếp hoặc lưu trữ trong ngăn mát tủ lạnh nếu đã cắt ra.</li>
-        <li>Sử dụng ngon nhất trước hạn sử dụng in trên bao bì; sau khi mở gói, nên dùng hết trong vòng 1-2 ngày để đảm bảo hương vị tươi ngon</li>
-        <li>Bánh sẽ tuyệt vời hơn khi thưởng thức cùng một ngụm trà xanh hoặc trà ô long ấm nóng để cân bằng vị giác trong đêm rằm Trung thu.</li>
-    </ul>
-</div>
+    </div>
+</section>
 
 <!-- SẢN PHẨM LIÊN QUAN -->
-
-
-
-
-
-<!-- SỬA HÌNH ẢNH, TÊN, GIÁ TIỀN CỦA 4 SẢN PHẨM LIÊN QUAN -->
-
-
-
-
-
-<div class="related">
+<section class="related">
     <h2>Sản phẩm liên quan</h2>
 
     <div class="products">
-       <div class="card">
-            
-            <a href="oihongdautam.html"><img src="https://www.the350f.com/wp-content/uploads/2025/07/TT26-Oi-Hong-scaled.jpg" alt="bánh a" ></a>
-            <h3> Ổi Hồng Dâu Tằm  </h3>     
-            <p>100,000 VND</p>                  
-            
+
+        <div class="card">
+            <a href="oihongdautam.html">
+                <img src="https://www.the350f.com/wp-content/uploads/2025/07/TT26-Oi-Hong-scaled.jpg" alt="Ổi Hồng Dâu Tằm">
+            </a>
+            <div class="card-body">
+                <div class="card-pick">
+                    <h3>Ổi Hồng Dâu Tằm</h3>
+                </div>
+                <p class="gia">100,000 VND</p>
+            </div>
         </div>
 
         <div class="card">
-            <a href="thapcamxaxiu.html"><img src="https://www.the350f.com/wp-content/uploads/2025/07/TT26-BN-Xa-Xiu-1-scaled.jpg" alt="bánh d"></a>
-            <h3>Thập cẩm xá xíu</h3>
-            <p>95,000 VND</p>
+            <a href="thapcamxaxiu.html">
+                <img src="https://www.the350f.com/wp-content/uploads/2025/07/TT26-BN-Xa-Xiu-1-scaled.jpg" alt="Thập cẩm xá xíu">
+            </a>
+            <div class="card-body">
+                <div class="card-pick">
+                    <h3>Thập cẩm xá xíu</h3>
+                </div>
+                <p class="gia">95,000 VND</p>
+            </div>
         </div>
 
         <div class="card">
-            <a href="buoihong.html"><img src="https://www.the350f.com/wp-content/uploads/2026/08/TT26-BN-Buoi-hong-2-scaled.jpg" alt="bánh b"></a>
-            <h3>Bưởi hồng</h3>
-            <p>95,000 VND</p>      
+            <a href="buoihong.html">
+                <img src="https://www.the350f.com/wp-content/uploads/2026/08/TT26-BN-Buoi-hong-2-scaled.jpg" alt="Bưởi hồng">
+            </a>
+            <div class="card-body">
+                <div class="card-pick">
+                    <h3>Bưởi hồng</h3>
+                </div>
+                <p class="gia">95,000 VND</p>
+            </div>
         </div>
 
         <div class="card">
-            <a href="thamcamnguhat.html"><img src="https://www.the350f.com/wp-content/uploads/2025/07/TT26-BN-Ngu-Vi-1-scaled.jpg" alt="bánh a" ></a>
-            <h3> Thập cẩm ngũ hạt  </h3>
-            <p>100,000 VND</p>              
+            <a href="thamcamnguhat.html">
+                <img src="https://www.the350f.com/wp-content/uploads/2025/07/TT26-BN-Ngu-Vi-1-scaled.jpg" alt="Thập cẩm ngũ hạt">
+            </a>
+            <div class="card-body">
+                <div class="card-pick">
+                    <h3>Thập cẩm ngũ hạt</h3>
+                </div>
+                <p class="gia">100,000 VND</p>
+            </div>
         </div>
-
 
     </div>
-</div>
+</section>
 
-<!-- Nhúng file JavaScript -->
+<!-- KHUNG GIỎ HÀNG TRƯỢT BÊN PHẢI -->
+<div class="cd-overlay" id="cartOverlay"></div>
+
+<aside class="cd-drawer" id="cartDrawer" aria-label="Giỏ hàng" aria-hidden="true">
+
+    <div class="cd-head">
+        <button class="cd-back" id="cartClose" type="button" aria-label="Đóng giỏ hàng">←</button>
+        <h2>GIỎ HÀNG</h2>
+    </div>
+
+    <div class="cd-items" id="cartItems"></div>
+
+    <div class="cd-foot">
+        <div class="cd-row">
+            <span>Số lượng</span>
+            <span id="cartCountText">0 sản phẩm</span>
+        </div>
+
+        <div class="cd-row cd-big">
+            <span>Tổng thanh toán</span>
+            <span id="cartTotal">0VND</span>
+        </div>
+
+        <a class="cd-go" href="../giohang.html">Xem giỏ hàng →</a>
+    </div>
+
+</aside>
+
+<!-- JS PHẢI NẰM SAU KHUNG GIỎ HÀNG -->
 <script src="../chitietsanpham.js"></script>
+
 </body>
 </html>

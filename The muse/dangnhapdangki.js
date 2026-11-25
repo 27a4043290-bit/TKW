@@ -1,3 +1,4 @@
+
 function hienDangNhap() {
     document.getElementById("register").classList.add("hidden");
     document.getElementById("login").classList.remove("hidden");
@@ -30,33 +31,68 @@ function dangKy() {
     localStorage.setItem("phone", phone);
     localStorage.setItem("pass", pass);
 
-    alert("Đăng ký thành công!");
-
     hienDangNhap();
+
     document.getElementById("loginEmail").value = email;
+    document.getElementById("loginPass").value = "";
+
+    document.getElementById("login-error").style.display = "none";
+
+    var success = document.getElementById("login-success");
+    success.textContent = "Đăng ký thành công!";
+    success.style.display = "block";
 }
 
 function dangNhap() {
     var email = document.getElementById("loginEmail").value;
     var pass = document.getElementById("loginPass").value;
 
+    var error = document.getElementById("login-error");
+    var success = document.getElementById("login-success");
+
     if (
         email == localStorage.getItem("email") &&
         pass == localStorage.getItem("pass")
     ) {
-        alert("Đăng nhập thành công! Xin chào " + localStorage.getItem("ten"));
+        error.style.display = "none";
+
+        success.textContent = "Đăng nhập thành công!";
+        success.style.display = "block";
+
     } else {
-        alert("Email hoặc mật khẩu không đúng!");
+        success.style.display = "none";
+
+        error.textContent = "Tên đăng nhập hoặc mật khẩu không đúng.";
+        error.style.display = "block";
     }
 }
 
 function theoLienKet() {
-    if (location.hash === "#dang-nhap") hienDangNhap();
-    else hienDangKy();
+    if (location.hash === "#dang-nhap") {
+        hienDangNhap();
+    } else {
+        hienDangKy();
+    }
 }
 
 // Khởi chạy khi trang đã nạp xong DOM
 document.addEventListener("DOMContentLoaded", function() {
     theoLienKet();
 });
+
 window.addEventListener("hashchange", theoLienKet);
+
+
+function hienDangNhap() {
+    document.getElementById("register").classList.add("hidden");
+    document.getElementById("login").classList.remove("hidden");
+
+    document.getElementById("breadcrumb-current").textContent = "Đăng nhập";
+}
+
+function hienDangKy() {
+    document.getElementById("login").classList.add("hidden");
+    document.getElementById("register").classList.remove("hidden");
+
+    document.getElementById("breadcrumb-current").textContent = "Đăng ký";
+}

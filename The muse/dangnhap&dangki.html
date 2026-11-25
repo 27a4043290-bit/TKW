@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -13,6 +14,16 @@
 <body>
 <div id="site-header"></div>
 <script src="header.js"></script>
+
+<div id="site-header"></div>
+<script src="header.js"></script>
+
+<!-- THANH ĐIỀU HƯỚNG -->
+<div class="breadcrumb">
+    <a href="trangchu.html">Trang chủ</a>
+    <span>/</span>
+    <span id="breadcrumb-current">Đăng ký</span>
+</div>
 
 <div class="container">
 
@@ -45,6 +56,12 @@
     <!-- ĐĂNG NHẬP -->
     <div id="login" class="hidden">
         <h1>Đăng nhập</h1>
+
+        <!-- THÔNG BÁO THÀNH CÔNG -->
+        <p id="login-success" style="display: none;"></p>
+
+        <!-- THÔNG BÁO LỖI -->
+        <p id="login-error" style="display: none;"></p>
 
         <label>Email:</label>
         <input type="email" id="loginEmail" placeholder="Nhập email">
