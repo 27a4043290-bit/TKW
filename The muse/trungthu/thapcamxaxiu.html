@@ -80,12 +80,27 @@
     </div>
 </div>
 
-<!-- THÔNG TIN BÁNH -->
-<section class="details">
-    <h2>Mô tả sản phẩm</h2>
-    <div class="details-card">
 
-        <p>Bánh trung thu Thập Cẩm Xá Xíu gây ấn tượng sâu sắc nhờ sự kết hợp hài hòa từ 16 nguyên liệu tinh tuyển bao gồm thịt xá xíu, trứng vịt muối, lạp xưởng và rượu mai quế lộ, tất cả được bao bọc trong lớp vỏ nướng thủ công vàng ruộm.</p>
+<!-- MÔ TẢ VÀ BÌNH LUẬN -->
+<section class="review-section">
+
+    <div class="review-tabs">
+        <button class="review-tab active"
+            onclick="chuyenTab('description', this)">
+            MÔ TẢ CHUNG
+        </button>
+
+        <button class="review-tab"
+            onclick="chuyenTab('comments', this)">
+            BÌNH LUẬN
+        </button>
+    </div>
+
+    <!-- NỘI DUNG MÔ TẢ -->
+    <div class="review-panel active" id="description">
+        <div class="details-card">
+
+<p>Bánh trung thu Thập Cẩm Xá Xíu gây ấn tượng sâu sắc nhờ sự kết hợp hài hòa từ 16 nguyên liệu tinh tuyển bao gồm thịt xá xíu, trứng vịt muối, lạp xưởng và rượu mai quế lộ, tất cả được bao bọc trong lớp vỏ nướng thủ công vàng ruộm.</p>
 
         <h3>Cấu trúc bánh:</h3>
         <ul>
@@ -101,7 +116,67 @@
             <li>Bánh sẽ tuyệt vời hơn khi thưởng thức cùng một ngụm trà xanh hoặc trà ô long ấm nóng để cân bằng vị giác trong đêm rằm Trung thu.</li>
         </ul>
     </div>
+    </div>
+    <!-- NỘI DUNG BÌNH LUẬN -->
+    <div class="review-panel" id="comments">
+
+        <div class="rating-summary">
+            <div class="rating-average">
+                <strong id="averageRating">0.0</strong>
+                <div class="rating-stars" id="averageStars">☆☆☆☆☆</div>
+                <span id="ratingCount">0 đánh giá</span>
+            </div>
+        </div>
+
+        <div class="review-form">
+
+            <h3>Viết đánh giá của bạn</h3>
+
+            <label>Đánh giá sao:</label>
+
+            <div class="star-picker">
+                <input type="radio" name="rating" id="star5" value="5">
+                <label for="star5">★</label>
+
+                <input type="radio" name="rating" id="star4" value="4">
+                <label for="star4">★</label>
+
+                <input type="radio" name="rating" id="star3" value="3">
+                <label for="star3">★</label>
+
+                <input type="radio" name="rating" id="star2" value="2">
+                <label for="star2">★</label>
+
+                <input type="radio" name="rating" id="star1" value="1">
+                <label for="star1">★</label>
+            </div>
+
+            <label for="reviewName">Tên của bạn:</label>
+            <input type="text" id="reviewName"
+                placeholder="Nhập tên của bạn">
+
+            <label for="reviewContent">Nội dung bình luận:</label>
+            <textarea id="reviewContent" rows="4"
+                placeholder="Chia sẻ cảm nhận của bạn..."></textarea>
+
+            <button type="button" class="submit-review"
+                onclick="dangBinhLuan()">
+                ĐĂNG BÌNH LUẬN
+            </button>
+
+            <p id="reviewMessage"></p>
+
+        </div>
+
+        <div class="review-list">
+            <h3>Đánh giá từ khách hàng</h3>
+            <div id="reviewList"></div>
+        </div>
+
+    </div>
+
 </section>
+
 
 <!-- SẢN PHẨM LIÊN QUAN -->
 <section class="related">

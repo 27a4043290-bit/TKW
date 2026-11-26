@@ -80,26 +80,103 @@
     </div>
 </div>
 
-<!-- THÔNG TIN BÁNH -->
-<section class="details">
-    <h2>Thông tin về bánh</h2>
 
-    <div class="details-card">
-        <h3>Cấu trúc bánh:</h3>
-        <ul>
-            <li>Bánh được bao bọc bởi lớp vỏ bánh nướng truyền thống mềm mịn, mang sắc vàng nâu óng ả cùng hoa văn dập nổi sắc nét.</li>
-            <li>Lớp nhân hạt sen dẻo mịn làm nền hương vị, được kết hợp cùng các nguyên liệu nhập khẩu thượng hạng chọn lọc khắt khe.</li>
-            <li>Nhân bánh mang vị ngọt vừa phải, dậy lên thoảng hương táo đỏ tự nhiên ngọt thanh và dễ chịu.</li>
-        </ul>
+<!-- MÔ TẢ VÀ BÌNH LUẬN -->
+<section class="review-section">
 
-        <h3>Hướng dẫn sử dụng:</h3>
-        <ul>
-            <li>Nên bảo quản bánh ở nơi khô ráo, thoáng mát, tránh ánh nắng trực tiếp hoặc lưu trữ trong ngăn mát tủ lạnh nếu đã cắt ra.</li>
-            <li>Sử dụng ngon nhất trước hạn sử dụng in trên bao bì; sau khi mở gói, nên dùng hết trong vòng 1-2 ngày để đảm bảo hương vị tươi ngon.</li>
-            <li>Bánh sẽ tuyệt vời hơn khi thưởng thức cùng một ngụm trà xanh hoặc trà ô long ấm nóng để cân bằng vị giác trong đêm rằm Trung thu.</li>
-        </ul>
+    <div class="review-tabs">
+        <button class="review-tab active"
+            onclick="chuyenTab('description', this)">
+            MÔ TẢ CHUNG
+        </button>
+
+        <button class="review-tab"
+            onclick="chuyenTab('comments', this)">
+            BÌNH LUẬN
+        </button>
     </div>
+
+    <!-- NỘI DUNG MÔ TẢ -->
+    <div class="review-panel active" id="description">
+        <div class="details-card">
+
+            <h3>Cấu trúc bánh:</h3>
+            <ul>
+                <li>Bánh được bao bọc bởi lớp vỏ bánh nướng truyền thống mềm mịn, mang sắc vàng nâu óng ả cùng hoa văn dập nổi sắc nét.</li>
+                <li>Lớp nhân hạt sen dẻo mịn làm nền hương vị, được kết hợp cùng các nguyên liệu nhập khẩu thượng hạng.</li>
+                <li>Nhân bánh mang vị ngọt vừa phải, dậy lên thoảng hương táo đỏ tự nhiên.</li>
+            </ul>
+
+            <h3>Hướng dẫn sử dụng:</h3>
+            <ul>
+                <li>Bảo quản bánh ở nơi khô ráo, thoáng mát.</li>
+                <li>Sau khi mở gói, nên dùng hết trong vòng 1-2 ngày.</li>
+                <li>Thưởng thức cùng trà xanh hoặc trà ô long.</li>
+            </ul>
+
+        </div>
+    </div>
+
+    <!-- NỘI DUNG BÌNH LUẬN -->
+    <div class="review-panel" id="comments">
+
+        <div class="rating-summary">
+            <div class="rating-average">
+                <strong id="averageRating">0.0</strong>
+                <div class="rating-stars" id="averageStars">☆☆☆☆☆</div>
+                <span id="ratingCount">0 đánh giá</span>
+            </div>
+        </div>
+
+        <div class="review-form">
+
+            <h3>Viết đánh giá của bạn</h3>
+
+            <label>Đánh giá sao:</label>
+
+            <div class="star-picker">
+                <input type="radio" name="rating" id="star5" value="5">
+                <label for="star5">★</label>
+
+                <input type="radio" name="rating" id="star4" value="4">
+                <label for="star4">★</label>
+
+                <input type="radio" name="rating" id="star3" value="3">
+                <label for="star3">★</label>
+
+                <input type="radio" name="rating" id="star2" value="2">
+                <label for="star2">★</label>
+
+                <input type="radio" name="rating" id="star1" value="1">
+                <label for="star1">★</label>
+            </div>
+
+            <label for="reviewName">Tên của bạn:</label>
+            <input type="text" id="reviewName"
+                placeholder="Nhập tên của bạn">
+
+            <label for="reviewContent">Nội dung bình luận:</label>
+            <textarea id="reviewContent" rows="4"
+                placeholder="Chia sẻ cảm nhận của bạn..."></textarea>
+
+            <button type="button" class="submit-review"
+                onclick="dangBinhLuan()">
+                ĐĂNG BÌNH LUẬN
+            </button>
+
+            <p id="reviewMessage"></p>
+
+        </div>
+
+        <div class="review-list">
+            <h3>Đánh giá từ khách hàng</h3>
+            <div id="reviewList"></div>
+        </div>
+
+    </div>
+
 </section>
+
 
 <!-- SẢN PHẨM LIÊN QUAN -->
 <section class="related">

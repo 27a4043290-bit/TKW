@@ -1,108 +1,143 @@
 
+/* ===== FONT CHỮ ===== */
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500;700;800&display=swap");
+
+/* ===== MÀU SẮC CHUNG ===== */
+:root {
+    --bg: #fff7f0;
+    --card: #ffffff;
+    --ink: #0b1a33;
+    --muted: #7a7f8a;
+    --line: #e8e1d8;
+    --accent: #fdc86e;
+    --price: #d2411e;
+    --err: #c62828;
+    --ok: #2e7d32;
+    --font: Roboto, Arial, sans-serif;
+}
+
+/* ===== GIAO DIỆN CHUNG ===== */
 body {
-    font-family: Arial;
-    background: #fff7f0;
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--ink);
     margin: 0;
     padding: 0;
 }
 
+/* ===== KHUNG ĐĂNG NHẬP / ĐĂNG KÝ ===== */
 .container {
     width: 350px;
+    max-width: calc(100% - 40px);
     margin: 30px auto;
     padding: 25px;
-    background: #ffffff;
-    box-shadow: 0 0 10px #e8e1d8;
+    box-sizing: border-box;
+    background: var(--card);
+    box-shadow: 0 0 10px var(--line);
+    border: 1px solid var(--line);
     border-radius: 15px;
 }
 
-.container button {
-    width: 100%;
-    padding: 12px;
-    background: #fdc86e;
-    color: #0b1a33;
-    border: none;
-    border-radius: 8px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background .2s, color .2s;
-}
-
-.container button:hover {
-    background: #d2411e;
-    color: #ffffff;
-}
-
+/* ===== TIÊU ĐỀ ===== */
 h1 {
-    color: #0b1a33;
+    color: var(--ink);
     text-align: center;
+    font-family: "Playfair Display", Georgia, serif;
 }
 
+/* ===== Ô NHẬP LIỆU ===== */
 input {
     width: 100%;
     padding: 10px;
     margin: 8px 0 15px;
     box-sizing: border-box;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: #ffffff;
+    color: var(--ink);
+    font-family: var(--font);
 }
 
+input:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+/* ===== NÚT BẤM ===== */
+.container button,
 button {
     width: 100%;
     padding: 12px;
-    background: #fdc86e;
-    color: #0b1a33;
+    background: var(--accent);
+    color: #1a1205;
     border: none;
+    border-radius: 8px;
+    font-family: var(--font);
+    font-weight: 700;
     cursor: pointer;
+    transition: background 0.2s, color 0.2s;
 }
 
+.container button:hover,
+button:hover {
+    filter: brightness(0.95);
+}
+
+/* ===== LIÊN KẾT ===== */
 .link {
     text-align: center;
     cursor: pointer;
+    color: var(--ink);
 }
 
+.link:hover {
+    color: var(--price);
+}
+
+/* ===== ẨN HIỆN ===== */
 .hidden {
     display: none;
 }
 
-/* THANH ĐIỀU HƯỚNG MÀU VÀNG */
+/* ===== THANH ĐIỀU HƯỚNG ===== */
 .breadcrumb {
     width: 100%;
-    height: 40px;
+    min-height: 40px;
     box-sizing: border-box;
     padding: 0 10%;
-    background: #fff0dc;
+    background: #ffedcf;
     display: flex;
     align-items: center;
     gap: 14px;
     font-size: 16px;
-    color: #777;
+    color: var(--muted);
 }
 
-/* LIÊN KẾT TRANG CHỦ */
 .breadcrumb a {
-    color: #777;
+    color: var(--ink);
     text-decoration: none;
     transition: color 0.2s;
 }
 
 .breadcrumb a:hover {
-    color: #d2411e;
+    color: var(--price);
 }
 
-/* TÊN TRANG HIỆN TẠI */
 #breadcrumb-current {
-    color: #777;
+    color: var(--muted);
 }
 
-/* THÔNG BÁO THÀNH CÔNG */
+/* ===== THÔNG BÁO THÀNH CÔNG ===== */
 #login-success {
-    color: #00a000;
+    color: var(--ok);
     font-size: 17px;
     text-align: left;
     margin: 0 0 20px;
 }
 
-/* THÔNG BÁO LỖI */
+/* ===== THÔNG BÁO LỖI ===== */
 #login-error {
-    color: #e53935;
+    color: var(--err);
     font-size: 17px;
     text-align: left;
     margin: 0 0 20px;

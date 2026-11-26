@@ -80,12 +80,27 @@
     </div>
 </div>
 
-<!-- THÔNG TIN BÁNH -->
-<section class="details">
-    <h2>Mô tả sản phẩm</h2>
-    <div class="details-card">
 
-        <p>Một món tráng miệng độc đáo và sang trọng, kết hợp giữa lớp vỏ bánh quy sô cô la chip vàng ươm, một viên kem vani kem mịn, và được rưới sốt sô cô la tan chảy phong phú cùng lớp trang trí sô cô la bào tinh tế.</p>
+<!-- MÔ TẢ VÀ BÌNH LUẬN -->
+<section class="review-section">
+
+    <div class="review-tabs">
+        <button class="review-tab active"
+            onclick="chuyenTab('description', this)">
+            MÔ TẢ CHUNG
+        </button>
+
+        <button class="review-tab"
+            onclick="chuyenTab('comments', this)">
+            BÌNH LUẬN
+        </button>
+    </div>
+
+    <!-- NỘI DUNG MÔ TẢ -->
+    <div class="review-panel active" id="description">
+        <div class="details-card">
+
+<p>Một món tráng miệng độc đáo và sang trọng, kết hợp giữa lớp vỏ bánh quy sô cô la chip vàng ươm, một viên kem vani kem mịn, và được rưới sốt sô cô la tan chảy phong phú cùng lớp trang trí sô cô la bào tinh tế.</p>
 
         <h3>Cấu trúc bánh:</h3>
         <ul>
@@ -101,6 +116,67 @@
             <li>Tránh để bánh ở nhiệt độ phòng quá 2 giờ, hạn chế tiếp xúc trực tiếp với ánh nắng và không nên cấp đông vì có thể làm thay đổi kết cấu bánh.</li>
         </ul>
     </div>
+    </div>
+    <!-- NỘI DUNG BÌNH LUẬN -->
+    <div class="review-panel" id="comments">
+
+        <div class="rating-summary">
+            <div class="rating-average">
+                <strong id="averageRating">0.0</strong>
+                <div class="rating-stars" id="averageStars">☆☆☆☆☆</div>
+                <span id="ratingCount">0 đánh giá</span>
+            </div>
+        </div>
+
+        <div class="review-form">
+
+            <h3>Viết đánh giá của bạn</h3>
+
+            <label>Đánh giá sao:</label>
+
+            <div class="star-picker">
+                <input type="radio" name="rating" id="star5" value="5">
+                <label for="star5">★</label>
+
+                <input type="radio" name="rating" id="star4" value="4">
+                <label for="star4">★</label>
+
+                <input type="radio" name="rating" id="star3" value="3">
+                <label for="star3">★</label>
+
+                <input type="radio" name="rating" id="star2" value="2">
+                <label for="star2">★</label>
+
+                <input type="radio" name="rating" id="star1" value="1">
+                <label for="star1">★</label>
+            </div>
+
+            <label for="reviewName">Tên của bạn:</label>
+            <input type="text" id="reviewName"
+                placeholder="Nhập tên của bạn">
+
+            <label for="reviewContent">Nội dung bình luận:</label>
+            <textarea id="reviewContent" rows="4"
+                placeholder="Chia sẻ cảm nhận của bạn..."></textarea>
+
+            <button type="button" class="submit-review"
+                onclick="dangBinhLuan()">
+                ĐĂNG BÌNH LUẬN
+            </button>
+
+            <p id="reviewMessage"></p>
+
+        </div>
+
+        <div class="review-list">
+            <h3>Đánh giá từ khách hàng</h3>
+            <div id="reviewList"></div>
+        </div>
+
+    </div>
+
+</section>
+
 </section>
 
 <!-- SẢN PHẨM LIÊN QUAN -->

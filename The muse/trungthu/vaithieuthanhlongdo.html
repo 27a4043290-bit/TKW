@@ -90,13 +90,27 @@
     </div>
 </div>
 
-<!-- THÔNG TIN BÁNH -->
-<section class="details">
-    <h2>Mô tả sản phẩm</h2>
 
-    <div class="details-card">
+<!-- MÔ TẢ VÀ BÌNH LUẬN -->
+<section class="review-section">
 
-        <p>Bánh trung thu Vải Thiều Thanh Long Đỏ là sự sáng tạo đầy tinh tế từ những nông sản bản địa đặc trưng, kết hợp hoàn hảo giữa vị ngọt thanh của vải thiều, thanh long đỏ và mật ong cùng lớp vỏ bánh đậu trắng mềm mịn.</p>
+    <div class="review-tabs">
+        <button class="review-tab active"
+            onclick="chuyenTab('description', this)">
+            MÔ TẢ CHUNG
+        </button>
+
+        <button class="review-tab"
+            onclick="chuyenTab('comments', this)">
+            BÌNH LUẬN
+        </button>
+    </div>
+
+    <!-- NỘI DUNG MÔ TẢ -->
+    <div class="review-panel active" id="description">
+        <div class="details-card">
+
+<p>Bánh trung thu Vải Thiều Thanh Long Đỏ là sự sáng tạo đầy tinh tế từ những nông sản bản địa đặc trưng, kết hợp hoàn hảo giữa vị ngọt thanh của vải thiều, thanh long đỏ và mật ong cùng lớp vỏ bánh đậu trắng mềm mịn.</p>
 
         <h3>Cấu trúc bánh:</h3>
         <ul>
@@ -111,9 +125,68 @@
             <li>Sử dụng ngon nhất trước hạn sử dụng in trên bao bì; sau khi mở gói, nên dùng hết trong vòng 1-2 ngày để đảm bảo hương vị tươi ngon.</li>
             <li>Bánh sẽ tuyệt vời hơn khi thưởng thức cùng một ngụm trà xanh hoặc trà ô long ấm nóng để cân bằng vị giác trong đêm rằm Trung thu.</li>
         </ul>
+    </div>
+    </div>
+    <!-- NỘI DUNG BÌNH LUẬN -->
+    <div class="review-panel" id="comments">
+
+        <div class="rating-summary">
+            <div class="rating-average">
+                <strong id="averageRating">0.0</strong>
+                <div class="rating-stars" id="averageStars">☆☆☆☆☆</div>
+                <span id="ratingCount">0 đánh giá</span>
+            </div>
+        </div>
+
+        <div class="review-form">
+
+            <h3>Viết đánh giá của bạn</h3>
+
+            <label>Đánh giá sao:</label>
+
+            <div class="star-picker">
+                <input type="radio" name="rating" id="star5" value="5">
+                <label for="star5">★</label>
+
+                <input type="radio" name="rating" id="star4" value="4">
+                <label for="star4">★</label>
+
+                <input type="radio" name="rating" id="star3" value="3">
+                <label for="star3">★</label>
+
+                <input type="radio" name="rating" id="star2" value="2">
+                <label for="star2">★</label>
+
+                <input type="radio" name="rating" id="star1" value="1">
+                <label for="star1">★</label>
+            </div>
+
+            <label for="reviewName">Tên của bạn:</label>
+            <input type="text" id="reviewName"
+                placeholder="Nhập tên của bạn">
+
+            <label for="reviewContent">Nội dung bình luận:</label>
+            <textarea id="reviewContent" rows="4"
+                placeholder="Chia sẻ cảm nhận của bạn..."></textarea>
+
+            <button type="button" class="submit-review"
+                onclick="dangBinhLuan()">
+                ĐĂNG BÌNH LUẬN
+            </button>
+
+            <p id="reviewMessage"></p>
+
+        </div>
+
+        <div class="review-list">
+            <h3>Đánh giá từ khách hàng</h3>
+            <div id="reviewList"></div>
+        </div>
 
     </div>
+
 </section>
+
 
 <!-- SẢN PHẨM LIÊN QUAN -->
 <section class="related">

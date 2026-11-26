@@ -435,7 +435,50 @@
         const tongText = $('tot').textContent;
         const maDon = orderCode;
         const online = payMethod() === 'online';
+        // LƯU ĐƠN HÀNG CHO NGƯỜI BÁN
+let danhSachDonHang = JSON.parse(
+    localStorage.getItem('danhSachDonHang')
+) || [];
 
+const donHangMoi = {
+    maDon: maDon,
+    ngayDat: new Date().toLocaleString('vi-VN'),
+
+    khachHang: {
+        ten: $('name').value.trim(),
+        sdt: $('phone').value.trim(),
+        email: $('email').value.trim(),
+        quanHuyen: $('district').value,
+        diaChi: $('addr').value.trim()
+    },
+
+    ngayGiao: $('date').value,
+    khungGio: $('slot').value,
+    yeuCau: $('other').value.trim(),
+
+    phuongThuc: online ? 'Chuyển khoản QR' : 'COD',
+
+    sanPham: cart.map(item => ({
+        ten: item.name,
+        anh: item.img,
+        size: item.size,
+        gia: item.price,
+        soLuong: item.qty
+    })),
+
+    tamTinh: $('sub').textContent,
+    phiShip: $('ship').textContent,
+    tongTien: tongText,
+
+    trangThai: 'Chờ xác nhận'
+};
+
+danhSachDonHang.push(donHangMoi);
+
+localStorage.setItem(
+    'danhSachDonHang',
+    JSON.stringify(danhSachDonHang)
+);
         // Hiển thị thông báo thành công
         $('successText').innerHTML =
             'Mã đơn hàng: <b>' + esc(maDon) + '</b><br>' +
