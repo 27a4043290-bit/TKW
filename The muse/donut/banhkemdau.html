@@ -20,10 +20,10 @@
 
 <body>
 
-<!-- CHỖ CHỨA HEADER -->
+<!-- HEADER -->
 <div id="site-header"></div>
 
-<!-- THANH ĐƯỜNG DẪN -->
+<!-- BREADCRUMB -->
 <nav class="breadcrumb" aria-label="Đường dẫn">
     <div class="breadcrumb-inner">
         <a href="../trangchu.html">Trang chủ</a>
@@ -31,15 +31,24 @@
         <a href="../sanpham.html">Sản phẩm</a>
         <span>/</span>
         <a href="../sanpham.html#mousse">Bánh Mousse</a>
+        <span>/</span>
+        <span>Kem dâu</span>
     </div>
 </nav>
 
-<!-- CHI TIẾT BÁNH -->
-<div class="product" data-id="tiramisu">
-    <img class="main-img" src="https://donutelier.co.uk/wp-content/uploads/2023/06/Fraiser_Donut.png" alt="Bánh Kem Dâu">
+<!-- CHI TIẾT SẢN PHẨ -->
+<div class="product" data-id="kem-dau">
+
+    <img class="main-img"
+         src="https://donutelier.co.uk/wp-content/uploads/2023/06/Fraiser_Donut.png"
+         alt="Bánh Kem Dâu">
 
     <div class="info">
-        
+
+        <div class="product-tags">
+            <span class="tag-hot">Hot</span>
+            <span class="tag-new">Mới</span>
+        </div>
 
         <h1>Kem dâu</h1>
 
@@ -49,70 +58,139 @@
             <span class="badge-sale an" id="badgeSale"></span>
         </div>
 
-        <h3 class="ingredients">Mứt dâu tây, kem Chantilly và dâu tây tươi thái lát.</h3>
+        <h3 class="ingredients">
+            Mứt dâu tây, kem Chantilly và dâu tây tươi thái lát.
+        </h3>
 
-        <p class="desc">Bánh su kem dâu tây là món bánh ngọt hấp dẫn, kết hợp giữa lớp vỏ bánh mềm xốp, nhân kem béo mịn và những lát dâu tây tươi mọng.</p>
+        <p class="desc">
+            Bánh su kem dâu tây là món bánh ngọt hấp dẫn, kết hợp
+            giữa lớp vỏ bánh mềm xốp, nhân kem béo mịn và những
+            lát dâu tây tươi mọng. Vị ngọt dịu của kem hòa quyện
+            cùng vị chua thanh tự nhiên của dâu tây tạo nên hương
+            vị thơm ngon khó cưỡng.
+        </p>
 
         <!-- CHỌN SIZE -->
         <div class="size-row">
             <label for="size">Size</label>
+
             <select id="size" onchange="doiGia()">
                 <option value="22000" data-old="22000">6 cm</option>
                 <option value="32000" data-old="32000" selected>9 cm</option>
             </select>
         </div>
 
-        <!-- KHUNG MUA HÀNG: số lượng + 3 nút nằm chung 1 khung -->
+        <!-- KHUNG MUA HÀNG -->
         <div class="buy-box">
+
             <div class="buy-row">
+
                 <div class="qty">
-                    <button type="button" onclick="doiSL(-1)" aria-label="Giảm số lượng">−</button>
+                    <button type="button"
+                            onclick="doiSL(-1)"
+                            aria-label="Giảm số lượng">−</button>
+
                     <span id="sl">1</span>
-                    <button type="button" onclick="doiSL(1)" aria-label="Tăng số lượng">+</button>
+
+                    <button type="button"
+                            onclick="doiSL(1)"
+                            aria-label="Tăng số lượng">+</button>
                 </div>
-                <button type="button" class="btn btn-cart" onclick="mua()">Thêm vào giỏ hàng</button>
+
+                <button type="button"
+                        class="btn btn-cart"
+                        onclick="mua()">
+                    Thêm vào giỏ hàng
+                </button>
+
             </div>
 
             <div class="buy-row">
-                <button type="button" class="btn btn-now" onclick="muaNgay()">Mua ngay <span aria-hidden="true">→</span></button>
+                <button type="button"
+                        class="btn btn-now"
+                        onclick="muaNgay()">
+                    Mua ngay <span aria-hidden="true">→</span>
+                </button>
             </div>
+
         </div>
+
     </div>
 </div>
-
 
 <!-- MÔ TẢ VÀ BÌNH LUẬN -->
 <section class="review-section">
 
     <div class="review-tabs">
+
         <button class="review-tab active"
-            onclick="chuyenTab('description', this)">
+                onclick="chuyenTab('description', this)">
             MÔ TẢ CHUNG
         </button>
 
         <button class="review-tab"
-            onclick="chuyenTab('comments', this)">
+                onclick="chuyenTab('comments', this)">
             BÌNH LUẬN
         </button>
+
     </div>
 
     <!-- NỘI DUNG MÔ TẢ -->
     <div class="review-panel active" id="description">
+
         <div class="details-card">
 
-<h3>Cấu trúc bánh:</h3>
-        <ul>
-            <li>Lớp vỏ bánh hình tròn, mềm xốp, có màu vàng nâu nhẹ ở phần đáy và phủ một lớp đường bột mịn trên bề mặt.</li>
-            <li>Phần nhân kem trắng mịn, béo ngậy nằm bên trong, tạo độ mềm mại và vị ngọt dịu cho bánh.</li>
-            <li>Những lát dâu tây đỏ tươi được xếp xen kẽ quanh phần kem, mang đến vị chua ngọt tự nhiên và màu sắc bắt mắt.</li>
-        </ul>
+            <p>
+                Bánh Kem Dâu là sự kết hợp hoàn hảo giữa lớp vỏ bánh
+                mềm xốp, phần kem Chantilly béo mịn và những lát
+                dâu tây tươi mọng. Hương vị ngọt dịu của kem hòa
+                quyện cùng vị chua thanh tự nhiên của dâu tây,
+                mang đến trải nghiệm thưởng thức thơm ngon và hấp dẫn.
+            </p>
 
-        <h3>Hướng dẫn sử dụng:</h3>
-        <ul>
-            <li>Bảo quản bánh trong hộp kín ở ngăn mát tủ lạnh, duy trì nhiệt độ từ 2–5°C để giữ độ tươi ngon của kem và dâu tây.</li>
-            <li>Nên sử dụng bánh trong vòng 24 giờ kể từ khi mua hoặc chế biến để đảm bảo hương vị và chất lượng tốt nhất.</li>
-            <li>Tránh để bánh ở nhiệt độ phòng quá 2 giờ, hạn chế tiếp xúc trực tiếp với ánh nắng và không nên cấp đông vì có thể làm thay đổi kết cấu kem, vỏ bánh và dâu tây.</li>
-        </ul>
+            <h3>Cấu trúc bánh:</h3>
+
+            <ul>
+                <li>
+                    Lớp vỏ bánh hình tròn, mềm xốp, có màu vàng nâu
+                    nhẹ ở phần đáy và phủ một lớp đường bột mịn
+                    trên bề mặt.
+                </li>
+
+                <li>
+                    Phần nhân kem trắng mịn, béo ngậy nằm bên trong,
+                    tạo độ mềm mại và vị ngọt dịu cho bánh.
+                </li>
+
+                <li>
+                    Những lát dâu tây đỏ tươi được xếp xen kẽ quanh
+                    phần kem, mang đến vị chua ngọt tự nhiên và
+                    màu sắc bắt mắt.
+                </li>
+            </ul>
+
+            <h3>Hướng dẫn sử dụng:</h3>
+
+            <ul>
+                <li>
+                    Bảo quản bánh trong hộp kín ở ngăn mát tủ lạnh,
+                    duy trì nhiệt độ từ 2–5°C để giữ độ tươi ngon
+                    của kem và dâu tây.
+                </li>
+
+                <li>
+                    Nên sử dụng bánh trong vòng 24 giờ kể từ khi
+                    mua hoặc chế biến để đảm bảo hương vị và
+                    chất lượng tốt nhất.
+                </li>
+
+                <li>
+                    Tránh để bánh ở nhiệt độ phòng quá 2 giờ,
+                    hạn chế tiếp xúc trực tiếp với ánh nắng và
+                    không nên cấp đông vì có thể làm thay đổi
+                    kết cấu kem, vỏ bánh và dâu tây.
+                </li>
+            </ul>
 
         </div>
     </div>
@@ -121,13 +199,20 @@
     <div class="review-panel" id="comments">
 
         <div class="rating-summary">
+
             <div class="rating-average">
                 <strong id="averageRating">0.0</strong>
-                <div class="rating-stars" id="averageStars">☆☆☆☆☆</div>
+
+                <div class="rating-stars" id="averageStars">
+                    ☆☆☆☆☆
+                </div>
+
                 <span id="ratingCount">0 đánh giá</span>
             </div>
+
         </div>
 
+        <!-- FORM ĐÁNH GIÁ -->
         <div class="review-form">
 
             <h3>Viết đánh giá của bạn</h3>
@@ -135,32 +220,44 @@
             <label>Đánh giá sao:</label>
 
             <div class="star-picker">
-                <input type="radio" name="rating" id="star5" value="5">
+
+                <input type="radio" name="rating"
+                       id="star5" value="5">
                 <label for="star5">★</label>
 
-                <input type="radio" name="rating" id="star4" value="4">
+                <input type="radio" name="rating"
+                       id="star4" value="4">
                 <label for="star4">★</label>
 
-                <input type="radio" name="rating" id="star3" value="3">
+                <input type="radio" name="rating"
+                       id="star3" value="3">
                 <label for="star3">★</label>
 
-                <input type="radio" name="rating" id="star2" value="2">
+                <input type="radio" name="rating"
+                       id="star2" value="2">
                 <label for="star2">★</label>
 
-                <input type="radio" name="rating" id="star1" value="1">
+                <input type="radio" name="rating"
+                       id="star1" value="1">
                 <label for="star1">★</label>
+
             </div>
 
             <label for="reviewName">Tên của bạn:</label>
-            <input type="text" id="reviewName"
-                placeholder="Nhập tên của bạn">
+
+            <input type="text"
+                   id="reviewName"
+                   placeholder="Nhập tên của bạn">
 
             <label for="reviewContent">Nội dung bình luận:</label>
-            <textarea id="reviewContent" rows="4"
-                placeholder="Chia sẻ cảm nhận của bạn..."></textarea>
 
-            <button type="button" class="submit-review"
-                onclick="dangBinhLuan()">
+            <textarea id="reviewContent"
+                      rows="4"
+                      placeholder="Chia sẻ cảm nhận của bạn..."></textarea>
+
+            <button type="button"
+                    class="submit-review"
+                    onclick="dangBinhLuan()">
                 ĐĂNG BÌNH LUẬN
             </button>
 
@@ -168,73 +265,157 @@
 
         </div>
 
+        <!-- DANH SÁCH BÌNH LUẬN -->
         <div class="review-list">
+
             <h3>Đánh giá từ khách hàng</h3>
+
             <div id="reviewList"></div>
+
         </div>
 
     </div>
 
 </section>
 
-
 <!-- SẢN PHẨM LIÊN QUAN -->
 <section class="related">
+
     <h2>Sản phẩm liên quan</h2>
-<div class="products">
-    <div class="card" data-sizes="24,000 VND" data-tags="">
-        <a href="kembanhquyvani.html"><img src="https://donutelier.co.uk/wp-content/uploads/2022/11/Vanilla_Cookie_Cream_Donut.png" alt="Kem bánh quy vani"></a>
-        <div class="card-body">
-            <div class="card-pick"><h3>Kem bánh quy vani</h3></div>
-            <p class="gia">24,000 VND</p>
-        </div>
-    </div>
 
-    <div class="card" data-sizes="25,000 VND" data-tags="">
-        <a href="Matchadautay.html"><img src="https://donutelier.co.uk/wp-content/uploads/2026/07/Strawberry-matcha-for-web-1.jpg" alt="Matcha dâu tây"></a>
-        <div class="card-body">
-            <div class="card-pick"><h3>Matcha dâu tây</h3></div>
-            <p class="gia">25,000 VND</p>
-        </div>
-    </div>
+    <div class="products">
 
-    <div class="card" data-sizes="25,000 VND" data-tags="">
-        <a href="donutkemvani-dâu.html"><img src="https://donutelier.co.uk/wp-content/uploads/2026/07/Vanilla-Berry-Ice-Cream-Donut-for-Web.jpg" alt="Bánh donut kem vani-dâu"></a>
-        <div class="card-body">
-            <div class="card-pick"><h3>Bánh donut kem vani-dâu</h3></div>
-            <p class="gia">25,000 VND</p>
-        </div>
-    </div>
+        <!-- KEM BÁNH QUY VANi -->
+        <div class="card"
+             data-sizes="24000"
+             data-tags="">
 
-    <div class="card" data-sizes="28,000 VND" data-tags="">
-        <a href="DonutkemDulcey.html"><img src="https://donutelier.co.uk/wp-content/uploads/2026/07/Dulcey-Ice-Cream-Donut-for-Web.jpg" alt="Bánh Donut kem Dulcey"></a>
-        <div class="card-body">
-            <div class="card-pick"><h3>Bánh Donut kem Dulcey</h3></div>
-            <p class="gia">28,000 VND</p>
+            <a href="kembanhquyvani.html">
+                <img src="https://donutelier.co.uk/wp-content/uploads/2022/11/Vanilla_Cookie_Cream_Donut.png"
+                     alt="Kem bánh quy vani">
+            </a>
+
+            <div class="card-body">
+
+                <div class="card-pick">
+                    <h3>Kem bánh quy vani</h3>
+                </div>
+
+                <p class="gia">24,000 VND</p>
+
+            </div>
         </div>
+
+        <!-- MATCHA DÂU TÂY -->
+        <div class="card"
+             data-sizes="25000"
+             data-tags="">
+
+            <a href="Matchadautay.html">
+                <img src="https://donutelier.co.uk/wp-content/uploads/2026/07/Strawberry-matcha-for-web-1.jpg"
+                     alt="Matcha dâu tây">
+            </a>
+
+            <div class="card-body">
+
+                <div class="card-pick">
+                    <h3>Matcha dâu tây</h3>
+                </div>
+
+                <p class="gia">25,000 VND</p>
+
+            </div>
+        </div>
+
+        <!-- DONUT KEM VANI DÂU -->
+        <div class="card"
+             data-sizes="25000"
+             data-tags="">
+
+            <a href="donutkemvani-dâu.html">
+                <img src="https://donutelier.co.uk/wp-content/uploads/2026/07/Vanilla-Berry-Ice-Cream-Donut-for-Web.jpg"
+                     alt="Bánh donut kem vani-dâu">
+            </a>
+
+            <div class="card-body">
+
+                <div class="card-pick">
+                    <h3>Bánh donut kem vani-dâu</h3>
+                </div>
+
+                <p class="gia">25,000 VND</p>
+
+            </div>
+        </div>
+
+        <!-- DONUT KEM DULCEY -->
+        <div class="card"
+             data-sizes="28000"
+             data-tags="">
+
+            <a href="DonutkemDulcey.html">
+                <img src="https://donutelier.co.uk/wp-content/uploads/2026/07/Dulcey-Ice-Cream-Donut-for-Web.jpg"
+                     alt="Bánh Donut kem Dulcey">
+            </a>
+
+            <div class="card-body">
+
+                <div class="card-pick">
+                    <h3>Bánh Donut kem Dulcey</h3>
+                </div>
+
+                <p class="gia">28,000 VND</p>
+
+            </div>
+        </div>
+
     </div>
-</div>
-    
 </section>
 
 <!-- KHUNG GIỎ HÀNG TRƯỢT BÊN PHẢI -->
 <div class="cd-overlay" id="cartOverlay"></div>
-<aside class="cd-drawer" id="cartDrawer" aria-label="Giỏ hàng" aria-hidden="true">
+
+<aside class="cd-drawer"
+       id="cartDrawer"
+       aria-label="Giỏ hàng"
+       aria-hidden="true">
+
     <div class="cd-head">
-        <button class="cd-back" id="cartClose" type="button" aria-label="Đóng giỏ hàng">←</button>
+
+        <button class="cd-back"
+                id="cartClose"
+                type="button"
+                aria-label="Đóng giỏ hàng">
+            ←
+        </button>
+
         <h2>GIỎ HÀNG</h2>
+
     </div>
 
     <div class="cd-items" id="cartItems"></div>
 
     <div class="cd-foot">
-        <div class="cd-row"><span>Số lượng</span><span id="cartCountText">0 sản phẩm</span></div>
-        <div class="cd-row cd-big"><span>Tổng thanh toán</span><span id="cartTotal">0VND</span></div>
-        <a class="cd-go" href="../giohang.html">Xem giỏ hàng →</a>
+
+        <div class="cd-row">
+            <span>Số lượng</span>
+            <span id="cartCountText">0 sản phẩm</span>
+        </div>
+
+        <div class="cd-row cd-big">
+            <span>Tổng thanh toán</span>
+            <span id="cartTotal">0VND</span>
+        </div>
+
+        <a class="cd-go" href="../giohang.html">
+            Xem giỏ hàng →
+        </a>
+
     </div>
+
 </aside>
 
-<!-- JS phải nằm SAU khung giỏ hàng -->
+<!-- JAVASCRIPT -->
 <script src="../chitietsanpham.js"></script>
 
 </body>
