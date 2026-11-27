@@ -1,8 +1,3 @@
-/* ===== HEADER DÙNG CHUNG — mỗi trang chỉ cần:
-   <div id="site-header"></div>
-   <script src="header.js"></script>
-   Muốn thêm/sửa/xóa mục menu thì sửa 2 mảng MENU_LEFT và MENU_RIGHT bên dưới. ===== */
-
 /* ===== HEADER DÙNG CHUNG ===== */
 
 const MENU_LEFT = [
@@ -14,10 +9,10 @@ const MENU_LEFT = [
       { label: "Không gian cửa hàng",                  href: "gioithieu.html#khong-gian-cua-hang" }
   ]},
   { label: "Sản phẩm", href: "sanppham.html", sub: [
-      { label: "Bánh Mousse",            href: "sanpham.html#mousse" },
-      { label: "Bánh Croissant",         href: "sanpham.html#croissant" },
-      { label: "Bánh Trung thu",         href: "sanpham.html#trungthu" },
-      { label: "Bánh Donut",             href: "sanpham.html#donut" },
+      { label: "Bánh Mousse",            href: "sanppham.html#mousse" },
+      { label: "Bánh Croissant",         href: "sanppham.html#croissant" },
+      { label: "Bánh Trung thu",         href: "sanppham.html#trungthu" },
+      { label: "Bánh Donut",             href: "sanppham.html#donut" },
   ]},
   { label: "Chính sách", href: "chinhsach.html" },
   { label: "Thiết kế",   href: "tk-theo-yc.html" }
@@ -40,15 +35,16 @@ const ICON = {
 const file = p => (p || "").split("#")[0].split("?")[0];
 const here = file(location.pathname.split("/").pop()) || "index.html";
 
-//  cấp cho thư mục con
-const basePath = document.currentScript ? document.currentScript.src.replace(/header\.js.*$/, '') : '';
+// Tự động nhận diện xem trang hiện tại có nằm trong thư mục con (dùng ../header.js) hay không
+const scriptEl = document.querySelector('script[src*="header.js"]');
+const basePath = scriptEl && scriptEl.getAttribute('src').startsWith('../') ? '../' : '';
 
 function itemHTML(m){
   const active = file(m.href) === here || (m.sub || []).some(s => file(s.href) === here);
-  if (!m.sub) return `<div class="h-item${active ? " active" : ""}"><a class="h-link" href="${m.href}">${m.label}</a></div>`;
+  if (!m.sub) return `<div class="h-item${active ? " active" : ""}"><a class="h-link" href="${basePath}${m.href}">${m.label}</a></div>`;
   return `<div class="h-item${active ? " active" : ""}">
-    <a class="h-link" href="${m.href}">${m.label}${ICON.chev}</a>
-    <div class="sub">${m.sub.map(s => `<a href="${s.href}"${file(s.href) === here && !s.href.includes("#") ? ' class="cur"' : ""}>${s.label}</a>`).join("")}</div>
+    <a class="h-link" href="${basePath}${m.href}">${m.label}${ICON.chev}</a>
+    <div class="sub">${m.sub.map(s => `<a href="${basePath}${s.href}"${file(s.href) === here && !s.href.includes("#") ? ' class="cur"' : ""}>${s.label}</a>`).join("")}</div>
   </div>`;
 }
 
@@ -59,12 +55,12 @@ host.innerHTML = `
 
   <nav class="left" aria-label="Menu chính">${MENU_LEFT.map(itemHTML).join("")}</nav>
 
- <a class="logo" href="${basePath}index.html" aria-label="The Muse - Trang chủ"><img src="${basePath}image/logo.png" alt="The Muse"></a>
+  <a class="logo" href="${basePath}index.html" aria-label="The Muse - Trang chủ"><img src="${basePath}image/logo.png" alt="The Muse"></a>
 
   <div class="right">
     <nav class="links" aria-label="Menu phụ">${MENU_RIGHT.map(itemHTML).join("")}</nav>
     <div class="tools">
-      <a class="icon-btn" id="openCart" href="giohang.html" aria-label="Giỏ hàng">${ICON.bag}<span id="cartCount" data-zero="1">0</span></a>
+      <a class="icon-btn" id="openCart" href="${basePath}giohang.html" aria-label="Giỏ hàng">${ICON.bag}<span id="cartCount" data-zero="1">0</span></a>
       <button class="icon-btn ring search-btn" id="searchBtn" type="button" aria-label="Tìm kiếm">${ICON.search}</button>
       <div class="h-item lang">
         <button class="h-link" type="button">VN${ICON.chev}</button>
@@ -115,20 +111,13 @@ document.getElementById("searchBtn").onclick = () => {
   if (bar.classList.contains("open")) document.getElementById("searchInput").focus();
 };
 document.getElementById("searchInput").addEventListener("keydown", e => {
-  if (e.key === "Enter" && e.target.value.trim()) location.href = "sanpham.html?q=" + encodeURIComponent(e.target.value.trim());
+  if (e.key === "Enter" && e.target.value.trim()) location.href = basePath + "sanpham.html?q=" + encodeURIComponent(e.target.value.trim());
   if (e.key === "Escape") bar.classList.remove("open");
 });
 document.addEventListener("click", e => {
   if (!header.contains(e.target)) { bar.classList.remove("open"); header.querySelectorAll(".h-item.open").forEach(x => x.classList.remove("open")); }
 });
 
-
-
-
-
-
-
-
 function moTrangAcc(hash) {
-  window.location.href = "dangnhap&dangki.html" + hash;
+  window.location.href = basePath + "dangnhap&dangki.html" + hash;
 }

@@ -4,12 +4,16 @@
 
     // 1. CẤU HÌNH
     const KEY = 'cart';
+    const ORDERS_KEY = 'orders';        // MỚI: key lưu danh sách đơn hàng
     const FEE_IN = 25000;
     const FEE_OUT = 35000;
     const QR_IMAGE = 'image/qr.png';
 
+    const FREESHIP_CODE = 'FREESHIP';   // MỚI: mã freeship, muốn đổi tên mã thì sửa ở đây
+    const FREESHIP_RATE = 0.5;          // MỚI: giảm 50% phí ship
+
     const HOME_URL = 'trangchu.html';
-    const PROFILE_URL = 'canhan.html';
+    const PROFILE_URL = 'canhan.html';  // đổi thành 'taikhoan.html' nếu trang của bạn tên vậy
 
     const INNER = [
         'Ba Đình', 'Hoàn Kiếm', 'Hai Bà Trưng', 'Đống Đa',
@@ -40,7 +44,9 @@
     const pad = n => String(n).padStart(2, '0');
 
     let orderCode = 'MUSE' + String(Date.now()).slice(-6);
-    let rate = 0;
+    let rate = 0;           // % giảm tiền hàng
+    let shipRate = 0;       // MỚI: % giảm phí ship
+    let appliedCode = '';   // MỚI: mã đang áp dụng (để lưu vào đơn)
 
     // 2. HIỂN THỊ NGÀY
     const now = new Date();
@@ -94,6 +100,20 @@
 
     let cart = loadCart();
 
+    // MỚI: lưu đơn hàng để trang tài khoản đọc
+    function saveOrder(order) {
+        let orders = [];
+
+        try {
+            const data = JSON.parse(localStorage.getItem(ORDERS_KEY) || '[]');
+            if (Array.isArray(data)) orders = data;
+        } catch (e) {}
+
+        orders.unshift(order); // đơn mới nhất nằm trên cùng
+        localStorage.setItem(ORDERS_KEY, JSON.stringify(orders));
+        window.dispatchEvent(new Event('orders-updated'));
+    }
+
     // 5. TÍNH PHÍ GIAO HÀNG
     function shipFee() {
         if (!district.value) return null;
@@ -140,6 +160,33 @@
     });
 
     // 8. HIỂN THỊ SẢN PHẨM VÀ TÍNH TIỀN
+
+    // MỚI: gom toàn bộ phần tính tiền vào một hàm,
+    // dùng chung cho render() và nút Đặt hàng
+    function tinhTien() {
+        const goc = cart.reduce(
+            (sum, it) => sum + it.price * it.qty, 0
+        );
+
+        // Tiền hàng sau giảm giá
+        const giam = Math.round(goc * rate);
+        const tamTinh = Math.max(goc - giam, 0);
+
+        // Phí giao hàng (null nếu chưa chọn quận / huyện)
+        const phiGoc = cart.length ? shipFee() : 0;
+
+        // Số tiền ship được giảm do mã freeship
+        const giamShip = phiGoc ? Math.round(phiGoc * shipRate) : 0;
+
+        // Phí ship thực tế phải trả
+        const phiShip = phiGoc === null ? null : phiGoc - giamShip;
+
+        // Tổng tiền
+        const tong = tamTinh + (phiShip || 0);
+
+        return { goc, giam, tamTinh, phiGoc, giamShip, phiShip, tong };
+    }
+
     function render() {
         const items = $('items');
 
@@ -181,35 +228,31 @@
 
         $('wishBox').hidden = cart.length === 0;
 
-        // Tính tiền hàng
-        const goc = cart.reduce(
-            (sum, it) => sum + it.price * it.qty, 0
-        );
+        // Tính tiền
+        const t = tinhTien();
 
-        // Tiền sau giảm giá
-        const giam = Math.round(goc * rate);
-        const tamTinh = Math.max(goc - giam, 0);
+        $('sub').textContent = fmt(t.tamTinh);
 
-        // Phí giao hàng
-        const phiShip = cart.length ? shipFee() : 0;
-
-        // Tổng tiền
-        const tong = tamTinh + (phiShip || 0);
-
-        $('sub').textContent = fmt(tamTinh);
-
-        $('ship').textContent = phiShip === null
+        $('ship').textContent = t.phiShip === null
             ? 'Chọn quận / huyện'
-            : fmt(phiShip);
+            : fmt(t.phiShip);
 
-        $('tot').textContent = fmt(tong);
+        $('tot').textContent = fmt(t.tong);
 
-        $('feeHint').textContent =
-            phiShip === FEE_IN
-                ? 'Giao nội thành: phí ship 25,000VND'
-                : phiShip === FEE_OUT
-                    ? 'Giao ngoại thành: phí ship 35,000VND'
-                    : '';
+        // Dòng gợi ý phí ship
+        let hint = '';
+
+        if (t.phiGoc === FEE_IN) {
+            hint = 'Giao nội thành: phí ship 25,000VND';
+        } else if (t.phiGoc === FEE_OUT) {
+            hint = 'Giao ngoại thành: phí ship 35,000VND';
+        }
+
+        if (t.giamShip > 0) {
+            hint += ' → giảm ' + (shipRate * 100) + '% còn ' + fmt(t.phiShip);
+        }
+
+        $('feeHint').textContent = hint;
 
         renderQR();
     }
@@ -244,24 +287,49 @@
         radio.addEventListener('change', render);
     });
 
+   
     // 11. ÁP DỤNG MÃ GIẢM GIÁ
-    $('apply').addEventListener('click', function () {
+
+    // Dòng thông báo nhỏ dưới ô nhập mã (thay cho hộp thoại alert)
+    const codeMsg = document.createElement('div');
+    codeMsg.style.cssText = 'margin-top: 8px; font-size: 14px;';
+    $('code').parentElement.insertAdjacentElement('afterend', codeMsg);
+
+    function showCodeMsg(text, ok) {
+        codeMsg.textContent = text;
+        codeMsg.style.color = ok ? '#2e7d32' : '#c0392b';
+    }
+
+    function applyCode() {
         const code = $('code').value.trim().toUpperCase();
 
         rate = 0;
+        shipRate = 0;
+        appliedCode = '';
 
         if (code === 'GIAM10') {
             rate = 0.1;
-            alert('Đã áp dụng mã giảm giá 10%.');
+            appliedCode = code;
+            showCodeMsg('Đã áp dụng mã giảm giá 10%.', true);
+        } else if (code === FREESHIP_CODE) {
+            shipRate = FREESHIP_RATE;
+            appliedCode = code;
+            showCodeMsg('Đã áp dụng mã freeship: giảm 50% phí giao hàng.', true);
         } else if (code !== '') {
-            alert('Mã giảm giá không hợp lệ.');
+            showCodeMsg('Mã giảm giá không hợp lệ.', false);
         } else {
-            alert('Vui lòng nhập mã giảm giá.');
+            showCodeMsg('', true);
         }
 
         render();
-    });
+    }
 
+    $('apply').addEventListener('click', applyCode);
+
+    // Dán mã vào ô là tự áp dụng luôn
+    $('code').addEventListener('paste', function () {
+        setTimeout(applyCode, 0);
+    });
     // 12. BỎ VIỀN ĐỎ KHI NHẬP LẠI
     ['name', 'phone', 'district', 'addr', 'date', 'slot'].forEach(id => {
         [ 'input', 'change' ].forEach(eventName => {
@@ -431,25 +499,55 @@
             return;
         }
 
-        // Lấy tổng tiền và mã đơn trước khi xóa giỏ
-        const tongText = $('tot').textContent;
+        // Lấy số liệu trước khi xóa giỏ
+        const t = tinhTien();
         const maDon = orderCode;
         const online = payMethod() === 'online';
+
+        // MỚI: lưu đơn hàng để trang tài khoản đọc
+        saveOrder({
+            id: maDon,
+            createdAt: new Date().toISOString(),
+            status: 'Đang xử lý',
+            payment: online ? 'online' : 'cod',
+            coupon: appliedCode,
+            customer: {
+                name: $('name').value.trim(),
+                phone: $('phone').value.trim(),
+                district: $('district').value,
+                address: $('addr').value.trim(),
+                date: $('date').value,
+                slot: $('slot').value
+            },
+            items: cart.map(it => ({
+                name: it.name,
+                size: it.size || '',
+                qty: it.qty,
+                price: it.price,
+                img: it.img || ''
+            })),
+            subtotal: t.tamTinh,
+            shipFee: t.phiShip,
+            shipDiscount: t.giamShip,
+            total: t.tong
+        });
 
         // Hiển thị thông báo thành công
         $('successText').innerHTML =
             'Mã đơn hàng: <b>' + esc(maDon) + '</b><br>' +
-            'Tổng thanh toán: <b>' + esc(tongText) + '</b><br>' +
+            'Tổng thanh toán: <b>' + esc(fmt(t.tong)) + '</b><br>' +
             (online
-                ? 'Vui lòng quét mã QR và kiểm tra số tiền trước khi chuyển khoản.'
+                ? 'Vui lòng quét kiểm tra trước khi nhận hàng .'
                 : 'Bạn thanh toán khi nhận hàng (COD).');
 
         modal.hidden = false;
         document.body.style.overflow = 'hidden';
 
-        // Xóa giỏ hàng sau khi đặt
+        // Xóa giỏ hàng và reset mã giảm giá sau khi đặt
         cart = [];
         rate = 0;
+        shipRate = 0;
+        appliedCode = '';
         orderCode = 'MUSE' + String(Date.now()).slice(-6);
 
         saveCart();

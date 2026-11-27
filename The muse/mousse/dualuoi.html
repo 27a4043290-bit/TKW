@@ -1,159 +1,561 @@
+
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>DuaLuoi- Bánh Mousse</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <title>Mousse Dưa lưới - Mousse cake</title>
 
-<!-- CSS -->
-<link rel="stylesheet" href="../header.css">
-<link rel="stylesheet" href="../banh.css">
 
-<!-- JavaScript -->
-<script src="../float.js" defer></script>
-<script src="../header.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../header.css">
+    <link rel="stylesheet" href="../banh.css">
+
+
+    <!-- JavaScript -->
+    <script src="../float.js" defer></script>
+    <script src="../header.js" defer></script>
 </head>
+
 
 <body>
 
-<!-- CHỖ CHỨA HEADER -->
-<div id="site-header"></div>
 
-<!-- THANH ĐƯỜNG DẪN -->
-<nav class="breadcrumb" aria-label="Đường dẫn">
-    <div class="breadcrumb-inner">
-        <a href="../trangchu.html">Trang chủ</a>
-        <span>/</span>
-        <a href="../sanpham.html">Sản phẩm</a>
-        <span>/</span>
-        <a href="../sanpham.html#mousse">Bánh Mousse</a>
-    </div>
-</nav>
+    <!-- CHỖ CHỨA HEADER -->
+    <div id="site-header"></div>
 
-<!-- CHI TIẾT BÁNH
-     data-id: mỗi trang bánh phải có 1 id RIÊNG (tiramisu, dualuoi, dau, tranhan, xoai...) -->
-<div class="product" data-id="dualuoi">
-    <img class="main-img" src="https://the350f.com/wp-content/uploads/2025/05/CT-Dua-1.jpg" alt="DuaLuoi">
 
-  <div class="info">
-        <div class="product-tags">
-  <span class="tag-hot">Hot</span>
-  
-</div>
-        <h1>Mousse Dưa Lưới</h1>
-
-        <div class="price-box">
-            <span class="price-new" id="price"></span>
-            <span class="price-old an" id="priceOld"></span>
-            <span class="badge-sale an" id="badgeSale"></span>
+    <!-- THANH ĐƯỜNG DẪN -->
+    <nav class="breadcrumb" aria-label="Đường dẫn">
+        <div class="breadcrumb-inner">
+            <a href="../trangchu.html">Trang chủ</a>
+            <span>/</span>
+            <a href="../sanpham.html">Sản phẩm</a>
+            <span>/</span>
+            <a href="../sanpham.html#mousse">Bánh Mousse</a>
         </div>
+    </nav>
 
-        <h3 class="ingredients">Dưa lưới, kem sữa, phô mai Mascarpone</h3>
 
-        <p class="desc">Bánh có vị thơm và béo nhẹ nhàng từ phô mai tươi kết hợp cùng kem sữa và Dưa Lưới Mật nấu chậm, bên trong là rất nhiều dưa lưới tươi và cốt bánh gato vị vani, cùng với một ít rượu Dưa Lưới nồng nàn. Cũng đơn giản như chính cái tên, Mousse Dưa Lưới vừa đủ gây ấn tượng khi nhìn vào màu xanh mát lành tinh tươm với những cụm dưa tươi mát được trang trí bên ngoài, vừa đủ để bạn có đôi chút ngập ngừng khi chạm dao vào từng miếng bánh mong manh.</p>
+    <!-- CHI TIẾT BÁNH -->
+    <div class="product" data-id="dulcey">
 
-        <!-- CHỌN SIZE -->
-        <div class="size-row">
-            <label for="size">Size</label>
-            <select id="size" onchange="doiGia()">
-                <option value="120000" data-old="140000">12 cm</option>
-                <option value="150000" data-old="180000" selected>16 cm</option>
-            </select>
-        </div>
 
-        <!-- KHUNG MUA HÀNG: số lượng + 3 nút nằm chung 1 khung -->
-        <div class="buy-box">
-            <div class="buy-row">
-                <div class="qty">
-                    <button type="button" onclick="doiSL(-1)" aria-label="Giảm số lượng">−</button>
-                    <span id="sl">1</span>
-                    <button type="button" onclick="doiSL(1)" aria-label="Tăng số lượng">+</button>
+        <img
+            class="main-img"
+            src="https://the350f.com/wp-content/uploads/2025/05/CT-Dua-1.jpg"
+            alt="Bánh Mousse Dưa lưới"
+        >
+
+
+        <div class="info">
+
+
+            
+
+            <h1>Bánh Mousse Dưa lưới</h1>
+
+
+            <div class="price-box">
+                <span class="price-new" id="price"></span>
+                <span class="price-old an" id="priceOld"></span>
+                <span class="badge-sale an" id="badgeSale"></span>
+            </div>
+
+
+            <h3 class="ingredients">
+             Dưa lưới, kem sữa, phô mai Mascarpone
+            </h3>
+
+
+            <p class="desc">
+             Bánh có vị thơm và béo nhẹ nhàng từ phô mai tươi kết hợp cùng kem sữa và Dưa Lưới Mật nấu chậm, bên trong là rất nhiều dưa lưới tươi và cốt bánh gato vị vani, cùng với một ít rượu Dưa Lưới nồng nàn. Cũng đơn giản như chính cái tên, Mousse Dưa Lưới vừa đủ gây ấn tượng khi nhìn vào màu xanh mát lành tinh tươm với những cụm dưa tươi mát được trang trí bên ngoài, vừa đủ để bạn có đôi chút ngập ngừng khi chạm dao vào từng miếng bánh mong manh.  
+            </p>
+
+
+            <!-- CHỌN SIZE -->
+            <div class="size-row">
+                <label for="size">Size</label>
+
+
+                <select id="size" onchange="doiGia()">
+                    <option value="120000" data-old="150000">12 cm</option>
+                    <option value="150000" data-old="180000" selected>16 cm</option>
+                </select>
+            </div>
+
+
+            <!-- KHUNG MUA HÀNG -->
+            <div class="buy-box">
+
+
+                <div class="buy-row">
+
+
+                    <div class="qty">
+                        <button
+                            type="button"
+                            onclick="doiSL(-1)"
+                            aria-label="Giảm số lượng"
+                        >−</button>
+
+
+                        <span id="sl">1</span>
+
+
+                        <button
+                            type="button"
+                            onclick="doiSL(1)"
+                            aria-label="Tăng số lượng"
+                        >+</button>
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="btn btn-cart"
+                        onclick="mua()"
+                    >
+                        Thêm vào giỏ hàng
+                    </button>
+
+
                 </div>
-                <button type="button" class="btn btn-cart" onclick="mua()">Thêm vào giỏ hàng</button>
+
+
+                <div class="buy-row">
+                    <button
+                        type="button"
+                        class="btn btn-now"
+                        onclick="muaNgay()"
+                    >
+                        Mua ngay <span aria-hidden="true">→</span>
+                    </button>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- MÔ TẢ VÀ BÌNH LUẬN -->
+    <section class="review-section">
+
+
+        <!-- THANH TAB -->
+        <div class="review-tabs">
+
+
+            <button
+                type="button"
+                class="review-tab active"
+                onclick="chuyenTab('description', this)"
+            >
+                MÔ TẢ CHUNG
+            </button>
+
+
+            <button
+                type="button"
+                class="review-tab"
+                onclick="chuyenTab('comments', this)"
+            >
+                BÌNH LUẬN
+            </button>
+
+
+        </div>
+
+
+        <!-- NỘI DUNG MÔ TẢ -->
+        <div class="review-panel active" id="description">
+
+
+            <div class="details-card">
+
+
+                
+
+
+                <h3>Cấu trúc bánh:</h3>
+
+
+                <ul>
+                    <li>
+                        Lớp 1: Bánh bông lan vị vani
+                    </li>
+
+
+                    <li>
+                      Lớp 2: Dưa lưới mật tươi thái hạt lựu
+                    </li>
+
+
+                    <li>
+                        Bộ dao, muỗng & dĩa giấy ăn kèm
+                    </li>
+                </ul>
+
+
+                <h3>Hướng dẫn sử dụng:</h3>
+
+
+                <ul>
+                    <li>
+                        Bảo quản bánh trong hộp kín ở ngăn mát tủ lạnh, duy trì nhiệt độ từ 2–5°C để giữ độ tươi ngon của kem.
+                    </li>
+
+
+                    <li>
+                        Nên sử dụng bánh trong vòng 24 giờ kể từ khi mua hoặc chế biến để đảm bảo hương vị và chất lượng tốt nhất.
+                    </li>
+
+
+                    <li>
+                        Tránh để bánh ở nhiệt độ phòng quá 2 giờ, hạn chế tiếp xúc trực tiếp với ánh nắng và không nên cấp đông vì có thể làm thay đổi kết cấu bánh.
+                    </li>
+                </ul>
+
+
+            </div>
+        </div>
+
+
+        <!-- NỘI DUNG BÌNH LUẬN -->
+        <div class="review-panel" id="comments">
+
+
+            <!-- ĐÁNH GIÁ TRUNG BÌNH -->
+            <div class="rating-summary">
+
+
+                <div class="rating-average">
+
+
+                    <strong id="averageRating">0.0</strong>
+
+
+                    <div class="rating-stars" id="averageStars">
+                        ☆☆☆☆☆
+                    </div>
+
+
+                    <span id="ratingCount">0 đánh giá</span>
+
+
+                </div>
+
+
             </div>
 
-            <div class="buy-row">
-                <button type="button" class="btn btn-now" onclick="muaNgay()">Mua ngay <span aria-hidden="true">→</span></button>
-                
-                
+
+            <!-- FORM ĐÁNH GIÁ -->
+            <div class="review-form">
+
+
+                <h3>Viết đánh giá của bạn</h3>
+
+
+                <label>Đánh giá sao:</label>
+
+
+                <div class="star-picker">
+
+
+                    <input type="radio" name="rating" id="star5" value="5">
+                    <label for="star5">★</label>
+
+
+                    <input type="radio" name="rating" id="star4" value="4">
+                    <label for="star4">★</label>
+
+
+                    <input type="radio" name="rating" id="star3" value="3">
+                    <label for="star3">★</label>
+
+
+                    <input type="radio" name="rating" id="star2" value="2">
+                    <label for="star2">★</label>
+
+
+                    <input type="radio" name="rating" id="star1" value="1">
+                    <label for="star1">★</label>
+
+
+                </div>
+
+
+                <label for="reviewName">Tên của bạn:</label>
+
+
+                <input
+                    type="text"
+                    id="reviewName"
+                    placeholder="Nhập tên của bạn"
+                >
+
+
+                <label for="reviewContent">Nội dung bình luận:</label>
+
+
+                <textarea
+                    id="reviewContent"
+                    rows="4"
+                    placeholder="Chia sẻ cảm nhận của bạn..."
+                ></textarea>
+
+
+                <button
+                    type="button"
+                    class="submit-review"
+                    onclick="dangBinhLuan()"
+                >
+                    ĐĂNG BÌNH LUẬN
+                </button>
+
+
+                <p id="reviewMessage"></p>
+
+
             </div>
-        </div>
-    </div>
-</div>
 
-<!-- THÔNG TIN BÁNH -->
-<section class="details">
-    <h2>Thông tin về bánh</h2>
-    <div class="details-card">
-        <h3>Cấu trúc bánh:</h3>
-        <ul>
-            <li>Lớp 1:Bánh bông lan vị vani .</li>
-            <li>Lớp 2: Dưa lưới mật tươi thái hạt lựu.</li>
-            <li>Lớp 3:Mousse Dưa lưới .</li>
-        </ul>
 
-        <h3>Hướng dẫn sử dụng:</h3>
-        <ul>
-            <li>Bảo quản bánh trong hộp kín ở ngăn mát tủ lạnh, duy trì nhiệt độ từ 2–5°C để giữ độ tươi ngon của kem và dâu tây.</li>
-            <li>Nên sử dụng bánh trong vòng 24 giờ kể từ khi mua hoặc chế biến để đảm bảo hương vị và chất lượng tốt nhất.</li>
-            <li>Tránh để bánh ở nhiệt độ phòng quá 2 giờ, hạn chế tiếp xúc trực tiếp với ánh nắng và không nên cấp đông vì có thể làm thay đổi kết cấu kem, vỏ bánh và dâu tây.</li>
-        </ul>
-    </div>
-</section>
+            <!-- DANH SÁCH BÌNH LUẬN -->
+            <div class="review-list">
 
-<!-- SẢN PHẨM LIÊN QUAN (giá + nhãn sale do JS tự vẽ từ data-new / data-old) -->
-<section class="related">
-    <h2>Sản phẩm liên quan</h2>
 
-    <div class="products">
-        <div class="card" data-new="120000" data-old="150000">
-            <a href="dualuoi.html"><img src="https://the350f.com/wp-content/uploads/2025/05/CT-Dua-1.jpg" alt="Mousse Dưa lưới"></a>
-            <h3>Mousse Dưa lưới</h3>
-            <p class="gia"></p>
+                <h3>Đánh giá từ khách hàng</h3>
+
+
+                <div id="reviewList"></div>
+
+
+            </div>
+
+
         </div>
 
-        <div class="card" data-new="120000">
-            <a href="dau.html"><img src="https://the350f.com/wp-content/uploads/2025/05/CT-Dau-4.jpg" alt="Mousse Dâu"></a>
-            <h3>Mousse Dâu</h3>
-            <p class="gia"></p>
+
+    </section>
+
+
+    <!-- SẢN PHẨM LIÊN QUAN -->
+    <section class="related">
+
+
+        <h2>Sản phẩm liên quan</h2>
+
+
+        <div class="products">
+
+
+            <!-- SẢN PHẨM 1 -->
+            <div
+                class="card"
+                data-sizes="12 cm=120000; 16 cm=150000"
+                data-old="150000"
+                data-tags="hot"
+            >
+
+
+                <a href="trms.html">
+                    <img
+                        src="https://the350f.com/wp-content/uploads/2025/05/ChiTietTiramisu-3.jpg"
+                        alt="Tiramisu"
+                    >
+                </a>
+
+
+                <div class="card-body">
+
+
+                    <div class="card-pick">
+                        <h3>Tiramisu</h3>
+                    </div>
+
+
+                    <p class="gia"></p>
+
+
+                </div>
+            </div>
+
+
+            <!-- SẢN PHẨM 2 -->
+            <div
+                class="card"
+                data-sizes="12 cm=120000; 16 cm=150000"
+                data-old="150000"
+                data-tags="new"
+            >
+
+
+                <a href="dau.html">
+                    <img
+                        src="https://the350f.com/wp-content/uploads/2025/05/Dau.jpg"
+                        alt="Mousse Dâu"
+                    >
+                </a>
+
+
+                <div class="card-body">
+
+
+                    <div class="card-pick">
+                        <h3>Mousse Dâu</h3>
+                    </div>
+
+
+                    <p class="gia"></p>
+
+
+                </div>
+            </div>
+
+
+            <!-- SẢN PHẨM 3 -->
+            <div
+                class="card"
+                data-sizes="12 cm=120000; 16 cm=150000"
+                data-old="150000"
+                data-tags="hot"
+            >
+
+
+                <a href="choco.html">
+                    <img
+                        src="https://the350f.com/wp-content/uploads/2026/04/ChocoFlan-DD.jpg"
+                        alt="Mousse ChocoFlan"
+                    >
+                </a>
+
+
+                <div class="card-body">
+
+
+                    <div class="card-pick">
+                        <h3>Mousse ChocoFlan</h3>
+                    </div>
+
+
+                    <p class="gia"></p>
+
+
+                </div>
+            </div>
+
+
+            <!-- SẢN PHẨM 4 -->
+            <div
+                class="card"
+                data-sizes="12 cm=120000; 16 cm=150000"
+                data-old="150000"
+               
+            >
+
+
+                <a href="tranhan.html">
+                    <img
+                        src="https://the350f.com/wp-content/uploads/2026/07/NHAN-2026.jpg"
+                        alt="Mousse Trà nhãn"
+                    >
+                </a>
+
+
+                <div class="card-body">
+
+
+                    <div class="card-pick">
+                        <h3>Mousse Trà nhãn</h3>
+                    </div>
+
+
+                    <p class="gia"></p>
+
+
+                </div>
+            </div>
+
+
         </div>
 
-        <div class="card" data-new="120000">
-            <a href="tranhan.html"><img src="https://the350f.com/wp-content/uploads/2026/07/Tra-nhan-2026-2.jpg" alt="Mousse Trà Nhãn"></a>
-            <h3>Mousse Trà Nhãn</h3>
-            <p class="gia"></p>
+
+    </section>
+
+
+    <!-- KHUNG GIỎ HÀNG TRƯỢT BÊN PHẢI -->
+    <div class="cd-overlay" id="cartOverlay"></div>
+
+
+    <aside
+        class="cd-drawer"
+        id="cartDrawer"
+        aria-label="Giỏ hàng"
+        aria-hidden="true"
+    >
+
+
+        <div class="cd-head">
+
+
+            <button
+                class="cd-back"
+                id="cartClose"
+                type="button"
+                aria-label="Đóng giỏ hàng"
+            >
+                ←
+            </button>
+
+
+            <h2>GIỎ HÀNG</h2>
+
+
         </div>
 
-        <div class="card" data-new="120000">
-            <a href="xoai.html"><img src="https://the350f.com/wp-content/uploads/2025/05/Ban-sao-cua-_IMG2338-copy.jpg" alt="Mousse Xoài"></a>
-            <h3>Mousse Xoài</h3>
-            <p class="gia"></p>
+
+        <div class="cd-items" id="cartItems"></div>
+
+
+        <div class="cd-foot">
+
+
+            <div class="cd-row">
+                <span>Số lượng</span>
+                <span id="cartCountText">0 sản phẩm</span>
+            </div>
+
+
+            <div class="cd-row cd-big">
+                <span>Tổng thanh toán</span>
+                <span id="cartTotal">0VND</span>
+            </div>
+
+
+            <a class="cd-go" href="../giohang.html">
+                Xem giỏ hàng →
+            </a>
+
+
         </div>
-    </div>
-</section>
 
-<!-- KHUNG GIỎ HÀNG TRƯỢT BÊN PHẢI -->
-<div class="cd-overlay" id="cartOverlay"></div>
-<aside class="cd-drawer" id="cartDrawer" aria-label="Giỏ hàng" aria-hidden="true">
-    <div class="cd-head">
-        <button class="cd-back" id="cartClose" type="button" aria-label="Đóng giỏ hàng">←</button>
-        <h2>GIỎ HÀNG</h2>
-    </div>
 
-    <div class="cd-items" id="cartItems"></div>
+    </aside>
 
-    <div class="cd-foot">
-        <div class="cd-row"><span>Số lượng</span><span id="cartCountText">0 sản phẩm</span></div>
-        <div class="cd-row cd-big"><span>Tổng thanh toán</span><span id="cartTotal">0VND</span></div>
-        <a class="cd-go" href="../giohang.html">Xem giỏ hàng →</a>
-    </div>
-</aside>
 
-<!-- JS phải nằm SAU khung giỏ hàng -->
-<script src="../chitietsanpham.js"></script>
+    <!-- JS PHẢI NẰM SAU KHUNG GIỎ HÀNG -->
+    <script src="../chitietsanpham.js"></script>
+
 
 </body>
 </html>
+
+
+

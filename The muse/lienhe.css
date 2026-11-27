@@ -43,22 +43,35 @@ input, button, textarea, select {
 /* ===== THANH ĐƯỜNG DẪN ===== */
 .breadcrumb-bar {
   background: var(--bar);
-  padding: 12px 0;
-  font-size: 14px;
+  padding: 18px 5vw;
+  font-family: var(--font);
+  font-size: 15px;
+  color: var(--muted);
 }
+
 .breadcrumb-content {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 36px;
   display: flex;
   align-items: center;
-  gap: 8px;
 }
-.breadcrumb-content a { color: var(--ink); text-decoration: none; }
-.breadcrumb-content a:hover { color: var(--price); }
-.breadcrumb-content .separator { color: var(--muted); }
-.breadcrumb-content .current { color: var(--muted); }
 
+.breadcrumb-content a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.breadcrumb-content a:hover {
+  color: var(--price);
+}
+
+.breadcrumb-content .separator {
+  margin: 0 8px;
+  color: var(--muted);
+}
+
+.breadcrumb-content .current {
+  color: var(--muted);
+}
 /* ===== KHUNG TRẮNG BO GÓC 2 CỘT ===== */
 .contact-container {
   max-width: 1100px;

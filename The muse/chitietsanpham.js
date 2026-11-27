@@ -1,25 +1,49 @@
 
+
+
+
 /* =========================================
    CHI TIẾT SẢN PHẨM - GIỎ HÀNG
    Lưu dữ liệu bằng localStorage
    Key sử dụng chung: "cart"
 ========================================= */
 
+
+
+
 const KEY_CART = "cart";
+
+
+
 
 let soLuong = 1;
 
+
+
+
 const $ = id => document.getElementById(id);
+
+
+
+
+
+
 
 
 /* =========================================
    1. HÀM TIỆN ÍCH
 ========================================= */
 
+
+
+
 // Định dạng tiền
 function dinhDang(n) {
     return Number(n).toLocaleString("en-US") + "VND";
 }
+
+
+
 
 // Chống lỗi khi đưa dữ liệu vào HTML
 function esc(value) {
@@ -36,12 +60,24 @@ function esc(value) {
 }
 
 
+
+
+
+
+
+
 /* =========================================
    2. THAY ĐỔI SỐ LƯỢNG
 ========================================= */
 
+
+
+
 function doiSL(n) {
     soLuong = Math.max(1, soLuong + n);
+
+
+
 
     if ($("sl")) {
         $("sl").textContent = soLuong;
@@ -49,24 +85,48 @@ function doiSL(n) {
 }
 
 
+
+
+
+
+
+
 /* =========================================
    3. CẬP NHẬT GIÁ THEO SIZE
 ========================================= */
 
+
+
+
 function doiGia() {
     const size = $("size");
 
+
+
+
     if (!size || size.selectedIndex < 0) return;
+
+
+
 
     const option = size.options[size.selectedIndex];
 
+
+
+
     const giaMoi = Number(option.value);
     const giaCu = Number(option.dataset.old || 0);
+
+
+
 
     // Giá hiện tại
     if ($("price")) {
         $("price").textContent = dinhDang(giaMoi);
     }
+
+
+
 
     // Giá cũ
     if ($("priceOld")) {
@@ -75,10 +135,16 @@ function doiGia() {
             giaCu <= giaMoi
         );
 
+
+
+
         if (giaCu > giaMoi) {
             $("priceOld").textContent = dinhDang(giaCu);
         }
     }
+
+
+
 
     // Phần trăm giảm giá
     if ($("badgeSale")) {
@@ -87,10 +153,16 @@ function doiGia() {
             giaCu <= giaMoi
         );
 
+
+
+
         if (giaCu > giaMoi) {
             const phanTram = Math.round(
                 (giaCu - giaMoi) / giaCu * 100
             );
+
+
+
 
             $("badgeSale").textContent = "-" + phanTram + "%";
         }
@@ -98,9 +170,18 @@ function doiGia() {
 }
 
 
+
+
+
+
+
+
 /* =========================================
    4. ĐỌC GIỎ HÀNG
 ========================================= */
+
+
+
 
 function layGio() {
     try {
@@ -108,7 +189,13 @@ function layGio() {
             localStorage.getItem(KEY_CART) || "[]"
         );
 
+
+
+
         if (!Array.isArray(data)) return [];
+
+
+
 
         return data.map(sp => ({
             ...sp,
@@ -117,15 +204,27 @@ function layGio() {
             price: Number(sp.price) || 0
         }));
 
+
+
+
     } catch (e) {
         return [];
     }
 }
 
 
+
+
+
+
+
+
 /* =========================================
    5. LƯU GIỎ HÀNG
 ========================================= */
+
+
+
 
 function luuGio(gio) {
     try {
@@ -134,11 +233,20 @@ function luuGio(gio) {
             JSON.stringify(gio)
         );
 
+
+
+
         window.dispatchEvent(
             new Event("cart-updated")
         );
 
+
+
+
         return true;
+
+
+
 
     } catch (e) {
         alert("Không thể lưu giỏ hàng!");
@@ -147,49 +255,97 @@ function luuGio(gio) {
 }
 
 
+
+
+
+
+
+
 /* =========================================
    6. THÊM SẢN PHẨM VÀO GIỎ
 ========================================= */
 
+
+
+
 function themVaoGio() {
+
+
+
 
     const size = $("size");
     const ten = document.querySelector(".info h1");
     const anh = document.querySelector(".main-img");
     const product = document.querySelector(".product");
 
+
+
+
     if (!size || !ten || !anh || !anh.src) {
         alert("Không tìm thấy thông tin sản phẩm!");
         return false;
     }
 
+
+
+
     const option = size.options[size.selectedIndex];
+
+
+
 
     const id = (product && product.dataset.id) ||
         location.pathname.split("/").pop().replace(".html", "");
+
+
+
 
     const tenBanh = ten.textContent.trim();
     const kichThuoc = option.text.trim();
     const gia = Number(option.value);
 
+
+
+
     // Mỗi bánh và size có một mã riêng
     const key = id + "|" + kichThuoc;
 
+
+
+
     const gio = layGio();
+
+
+
 
     // Kiểm tra sản phẩm đã có trong giỏ chưa
     const sanPham = gio.find(sp => sp.key === key);
 
+
+
+
     if (sanPham) {
+
+
+
 
         // Nếu đã có thì cộng số lượng
         sanPham.qty += soLuong;
+
+
+
 
         // Cập nhật giá và ảnh theo thông tin mới
         sanPham.price = gia;
         sanPham.img = anh.src;
 
+
+
+
     } else {
+
+
+
 
         // Nếu chưa có thì thêm sản phẩm mới
         gio.push({
@@ -202,26 +358,53 @@ function themVaoGio() {
             qty: soLuong
         });
 
+
+
+
     }
+
+
+
 
     return luuGio(gio);
 }
+
+
+
+
+
+
 
 
 /* =========================================
    7. CẬP NHẬT SỐ LƯỢNG TRÊN HEADER
 ========================================= */
 
+
+
+
 function capNhatBadge() {
 
+
+
+
     const gio = layGio();
+
+
+
 
     const tongSL = gio.reduce(
         (tong, sp) => tong + sp.qty,
         0
     );
 
+
+
+
     const badge = $("cartCount");
+
+
+
 
     if (badge && badge.textContent !== String(tongSL)) {
         badge.textContent = tongSL;
@@ -229,13 +412,28 @@ function capNhatBadge() {
 }
 
 
+
+
+
+
+
+
 /* =========================================
    8. HIỂN THỊ SẢN PHẨM TRONG GIỎ
 ========================================= */
 
+
+
+
 function veGio() {
 
+
+
+
     const gio = layGio();
+
+
+
 
     // Tổng số lượng bánh
     const tongSL = gio.reduce(
@@ -243,36 +441,69 @@ function veGio() {
         0
     );
 
+
+
+
     // Tổng tiền
     const tongTien = gio.reduce(
         (tong, sp) => tong + sp.price * sp.qty,
         0
     );
 
+
+
+
     const danhSach = $("cartItems");
+
+
+
 
     if (danhSach) {
 
+
+
+
         if (gio.length === 0) {
+
+
+
 
             danhSach.innerHTML =
                 '<p class="cd-empty">Giỏ hàng đang trống.</p>';
 
+
+
+
         } else {
+
+
+
 
             danhSach.innerHTML = gio.map(sp => `
 
+
+
+
                 <div class="cd-item">
+
+
+
 
                     <img
                         src="${esc(sp.img)}"
                         alt="${esc(sp.name)}"
                     >
 
+
+
+
                     <div>
                         <h3>
                             ${esc(sp.name)} - ${esc(sp.size)}
                         </h3>
+
+
+
 
                         <div class="cd-q">
                             ${sp.qty}x
@@ -280,11 +511,17 @@ function veGio() {
                         </div>
                     </div>
 
+
+
+
                     <button
                         class="cd-del"
                         type="button"
                         data-key="${esc(sp.key)}"
                         aria-label="Xóa sản phẩm">
+
+
+
 
                         <svg
                             viewBox="0 0 24 24"
@@ -294,20 +531,41 @@ function veGio() {
                             stroke-linecap="round"
                             stroke-linejoin="round">
 
+
+
+
                             <path d="M3 6h18"/>
                             <path d="M8 6V4h8v2"/>
                             <path d="M6 6l1 14h10l1-14"/>
 
+
+
+
                         </svg>
+
+
+
 
                     </button>
 
+
+
+
                 </div>
+
+
+
 
             `).join("");
 
+
+
+
         }
     }
+
+
+
 
     // Cập nhật tổng số lượng
     if ($("cartCountText")) {
@@ -315,74 +573,146 @@ function veGio() {
             tongSL + " sản phẩm";
     }
 
+
+
+
     // Cập nhật tổng tiền
     if ($("cartTotal")) {
         $("cartTotal").textContent =
             dinhDang(tongTien);
     }
 
+
+
+
     // Cập nhật icon giỏ hàng trên header
     capNhatBadge();
 }
+
+
+
+
+
+
 
 
 /* =========================================
    9. MỞ KHUNG GIỎ HÀNG
 ========================================= */
 
+
+
+
 function moGio() {
+
+
+
 
     const drawer = $("cartDrawer");
     const overlay = $("cartOverlay");
+
+
+
 
     if (!drawer || !overlay) {
         console.error("Chưa có HTML khung giỏ hàng!");
         return;
     }
 
+
+
+
     // Cập nhật sản phẩm trước khi mở
     veGio();
+
+
+
 
     // Hiện khung giỏ hàng
     drawer.classList.add("open");
     overlay.classList.add("open");
 
+
+
+
     drawer.setAttribute("aria-hidden", "false");
+
+
+
 
     // Khóa cuộn trang phía sau
     document.body.classList.add("cd-lock");
 }
 
 
+
+
+
+
+
+
 /* =========================================
    10. ĐÓNG KHUNG GIỎ HÀNG
 ========================================= */
 
+
+
+
 function dongGio() {
+
+
+
 
     const drawer = $("cartDrawer");
     const overlay = $("cartOverlay");
 
+
+
+
     if (!drawer || !overlay) return;
+
+
+
 
     drawer.classList.remove("open");
     overlay.classList.remove("open");
 
+
+
+
     drawer.setAttribute("aria-hidden", "true");
+
+
+
 
     document.body.classList.remove("cd-lock");
 }
+
+
+
+
+
+
 
 
 /* =========================================
    11. XÓA SẢN PHẨM KHỎI GIỎ
 ========================================= */
 
+
+
+
 function xoaSanPham(key) {
+
+
+
 
     const gio = layGio().filter(
         sp => sp.key !== key
     );
+
+
+
 
     if (luuGio(gio)) {
         veGio();
@@ -390,22 +720,46 @@ function xoaSanPham(key) {
 }
 
 
+
+
+
+
+
+
 /* =========================================
    12. NÚT THÊM VÀO GIỎ HÀNG
 ========================================= */
 
+
+
+
 function mua() {
+
+
+
 
     // Lưu sản phẩm
     const thanhCong = themVaoGio();
 
+
+
+
     if (!thanhCong) return;
+
+
+
 
     // Mở giỏ hàng ngay lập tức
     moGio();
 
+
+
+
     // Đưa số lượng về 1
     soLuong = 1;
+
+
+
 
     if ($("sl")) {
         $("sl").textContent = 1;
@@ -413,34 +767,70 @@ function mua() {
 }
 
 
+
+
+
+
+
+
 /* =========================================
    13. NÚT MUA NGAY
 ========================================= */
 
+
+
+
 function muaNgay() {
+
+
+
 
     // Lưu sản phẩm trước khi chuyển trang
     if (themVaoGio()) {
 
+
+
+
         window.location.href = "../thanhtoan.html";
+
+
+
 
     }
 }
+
+
+
+
+
+
 
 
 /* =========================================
    14. SỰ KIỆN CLICK
 ========================================= */
 
+
+
+
 document.addEventListener("click", function(e) {
+
+
+
 
     // Nút xóa sản phẩm
     const nutXoa = e.target.closest(".cd-del");
+
+
+
 
     if (nutXoa) {
         xoaSanPham(nutXoa.dataset.key);
         return;
     }
+
+
+
 
     // Icon giỏ hàng trên header
     if (e.target.closest("#openCart")) {
@@ -449,73 +839,139 @@ document.addEventListener("click", function(e) {
         return;
     }
 
+
+
+
     // Nút đóng giỏ hàng
     if (e.target.closest("#cartClose")) {
         dongGio();
         return;
     }
 
+
+
+
     // Bấm vùng nền tối
     if (e.target.id === "cartOverlay") {
         dongGio();
     }
 
+
+
+
 });
+
+
+
+
+
+
 
 
 /* =========================================
    15. ĐÓNG GIỎ BẰNG PHÍM ESC
 ========================================= */
 
+
+
+
 document.addEventListener("keydown", function(e) {
+
+
+
 
     if (e.key === "Escape") {
         dongGio();
     }
 
+
+
+
 });
+
+
+
+
+
+
 
 
 /* =========================================
    16. CẬP NHẬT KHI MỞ NHIỀU TAB
 ========================================= */
 
+
+
+
 window.addEventListener("storage", function(e) {
+
+
+
 
     if (e.key === KEY_CART) {
         veGio();
     }
 
+
+
+
 });
+
+
+
+
+
+
 
 
 /* =========================================
    17. KHỞI TẠO TRANG
 ========================================= */
 
+
+
+
 // Hiện giá ban đầu
 doiGia();
+
+
+
 
 // Hiện số lượng và tổng tiền giỏ hàng
 veGio();
 
-// Header được nạp bằng JavaScript
-const header = $("site-header");
 
-if (header) {
+
+
+// Header được nạp bằng JavaScript
+const headerHost = $("site-header");
+
+
+
+
+if (headerHost) {
+
+
+
 
     new MutationObserver(function() {
         capNhatBadge();
-    }).observe(header, {
+    }).observe(headerHost, {
         childList: true,
         subtree: true
     });
+
+
+
 
 }
 /* =========================================
    18. SẢN PHẨM LIÊN QUAN
    (giá "Từ", tag Hot/Mới, nút + chọn size)
 ========================================= */
+
+
+
 
 // Đọc data-sizes="12 cm=120000; 16 cm=150000" -> [{ten, gia}, ...]
 function docSize(card) {
@@ -527,14 +983,23 @@ function docSize(card) {
         .filter(s => s.ten && s.gia > 0);
 }
 
+
+
+
 function veSanPhamLienQuan() {
     document.querySelectorAll(".related .card").forEach(card => {
         const sizes = docSize(card);
         if (!sizes.length) return;
 
+
+
+
         const giaThapNhat = Math.min(...sizes.map(s => s.gia));
         const giaCu = Number(card.dataset.old) || 0;
         const tags = (card.dataset.tags || "").split(",").map(t => t.trim());
+
+
+
 
         // Tag Hot / Mới
         let html = "";
@@ -545,6 +1010,9 @@ function veSanPhamLienQuan() {
                 '<div class="card-tags">' + html + "</div>");
         }
 
+
+
+
         // Giá "Từ ..."
         const gia = card.querySelector(".gia");
         if (gia) {
@@ -553,6 +1021,9 @@ function veSanPhamLienQuan() {
                     ? ' <span class="price-old">' + dinhDang(giaCu) + "</span>"
                     : "");
         }
+
+
+
 
         // Nút "Thêm vào giỏ hàng" + 2 nút chọn size
         const pick = card.querySelector(".card-pick");
@@ -568,10 +1039,16 @@ function veSanPhamLienQuan() {
                 "</div>");
         }
 
+
+
+
         // Rê chuột ra khỏi thẻ thì quay lại hiện tên bánh
         card.addEventListener("mouseleave", () => card.classList.remove("chon-size"));
     });
 }
+
+
+
 
 // Thêm đúng size đã chọn vào giỏ rồi mở khung giỏ hàng bên phải
 function themLienQuanVaoGio(card, size, gia) {
@@ -580,11 +1057,20 @@ function themLienQuanVaoGio(card, size, gia) {
     const ten  = card.querySelector("h3");
     if (!link || !anh || !ten) return;
 
+
+
+
     const id  = link.getAttribute("href").split("/").pop().replace(".html", "");
     const key = id + "|" + size;                 // cùng dạng key với trang chi tiết
 
+
+
+
     const gio = layGio();
     const sp  = gio.find(x => x.key === key);
+
+
+
 
     if (sp) {
         sp.qty += 1;
@@ -601,17 +1087,34 @@ function themLienQuanVaoGio(card, size, gia) {
         });
     }
 
+
+
+
     if (luuGio(gio)) moGio();
 }
+
+
+
 
 function dongChonSize() {
     document.querySelectorAll(".card.chon-size")
         .forEach(c => c.classList.remove("chon-size"));
 }
 
+
+
+
+veSanPhamLienQuan();
+
+
+
+
 document.addEventListener("click", function (e) {
     const nutThem = e.target.closest(".card-add");
     const nutSize = e.target.closest(".card-size");
+
+
+
 
     // Bấm "Thêm vào giỏ hàng" -> hiện 2 size
     if (nutThem) {
@@ -619,6 +1122,9 @@ document.addEventListener("click", function (e) {
         nutThem.closest(".card").classList.add("chon-size");
         return;
     }
+
+
+
 
     // Bấm 1 size -> thêm vào giỏ + mở giỏ hàng
     if (nutSize) {
@@ -628,6 +1134,151 @@ document.addEventListener("click", function (e) {
         return;
     }
 
+
+
+
     // Bấm ra ngoài -> đóng phần chọn size
     dongChonSize();
 });
+
+
+
+
+
+
+
+
+/* =================================
+   CHỨC NĂNG BÌNH LUẬN VÀ ĐÁNH GIÁ
+================================= */
+
+
+// CHUYỂN TAB
+function chuyenTab(tab, button) {
+    document.querySelectorAll(".review-tab").forEach(item => item.classList.remove("active"));
+    document.querySelectorAll(".review-panel").forEach(item => item.classList.remove("active"));
+
+
+    button.classList.add("active");
+    document.getElementById(tab).classList.add("active");
+
+
+    if (tab === "comments") hienThiBinhLuan();
+}
+
+
+// KEY RIÊNG CHO TỪNG SẢN PHẨM (lấy từ data-id)
+function layKeyDanhGia() {
+    return "danhGia_" + document.querySelector(".product").dataset.id;
+}
+
+
+function layDanhSachDanhGia() {
+    return JSON.parse(localStorage.getItem(layKeyDanhGia())) || [];
+}
+
+
+// ĐĂNG BÌNH LUẬN
+function dangBinhLuan() {
+    const ten = document.getElementById("reviewName").value.trim();
+    const noiDung = document.getElementById("reviewContent").value.trim();
+    const sao = document.querySelector('input[name="rating"]:checked');
+    const thongBao = document.getElementById("reviewMessage");
+
+
+    if (!ten || !noiDung || !sao) {
+        thongBao.innerText = "Vui lòng nhập tên, nội dung và chọn số sao!";
+        return;
+    }
+
+
+    const danhSach = layDanhSachDanhGia();
+    danhSach.unshift({
+        ten: ten,
+        noiDung: noiDung,
+        sao: Number(sao.value),
+        ngay: new Date().toLocaleDateString("vi-VN")
+    });
+    localStorage.setItem(layKeyDanhGia(), JSON.stringify(danhSach));
+
+
+    document.getElementById("reviewName").value = "";
+    document.getElementById("reviewContent").value = "";
+    document.querySelectorAll('input[name="rating"]').forEach(item => item.checked = false);
+
+
+    thongBao.innerText = "Đăng bình luận thành công!";
+    hienThiBinhLuan();
+}
+
+
+// HIỂN THỊ BÌNH LUẬN
+function hienThiBinhLuan() {
+    const reviewList = document.getElementById("reviewList");
+    if (!reviewList) return;            // trang không có phần bình luận thì bỏ qua
+
+
+    const danhSach = layDanhSachDanhGia();
+    reviewList.innerHTML = "";
+    let tongSao = 0;
+
+
+    danhSach.forEach(item => {
+        tongSao += item.sao;
+
+
+        const review = document.createElement("div");
+        review.className = "review-item";
+
+
+        const user = document.createElement("div");
+        user.className = "review-user";
+
+
+        const name = document.createElement("strong");
+        name.textContent = item.ten;
+
+
+        const stars = document.createElement("span");
+        stars.className = "review-stars";
+        stars.textContent = "★".repeat(item.sao) + "☆".repeat(5 - item.sao);
+
+
+        user.append(name, stars);
+
+
+        const content = document.createElement("p");
+        content.textContent = item.noiDung;
+
+
+        const date = document.createElement("span");
+        date.className = "review-date";
+        date.textContent = item.ngay;
+
+
+        review.append(user, content, date);
+        reviewList.appendChild(review);
+    });
+
+
+    const trungBinh = danhSach.length ? tongSao / danhSach.length : 0;
+    const soSao = Math.round(trungBinh);
+
+
+    document.getElementById("averageRating").innerText = trungBinh.toFixed(1);
+    document.getElementById("averageStars").innerText = "★".repeat(soSao) + "☆".repeat(5 - soSao);
+    document.getElementById("ratingCount").innerText = danhSach.length + " đánh giá";
+
+
+    if (danhSach.length === 0) {
+        reviewList.innerText = "Chưa có đánh giá nào. Hãy là người đầu tiên đánh giá sản phẩm!";
+    }
+}
+
+
+document.addEventListener("DOMContentLoaded", hienThiBinhLuan);
+
+
+
+
+
