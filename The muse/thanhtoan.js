@@ -9,7 +9,7 @@
     const QR_IMAGE = 'image/qr.png';
 
     const HOME_URL = 'trangchu.html';
-    const PROFILE_URL = 'canhan.html';
+    const PROFILE_URL = 'taikhoan.html';
 
     const INNER = [
         'Ba Đình', 'Hoàn Kiếm', 'Hai Bà Trưng', 'Đống Đa',
@@ -40,7 +40,22 @@
     const pad = n => String(n).padStart(2, '0');
 
     let orderCode = 'MUSE' + String(Date.now()).slice(-6);
+
     let rate = 0;
+    let shippingRate = 0;
+    let fixedDiscount = 0;
+    let activeVoucher = '';
+
+    // Tự động điền thông tin tài khoản nếu đã đăng nhập
+    if (localStorage.getItem('ten') && !$('name').value) {
+        $('name').value = localStorage.getItem('ten');
+    }
+    if (localStorage.getItem('phone') && !$('phone').value) {
+        $('phone').value = localStorage.getItem('phone');
+    }
+    if (localStorage.getItem('email') && !$('email').value) {
+        $('email').value = localStorage.getItem('email');
+    }
 
     // 2. HIỂN THỊ NGÀY
     const now = new Date();
@@ -98,9 +113,13 @@
     function shipFee() {
         if (!district.value) return null;
 
-        return INNER.includes(district.value)
+        const baseFee = INNER.includes(district.value)
             ? FEE_IN
             : FEE_OUT;
+
+        return Math.round(
+            baseFee * (1 - shippingRate)
+        );
     }
 
     // 6. LẤY PHƯƠNG THỨC THANH TOÁN
@@ -186,8 +205,35 @@
             (sum, it) => sum + it.price * it.qty, 0
         );
 
-        // Tiền sau giảm giá
-        const giam = Math.round(goc * rate);
+        // Kiểm tra điều kiện voucher khi giỏ hàng thay đổi
+        const voucherMinimum = {
+            MUSE50K: 300000,
+            MUSE30K: 200000,
+            MUSE15K: 100000
+        };
+
+        if (
+            voucherMinimum[activeVoucher] &&
+            goc < voucherMinimum[activeVoucher]
+        ) {
+            activeVoucher = '';
+            rate = 0;
+            shippingRate = 0;
+            fixedDiscount = 0;
+
+            $('code').value = '';
+
+            $('msg').textContent =
+                'Đơn hàng không còn đủ điều kiện sử dụng voucher.';
+
+            $('msg').className = 'msg bad';
+        }
+
+        // Tính tổng mức giảm tiền bánh
+        const giam =
+            Math.round(goc * rate) + fixedDiscount;
+
+        // Tiền hàng sau giảm
         const tamTinh = Math.max(goc - giam, 0);
 
         // Phí giao hàng
@@ -204,12 +250,18 @@
 
         $('tot').textContent = fmt(tong);
 
+        const baseShipFee = !district.value
+            ? null
+            : INNER.includes(district.value)
+                ? FEE_IN
+                : FEE_OUT;
+
         $('feeHint').textContent =
-            phiShip === FEE_IN
-                ? 'Giao nội thành: phí ship 25,000VND'
-                : phiShip === FEE_OUT
-                    ? 'Giao ngoại thành: phí ship 35,000VND'
-                    : '';
+            baseShipFee === null
+                ? ''
+                : shippingRate > 0
+                    ? `Phí ship sau giảm 50%: ${fmt(phiShip)}`
+                    : `Phí giao hàng: ${fmt(baseShipFee)}`;
 
         renderQR();
     }
@@ -249,22 +301,82 @@
         const code = $('code').value.trim().toUpperCase();
 
         rate = 0;
+        shippingRate = 0;
+        fixedDiscount = 0;
+        activeVoucher = '';
 
-        if (code === 'GIAM10') {
-            rate = 0.1;
-            alert('Đã áp dụng mã giảm giá 10%.');
-        } else if (code !== '') {
-            alert('Mã giảm giá không hợp lệ.');
-        } else {
+        const subtotal = cart.reduce(
+            (sum, item) =>
+                sum + Number(item.price) * Number(item.qty),
+            0
+        );
+
+        if (!code) {
             alert('Vui lòng nhập mã giảm giá.');
+            render();
+            return;
         }
 
+        if (cart.length === 0) {
+            alert('Giỏ hàng của bạn đang trống.');
+            render();
+            return;
+        }
+
+        if (code === 'FREESHIP50') {
+            shippingRate = 0.5;
+            activeVoucher = code;
+            alert('Áp dụng thành công! Giảm 50% phí vận chuyển.');
+        }
+        else if (code === 'MUSE50K') {
+            if (subtotal < 300000) {
+                alert('Mã MUSE50K chỉ áp dụng cho đơn hàng từ 300.000₫.');
+                render();
+                return;
+            }
+            fixedDiscount = 50000;
+            activeVoucher = code;
+            alert('Áp dụng thành công! Bạn được giảm 50.000₫.');
+        }
+        else if (code === 'MUSE30K') {
+            if (subtotal < 200000) {
+                alert('Mã MUSE30K chỉ áp dụng cho đơn hàng từ 200.000₫.');
+                render();
+                return;
+            }
+            fixedDiscount = 30000;
+            activeVoucher = code;
+            alert('Áp dụng thành công! Bạn được giảm 30.000₫.');
+        }
+        else if (code === 'MUSE15K') {
+            if (subtotal < 100000) {
+                alert('Mã MUSE15K chỉ áp dụng cho đơn hàng từ 100.000₫.');
+                render();
+                return;
+            }
+            fixedDiscount = 15000;
+            activeVoucher = code;
+            alert('Áp dụng thành công! Bạn được giảm 15.000₫.');
+        }
+        else if (code === 'GIAM10') {
+            rate = 0.1;
+            activeVoucher = code;
+            alert('Áp dụng thành công! Giảm 10% tiền bánh.');
+        }
+        else {
+            alert('Mã giảm giá không hợp lệ.');
+            render();
+            return;
+        }
+
+        $('msg').textContent = '';
+        $('msg').className = 'msg';
         render();
     });
 
     // 12. BỎ VIỀN ĐỎ KHI NHẬP LẠI
     ['name', 'phone', 'district', 'addr', 'date', 'slot'].forEach(id => {
-        [ 'input', 'change' ].forEach(eventName => {
+        ['input', 'change'].forEach(eventName => {
             $(id).addEventListener(eventName, function () {
                 this.classList.remove('bad');
             });
@@ -352,7 +464,6 @@
 
     document.head.appendChild(style);
 
-    // Tạo hộp thông báo nếu HTML chưa có
     let modal = $('successModal');
 
     if (!modal) {
@@ -403,7 +514,6 @@
             ['slot', value => value !== '']
         ];
 
-        // Kiểm tra thông tin bắt buộc
         checks.forEach(([id, check]) => {
             const input = $(id);
             const dung = check(input.value);
@@ -431,10 +541,92 @@
             return;
         }
 
-        // Lấy tổng tiền và mã đơn trước khi xóa giỏ
         const tongText = $('tot').textContent;
         const maDon = orderCode;
         const online = payMethod() === 'online';
+
+        // ===== LƯU ĐƠN HÀNG VÀO LỊCH SỬ =====
+        const accountEmail = (
+            localStorage.getItem('email') ||
+            $('email').value ||
+            ''
+        ).trim().toLowerCase();
+
+        const orderItems = cart.map(item => ({
+            name: item.name,
+            img: item.img || '',
+            size: item.size || '',
+            price: Number(item.price),
+            qty: Number(item.qty)
+        }));
+
+        const subtotal = orderItems.reduce(
+            (sum, item) => sum + item.price * item.qty,
+            0
+        );
+
+        const discount = Math.min(
+            subtotal,
+            Math.round(subtotal * rate) + fixedDiscount
+        );
+
+        const shippingFee = shipFee() || 0;
+
+        const total =
+            Math.max(subtotal - discount, 0) + shippingFee;
+
+        // Tạo đơn hàng với trạng thái Hoàn thành để cộng điểm ngay
+        const newOrder = {
+            code: maDon,
+            createdAt: new Date().toISOString(),
+            email: accountEmail,
+            voucher: activeVoucher,
+            items: orderItems,
+            subtotal: subtotal,
+            discount: discount,
+            shippingFee: shippingFee,
+            total: total,
+            paymentMethod: online ? 'online' : 'cod',
+            paymentStatus: 'paid',
+            status: 'Hoàn thành',
+            customer: {
+                name: $('name').value.trim(),
+                phone: $('phone').value.trim(),
+                email: $('email').value.trim()
+            },
+            shipping: {
+                district: $('district').value,
+                address: $('addr').value.trim(),
+                date: $('date').value,
+                slot: $('slot').value,
+                other: $('other').value.trim()
+            },
+            wish: $('wish') ? $('wish').value : ''
+        };
+
+        let orderHistory = [];
+
+        try {
+            const savedOrders = JSON.parse(
+                localStorage.getItem('muse_orders') || '[]'
+            );
+            orderHistory = Array.isArray(savedOrders) ? savedOrders : [];
+        } catch (error) {
+            orderHistory = [];
+        }
+
+        orderHistory.unshift(newOrder);
+
+        try {
+            localStorage.setItem(
+                'muse_orders',
+                JSON.stringify(orderHistory)
+            );
+        } catch (error) {
+            msg.textContent = 'Không thể lưu đơn hàng. Vui lòng thử lại.';
+            msg.classList.add('bad');
+            return;
+        }
 
         // Hiển thị thông báo thành công
         $('successText').innerHTML =
@@ -450,11 +642,13 @@
         // Xóa giỏ hàng sau khi đặt
         cart = [];
         rate = 0;
+        shippingRate = 0;
+        fixedDiscount = 0;
+        activeVoucher = '';
+        $('code').value = '';
         orderCode = 'MUSE' + String(Date.now()).slice(-6);
 
         saveCart();
-
-        // Không gọi render() tại đây để đơn hàng không biến mất
     });
 
     // 15. HIỂN THỊ GIỎ HÀNG BAN ĐẦU

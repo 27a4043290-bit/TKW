@@ -1,0 +1,427 @@
+
+:root {
+  --muse-cream: #FFF8F1;
+  --muse-peach: #FFEFD9;
+  --muse-navy: #0B1A33;
+  --muse-gold: #FFD080;
+  --muse-orange: #C83E1C;
+  --muse-muted: #7A7F8A;
+  --muse-line: #E9DCCD;
+  --muse-white: #FFFFFF;
+}
+
+body {
+  background: var(--muse-cream);
+  color: var(--muse-navy);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.promo-page {
+  width: min(1320px, calc(100% - 48px));
+  margin: 0 auto;
+  padding-bottom: 72px;
+}
+
+/* Breadcrumb */
+.promo-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 58px;
+  color: var(--muse-muted);
+  font-size: 14px;
+}
+
+.promo-breadcrumb a {
+  color: var(--muse-muted);
+  text-decoration: none;
+}
+
+.promo-breadcrumb a:hover,
+.promo-bottom-link a:hover {
+  color: var(--muse-orange);
+}
+
+/* Banner */
+.promo-hero {
+  position: relative;
+  overflow: hidden;
+  margin: 20px 0 54px;
+  padding: 54px 58px;
+  border-radius: 20px;
+  background: var(--muse-peach);
+}
+
+.promo-eyebrow,
+.promo-kicker {
+  display: inline-block;
+  color: var(--muse-orange);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .18em;
+}
+
+.promo-hero h1 {
+  position: relative;
+  z-index: 1;
+  max-width: 760px;
+  margin: 12px 0 10px;
+  color: var(--muse-navy);
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 4vw, 48px);
+  line-height: 1.2;
+}
+
+.promo-hero p {
+  position: relative;
+  z-index: 1;
+  max-width: 650px;
+  margin: 0;
+  color: #495366;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.promo-hero-decoration {
+  position: absolute;
+  top: -64px;
+  right: 64px;
+  color: rgba(255, 208, 128, .75);
+  font-size: 250px;
+  line-height: 1;
+  transform: rotate(15deg);
+  pointer-events: none;
+}
+
+/* Tiêu đề danh sách */
+.promo-section-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 25px;
+}
+
+.promo-section-heading h2 {
+  margin: 8px 0 6px;
+  color: var(--muse-navy);
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(25px, 3vw, 34px);
+}
+
+.promo-section-heading p {
+  margin: 0;
+  color: var(--muse-muted);
+  font-size: 14px;
+}
+
+.promo-count {
+  flex: 0 0 auto;
+  padding: 9px 14px;
+  border: 1px solid var(--muse-line);
+  border-radius: 999px;
+  color: var(--muse-orange);
+  background: var(--muse-white);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .08em;
+}
+
+/* Danh sách voucher */
+.voucher-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.voucher-card {
+  display: grid;
+  grid-template-columns: 112px minmax(0, 1fr);
+  min-height: 228px;
+  overflow: hidden;
+  border: 1px solid var(--muse-line);
+  border-radius: 16px;
+  background: var(--muse-white);
+  box-shadow: 0 8px 24px rgba(11, 26, 51, .045);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.voucher-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(11, 26, 51, .09);
+}
+
+/* Phần màu xanh bên trái */
+.voucher-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 16px 10px;
+  background: var(--muse-navy);
+  color: var(--muse-gold);
+  text-align: center;
+}
+
+.voucher-icon {
+  font-size: 30px;
+  line-height: 1;
+}
+
+.voucher-side strong {
+  color: var(--muse-white);
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: .02em;
+}
+
+/* Nội dung voucher */
+.voucher-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 22px 24px 18px;
+}
+
+.voucher-label {
+  color: var(--muse-orange);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .13em;
+}
+
+.voucher-content h3 {
+  margin: 7px 0 5px;
+  color: var(--muse-navy);
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+}
+
+.voucher-content p {
+  margin: 0;
+  color: #687080;
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.voucher-condition {
+  margin-top: 11px;
+  color: var(--muse-muted);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* Mã voucher và nút sao chép */
+.voucher-code-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  margin-top: auto;
+  padding-top: 15px;
+}
+
+.voucher-code {
+  padding: 8px 11px;
+  border: 1px dashed #D9B77F;
+  border-radius: 7px;
+  background: #FFFAF2;
+  color: var(--muse-navy);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .08em;
+}
+
+.copy-code {
+  min-height: 36px;
+  padding: 8px 13px;
+  border: 0;
+  border-radius: 7px;
+  background: var(--muse-gold);
+  color: var(--muse-navy);
+  cursor: pointer;
+  font: inherit;
+  font-size: 11px;
+  font-weight: 800;
+  transition: background .2s ease, transform .2s ease;
+}
+
+.copy-code:hover {
+  background: #F4BE63;
+  transform: translateY(-1px);
+}
+
+.copy-code:focus-visible,
+.promo-bottom-link a:focus-visible {
+  outline: 3px solid rgba(200, 62, 28, .35);
+  outline-offset: 3px;
+}
+
+/* Lưu ý */
+.promo-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-top: 30px;
+  padding: 20px 22px;
+  border: 1px solid var(--muse-line);
+  border-radius: 12px;
+  background: #FFFCF8;
+}
+
+.promo-note-icon {
+  display: grid;
+  flex: 0 0 25px;
+  width: 25px;
+  height: 25px;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--muse-peach);
+  color: var(--muse-orange);
+  font-family: Georgia, serif;
+  font-weight: 700;
+}
+
+.promo-note strong {
+  color: var(--muse-navy);
+  font-size: 13px;
+}
+
+.promo-note p {
+  margin: 5px 0 0;
+  color: var(--muse-muted);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+/* Link cuối trang */
+.promo-bottom-link {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.promo-bottom-link a {
+  color: var(--muse-navy);
+  font-size: 13px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.promo-bottom-link span {
+  margin-left: 6px;
+  color: var(--muse-orange);
+}
+
+/* Thông báo sao chép */
+.promo-toast {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 10000;
+  max-width: calc(100% - 48px);
+  padding: 12px 18px;
+  border-radius: 9px;
+  background: var(--muse-navy);
+  color: var(--muse-white);
+  box-shadow: 0 8px 24px rgba(11, 26, 51, .18);
+  font-size: 13px;
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+  transition: opacity .2s ease, transform .2s ease;
+}
+
+.promo-toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive tablet và mobile */
+@media (max-width: 760px) {
+  .promo-page {
+    width: min(100% - 30px, 600px);
+  }
+
+  .promo-hero {
+    margin-top: 12px;
+    margin-bottom: 38px;
+    padding: 38px 25px;
+  }
+
+  .promo-hero-decoration {
+    top: -20px;
+    right: 10px;
+    font-size: 150px;
+  }
+
+  .voucher-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .promo-section-heading {
+    align-items: flex-start;
+  }
+
+  .promo-count {
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 430px) {
+  .voucher-card {
+    grid-template-columns: 82px minmax(0, 1fr);
+  }
+
+  .voucher-content {
+    padding: 18px 14px 15px;
+  }
+
+  .voucher-content h3 {
+    font-size: 19px;
+  }
+
+  .voucher-code-row {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .copy-code {
+    width: 100%;
+  }
+
+  .promo-count {
+    display: none;
+  }
+}
+/* ===================================================
+1. THANH ĐƯỜNG DẪN
+   =================================================== */
+.breadcrumb {
+  background: var(--sp-bar, #ffedcf);
+  padding: calc(18px + var(--sp-header-h)) 5vw 18px;
+  font-family: var(--sp-font);
+  font-size: 15px;
+  color: var(--sp-muted);
+}
+
+.breadcrumb-inner {
+  /* Xóa max-width: 1200px và margin: 0 auto để chữ canh lề trái 5vw giống trang sản phẩm */
+  display: flex;
+  align-items: center;
+}
+
+.breadcrumb-inner a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.breadcrumb-inner a:hover {
+  color: var(--sp-red);
+}
+
+.breadcrumb-inner span {
+  margin: 0 8px;
+}

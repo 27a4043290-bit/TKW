@@ -1,18 +1,18 @@
-
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-/* ===== FOOTER THE MUSE ===== */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500;600;700&display=swap');
 
 #footer-container {
     width: 100%;
-    margin-top: 0;
+    margin-top: 48px;
     font-family: 'Roboto', sans-serif;
-    color: #765f50;
+    color: #6e5849;
     background: #faf5ef;
+    box-sizing: border-box;
+}
+
+#footer-container *,
+#footer-container *::before,
+#footer-container *::after {
+    box-sizing: border-box;
 }
 
 .chantrang {
@@ -21,19 +21,21 @@
     background: #faf5ef;
 }
 
-/* Thanh danh mục màu nâu phía trên */
+/* Thanh danh mục màu xanh navy phía trên */
 .danh-muc-banh {
-    display: flex;
-    align-items: stretch;
-    justify-content: space-around;
-    flex-wrap: nowrap;
-    gap: 8px;
-
     width: 100%;
-    padding: 20px 25px 18px;
     background: #001F3F;
     border-bottom: 3px solid #d7a36d;
-    box-sizing: border-box;
+}
+
+.danh-muc-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 16px;
     overflow-x: auto;
 }
 
@@ -43,35 +45,53 @@
     align-items: center;
     justify-content: center;
     gap: 8px;
-
-    min-width: 85px;
+    min-width: 110px;
+    padding: 6px 12px;
     color: #f6e8d7;
     text-decoration: none;
     text-align: center;
-    font-size: 11px;
-    font-weight: 500;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
     white-space: nowrap;
-    transition: color 0.25s ease;
+    transition: transform 0.25s ease, color 0.25s ease;
 }
 
 .danh-muc-banh a:hover {
-    color: #d7a36d;
+    color: #fdc86e;
+    transform: translateY(-2px);
 }
 
 .dm-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(215, 163, 109, 0.14);
     color: #d7a36d;
-    font-size: 23px;
-    line-height: 1;
+    transition: background 0.25s ease, color 0.25s ease;
 }
 
-/* Khu vực nội dung chính */
-.chantrang-noidung {
-    display: grid;
-    grid-template-columns: 1.2fr 0.9fr 1.4fr;
-    gap: 50px;
+.danh-muc-banh a:hover .dm-icon {
+    background: #d7a36d;
+    color: #001F3F;
+}
 
-    padding: 65px 6% 50px;
-    box-sizing: border-box;
+.dm-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Nội dung chính 3 cột */
+.chantrang-noidung {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 56px 24px 48px;
+    display: grid;
+    grid-template-columns: 1.25fr 1fr 1.15fr;
+    gap: 48px;
     align-items: start;
 }
 
@@ -80,52 +100,58 @@
 }
 
 .cot-footer h2 {
-    margin: 0 0 25px;
-    color: #4b2917;
-    font-size: 20px;
+    margin: 0 0 14px;
+    color: #001F3F;
+    font-size: 17px;
     font-weight: 700;
     letter-spacing: 1.2px;
-    line-height: 1.5;
+    text-transform: uppercase;
 }
 
 .footer-duong-ke {
-    width: 105px;
-    height: 2px;
-    margin: -7px 0 25px;
+    width: 48px;
+    height: 2.5px;
+    margin: 0 0 22px;
+    border-radius: 2px;
     background: #d7a36d;
 }
 
-.footer-duong-ke.full {
-    width: 100%;
-    margin-bottom: 28px;
+/* Cột 1: Giới thiệu */
+.footer-brand-tag {
+    display: inline-block;
+    margin-bottom: 12px;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #4b2917;
+    letter-spacing: 0.5px;
 }
 
-.footer-duong-ke.social-line {
-    width: 155px;
-    margin-top: 0;
-    margin-bottom: 25px;
-}
-
-/* Cột giới thiệu */
 .gioithieu {
     margin: 0 0 20px;
-    color: #806a5a;
-    font-size: 15px;
-    line-height: 1.9;
+    color: #6e5849;
+    font-size: 14.5px;
+    line-height: 1.85;
     text-align: justify;
 }
 
 .footer-xem-them {
-    color: #a8794e;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #8a5a2b;
     font-size: 14px;
+    font-weight: 600;
     text-decoration: none;
+    transition: color 0.25s ease, gap 0.25s ease;
 }
 
 .footer-xem-them:hover {
-    color: #4b2917;
+    color: #001F3F;
+    gap: 10px;
 }
 
-/* Cột liên kết */
+/* Cột 2: Liên kết */
 .danhsach {
     margin: 0;
     padding: 0;
@@ -133,7 +159,7 @@
 }
 
 .danhsach li {
-    border-bottom: 1px solid #eee5dc;
+    border-bottom: 1px solid #ede4d8;
 }
 
 .danhsach li:last-child {
@@ -141,469 +167,118 @@
 }
 
 .danhsach a {
-    display: block;
-    padding: 8px 0;
-    color: #806a5a;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 0;
+    color: #6e5849;
     font-size: 14px;
     line-height: 1.5;
     text-decoration: none;
-    overflow-wrap: anywhere;
-    transition: color 0.25s ease;
+    transition: color 0.25s ease, padding-left 0.25s ease;
+}
+
+.danhsach a::before {
+    content: "›";
+    color: #d7a36d;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1;
 }
 
 .danhsach a:hover {
-    color: #b78554;
+    color: #001F3F;
+    padding-left: 6px;
 }
 
-/* Cột liên hệ */
+/* Cột 3: Liên hệ */
 .thong-tin-lienhe p {
-    display: grid;
-    grid-template-columns: 20px minmax(0, 1fr);
-    gap: 15px;
-    align-items: start;
-
-    margin: 0 0 20px;
-    color: #806a5a;
-    font-size: 14px;
-    line-height: 1.8;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin: 0 0 16px;
+    color: #6e5849;
+    font-size: 14.5px;
+    line-height: 1.7;
 }
 
 .thong-tin-lienhe a {
     color: inherit;
     text-decoration: none;
-    overflow-wrap: anywhere;
+    transition: color 0.25s ease;
 }
 
 .thong-tin-lienhe a:hover {
-    color: #b78554;
+    color: #001F3F;
+    text-decoration: underline;
 }
 
 .icon-lienhe {
-    color: #d7a36d;
-    font-size: 15px;
-}
-
-.tieu-de-mang-xa-hoi {
-    margin: 35px 0 20px;
-    color: #4b2917;
-    font-size: 18px;
-    letter-spacing: 1px;
-}
-
-/* Mạng xã hội */
-.mang-xa-hoi {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-}
-
-.mang-xa-hoi a {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-
-    width: 44px;
-    height: 44px;
-    border: 1px solid #d5ccc4;
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    margin-top: -2px;
     border-radius: 50%;
-
-    color: #4b2917;
-    font-size: 21px;
-    font-weight: 600;
-    text-decoration: none;
-
-    transition: all 0.25s ease;
+    background: #f1e6d8;
+    color: #8a5a2b;
 }
 
-.mang-xa-hoi a:hover {
-    background: #4b2917;
-    color: #ffffff;
-    border-color: #4b2917;
+.icon-lienhe svg {
+    width: 15px;
+    height: 15px;
 }
 
 /* Thanh bản quyền */
 .ban-quyen {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 55px;
-    padding: 12px 20px;
-
+    width: 100%;
+    padding: 16px 24px;
     background: #001F3F;
-    color: #c6a58d;
+    color: #d8c3b0;
     text-align: center;
-    box-sizing: border-box;
 }
 
 .ban-quyen p {
     margin: 0;
-    font-size: 14px;
-    line-height: 1.7;
+    font-size: 13.5px;
+    line-height: 1.6;
+    letter-spacing: 0.3px;
 }
 
 .ban-quyen strong {
-    color: #d7a36d;
+    color: #fdc86e;
 }
 
-/* Máy tính bảng */
-@media (max-width: 1000px) {
+/* Responsive */
+@media (max-width: 960px) {
     .chantrang-noidung {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 40px;
-        padding: 45px 5%;
+        gap: 36px;
+        padding: 44px 24px;
     }
 
     .lienhe {
         grid-column: 1 / -1;
-    }
-
-    .danh-muc-banh {
-        justify-content: flex-start;
+        padding-top: 12px;
+        border-top: 1px solid #ede4d8;
     }
 }
 
-/* Điện thoại */
 @media (max-width: 600px) {
+    .danh-muc-inner {
+        justify-content: flex-start;
+        padding: 14px 16px;
+    }
+
     .chantrang-noidung {
-        grid-template-columns: minmax(0, 1fr);
-        gap: 35px;
-        padding: 35px 22px;
+        grid-template-columns: 1fr;
+        gap: 32px;
+        padding: 36px 20px;
     }
 
     .lienhe {
         grid-column: auto;
     }
-
-    .cot-footer h2 {
-        font-size: 18px;
-    }
-
-    .danh-muc-banh {
-        padding: 16px;
-    }
-
-    .danh-muc-banh a {
-        min-width: 90px;
-        font-size: 10px;
-    }
-
-    .ban-quyen {
-        padding: 15px;
-    }
 }
-
-            font-family: "Times New Roman", serif;
-            color: #172F50;
-            background-color: #fff8E7;
-        }
-        
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        a:hover {
-            color: #A36E35;
-        }
-
-        /* CHAN TRANG */
-        .chantrang {
-            background: linear-gradient(
-                to right,
-                #fff8E7,
-                #fff8E7
-            );
-            margin-top: 40px;
-        }
-
-        /* DUONG KE TRANG TRI */
-        .duong-ke {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding: 25px 2% 0;
-            max-width: 1250px;
-            margin: 0 auto;
-        }
-
-        .duong-ke::before,
-        .duong-ke::after {
-            content: "";
-            height: 1px;
-            background-color: #8A5A2B;
-            flex: 1;
-        }
-
-        .duong-ke span {
-            color: #8A5A2B;
-            font-size: 25px;
-        }
-
-        /* BO CUC COT & CAN GIUA MAN HINH */
-        .chantrang-noidung {
-            display: grid;
-            grid-template-columns: 1.35fr 0.9fr 1fr 1.25fr; /* Gộp lại còn 4 khối chính chuẩn xác */
-            gap: 30px;
-            padding: 35px 20px 30px;
-            align-items: start;
-            
-            /* THÊM 2 DÒNG NÀY ĐỂ CĂN GIỮA TRANG */
-            max-width: 1250px; 
-            margin: 0 auto;    
-        }
-
-        /* LOGO THE MUSE */
-        .logo-trangtri {
-            text-align: center;
-            color: #8A5A2B;
-            font-size: 28px;
-            margin-bottom: 0;
-        }
-
-        .logo {
-            font-size: 43px;
-            letter-spacing: 5px;
-            text-align: center;
-            margin: 0;
-            white-space: nowrap;
-        }
-
-        .slogan {
-            text-align: center;
-            color: #8A5A2B;
-            letter-spacing: 3px;
-            font-size: 13px;
-            margin: 8px 0 25px;
-            white-space: nowrap;
-        }
-
-        .gioithieu {
-            font-size: 17px;
-            line-height: 1.5;
-            color: #001F3F;
-            margin: 0 0 22px;
-        }
-
-        /* TIEU DE CAC COT */
-        .chantrang h2 {
-            font-size: 18px;
-            letter-spacing: 1px;
-            margin: 0 0 25px;
-            white-space: nowrap;
-        }
-
-        .chantrang h2::after {
-            content: "";
-            display: block;
-            width: 55px;
-            height: 2px;
-            background-color: #8A5A2B;
-            margin-top: 12px;
-        }
-      
-        .danhsach {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .danhsach li {
-            margin-bottom: 14px;
-            font-size: 16px;
-            line-height: 1.4;
-        }
-
-        .danhsach li::before {
-            content: "›";
-            color: #8A5A2B;
-            font-size: 25px;
-            margin-right: 12px;
-            vertical-align: -2px;
-        }
-      
-        .mang-xa-hoi {
-            display: flex;
-            gap: 14px;
-            flex-wrap: wrap;
-        }
-
-        .mang-xa-hoi a {
-            width: 43px;
-            height: 43px;
-            border: 1px solid #8A5A2B;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #805327;
-            font-family: Arial, sans-serif;
-            font-size: 19px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .mang-xa-hoi a:hover {
-            background-color: #001F3F;
-            color: #fff8E7;
-            transform: translateY(-4px);
-        }
-
-        /* THONG TIN LIEN HE */
-        .lienhe p {
-            font-size: 16px;
-            line-height: 1.5;
-            margin: 0 0 13px;
-            overflow-wrap: anywhere;
-        }
-
-        .icon-lienhe {
-            display: inline-block;
-            color: #8A5A2B;
-            font-family: Arial, sans-serif;
-            font-size: 18px;
-            width: 27px;
-            margin-right: 5px;
-        }
-      
-        .tieu-de-app {
-            font-size: 15px !important;
-            font-weight: bold;
-            margin-top: 25px !important;
-            margin-bottom: 12px !important;
-        }
-
-        .ung-dung {
-            display: flex;
-            gap: 7px;
-            flex-wrap: wrap;
-        }
-
-        .nut-app {
-            background-color: #001F3F;
-            color: white;
-            border-radius: 5px;
-            padding: 7px 9px;
-            font-family: Arial, sans-serif;
-            font-size: 10px;
-            line-height: 1.4;
-            display: inline-block;
-        }
-
-        .nut-app strong {
-            display: block;
-            font-size: 13px;
-        }
-
-        .nut-app:hover {
-            color: white;
-            background-color: #333;
-        }
-      
-        .cot-anh {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .cot-anh img {
-            width: 100%;
-            max-width: 260px;
-            height: auto;
-            object-fit: contain;
-            mix-blend-mode: multiply;
-            transition: 0.4s;
-        }
-
-        .cot-anh img:hover {
-            transform: scale(1.04);
-        }
-      
-        .ban-quyen {
-            background-color: #001F3F;
-            color: #fff8E7;
-            padding: 20px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            
-            /* Can giữa phần nội dung bản quyền */
-            max-width: 1250px;
-            margin: 0 auto;
-            padding-left: 20px;
-            padding-right: 20px;
-        }
-
-        .ban-quyen p {
-            margin: 0;
-            font-size: 15px;
-        }
-
-        .loi-chuc {
-            font-size: 18px !important;
-            font-style: italic;
-        }
-        
-        @media (max-width: 1100px) {
-            .chantrang-noidung {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-                gap: 35px;
-            }
-
-            .cot-anh {
-                grid-column: span 2;
-            }
-        }
-        
-        @media (max-width: 600px) {
-            .chantrang-noidung {
-                grid-template-columns: 1fr;
-                gap: 35px;
-                padding: 30px 20px;
-            }
-
-            .cot-anh {
-                grid-column: auto;
-            }
-
-            .ban-quyen {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
-
-        
-/* Thu gọn danh sách liên kết ở footer */
-.lien-ket-nhanh .danhsach {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-/* Bỏ đường kẻ dưới mỗi liên kết */
-.lien-ket-nhanh .danhsach li {
-    border-bottom: none !important;
-    margin: 0;
-    padding: 0;
-}
-
-/* Thu nhỏ khoảng cách giữa các dòng */
-.lien-ket-nhanh .danhsach a {
-    display: block;
-    padding: 5px 0;
-    margin: 0;
-    line-height: 1.5;
-    text-decoration: none;
-}
-
-/* Xóa dấu mũi tên được thêm bằng CSS */
-.lien-ket-nhanh .danhsach li::before,
-.lien-ket-nhanh .danhsach li::after,
-.lien-ket-nhanh .danhsach a::before,
-.lien-ket-nhanh .danhsach a::after {
-    content: none !important;
-    display: none !important;
-}
-
-   

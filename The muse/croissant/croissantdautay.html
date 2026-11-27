@@ -1,100 +1,399 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Croissant dâu tây</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <title>Croissant dâu tây</title>
 
-<!-- CSS -->
-<link rel="stylesheet" href="../header.css"> 
-<link rel="stylesheet" href="../banh.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500;700;800&display=swap" rel="stylesheet">
 
-<!-- JavaScript -->
-<script src="../float.js" defer></script>
-<script src="../header.js" defer></script> 
+    <!-- CSS -->
+    <link rel="stylesheet" href="../header.css">
+    <link rel="stylesheet" href="../banh.css">
+
+    <!-- JavaScript -->
+    <script src="../float.js" defer></script>
+    <script src="../header.js" defer></script>
 </head>
 
 <body>
 
-<!-- THÊM CHỖ CHỨA HEADER -->
-<div id="site-header"></div> 
+    <!-- CHỖ CHỨA HEADER -->
+    <div id="site-header"></div>
 
-<!-- CHI TIẾT BÁNH -->
-<div class="product">
-    <img class="main-img" src="https://cdn.prod.website-files.com/649249d29a20bd6bc3deac48/6a45b8236752bb28f2776279_3700000259_Strawberry%20Croissant-p-1080.png" alt="Croissant dâu tây">
+    <!-- THANH ĐƯỜNG DẪN -->
+    <nav class="breadcrumb" aria-label="Đường dẫn">
+        <div class="breadcrumb-inner">
+            <a href="../trangchu.html">Trang chủ</a>
+            <span>/</span>
+            <a href="../sanpham.html">Sản phẩm</a>
+            <span>/</span>
+            <a href="../sanpham.html#croissant">Bánh Croissant</a>
+        </div>
+    </nav>
 
-    <div class="info">
-        <h1>Croissant dâu tây</h1>
-        <p class="price" id="price">40,000 VND</p>
-        
-        <p>Độ giòn xốp thơm bơ của vỏ bánh Croissant hòa quyện hoàn hảo cùng vị béo mịn của lớp kem tươi và cái chua ngọt thanh mát từ những quả dâu tây tươi mọng.</p>
+    <!-- CHI TIẾT BÁNH -->
+    <div class="product" data-id="croissantdautay">
 
-       
+        <img
+            class="main-img"
+            src="https://cdn.prod.website-files.com/649249d29a20bd6bc3deac48/6a45b8236752bb28f2776279_3700000259_Strawberry%20Croissant-p-1080.png"
+            alt="Croissant dâu tây"
+        >
 
-        <p>Số lượng:
-            <button onclick="doiSL(-1)">−</button>
-            <span id="sl">1</span>
-            <button onclick="doiSL(1)">+</button>
-        </p>
+        <div class="info">
 
-        <button class="buy" onclick="mua()">Thêm vào giỏ hàng</button>
-        <button class="buy" onclick="muaNgay()">Mua ngay</button>
+            <h1>Croissant dâu tây</h1>
+
+            <div class="price-box">
+                <span class="price-new" id="price"></span>
+                <span class="price-old an" id="priceOld"></span>
+                <span class="badge-sale an" id="badgeSale"></span>
+            </div>
+
+            <p class="desc">
+                Độ giòn xốp thơm bơ của vỏ bánh Croissant hòa quyện hoàn hảo cùng vị béo mịn của lớp kem tươi và cái chua ngọt thanh mát từ những quả dâu tây tươi mọng.
+            </p>
+
+            <!-- CHỌN SIZE -->
+            <div class="size-row">
+                <label for="size">Size</label>
+
+                <select id="size" onchange="doiGia()">
+                    <option value="40000" selected>60g</option>
+                    <option value="60000">100g</option>
+                </select>
+            </div>
+
+            <!-- KHUNG MUA HÀNG -->
+            <div class="buy-box">
+
+                <div class="buy-row">
+
+                    <div class="qty">
+                        <button
+                            type="button"
+                            onclick="doiSL(-1)"
+                            aria-label="Giảm số lượng"
+                        >−</button>
+
+                        <span id="sl">1</span>
+
+                        <button
+                            type="button"
+                            onclick="doiSL(1)"
+                            aria-label="Tăng số lượng"
+                        >+</button>
+                    </div>
+
+                    <button
+                        type="button"
+                        class="btn btn-cart"
+                        onclick="mua()"
+                    >
+                        Thêm vào giỏ hàng
+                    </button>
+
+                </div>
+
+                <div class="buy-row">
+                    <button
+                        type="button"
+                        class="btn btn-now"
+                        onclick="muaNgay()"
+                    >
+                        Mua ngay <span aria-hidden="true">→</span>
+                    </button>
+                </div>
+
+            </div>
+        </div>
     </div>
-</div>
 
-<!-- THÔNG TIN BÁNH -->
-<div class="details">
-    <h2>Mô tả sản phẩm</h2>
-    <p>Bánh Croissant dâu tây là món bánh ngọt hấp dẫn, kết hợp giữa lớp vỏ ngàn lớp giòn rụm thơm bơ, nhân kem tươi béo mịn và những quả dâu tây tươi mọng chua ngọt thanh mát.</p>
+    <!-- MÔ TẢ VÀ BÌNH LUẬN -->
+    <section class="review-section">
 
-    <h3>Cấu trúc bánh:</h3>
-    <ul>
-        <li>Lớp vỏ Croissant ngàn lớp giòn rụm thơm bơ, được nướng chín vàng ươm, kẹp trọn lớp kem tươi béo mịn cùng những quả dâu tây đỏ mọng và phủ lớp đường bột mịn màng trên bề mặt.</li>
-        <li>Phần nhân kem dâu tây sánh mịn, bùi béo tuôn trào bên trong, cân bằng hoàn hảo độ giòn của vỏ bánh và để lại hậu vị ngọt dịu, cuốn hút.</li>
-        <li>Điểm xuyết trên bề mặt là lớp kem phủ và những quả dâu tây nghiền nhỏ, mang đến hương thơm lừng, vị bùi ngậy đặc trưng và điểm nhấn thị giác đầy cuốn hút.</li>
-    </ul>
+        <!-- THANH TAB -->
+        <div class="review-tabs">
 
-    <h3>Hướng dẫn sử dụng:</h3>
-    <ul>
-        <li>Bảo quản bánh trong hộp kín ở ngăn mát tủ lạnh, duy trì nhiệt độ từ 2–5°C để giữ trọn độ tươi ngon của phần nhân kem dâu tây</li>
-        <li>Để cảm nhận trọn vẹn độ giòn rụm của vỏ bánh ngàn lớp và vị ngon của nhân kem, nên thưởng thức bánh trong vòng 24 giờ kể từ khi mua.</li>
-        <li>Tránh để bánh ở nhiệt độ phòng quá 2 giờ, hạn chế tiếp xúc trực tiếp với ánh nắng và không nên cấp đông vì có thể làm thay đổi kết cấu của vỏ bánh ngàn lớp và nhân kem dâu tây.</li>
-    </ul>
-</div>
+            <button
+                type="button"
+                class="review-tab active"
+                onclick="chuyenTab('description', this)"
+            >
+                MÔ TẢ CHUNG
+            </button>
 
-<!-- SẢN PHẨM LIÊN QUAN -->
-<div class="related">
-    <h2>Sản phẩm liên quan</h2>
+            <button
+                type="button"
+                class="review-tab"
+                onclick="chuyenTab('comments', this)"
+            >
+                BÌNH LUẬN
+            </button>
 
-    <div class="products">
-        <div class="card">
-            <a href="croissantxoanocnhanhatdecuoi.html"><img src="https://cdn.prod.website-files.com/649249d29a20bd6bc3deac48/6a46975f52af1711c7dc1600_3700000836_Pistachio%20Spiral%20Croissant-p-1080.png" alt="bánh a"></a>
-            <h3> Croissant xoắn ốc nhân hạt dẻ cười </h3>
-            <p>35,000 VND</p>
         </div>
 
-        <div class="card">
-            <a href="croissantdetnhanhodao.html"><img src="https://cdn.prod.website-files.com/649249d29a20bd6bc3deac48/6a45b8828cc62e907ddd502d_3700000241_Pecan%20Croissant%20Flattie-p-1080.png" alt="bánh b"></a>
-            <h3>Croissant dẹt nhân hồ đào </h3>
-            <p>38,000 VND</p>
+        <!-- NỘI DUNG MÔ TẢ -->
+        <div class="review-panel active" id="description">
+
+            <div class="details-card">
+
+                <p>
+                    Bánh Croissant dâu tây là món bánh ngọt hấp dẫn, kết hợp giữa lớp vỏ ngàn lớp giòn rụm thơm bơ, nhân kem tươi béo mịn và những quả dâu tây tươi mọng chua ngọt thanh mát.
+                </p>
+
+                <h3>Cấu trúc bánh:</h3>
+
+                <ul>
+                    <li>
+                        Lớp vỏ Croissant ngàn lớp giòn rụm thơm bơ, được nướng chín vàng ươm, kẹp trọn lớp kem tươi béo mịn cùng những quả dâu tây đỏ mọng và phủ lớp đường bột mịn màng trên bề mặt.
+                    </li>
+
+                    <li>
+                        Phần nhân kem dâu tây sánh mịn, bùi béo tuôn trào bên trong, cân bằng hoàn hảo độ giòn của vỏ bánh và để lại hậu vị ngọt dịu, cuốn hút.
+                    </li>
+
+                    <li>
+                        Điểm xuyết trên bề mặt là lớp kem phủ và những quả dâu tây nghiền nhỏ, mang đến hương thơm lừng, vị bùi ngậy đặc trưng và điểm nhấn thị giác đầy cuốn hút.
+                    </li>
+                </ul>
+
+                <h3>Hướng dẫn sử dụng:</h3>
+
+                <ul>
+                    <li>
+                        Bảo quản bánh trong hộp kín ở ngăn mát tủ lạnh, duy trì nhiệt độ từ 2–5°C để giữ trọn độ tươi ngon của phần nhân kem dâu tây
+                    </li>
+
+                    <li>
+                        Để cảm nhận trọn vẹn độ giòn rụm của vỏ bánh ngàn lớp và vị ngon của nhân kem, nên thưởng thức bánh trong vòng 24 giờ kể từ khi mua.
+                    </li>
+
+                    <li>
+                        Tránh để bánh ở nhiệt độ phòng quá 2 giờ, hạn chế tiếp xúc trực tiếp với ánh nắng và không nên cấp đông vì có thể làm thay đổi kết cấu của vỏ bánh ngàn lớp và nhân kem dâu tây.
+                    </li>
+                </ul>
+
+            </div>
         </div>
 
-        <div class="card">
-            <a href="croissant.html"><img src="https://cdn.prod.website-files.com/649249d29a20bd6bc3deac48/6a548dd6e92c95e5de77d0d0_6a45c2408e13312e04f1ef90_3700000162_Croissant.png" alt="bánh c"></a>
-            <h3> Croissant</h3>
-            <p>25,000 VND</p>
+        <!-- NỘI DUNG BÌNH LUẬN -->
+        <div class="review-panel" id="comments">
+
+            <!-- ĐÁNH GIÁ TRUNG BÌNH -->
+            <div class="rating-summary">
+
+                <div class="rating-average">
+
+                    <strong id="averageRating">0.0</strong>
+
+                    <div class="rating-stars" id="averageStars">
+                        ☆☆☆☆☆
+                    </div>
+
+                    <span id="ratingCount">0 đánh giá</span>
+
+                </div>
+
+            </div>
+
+            <!-- FORM ĐÁNH GIÁ -->
+            <div class="review-form">
+
+                <h3>Viết đánh giá của bạn</h3>
+
+                <label>Đánh giá sao:</label>
+
+                <div class="star-picker">
+
+                    <input type="radio" name="rating" id="star5" value="5">
+                    <label for="star5">★</label>
+
+                    <input type="radio" name="rating" id="star4" value="4">
+                    <label for="star4">★</label>
+
+                    <input type="radio" name="rating" id="star3" value="3">
+                    <label for="star3">★</label>
+
+                    <input type="radio" name="rating" id="star2" value="2">
+                    <label for="star2">★</label>
+
+                    <input type="radio" name="rating" id="star1" value="1">
+                    <label for="star1">★</label>
+
+                </div>
+
+                <label for="reviewName">Tên của bạn:</label>
+
+                <input
+                    type="text"
+                    id="reviewName"
+                    placeholder="Nhập tên của bạn"
+                >
+
+                <label for="reviewContent">Nội dung bình luận:</label>
+
+                <textarea
+                    id="reviewContent"
+                    rows="4"
+                    placeholder="Chia sẻ cảm nhận của bạn..."
+                ></textarea>
+
+                <button
+                    type="button"
+                    class="submit-review"
+                    onclick="dangBinhLuan()"
+                >
+                    ĐĂNG BÌNH LUẬN
+                </button>
+
+                <p id="reviewMessage"></p>
+
+            </div>
+
+            <!-- DANH SÁCH BÌNH LUẬN -->
+            <div class="review-list">
+
+                <h3>Đánh giá từ khách hàng</h3>
+
+                <div id="reviewList"></div>
+
+            </div>
+
         </div>
 
-        <div class="card">
-            <a href="croissantsocola.html"><img src="https://cdn.prod.website-files.com/649249d29a20bd6bc3deac48/6a45c2bcb85541162d5929f9_3700000140_Chocolate%20Croissant-p-1080.png" alt="bánh d"></a>
-            <h3>Croissant socola</h3>
-            <p>32,000 VND</p>
-        </div>
-    </div>
-</div>
+    </section>
 
-<script src="../chitietsanpham.js"></script>
+    <!-- SẢN PHẨM LIÊN QUAN -->
+    <section class="related">
+
+        <h2>Sản phẩm liên quan</h2>
+
+        <div class="products">
+
+            <!-- SẢN PHẨM 1 -->
+            <div class="card" data-sizes="60g=32000; 100g=48000">
+                <a href="croissantsocola.html">
+                    <img
+                        src="https://cdn.prod.website-files.com/649249d29a20bd6bc3deac48/6a45c2bcb85541162d5929f9_3700000140_Chocolate%20Croissant-p-1080.png"
+                        alt="Croissant socola"
+                    >
+                </a>
+
+                <div class="card-body">
+                    <div class="card-pick">
+                        <h3>Croissant socola</h3>
+                    </div>
+                    <p class="gia"></p>
+                </div>
+            </div>
+
+            <!-- SẢN PHẨM 2 -->
+            <div class="card" data-sizes="60g=35000; 100g=52000">
+                <a href="croissanttoivaphomai.html">
+                    <img
+                        src="https://cdn.prod.website-files.com/649249d29a20bd6bc3deac48/6a45c180284a7ed709e0194b_3700000173_Garlic%20%26%20Cheese%20Croissant-p-1080.png"
+                        alt="Croissant tỏi và phô mai"
+                    >
+                </a>
+
+                <div class="card-body">
+                    <div class="card-pick">
+                        <h3>Croissant tỏi và phô mai</h3>
+                    </div>
+                    <p class="gia"></p>
+                </div>
+            </div>
+
+            <!-- SẢN PHẨM 3 -->
+            <div class="card" data-sizes="60g=38000; 100g=55000">
+                <a href="croissantdetnhanhodao.html">
+                    <img
+                        src="https://cdn.prod.website-files.com/649249d29a20bd6bc3deac48/6a45b8828cc62e907ddd502d_3700000241_Pecan%20Croissant%20Flattie-p-1080.png"
+                        alt="Croissant dẹt nhân hồ đào"
+                    >
+                </a>
+
+                <div class="card-body">
+                    <div class="card-pick">
+                        <h3>Croissant dẹt nhân hồ đào</h3>
+                    </div>
+                    <p class="gia"></p>
+                </div>
+            </div>
+
+            <!-- SẢN PHẨM 4 -->
+            <div class="card" data-sizes="60g=25000; 100g=40000">
+                <a href="croissant.html">
+                    <img
+                        src="https://cdn.prod.website-files.com/649249d29a20bd6bc3deac48/6a548dd6e92c95e5de77d0d0_6a45c2408e13312e04f1ef90_3700000162_Croissant.png"
+                        alt="Croissant"
+                    >
+                </a>
+
+                <div class="card-body">
+                    <div class="card-pick">
+                        <h3>Croissant</h3>
+                    </div>
+                    <p class="gia"></p>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- KHUNG GIỎ HÀNG TRƯỢT BÊN PHẢI -->
+    <div class="cd-overlay" id="cartOverlay"></div>
+
+    <aside
+        class="cd-drawer"
+        id="cartDrawer"
+        aria-label="Giỏ hàng"
+        aria-hidden="true"
+    >
+
+        <div class="cd-head">
+
+            <button
+                class="cd-back"
+                id="cartClose"
+                type="button"
+                aria-label="Đóng giỏ hàng"
+            >
+                ←
+            </button>
+
+            <h2>GIỎ HÀNG</h2>
+
+        </div>
+
+        <div class="cd-items" id="cartItems"></div>
+
+        <div class="cd-foot">
+
+            <div class="cd-row">
+                <span>Số lượng</span>
+                <span id="cartCountText">0 sản phẩm</span>
+            </div>
+
+            <div class="cd-row cd-big">
+                <span>Tổng thanh toán</span>
+                <span id="cartTotal">0VND</span>
+            </div>
+
+            <a class="cd-go" href="../giohang.html">
+                Xem giỏ hàng →
+            </a>
+
+        </div>
+
+    </aside>
+
+    <!-- JS PHẢI NẰM SAU KHUNG GIỎ HÀNG -->
+    <script src="../chitietsanpham.js"></script>
+
 </body>
 </html>

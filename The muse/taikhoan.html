@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Trang cá nhân – The Muse Bakery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="header.css">
+  <link rel="stylesheet" href="footer.css">
+  <link rel="stylesheet" href="taikhoan.css">
+
+</head>
+<body>
+  <div id="site-header"></div>
+<script src="header.js"></script>
+
+<!-- Bộ icon dùng chung -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4" fill="currentColor" stroke="none"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7z" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-bag" viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11 12 3l9 8v10h-6v-6H9v6H3z" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-home-o" viewBox="0 0 24 24"><path d="M4 11 12 4l8 7v9h-5v-6H9v6H4z"/></symbol>
+  <symbol id="i-box" viewBox="0 0 24 24"><path d="M12 3 4 7v10l8 4 8-4V7z"/><path d="m4 7 8 4 8-4M12 11v10"/></symbol>
+  <symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></symbol>
+  <symbol id="i-logout" viewBox="0 0 24 24"><path d="M9 4H5v16h4M16 8l4 4-4 4M20 12H9"/></symbol>
+  <symbol id="i-pencil" viewBox="0 0 24 24"><path d="m4 20 1-4L16 5l3 3L8 19z"/><path d="m14 7 3 3"/></symbol>
+  <symbol id="i-cart" viewBox="0 0 24 24"><path d="M2 3h3l2.5 12h11L21 7H6"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M6 3h8l5 5v13H6z"/><path d="M14 3v5h5M9 13h7M9 17h7"/></symbol>
+  <symbol id="i-ticket" viewBox="0 0 24 24"><path d="M3 8a2 2 0 0 0 2-2h14a2 2 0 0 0 2 2v3a2 2 0 0 0 0 4v3a2 2 0 0 0-2 2H5a2 2 0 0 0-2-2v-3a2 2 0 0 0 0-4z" transform="rotate(-20 12 12) scale(.9) translate(1.3 1.3)"/></symbol>
+  <symbol id="i-clip" viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4h6v3H9zM9 12h6M9 16h6"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v2"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+  <symbol id="i-crown" viewBox="0 0 24 24"><path d="m3 8 4.5 4L12 5l4.5 7L21 8l-2 11H5z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4.5 4.5L19 7"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+</svg>
+
+<header class="topbar">
+  
+
+<main class="page">
+  <div class="breadcrumb">
+    <a href="trangchu.html">Trang chủ</a>
+    <svg class="ic xs"><use href="#i-chev"/></svg>
+    <span>Trang cá nhân</span>
+</div>
+  <div class="layout">
+    <!-- Sidebar -->
+    <aside class="card sidebar">
+      <div class="avatar lg"><svg class="ic fill"><use href="#i-user"/></svg></div>
+      <h2 class="js-name">Trang123</h2>
+      <p class="muted js-email">trang123@gmail.com</p>
+
+      <ul class="menu" id="sideMenu">
+        <li><button class="menu-item active" data-target="profile"><svg class="ic fill"><use href="#i-home"/></svg>Trang cá nhân</button></li>
+        <li class="sep"></li>
+        <li><button class="menu-item" data-target="tier"><svg class="ic"><use href="#i-crown"/></svg>Hạng thành viên</button></li>
+        <li><button class="menu-item" data-target="orders"><svg class="ic"><use href="#i-box"/></svg>Đơn hàng của tôi</button></li>
+        <li><button class="menu-item" data-target="settings"><svg class="ic"><use href="#i-gear"/></svg>Cài đặt tài khoản</button></li>
+        <li><button class="menu-item" id="logoutBtn"><svg class="ic"><use href="#i-logout"/></svg>Đăng xuất</button></li>
+      </ul>
+    </aside>
+
+    <!-- Nội dung -->
+    <div class="content">
+      <section class="card hero">
+        <div class="avatar xl">
+          <svg class="ic fill"><use href="#i-user"/></svg>
+          <button class="avatar-edit" id="avatarEdit" aria-label="Đổi ảnh đại diện"><svg class="ic sm"><use href="#i-pencil"/></svg></button>
+          <input type="file" id="avatarInput" accept="image/*" hidden>
+        </div>
+        <div class="hero-info">
+          <h1 class="js-name">Trang123</h1>
+          <p class="js-email">trang123@gmail.com</p>
+          <span class="tag">Thành viên</span>
+        </div>
+        <button class="btn-outline" id="editProfile"><svg class="ic sm"><use href="#i-pencil"/></svg>Chỉnh sửa hồ sơ</button>
+      </section>
+
+      <section class="stats">
+        <div class="card stat"><svg class="ic xl-ic"><use href="#i-cart"/></svg><div><b>5</b><span>Đơn hàng</span></div></div>
+        <div class="card stat"><svg class="ic xl-ic"><use href="#i-doc"/></svg><div><b>12</b><span>Sản phẩm đã mua</span></div></div>
+        <div class="card stat"><svg class="ic xl-ic"><use href="#i-ticket"/></svg><div><b>2</b><span>Ưu đãi khả dụng</span></div></div>
+      </section>
+
+      <section class="card panel tier" id="tier">
+        <header class="panel-head">
+          <h3><svg class="ic"><use href="#i-crown"/></svg>Hạng thành viên</h3>
+          <span class="muted tier-points"><b id="tierPoints">0</b> điểm</span>
+        </header>
+
+        <div class="tier-body">
+          <div class="tier-now">
+            <span class="tier-badge" id="tierBadge"><svg class="ic fill"><use href="#i-crown"/></svg></span>
+            <div>
+              <strong id="tierName">Thành viên</strong>
+              <p class="muted" id="tierHint"></p>
+            </div>
+          </div>
+
+          <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="tierBar">
+            <span id="tierFill"></span>
+          </div>
+
+          <ol class="steps" id="tierSteps"></ol>
+
+          <div class="perks">
+            <h4>Quyền lợi hạng <span id="perkTier"></span></h4>
+            <ul id="perkList"></ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="card panel" id="orders">
+        <header class="panel-head">
+          <h3><svg class="ic"><use href="#i-clip"/></svg>Đơn hàng gần đây</h3>
+          <a class="link" href="#orders" id="viewAllOrders"
+   aria-expanded="false">
+    Xem tất cả
+    <svg class="ic sm"><use href="#i-arrow"/></svg>
+</a>
+        </header>
+        <a class="order" href="#">
+          <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=200&h=200&fit=crop" alt="Bánh ChocoFlan">
+          <div class="order-info">
+            <strong>Bánh ChocoFlan</strong>
+            <p class="muted">Đặt ngày 25/11/2025 <i>•</i> Tổng tiền: 55.000₫</p>
+          </div>
+          <span class="status">Đang xử lý</span>
+          <svg class="ic"><use href="#i-chev"/></svg>
+        </a>
+      </section>
+
+      <section class="card panel" id="settings">
+        <header class="panel-head">
+          <h3><svg class="ic fill"><use href="#i-gear"/></svg>Cài đặt tài khoản</h3>
+        </header>
+        <button class="row" data-modal="pwModal"><svg class="ic"><use href="#i-lock"/></svg><span>Đổi mật khẩu</span><svg class="ic"><use href="#i-chev"/></svg></button>
+        <button class="row" data-modal="emailModal"><svg class="ic"><use href="#i-mail"/></svg><span>Quản lý email</span><svg class="ic"><use href="#i-chev"/></svg></button>
+      </section>
+    </div>
+  </div>
+</main>
+
+<!-- Modal: chỉnh sửa hồ sơ -->
+<div class="modal" id="profileModal" role="dialog" aria-modal="true" aria-labelledby="pt" hidden>
+  <form class="modal-box" data-form="profile">
+    <h3 id="pt">Chỉnh sửa hồ sơ</h3>
+    <label>Tên hiển thị<input name="name" required maxlength="30"></label>
+    <label>Email<input name="email" type="email" required></label>
+    <div class="modal-actions"><button type="button" class="btn-outline" data-close>Hủy</button><button class="btn-fill">Lưu thay đổi</button></div>
+  </form>
+</div>
+
+<!-- Modal: đổi mật khẩu -->
+<div class="modal" id="pwModal" role="dialog" aria-modal="true" aria-labelledby="pwt" hidden>
+  <form class="modal-box" data-form="password">
+    <h3 id="pwt">Đổi mật khẩu</h3>
+    <label>Mật khẩu hiện tại<input name="old" type="password" required></label>
+    <label>Mật khẩu mới<input name="new" type="password" minlength="6" required></label>
+    <label>Nhập lại mật khẩu mới<input name="confirm" type="password" required></label>
+    <p class="error" id="pwError" role="alert"></p>
+    <div class="modal-actions"><button type="button" class="btn-outline" data-close>Hủy</button><button class="btn-fill">Cập nhật mật khẩu</button></div>
+  </form>
+</div>
+
+<!-- Modal: quản lý email -->
+<div class="modal" id="emailModal" role="dialog" aria-modal="true" aria-labelledby="et" hidden>
+  <form class="modal-box" data-form="email">
+    <h3 id="et">Quản lý email</h3>
+    <label>Email nhận thông báo<input name="email" type="email" required></label>
+    <label class="check"><input type="checkbox" name="promo" checked> Nhận tin ưu đãi và sản phẩm mới</label>
+    <div class="modal-actions"><button type="button" class="btn-outline" data-close>Hủy</button><button class="btn-fill">Lưu email</button></div>
+  </form>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="footer.js"></script>
+<script src="header.js"></script>
+<script src="taikhoan.js"></script>
+</body>
+</html>

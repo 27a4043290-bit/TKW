@@ -3,237 +3,218 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Trang chủ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="header.css">
     <link rel="stylesheet" href="footer.css">
     <link rel="stylesheet" href="trangchu.css">
-
+    <link rel="stylesheet" href="sanpham.css">
+    <link rel="stylesheet" href="popup.css">
 </head>
 <body>
-    <!-- Banner chính -->
-    
-<!-- Banner trượt -->
-<section class="banner-slider" aria-label="Banner The Muse">
-    <div class="banner-track">
+    <div id="site-header"></div>
+    <script src="header.js"></script>
 
-        <!-- Banner 1: ảnh hiển thị đầu tiên -->
-        <div class="banner-slide active"
-             style="background-image:
-             linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
-             url('https://cdn.upanhlaylink.com/i/ClH8AYbi.png');">
 
-            <div class="banner-content">
-                <h1>A Little Taste of Inspiration</h1>
-                <p>Ngọt ngào trong vị, dịu dàng trong tim</p>
-                <a href="sanppham.html#mousse" class="btn-explore">
-                    KHÁM PHÁ SẢN PHẨM
-                </a>
+    <!-- Popup -->
+    <div id="popup-container"></div>
+
+
+    <!-- Banner trượt tự động -->
+    <section class="banner-slider" aria-label="Banner The Muse">
+        <div class="banner-track">
+
+
+            <!-- Banner 1 -->
+            <div class="banner-slide banner-intro active"
+                 style="background-image:
+                 linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+                 url('https://cdn.upanhlaylink.com/i/ClH8AYbi.png');">
+
+
+                <span class="spark spark-1">✦</span>
+                <span class="spark spark-2">✧</span>
+                <span class="spark spark-3">✦</span>
+                <span class="spark spark-4">✧</span>
+
+
+                <div class="banner-content">
+                    <span class="banner-eyebrow">The Muse Patisserie</span>
+                    <h1>A Little Taste of <em>Inspiration</em></h1>
+                    <p>Ngọt ngào trong vị, dịu dàng trong tim</p>
+
+
+                    <div class="banner-actions">
+                        <a href="sanppham.html#mousse" class="btn-explore">KHÁM PHÁ SẢN PHẨM</a>
+                        <a href="gioithieu.html" class="btn-ghost">Về chúng tôi</a>
+                    </div>
+                </div>
             </div>
+
+
+            
+<!-- Banner 2: Winter Vibes -->
+<div class="banner-slide banner-winter"
+     onclick="window.location.href='uudai.html'"
+     style="
+       background-image: url('https://cdn.phototourl.com/anon/2026-11-27-ef8d6751-0c0e-4900-a0d0-039804a3c64e.jpg');
+       background-size: cover;
+       background-position: center 42%;
+       background-repeat: no-repeat;
+       cursor: pointer;
+     "
+     role="link"
+     aria-label="Winter Vibes - Sale 50% và Freeship">
+
+    <!-- Hiệu ứng tuyết rơi -->
+    <span class="winter-flake snow-1" aria-hidden="true">❄</span>
+    <span class="winter-flake snow-2" aria-hidden="true">❄</span>
+    <span class="winter-flake snow-3" aria-hidden="true">✧</span>
+    <span class="winter-flake snow-4" aria-hidden="true">❄</span>
+    <span class="winter-flake snow-5" aria-hidden="true">✦</span>
+    <span class="winter-flake snow-6" aria-hidden="true">❄</span>
+    <span class="winter-flake snow-7" aria-hidden="true">✧</span>
+    <span class="winter-flake snow-8" aria-hidden="true">❄</span>
+
+</div>
+
+
+           
+<!-- Banner 3: Black Friday -->
+<div class="banner-slide banner-blackfriday"
+     onclick="window.location.href='uudai.html'"
+     style="
+       background-image: url('https://cdn.phototourl.com/anon/2026-11-27-f0278433-b968-423a-ba3a-7fce9bca47e2.jpg');
+       background-size: cover;
+       background-position: center center;
+       background-repeat: no-repeat;
+       cursor: pointer;
+     "
+     role="link"
+     aria-label="Black Friday - Săn voucher siêu hời">
+
+    <!-- Hiệu ứng ánh sao -->
+    <span class="spark spark-1" aria-hidden="true">✦</span>
+    <span class="spark spark-2" aria-hidden="true">✧</span>
+    <span class="spark spark-3" aria-hidden="true">✦</span>
+    <span class="spark spark-4" aria-hidden="true">✧</span>
+    <span class="spark spark-5" aria-hidden="true">✦</span>
+    <span class="spark spark-6" aria-hidden="true">✧</span>
+
+</div>
+
+
+
+        </div><!-- hết banner-track -->
+
+
+        <!-- Ẩn nút mũi tên chuyển thủ công (giữ lại để không gây lỗi nếu trangchu.js có gọi tới) -->
+        <button class="banner-arrow prev" type="button" aria-label="Banner trước" style="display: none;">&#10094;</button>
+        <button class="banner-arrow next" type="button" aria-label="Banner tiếp theo" style="display: none;">&#10095;</button>
+
+
+        <!-- 3 chấm chỉ vị trí cho 3 banner -->
+        <div class="banner-dots">
+            <button class="banner-dot active" type="button" aria-label="Banner 1"></button>
+            <button class="banner-dot" type="button" aria-label="Banner 2"></button>
+            <button class="banner-dot" type="button" aria-label="Banner 3"></button>
         </div>
-
-        <!-- Banner 2: thay đường dẫn bằng ảnh thứ hai của bạn -->
-        <div class="banner-slide"
-             style="background-image:
-             linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
-             url('file:///d%3A/TKW-The%20Muse/The%20muse/image/banh2.jpg');">
-
-            <div class="banner-content">
-                <h1>Autumn Sweetness</h1>
-                <p>Thêm chút ngọt ngào, trọn ngày hạnh phúc</p>
-                <a href="file:///d%3A/TKW-The%20Muse/The%20muse/tintuc.html#bai/gen-z" class="btn-explore">
-                    KHÁM PHÁ BÁNH MỚI
-                </a>
-            </div>
-        </div>
-
-    </div>
-
-    <!-- Nút chuyển banner -->
-    <button class="banner-arrow prev"
-            type="button"
-            aria-label="Banner trước">
-        &#10094;
-    </button>
-
-    <button class="banner-arrow next"
-            type="button"
-            aria-label="Banner tiếp theo">
-        &#10095;
-    </button>
-
-    <!-- Các chấm chỉ vị trí -->
-    <div class="banner-dots">
-        <button class="banner-dot active"
-                type="button"
-                aria-label="Banner 1"></button>
-        <button class="banner-dot"
-                type="button"
-                aria-label="Banner 2"></button>
-    </div>
-</section>
+    </section>
 
 
     <!-- Sản phẩm nổi bật -->
     <section class="featured-section reveal-on-scroll">
         <h2>Sản phẩm nổi bật</h2>
 
-        <div class="product-grid-home">
-            <!-- Sản phẩm 1 -->
-            <div class="product-card-home">
-                <a href="file:///d%3A/TKW-The%20Muse/The%20muse/sanppham.html#mousse">
-                    <div class="thumb">
-                        <img src="https://the350f.com/wp-content/uploads/2026/04/ChocoFlan-CT-2.jpg" alt="ChocoFlan">
-                        <div class="badges-home">
-                            <span class="badge-home hot">Hot</span>
-                            <span class="badge-home new">Mới</span>
-                        </div>
-                    </div>
 
-                    <div class="info">
-                        <h3>ChocoFlan</h3>
-                        <p class="price">Giá từ: <b>55,000VND</b></p>
-                    </div>
-                </a>
-            </div>
+        <div class="grid" id="featuredGrid"></div>
 
-            <!-- Sản phẩm 2 -->
-            <div class="product-card-home">
-                <a href="file:///d%3A/TKW-The%20Muse/The%20muse/sanppham.html#mousse">
-                    <div class="thumb">
-                        <img src="https://the350f.com/wp-content/uploads/2025/05/CT-Dua-1.jpg" alt="Mousse Dưa lưới">
-                        <div class="badges-home">
-                            <span class="badge-home hot">Hot</span>
-                            <span class="badge-home new">Mới</span>
-                        </div>
-                    </div>
-
-                    <div class="info">
-                        <h3>Mousse Dưa lưới</h3>
-                        <p class="price">Giá từ: <b>65,000VND</b></p>
-                    </div>
-                </a>
-            </div>
-
-            <!-- Sản phẩm 3 -->
-            <div class="product-card-home">
-                <a href="file:///d%3A/TKW-The%20Muse/The%20muse/sanppham.html#croissant">
-                    <div class="thumb">
-                        <img src="https://cdn.prod.website-files.com/649249d29a20bd6bc3deac48/6a46975f52af1711c7dc1600_3700000836_Pistachio%20Spiral%20Croissant-p-1080.png" alt="Croissant xoắn ốc">
-                        <div class="badges-home">
-                            <span class="badge-home hot">Hot</span>
-                            <span class="badge-home new">Mới</span>
-                        </div>
-                    </div>
-
-                    <div class="info">
-                        <h3>Croissant xoắn ốc nhân hạt dẻ cười</h3>
-                        <p class="price">Giá từ: <b>35,000VND</b></p>
-                    </div>
-                </a>
-            </div>
-
-            <!-- Sản phẩm 4 -->
-            <div class="product-card-home">
-                <a href="file:///d%3A/TKW-The%20Muse/The%20muse/sanppham.html#trungthu">
-                    <div class="thumb">
-                        <img src="https://www.the350f.com/wp-content/uploads/2025/07/TT26-BN-Xa-Xiu-1-scaled.jpg" alt="Thập cẩm xá xíu">
-                        <div class="badges-home">
-                            <span class="badge-home hot">Hot</span>
-                            <span class="badge-home new">Mới</span>
-                        </div>
-                    </div>
-
-                    <div class="info">
-                        <h3>Thập cẩm xá xíu</h3>
-                        <p class="price">Giá từ: <b>95,000VND</b></p>
-                    </div>
-                </a>
-            </div>
-
-            <!-- Sản phẩm 5 -->
-            <div class="product-card-home">
-                <a href="file:///d%3A/TKW-The%20Muse/The%20muse/sanppham.html#donut">
-                    <div class="thumb">
-                        <img src="https://donutelier.co.uk/wp-content/uploads/2023/06/Fraiser_Donut.png" alt="Donut kem dâu">
-                        <div class="badges-home">
-                            <span class="badge-home hot">Hot</span>
-                        </div>
-                    </div>
-
-                    <div class="info">
-                        <h3>Donut kem dâu</h3>
-                        <p class="price">Giá từ: <b>22,000VND</b></p>
-                    </div>
-                </a>
-            </div>
-        </div>
 
         <div class="btn-more-container">
-            <a href="file:///d%3A/TKW-The%20Muse/themuse/TKW/The%20muse/sanppham.html#mousse" class="btn-more">
-                Xem thêm →
-            </a>
+            <a href="sanppham.html#mousse" class="btn-more">Xem thêm →</a>
         </div>
     </section>
+
 
     <!-- Câu chuyện thương hiệu -->
     <div class="story-card-wrapper reveal-on-scroll">
         <section class="intro-section">
             <div class="intro-text">
-                <h2>Khởi nguồn với niềm đam mê và tình yêu dành cho bánh trái</h2>
+                <span class="section-eyebrow">Câu chuyện của Muse</span>
+                <h2>Khởi nguồn với niềm đam mê và tình yêu dành cho <em>bánh trái</em></h2>
+
 
                 <p>
                     The Muse đã từng bước đặt dấu ấn đầu tiên bằng một tiệm bánh online,
                     tập trung vào dòng sản phẩm chủ đạo là bánh Mousse.
                 </p>
 
+
                 <p>
                     Với tôn chỉ “Luôn vì khách hàng”, chúng tôi chú trọng vào việc tìm kiếm
                     nguồn nguyên liệu đầu vào chất lượng, kết hợp với tay nghề điêu luyện
                     để mang đến những sản phẩm hoàn hảo nhất.
                 </p>
-<a href="gioithieu.html" class="btn-more" style="display: inline-block; margin-top: 10px;">
-                    Về chúng tôi →
-                </a>
+
+
+                <ul class="intro-tags">
+                    <li>Nguyên liệu tuyển chọn</li>
+                    <li>Tay nghề điêu luyện</li>
+                    <li>Luôn vì khách hàng</li>
+                </ul>
+
+
+                <a href="gioithieu.html" class="btn-more">Về chúng tôi →</a>
             </div>
+
 
             <div class="intro-image">
                 <img src="https://i.pinimg.com/736x/77/16/95/77169529dfee1283682a2610efdc8531.jpg" alt="Bánh The Muse">
+                <div class="intro-badge">
+                    <strong>The Muse</strong>
+                    <span>A little taste of inspiration</span>
+                </div>
             </div>
         </section>
     </div>
 
+
     <!-- Chúng tôi tự tin -->
     <section class="features-banner reveal-on-scroll">
+        <span class="section-eyebrow light">Cam kết của Muse</span>
         <h2>Chúng tôi tự tin</h2>
+
 
         <div class="features-grid">
             <div class="feature-item">
-                <div style="font-size: 32px;">🏭</div>
+                <div class="feature-icon">🏭</div>
                 <span>Nói không với nhà máy</span>
             </div>
-
             <div class="feature-item">
-                <div style="font-size: 32px;">🌿</div>
+                <div class="feature-icon">🌿</div>
                 <span>Bao tiêu sản phẩm nguyên vườn</span>
             </div>
-
             <div class="feature-item">
-                <div style="font-size: 32px;">📦</div>
+                <div class="feature-icon">📦</div>
                 <span>Đảm bảo nguồn cung ổn định suốt mùa</span>
             </div>
-
             <div class="feature-item">
-                <div style="font-size: 32px;">⭐</div>
+                <div class="feature-icon">⭐</div>
                 <span>Cam kết chất lượng cho mọi sản phẩm</span>
             </div>
         </div>
     </section>
 
+
     <!-- Tin tức - Sự kiện -->
     <section class="news-section reveal-on-scroll">
         <h2>Tin tức - Sự kiện</h2>
+
 
         <div class="news-grid">
             <div class="news-card">
@@ -242,47 +223,50 @@
                     <img src="image/mouse2.jpg" alt="News 1">
                 </div>
 
+
                 <div class="news-content">
-                
                     <a href="file:///d%3A/TKW-The%20Muse/The%20muse/tintuc.html#bai/Mouse-xu-huong" class="news-title">
                         BST Mousse The Muse: Khi nghệ thuật trở thành nguồn cảm hứng cho bánh ngọt
                     </a>
                 </div>
             </div>
 
-             <div class="news-card">
+
+            <div class="news-card">
                 <div class="news-card-img-box">
-                    <img src="file:///d%3A/TKW-The%20Muse/themuse/TKW/The%20muse/image/croissant.jpg" alt="News 2">
+                    <img src="file:///d%3A/TKW-The%20Muse/The%20muse/image/BTT2.jpg" alt="News 2">
                 </div>
 
+
                 <div class="news-content">
-                   
                     <a href="file:///d%3A/TKW-The%20Muse/The%20muse/tintuc.html#bai/BST-trung-thu" class="news-title">
                         BST Trung thu The Muse: Gói trọn vị trăng trong những tầng mousse
                     </a>
                 </div>
             </div>
 
+
             <div class="news-card">
                 <div class="news-card-img-box">
-                    <img src="file:///d%3A/TKW-The%20Muse/themuse/TKW/The%20muse/image/BTT2.jpg" alt="News 3">
+                    <img src="file:///d%3A/TKW-The%20Muse/The%20muse/image/croissant.jpg" alt="News 3">
                 </div>
 
+
                 <div class="news-content">
-                  
                     <a href="file:///d%3A/TKW-The%20Muse/The%20muse/tintuc.html#bai/croissant" class="news-title">
                         CROISSANT – MỘT CHÚT NƯỚC PHÁP CHO NGÀY MỚI
                     </a>
                 </div>
             </div>
 
+
             <div class="news-card">
                 <div class="news-card-img-box">
                     <img src="image/cake.jpg" alt="News 4">
                 </div>
 
+
                 <div class="news-content">
-                    
                     <a href="file:///d%3A/TKW-The%20Muse/The%20muse/tintuc.html#bai/mouse" class="news-title">
                         MỘT CHIẾC MOUSSE CÓ GÌ MÀ KHIẾN NGƯỜI TA “MÊ” ĐẾN VẬY?
                     </a>
@@ -291,10 +275,223 @@
         </div>
     </section>
 
+
     <script src="float.js"></script>
     <script src="footer.js"></script>
     <script src="header.js"></script>
     <script src="trangchu.js"></script>
 
+
+    <!-- Script tự động trượt banner -->
+    <script>
+    (function () {
+        const track = document.querySelector('.banner-track');
+        const slides = document.querySelectorAll('.banner-slide');
+        const dots = document.querySelectorAll('.banner-dot');
+        if (!track || slides.length <= 1) return;
+
+
+        let currentIndex = 0;
+        const total = slides.length;
+        const slideInterval = 4000; // Tự động chuyển sau mỗi 4 giây (4000ms)
+
+
+        function showSlide(index) {
+            currentIndex = (index + total) % total;
+            if (getComputedStyle(track).display === 'flex') {
+                track.style.transition = 'transform 0.6s ease-in-out';
+                track.style.transform = `translateX(-${currentIndex * 100}%)`;
+            }
+            slides.forEach((slide, i) => slide.classList.toggle('active', i === currentIndex));
+            dots.forEach((dot, i) => dot.classList.toggle('active', i === currentIndex));
+        }
+
+
+        let timer = setInterval(() => showSlide(currentIndex + 1), slideInterval);
+
+
+        dots.forEach((dot, idx) => {
+            dot.addEventListener('click', () => {
+                clearInterval(timer);
+                showSlide(idx);
+                timer = setInterval(() => showSlide(currentIndex + 1), slideInterval);
+            });
+        });
+    })();
+    </script>
+
+
+    <script>
+    window.POPUP_CHAO = {
+        mode: 'image',
+        image: 'image/popup.png',
+        alt: 'Ưu đãi đặc biệt từ The Muse',
+        closeArea: {x:83.8, y:15.5, size:8},
+        href: 'sanppham.html',
+        newTab: false,
+        autoClose: 10000,
+        delay: 1000,
+        once: 'always'
+    };
+    </script>
+    <script src="popup.js"></script>
+
+
+    <!-- Giỏ hàng trượt bên phải -->
+    <div class="overlay" id="overlay"></div>
+    <aside class="drawer" id="drawer" aria-label="Giỏ hàng">
+      <header>
+        <button class="back" id="closeCart" type="button" aria-label="Đóng giỏ hàng">←</button>
+        <h2>GIỎ HÀNG</h2>
+      </header>
+      <div class="d-items" id="dItems"></div>
+      <footer>
+        <div class="r"><span>Số lượng</span><span id="dCount">0 sản phẩm</span></div>
+        <div class="r big"><span>Tổng thanh toán</span><span id="dTotal">0VND</span></div>
+        <a class="go" href="giohang.html">Xem giỏ hàng →</a>
+      </footer>
+    </aside>
+
+
+    <script>
+    /* ===== Dữ liệu 5 sản phẩm nổi bật ===== */
+    const featured = [
+      {id:"chocoflan", name:"ChocoFlan", price:55000,
+       sizes:[{label:"20 cm",price:75000},{label:"16 cm",price:55000}],
+       img:"https://the350f.com/wp-content/uploads/2026/04/ChocoFlan-CT-2.jpg",
+       hot:true, isNew:true, page:"mousse/choco.html"},
+
+
+      {id:"mousse-dua-luoi", name:"Mousse Dưa lưới", price:65000,
+       sizes:[{label:"20 cm",price:85000},{label:"16 cm",price:65000}],
+       img:"https://the350f.com/wp-content/uploads/2025/05/CT-Dua-1.jpg",
+       hot:true, isNew:true, page:"mousse/dualuoi.html"},
+
+
+      {id:"croissant-xoan-oc", name:"Croissant xoắn ốc nhân hạt dẻ cười", price:35000,
+       sizes:[{label:"60g",price:35000},{label:"100g",price:50000}],
+       img:"https://cdn.prod.website-files.com/649249d29a20bd6bc3deac48/6a46975f52af1711c7dc1600_3700000836_Pistachio%20Spiral%20Croissant-p-1080.png",
+       hot:true, isNew:true, page:"croissant/croissantxoanocnhanhatdecuoi.html"},
+
+
+      {id:"banh-thap-cam-xa-xiu", name:"Thập cẩm xá xíu", price:95000,
+       sizes:[{label:"150g",price:95000},{label:"250g",price:155000}],
+       img:"https://www.the350f.com/wp-content/uploads/2025/07/TT26-BN-Xa-Xiu-1-scaled.jpg",
+       hot:true, isNew:true, page:"trungthu/thapcamxaxiu.html"},
+
+
+      {id:"donut-kem-dau", name:"Donut kem dâu", price:22000,
+       sizes:[{label:"6cm",price:22000},{label:"9cm",price:32000}],
+       img:"https://donutelier.co.uk/wp-content/uploads/2023/06/Fraiser_Donut.png",
+       hot:true, isNew:true, page:"donut/banhkemdau.html"}
+    ];
+
+
+    const fmt = n => n.toLocaleString("en-US") + "VND";
+    const linkOf = p => p.page || `chitietsanpham.html?id=${p.id}`;
+
+
+    document.getElementById("featuredGrid").innerHTML = featured.map(p => `
+      <article class="card">
+        <a class="thumb-link" href="${linkOf(p)}" aria-label="Xem chi tiết ${p.name}">
+          <div class="thumb">
+            <img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.remove()">
+            <div class="badges">
+              ${p.hot ? '<span class="badge hot">Hot</span>' : ''}
+              ${p.isNew ? '<span class="badge new">Mới</span>' : ''}
+            </div>
+          </div>
+        </a>
+        <div class="bottom">
+          <a class="info" href="${linkOf(p)}">
+            <h3>${p.name}</h3>
+            <p class="price">Giá từ: <b>${fmt(p.price)}</b></p>
+          </a>
+          <div class="sizes">
+            ${(p.sizes || []).map((z,i) => `
+              <button type="button" class="size ${i===0 ? 'size-a' : 'size-b'}" data-id="${p.id}" data-size="${z.label}">
+                <span class="size-label">${z.label}</span>
+                <span class="size-price">${fmt(z.price)}</span>
+              </button>`).join("")}
+          </div>
+        </div>
+        <button class="add" type="button" data-id="${p.id}">Thêm vào giỏ hàng</button>
+      </article>`).join("");
+
+
+    const getCart = () => { try { return JSON.parse(localStorage.getItem("cart") || "[]").map(x => ({...x, key: x.key || x.id})); } catch { return []; } };
+    const setCart = c => localStorage.setItem("cart", JSON.stringify(c));
+    const findProduct = id => featured.find(x => x.id === id);
+
+
+    function addToCart(p, size, price){
+      const key = p.id + (size ? "|" + size : "");
+      const cart = getCart();
+      const line = cart.find(x => x.key === key);
+      if (line) line.qty++;
+      else cart.push({key, id:p.id, name:p.name, size:size || "", price, img:p.img, qty:1});
+      setCart(cart);
+    }
+
+
+    const TRASH = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14"/></svg>';
+    const drawer = document.getElementById("drawer"), overlay = document.getElementById("overlay");
+
+
+    function renderDrawer(){
+      const cart = getCart();
+      const count = cart.reduce((s,x) => s + x.qty, 0);
+      const total = cart.reduce((s,x) => s + x.price * x.qty, 0);
+      document.getElementById("dItems").innerHTML = cart.length
+        ? cart.map(x => `
+            <div class="d-item">
+              <img src="${x.img}" alt="${x.name}">
+              <div>
+                <h3>${x.name}${x.size ? " - " + x.size : ""}</h3>
+                <div class="q">${x.qty}x <em>${fmt(x.price)}</em></div>
+              </div>
+              <button class="d-del" type="button" data-key="${x.key}" aria-label="Xóa">${TRASH}</button>
+            </div>`).join("")
+        : '<p class="d-empty">Giỏ hàng đang trống.</p>';
+      document.getElementById("dCount").textContent = count + " sản phẩm";
+      document.getElementById("dTotal").textContent = fmt(total);
+      const badge = document.getElementById("cartCount");
+      if (badge) badge.textContent = count;
+      window.dispatchEvent(new Event("cart-updated"));
+    }
+    function openDrawer(){ renderDrawer(); drawer.classList.add("open"); overlay.classList.add("open"); document.body.classList.add("lock"); }
+    function closeDrawer(){ drawer.classList.remove("open"); overlay.classList.remove("open"); document.body.classList.remove("lock"); }
+
+
+    document.addEventListener("click", e => {
+      document.querySelectorAll(".card.choosing").forEach(c => { if (!c.contains(e.target)) c.classList.remove("choosing"); });
+
+
+      const add = e.target.closest(".add");
+      if (add){
+        const card = add.closest(".card");
+        if (card.querySelector(".size")) card.classList.add("choosing");
+        else { const p = findProduct(add.dataset.id); addToCart(p, "", p.price); openDrawer(); }
+        return;
+      }
+      const size = e.target.closest(".size");
+      if (size){
+        const p = findProduct(size.dataset.id);
+        const z = p.sizes.find(z => z.label === size.dataset.size);
+        addToCart(p, z.label, z.price);
+        size.closest(".card").classList.remove("choosing");
+        openDrawer();
+        return;
+      }
+      const del = e.target.closest(".d-del");
+      if (del){ setCart(getCart().filter(x => x.key !== del.dataset.key)); renderDrawer(); return; }
+      if (e.target.closest("#openCart")){ e.preventDefault(); openDrawer(); }
+      if (e.target.closest("#closeCart") || e.target === overlay) closeDrawer();
+    });
+    document.addEventListener("keydown", e => { if (e.key === "Escape"){ closeDrawer(); document.querySelectorAll(".card.choosing").forEach(c => c.classList.remove("choosing")); } });
+    document.querySelectorAll(".card").forEach(c => c.addEventListener("mouseleave", () => c.classList.remove("choosing")));
+    renderDrawer();
+    </script>
 </body>
 </html>
+

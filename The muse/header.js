@@ -61,18 +61,40 @@ host.innerHTML = `
 
  <a class="logo" href="${basePath}index.html" aria-label="The Muse - Trang chủ"><img src="${basePath}image/logo.png" alt="The Muse"></a>
 
-  <div class="right">
+ <div class="right">
     <nav class="links" aria-label="Menu phụ">${MENU_RIGHT.map(itemHTML).join("")}</nav>
+
     <div class="tools">
-      <a class="icon-btn" id="openCart" href="giohang.html" aria-label="Giỏ hàng">${ICON.bag}<span id="cartCount" data-zero="1">0</span></a>
-      <button class="icon-btn ring search-btn" id="searchBtn" type="button" aria-label="Tìm kiếm">${ICON.search}</button>
+      <a class="icon-btn" id="openCart" href="giohang.html" aria-label="Giỏ hàng">
+        ${ICON.bag}
+        <span id="cartCount" data-zero="1">0</span>
+      </a>
+
+      <button class="icon-btn ring search-btn" id="searchBtn" type="button" aria-label="Tìm kiếm">
+        ${ICON.search}
+      </button>
+
       <div class="h-item lang">
         <button class="h-link" type="button">VN${ICON.chev}</button>
-        <div class="sub"><a href="#">VN</a><a href="#">EN</a></div>
+        <div class="sub">
+          <a href="#">VN</a>
+          <a href="#">EN</a>
+        </div>
       </div>
-      <div class="account">${ICON.user}<span><a href="javascript:void(0)" onclick="moTrangAcc('#dang-nhap')">Đăng nhập</a> <i>/</i> <a href="javascript:void(0)" onclick="moTrangAcc('#dang-ky')">Đăng ký</a></span></div>
+
+      <div class="account">
+        <a href="taikhoan.html" class="account-icon" aria-label="Trang cá nhân" title="Trang cá nhân">
+          ${ICON.user}
+        </a>
+
+        <span>
+          <a href="javascript:void(0)" onclick="moTrangAcc('#dang-nhap')">Đăng nhập</a>
+          <i>/</i>
+          <a href="javascript:void(0)" onclick="moTrangAcc('#dang-ky')">Đăng ký</a>
+        </span>
+      </div>
     </div>
-  </div>
+</div>
 
   <div class="search-bar" id="searchBar">
     <input id="searchInput" type="search" placeholder="Tìm bánh... (nhấn Enter)" aria-label="Tìm kiếm sản phẩm">

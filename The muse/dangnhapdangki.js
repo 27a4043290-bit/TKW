@@ -43,26 +43,45 @@ function dangKy() {
     success.style.display = "block";
 }
 
+
 function dangNhap() {
-    var email = document.getElementById("loginEmail").value;
+    var email = document.getElementById("loginEmail").value.trim();
     var pass = document.getElementById("loginPass").value;
 
     var error = document.getElementById("login-error");
     var success = document.getElementById("login-success");
 
+    // Lấy thông tin tài khoản đã đăng ký
+    var registeredEmail = (
+        localStorage.getItem("email") || ""
+    ).trim();
+
+    var registeredPass = localStorage.getItem("pass");
+
+    // Kiểm tra email và mật khẩu
     if (
-        email == localStorage.getItem("email") &&
-        pass == localStorage.getItem("pass")
+        email.toLowerCase() === registeredEmail.toLowerCase() &&
+        pass === registeredPass &&
+        registeredEmail !== ""
     ) {
         error.style.display = "none";
 
-        success.textContent = "Đăng nhập thành công!";
+        success.textContent = "Đăng nhập thành công! Đang chuyển đến trang cá nhân...";
         success.style.display = "block";
+
+        // Lưu trạng thái đăng nhập
+        localStorage.setItem("muse_logged_in", "true");
+        localStorage.setItem("muse_current_user_email", registeredEmail);
+
+        // Chuyển đến trang cá nhân
+        setTimeout(function () {
+            window.location.href = "taikhoan.html";
+        }, 700);
 
     } else {
         success.style.display = "none";
 
-        error.textContent = "Tên đăng nhập hoặc mật khẩu không đúng.";
+        error.textContent = "Email hoặc mật khẩu không chính xác.";
         error.style.display = "block";
     }
 }
