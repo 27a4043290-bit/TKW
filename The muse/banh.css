@@ -40,22 +40,33 @@ body.cd-lock { overflow: hidden; }   /* khoá cuộn trang khi giỏ hàng đang
 /* ===================================================
    1. THANH ĐƯỜNG DẪN
    =================================================== */
+
 .breadcrumb {
-  background: var(--sp-bar);
-  padding: calc(12px + var(--sp-header-h)) 20px 12px;
+  background: var(--sp-bar, #ffedcf);
+  padding: calc(18px + var(--sp-header-h)) 5vw 18px;
+  font-family: var(--sp-font);
+  font-size: 15px;
+  color: var(--sp-muted);
 }
+
 .breadcrumb-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  font-size: 13px;
-  color: var(--sp-muted);
+  display: flex;
+  align-items: center;
 }
+
 .breadcrumb-inner a {
-  color: var(--sp-muted);
+  color: inherit;
   text-decoration: none;
+  transition: color 0.2s;
 }
-.breadcrumb-inner a:hover { color: var(--sp-red); }
-.breadcrumb-inner span { margin: 0 10px; }
+
+.breadcrumb-inner a:hover {
+  color: var(--sp-red);
+}
+
+.breadcrumb-inner span {
+  margin: 0 8px;
+}
 
 
 
