@@ -13,11 +13,11 @@ const MENU_LEFT = [
       { label: "Quy trình làm bánh",                    href: "gioithieu.html#quy-trinh-lam-banh" },
       { label: "Không gian cửa hàng",                  href: "gioithieu.html#khong-gian-cua-hang" }
   ]},
-  { label: "Sản phẩm", href: "sanpham.html", sub: [
-      { label: "Bánh Mousse",            href: "sanpham.html#mousse" },
-      { label: "Bánh Croissant",         href: "sanpham.html#croissant" },
-      { label: "Bánh Trung thu",         href: "sanpham.html#trungthu" },
-      { label: "Bánh Donut",             href: "sanpham.html#donut" },
+  { label: "Sản phẩm", href: "sanppham.html", sub: [
+      { label: "Bánh Mousse",            href: "sanppham.html#mousse" },
+      { label: "Bánh Croissant",         href: "sanppham.html#croissant" },
+      { label: "Bánh Trung thu",         href: "sanppham.html#trungthu" },
+      { label: "Bánh Donut",             href: "sanppham.html#donut" },
   ]},
   { label: "Chính sách", href: "chinhsach.html" },
   { label: "Thiết kế",   href: "tk-theo-yc.html" }

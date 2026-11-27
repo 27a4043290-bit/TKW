@@ -465,10 +465,14 @@
     </style>
 
     <link rel="stylesheet" href="header.css">
-    <script src="float.js" defer></script>
+<link rel="stylesheet" href="popup.css">
+<script src="float.js" defer></script>
+
 </head>
 
 <body>
+      <!-- Pop-up -->
+    <div id="popup-container"></div>
     <!-- Header -->
     <div id="site-header"></div>
     <script src="header.js"></script>
@@ -719,5 +723,24 @@
     </script> -->
     <div id="site-footer"></div>
   <script src="footer.js"></script>
+ <!-- CẤU HÌNH POPUP THE MUSE -->
+<script>
+window.POPUP_CHAO = {
+    mode: 'image',
+    image: 'image/popup.png',
+    alt: 'Ưu đãi đặc biệt từ The Muse',
+
+    closeArea: {x:83.8, y:15.5, size:8},
+
+    href: 'sanppham.html',
+    newTab: false,
+
+    autoClose: 10000,
+    delay: 1000,
+    once: 'session'
+};
+</script>
+
+<script src="popup.js"></script>
 </body>
 </html>

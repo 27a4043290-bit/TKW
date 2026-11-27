@@ -5,7 +5,6 @@ body{font-family:var(--font);color:var(--ink);background:var(--bg)}
 a{color:inherit;text-decoration:none}
 
 /* ===== 2. Thanh breadcrumb (đường dẫn) ===== */
-/* ===== 2. Thanh breadcrumb (đường dẫn) ===== */
 .breadcrumb {
     background: var(--bar);
     padding: 18px 5vw;
@@ -107,3 +106,7 @@ body.lock{overflow:hidden}
 }
 @media(max-width:560px){.grid{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.add{transition:none}}
+/* Tránh danh mục bị header sticky che khi cuộn */
+.group {
+    scroll-margin-top: 125px;
+}

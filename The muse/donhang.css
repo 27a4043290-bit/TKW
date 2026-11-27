@@ -18,11 +18,18 @@ button{font:inherit;cursor:pointer}
 .card{background:var(--card);border:1px solid var(--line);border-radius:24px}
 
 /* ===== Breadcrumb ===== */
-.crumb{background:var(--bar);padding:16px 0}
-.crumb .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
-.crumb a:hover{color:var(--price)}
-.live{display:inline-flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:12px;color:var(--muted)}
-.live i{width:8px;height:8px;border-radius:50%;background:var(--ok)}
+.breadcrumb {
+    background: var(--bar);
+    padding: 18px 5vw;
+    font-size: 15px;
+    color: var(--muted);
+}
+.breadcrumb a:hover {
+    color: var(--price);
+}
+.breadcrumb span {
+    margin: 0 8px;
+}
 
 /* ===== Tóm tắt đơn ===== */
 .summary{display:grid;grid-template-columns:1fr 520px;gap:40px;align-items:center;background:var(--bar);border-radius:28px;padding:44px 48px;margin-top:32px}

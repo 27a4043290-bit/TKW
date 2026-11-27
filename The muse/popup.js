@@ -9,14 +9,14 @@
     image:  'image/popup.png',     // ĐƯỜNG DẪN ẢNH thiết kế popup 
     alt:    'Ưu đãi từ The Muse',   // mô tả ảnh
     closeArea: {x:83.8, y:15.5, size:8},  // vị trí nút × trong ảnh Sale 30% (đổi/ xóa thành null nếu ảnh khác) — nếu ẢNH CỦA BẠN ĐÃ CÓ SẴN NÚT ×: đặt vị trí nút đó (tính bằng %) để bấm vào nút trong ảnh là đóng. VD: {x:83.8, y:15.5, size:8}
-    href:   '',                     // link khi bấm vào ảnh/nút (để trống = không bấm được). VD: 'thiet-ke-theo-yeu-cau.html'
+    href:   'sanppham.html#trungthu',     // link khi bấm vào ảnh/nút (để trống = không bấm được). VD: 'thiet-ke-theo-yeu-cau.html'
     newTab: false,                  // true = mở link ở tab mới
     title:  'Ưu đãi chào bạn mới',  // (chỉ kiểu 'card')
     text:   'Giảm 10% cho đơn bánh thiết kế riêng đầu tiên.',   // (chỉ kiểu 'card')
     button: 'Xem ngay',             // (chỉ kiểu 'card')
     autoClose: 10000,               // TỰ ĐÓNG sau bao nhiêu mili-giây kể từ lúc popup hiện (10000 = 10 giây, 5000 = 5 giây). Đặt 0 nếu không muốn tự đóng
     delay:  800,                    // hiện sau bao nhiêu mili-giây kể từ lúc vào trang (1000 = 1 giây)
-    once:   'day'                   // 'always' = vào là hiện (dùng khi đang làm thử) | 'session' = 1 lần mỗi lần mở trình duyệt | 'day' = 1 lần mỗi 24 giờ | 'forever' = chỉ 1 lần duy nhất
+    once:   'session'               // 'always' = vào là hiện (dùng khi đang làm thử) | 'session' = 1 lần mỗi lần mở trình duyệt | 'day' = 1 lần mỗi 24 giờ | 'forever' = chỉ 1 lần duy nhất
   }, window.POPUP_CHAO || {});
   /* ==================================================================== */
 
@@ -75,6 +75,8 @@
     } else {
       box.appendChild(link(img));
     }
+    box.addEventListener('click', e => { if (e.target.closest('a')) close(); });   // bấm vào ảnh/nút: đóng popup rồi chuyển đến link
+overlay.appendChild(box);
     overlay.appendChild(box);
     document.body.appendChild(overlay);
     overlay.addEventListener('mousedown', e => { if (e.target === overlay) close(); });   // bấm ra ngoài thì đóng

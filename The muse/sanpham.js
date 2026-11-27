@@ -40,15 +40,30 @@ const categories = [
 const fmt = n => n.toLocaleString("en-US") + "VND";
 /* Sản phẩm nào có trang riêng thì khai báo ở đây; sản phẩm chưa có sẽ dùng trang chung cũ */
 const pages = {
-  "chocoflan":               "banhmousse/chocoflan.html",
-  "tiramisu":                "banhmousse/tiramisu.html",
-  "mousse-dua-luoi":         "banhmousse/moussedualuoi.html",
-  "donut-kem-dau":           "donut/banhkemdau.html",
-  "donut-kem-banh-quy-vani": "donut/kembanhquyvani.html",
-  "donut-matcha-dau-tay":    "donut/Matchadautay.html",
-  "banh-quy":                "donut/quykemvanisocola.html",
-  "donut-kem-vani-dau":      "donut/donutkemvani-dâu.html",
-  "donut-kem-dulcey":        "donut/DonutkemDulcey.html"
+  "chocoflan":                 "banhmousse/choco.html",
+  "mouse-dau":                 "banhmousse/dau.html",
+  "mouse-tra-nhan":            "banhmousse/tranhan.html",
+  "mouse-xoai":                "banhmousse/xoai.html",
+  "tiramisu":                  "banhmousse/trms.html",
+  "mousse-dua-luoi":           "banhmousse/dualuoi.html",
+  "donut-kem-dau":             "donut/banhkemdau.html",
+  "donut-kem-banh-quy-vani":   "donut/kembanhquyvani.html",
+  "donut-matcha-dau-tay":      "donut/Matchadautay.html",
+  "banh-quy":                  "donut/quykemvanisocola.html",
+  "donut-kem-vani-dau":        "donut/donutkemvani-dâu.html",
+  "donut-kem-dulcey":          "donut/DonutkemDulcey.html",
+  "buoi-hong":                 "trungthu/buoihong.html",
+  "oi-hong-dau-tam":           "trungthu/oihongdautam.html",
+  "tao-do":                    "trungthu/taodo.html",
+  "tham-cam-ngu-hat":          "trungthu/thamcamnguhat.html",
+  "tham-cam-xa-xiu":           "trungthu/thapcamxaxiu.html",
+  "vai-thieu-thanh-long-do":   "trungthu/vaithieuthanhlongdo.html",
+  "croissant":                 "croissant/croissant.html",
+  "croissant-dau-tay":         "croissant/croissantdautay.html",
+  "croissant-det-nhan-ho-dao": "croissant/croissantdetnhanhodao.html",
+  "croissant-socola":          "croissant/croissantsocola.html",
+  "croissant-mix":             "croissant/croissanttoivaphomai.html",
+  "croissant-xoan-oc":         "croissant/croissantxoanocnhanhatdecuoi.html",
 };
 const linkOf = p => pages[p.id] || `chitietsanpham.html?id=${p.id}`;
 
@@ -93,6 +108,26 @@ document.getElementById("products").innerHTML = (shown.length ? shown : [null]).
         </article>`).join("")}
     </div>
   </section>`).join("");
+ /* ===== TỰ ĐỘNG CUỘN ĐẾN DANH MỤC TỪ HEADER ===== */
+function scrollToCategory() {
+    const hash = decodeURIComponent(location.hash.slice(1));
+
+    if (!hash) return;
+
+    const target = document.getElementById(hash);
+
+    if (target) {
+        target.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+    }
+}
+
+// Đợi trình duyệt hoàn tất việc tạo danh mục
+window.addEventListener("load", () => {
+    setTimeout(scrollToCategory, 150);
+}); 
 
 /* ===== 9. Menu trái sáng theo mục đang cuộn tới ===== */
 const btns = document.querySelectorAll(".cat-btn");

@@ -295,9 +295,41 @@ function upd(){
     message:$('#msgCake').value
   });
 }
+
+/* ===== NÚT "GỬI YÊU CẦU & ĐẶT BÁNH NGAY": đưa bánh vào giỏ hàng rồi sang trang thanh toán ===== */
+const CHECKOUT_URL = 'thanhtoan.html';   
+
 $('#send').onclick=()=>{
   if(!$('#date').value){toast('Vui lòng chọn ngày hẹn nhận bánh');go(2);return;}
-  toast('Đã gửi yêu cầu đặt bánh!');
+
+  // tổng tiền = cộng giá các lựa chọn đang chọn
+  let total=0; $$('.on[data-p]').forEach(x=>total+=+x.dataset.p);
+
+  // các mục khách đã chọn
+  const d={
+    shape:g('shape').dataset.v, tier:g('tier').dataset.v, cot:g('cot').dataset.v, nhan:g('nhan').dataset.v,
+    kem:g('kem').dataset.v, mau:g('mau').dataset.v, mauHex:g('mau').dataset.c,
+    deco:$$('[data-k="deco"] .on').map(x=>x.dataset.v),
+    date:$('#date').value, time:$('#time').value
+  };
+
+  // bức tranh bánh đang xem thử, đổi thành ảnh nhỏ để hiện trong giỏ hàng / trang thanh toán
+  const svg=$('#cake').innerHTML;
+  const img='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg.replace(/style="[^"]*"/,'width="360" height="260"'));
+
+  // thêm vào giỏ hàng (khóa "cart" — cùng khóa với trang sản phẩm)
+  let cart=[]; try{cart=JSON.parse(localStorage.getItem('cart')||'[]')}catch(e){}
+  const key='custom|'+Date.now();
+  cart.push({
+    key:key, id:key, size:'', qty:1, price:total, img:img,
+    name:'Bánh thiết kế riêng ('+d.shape+', '+d.tier+' tầng)',
+    custom:{ design:d, message:$('#msgCake').value, card:$('#msgCard').value, preview:svg }   // trang theo dõi đơn hàng đọc phần này
+  });
+  localStorage.setItem('cart',JSON.stringify(cart));
+  window.dispatchEvent(new Event('cart-updated'));   // để header cập nhật số lượng giỏ
+
+  location.href=CHECKOUT_URL;                        // sang trang thanh toán
 };
+
 function toast(m){const t=$('#toast');t.textContent=m;t.style.display='block';setTimeout(()=>t.style.display='none',2200)}
 go(0); upd();

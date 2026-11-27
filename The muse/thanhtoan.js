@@ -10,6 +10,7 @@
 
     const HOME_URL = 'trangchu.html';
     const PROFILE_URL = 'canhan.html';
+    const ORDER_URL = 'donhang.html'; 
 
     const INNER = [
         'Ba Đình', 'Hoàn Kiếm', 'Hai Bà Trưng', 'Đống Đa',
@@ -93,6 +94,33 @@
     }
 
     let cart = loadCart();
+    // 4.1. TỰ ĐỘNG ĐIỀN NGÀY VÀ GIỜ TỪ TRANG THIẾT KẾ BÁNH
+const customItem = [...cart].reverse().find(
+    item => item.custom && item.custom.design
+);
+
+if (customItem) {
+    const design = customItem.custom.design;
+
+    // Tự động điền ngày nhận bánh
+    if (design.date) {
+        $('date').value = design.date;
+    }
+
+    // Tự động điền giờ nhận bánh nếu trùng với lựa chọn ở trang thanh toán
+    if (design.time) {
+        const slot = $('slot');
+
+        const option = [...slot.options].find(
+            opt => opt.value === design.time ||
+                   opt.textContent.trim() === design.time
+        );
+
+        if (option) {
+            slot.value = option.value;
+        }
+    }
+}
 
     // 5. TÍNH PHÍ GIAO HÀNG
     function shipFee() {
@@ -138,6 +166,14 @@
 
         $('qrWait').hidden = false;
     });
+     // Dòng mô tả ngắn cho bánh thiết kế riêng (cốt, nhân, kem, màu)
+    function customLine(it) {
+        const d = it.custom && it.custom.design;
+        if (!d) return '';
+        const parts = [d.cot, d.nhan, d.kem, d.mau];
+        if (d.deco && d.deco.length) parts.push(d.deco.join(', '));
+        return '<small>' + esc(parts.filter(Boolean).join(' · ')) + '</small>';
+    }
 
     // 8. HIỂN THỊ SẢN PHẨM VÀ TÍNH TIỀN
     function render() {
@@ -435,6 +471,35 @@
         const tongText = $('tot').textContent;
         const maDon = orderCode;
         const online = payMethod() === 'online';
+         // Tạo đơn hàng để trang theo dõi (donhang.html) đọc lại.
+        // Một lần thanh toán = một đơn, mang đúng mã đơn (maDon) đã hiện cho khách;
+        // bánh thiết kế riêng và món thường nằm chung trong đơn đó. orders.js tự dọn giỏ hàng.
+        let donMoi = null;
+ 
+        if (window.MuseOrders) {
+            const goc = cart.reduce((sum, it) => sum + it.price * it.qty, 0);
+            const phi = shipFee() || 0;
+            const slotEl = $('slot');
+            const slotText = slotEl.selectedOptions && slotEl.selectedOptions[0]
+                ? slotEl.selectedOptions[0].textContent.trim()
+                : slotEl.value;
+ 
+            donMoi = MuseOrders.fromCart({
+                id: maDon,
+                customer: {
+                    name: $('name').value.trim(),
+                    phone: $('phone').value.trim(),
+                    district: district.value,
+                    addr: $('addr').value.trim()
+                },
+                delivery: { date: $('date').value, slot: slotText },
+                pay: online ? 'online' : 'cod',
+                shipFee: phi,
+                grandTotal: Math.max(goc - Math.round(goc * rate), 0) + phi
+            });
+        } else {
+            console.warn('Thiếu orders.js: đơn hàng chưa được lưu để trang theo dõi đọc. Hãy nạp orders.js trước thanhtoan.js.');
+        }
 
         // Hiển thị thông báo thành công
         $('successText').innerHTML =
@@ -446,6 +511,13 @@
 
         modal.hidden = false;
         document.body.style.overflow = 'hidden';
+        // Nút "Theo dõi đơn hàng" mở đúng đơn vừa đặt
+        const track = $('trackLink') || modal.querySelector('.success-link.secondary');
+        if (track) track.href = ORDER_URL + (donMoi ? '?id=' + encodeURIComponent(donMoi.id) : '');
+ 
+        modal.hidden = false;
+        document.body.style.overflow = 'hidden';
+ 
 
         // Xóa giỏ hàng sau khi đặt
         cart = [];
