@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -20,7 +19,7 @@
 
 <body>
 
-<!-- CHỖ CHỨA HEADER -->
+<!-- HEADER -->
 <div id="site-header"></div>
 
 <!-- THANH ĐƯỜNG DẪN -->
@@ -28,34 +27,52 @@
     <div class="breadcrumb-inner">
         <a href="../trangchu.html">Trang chủ</a>
         <span>/</span>
-        <a href="../sanpham.html">Sản phẩm</a>
+        <a href="../sanppham.html">Sản phẩm</a>
         <span>/</span>
         <a href="../sanpham.html#trungthu">Bánh Trung Thu</a>
+        <span>/</span>
+        <span>Táo Đỏ</span>
     </div>
 </nav>
 
 <!-- CHI TIẾT BÁNH -->
 <div class="product" data-id="taodo">
-    <img class="main-img" src="https://www.the350f.com/wp-content/uploads/2025/07/TT26-BN-Tao-do-1-scaled.jpg" alt="Táo Đỏ">
+
+    <img
+        class="main-img"
+        src="https://www.the350f.com/wp-content/uploads/2025/07/TT26-BN-Tao-do-1-scaled.jpg"
+        alt="Táo Đỏ"
+    >
 
     <div class="info">
-        
 
         <h1>Táo Đỏ</h1>
 
+        <!-- GIÁ BÁNH -->
         <div class="price-box">
             <span class="price-new" id="price"></span>
             <span class="price-old an" id="priceOld"></span>
             <span class="badge-sale an" id="badgeSale"></span>
         </div>
 
-        <h3 class="ingredients">Hạt sen, Táo đỏ, Đường mạch nha, Nguyên liệu nhập khẩu</h3>
+        <h3 class="ingredients">
+            Hạt sen, táo đỏ, đường mạch nha và nguyên liệu nhập khẩu.
+        </h3>
 
-        <p class="desc">Lấy hạt sen và táo đỏ - những nguyên liệu quen thuộc trong ẩm thực Á Đông - làm nền hương vị, The 350F kết hợp cùng nhiều nguyên liệu nhập khẩu thượng hạng được tuyển chọn khắt khe từ nhiều vùng nguyên liệu, tạo nên phần nhân hài hòa với vị ngọt vừa phải, thoảng hương táo tự nhiên. Tất cả được bao bọc trong lớp vỏ bánh nướng truyền thống mềm mịn, mang đến tổng thể thanh nhã và tròn vị.</p>
+        <p class="desc">
+            Lấy hạt sen và táo đỏ - những nguyên liệu quen thuộc trong
+            ẩm thực Á Đông - làm nền hương vị, The 350F kết hợp cùng nhiều
+            nguyên liệu nhập khẩu thượng hạng được tuyển chọn khắt khe từ
+            nhiều vùng nguyên liệu, tạo nên phần nhân hài hòa với vị ngọt
+            vừa phải, thoảng hương táo tự nhiên. Tất cả được bao bọc trong
+            lớp vỏ bánh nướng truyền thống mềm mịn, mang đến tổng thể
+            thanh nhã và tròn vị.
+        </p>
 
         <!-- CHỌN SIZE -->
         <div class="size-row">
             <label for="size">Size</label>
+
             <select id="size" onchange="doiGia()">
                 <option value="105000" data-old="125000">150g</option>
                 <option value="170000" data-old="195000" selected>250g</option>
@@ -64,96 +81,415 @@
 
         <!-- KHUNG MUA HÀNG -->
         <div class="buy-box">
+
             <div class="buy-row">
+
                 <div class="qty">
-                    <button type="button" onclick="doiSL(-1)" aria-label="Giảm số lượng">−</button>
+                    <button
+                        type="button"
+                        onclick="doiSL(-1)"
+                        aria-label="Giảm số lượng"
+                    >−</button>
+
                     <span id="sl">1</span>
-                    <button type="button" onclick="doiSL(1)" aria-label="Tăng số lượng">+</button>
+
+                    <button
+                        type="button"
+                        onclick="doiSL(1)"
+                        aria-label="Tăng số lượng"
+                    >+</button>
                 </div>
-                <button type="button" class="btn btn-cart" onclick="mua()">Thêm vào giỏ hàng</button>
+
+                <button
+                    type="button"
+                    class="btn btn-cart"
+                    onclick="mua()"
+                >
+                    Thêm vào giỏ hàng
+                </button>
+
             </div>
 
             <div class="buy-row">
-                <button type="button" class="btn btn-now" onclick="muaNgay()">Mua ngay <span aria-hidden="true">→</span></button>
+                <button
+                    type="button"
+                    class="btn btn-now"
+                    onclick="muaNgay()"
+                >
+                    Mua ngay <span aria-hidden="true">→</span>
+                </button>
             </div>
+
         </div>
+
     </div>
+
 </div>
 
-<!-- THÔNG TIN BÁNH -->
+<!-- MÔ TẢ CHI TIẾT SẢN PHẨ -->
 <section class="details">
-    <h2>Thông tin về bánh</h2>
+
+    <h2>Mô tả sản phẩm</h2>
 
     <div class="details-card">
-        <h3>Cấu trúc bánh:</h3>
+
+        <p>
+            Bánh trung thu Táo Đỏ là sự kết hợp hài hòa giữa hạt sen
+            và táo đỏ - những nguyên liệu quen thuộc trong ẩm thực
+            Á Đông. Phần nhân bánh có vị ngọt vừa phải, thoảng hương
+            táo tự nhiên, được bao bọc bởi lớp vỏ bánh nướng truyền
+            thống mềm mịn, mang đến hương vị thanh nhã và tròn vị.
+        </p>
+
+        <h3>Cấu trúc bánh</h3>
+
         <ul>
-            <li>Bánh được bao bọc bởi lớp vỏ bánh nướng truyền thống mềm mịn, mang sắc vàng nâu óng ả cùng hoa văn dập nổi sắc nét.</li>
-            <li>Lớp nhân hạt sen dẻo mịn làm nền hương vị, được kết hợp cùng các nguyên liệu nhập khẩu thượng hạng chọn lọc khắt khe.</li>
-            <li>Nhân bánh mang vị ngọt vừa phải, dậy lên thoảng hương táo đỏ tự nhiên ngọt thanh và dễ chịu.</li>
+            <li>
+                Bánh được bao bọc bởi lớp vỏ bánh nướng truyền thống
+                mềm mịn, mang sắc vàng nâu óng ả cùng hoa văn dập
+                nổi sắc nét.
+            </li>
+
+            <li>
+                Lớp nhân hạt sen dẻo mịn làm nền hương vị, được kết
+                hợp cùng các nguyên liệu nhập khẩu thượng hạng.
+            </li>
+
+            <li>
+                Nhân bánh mang vị ngọt vừa phải, dậy lên thoảng
+                hương táo đỏ tự nhiên.
+            </li>
         </ul>
 
-        <h3>Hướng dẫn sử dụng:</h3>
+        <h3>Hướng dẫn sử dụng</h3>
+
         <ul>
-            <li>Nên bảo quản bánh ở nơi khô ráo, thoáng mát, tránh ánh nắng trực tiếp hoặc lưu trữ trong ngăn mát tủ lạnh nếu đã cắt ra.</li>
-            <li>Sử dụng ngon nhất trước hạn sử dụng in trên bao bì; sau khi mở gói, nên dùng hết trong vòng 1-2 ngày để đảm bảo hương vị tươi ngon.</li>
-            <li>Bánh sẽ tuyệt vời hơn khi thưởng thức cùng một ngụm trà xanh hoặc trà ô long ấm nóng để cân bằng vị giác trong đêm rằm Trung thu.</li>
+            <li>
+                Bảo quản bánh ở nơi khô ráo, thoáng mát, tránh
+                ánh nắng trực tiếp.
+            </li>
+
+            <li>
+                Sau khi mở gói, nên dùng hết trong vòng 1-2 ngày
+                để đảm bảo hương vị thơm ngon.
+            </li>
+
+            <li>
+                Thưởng thức cùng trà xanh hoặc trà ô long để
+                cân bằng vị ngọt và làm nổi bật hương vị của bánh.
+            </li>
         </ul>
+
     </div>
+
+</section>
+
+<!-- MÔ TẢ VÀ BÌNH LUẬN -->
+<section class="review-section">
+
+    <div class="review-tabs">
+
+        <button
+            class="review-tab active"
+            onclick="chuyenTab('description', this)"
+        >
+            MÔ TẢ CHUNG
+        </button>
+
+        <button
+            class="review-tab"
+            onclick="chuyenTab('comments', this)"
+        >
+            BÌNH LUẬN
+        </button>
+
+    </div>
+
+    <!-- NỘI DUNG MÔ TẢ -->
+    <div class="review-panel active" id="description">
+
+        <div class="details-card">
+
+            <p>
+                Bánh trung thu Táo Đỏ là sự kết hợp hài hòa giữa hạt sen
+                và táo đỏ - những nguyên liệu quen thuộc trong ẩm thực
+                Á Đông. Phần nhân bánh có vị ngọt vừa phải, thoảng hương
+                táo tự nhiên, được bao bọc bởi lớp vỏ bánh nướng truyền
+                thống mềm mịn, mang đến hương vị thanh nhã và tròn vị.
+            </p>
+
+            <h3>Cấu trúc bánh:</h3>
+
+            <ul>
+                <li>
+                    Bánh được bao bọc bởi lớp vỏ bánh nướng truyền thống
+                    mềm mịn, mang sắc vàng nâu óng ả cùng hoa văn dập
+                    nổi sắc nét.
+                </li>
+
+                <li>
+                    Lớp nhân hạt sen dẻo mịn làm nền hương vị, được kết
+                    hợp cùng các nguyên liệu nhập khẩu thượng hạng.
+                </li>
+
+                <li>
+                    Nhân bánh mang vị ngọt vừa phải, dậy lên thoảng
+                    hương táo đỏ tự nhiên.
+                </li>
+            </ul>
+
+            <h3>Hướng dẫn sử dụng:</h3>
+
+            <ul>
+                <li>
+                    Bảo quản bánh ở nơi khô ráo, thoáng mát.
+                </li>
+
+                <li>
+                    Sau khi mở gói, nên dùng hết trong vòng 1-2 ngày.
+                </li>
+
+                <li>
+                    Thưởng thức cùng trà xanh hoặc trà ô long.
+                </li>
+            </ul>
+
+        </div>
+
+    </div>
+
+    <!-- NỘI DUNG BÌNH LUẬN -->
+    <div class="review-panel" id="comments">
+
+        <div class="rating-summary">
+
+            <div class="rating-average">
+                <strong id="averageRating">0.0</strong>
+
+                <div class="rating-stars" id="averageStars">
+                    ☆☆☆☆☆
+                </div>
+
+                <span id="ratingCount">0 đánh giá</span>
+            </div>
+
+        </div>
+
+        <!-- FORM ĐÁNH GIÁ -->
+        <div class="review-form">
+
+            <h3>Viết đánh giá của bạn</h3>
+
+            <label>Đánh giá sao:</label>
+
+            <div class="star-picker">
+
+                <input type="radio" name="rating" id="star5" value="5">
+                <label for="star5">★</label>
+
+                <input type="radio" name="rating" id="star4" value="4">
+                <label for="star4">★</label>
+
+                <input type="radio" name="rating" id="star3" value="3">
+                <label for="star3">★</label>
+
+                <input type="radio" name="rating" id="star2" value="2">
+                <label for="star2">★</label>
+
+                <input type="radio" name="rating" id="star1" value="1">
+                <label for="star1">★</label>
+
+            </div>
+
+            <label for="reviewName">Tên của bạn:</label>
+
+            <input
+                type="text"
+                id="reviewName"
+                placeholder="Nhập tên của bạn"
+            >
+
+            <label for="reviewContent">Nội dung bình luận:</label>
+
+            <textarea
+                id="reviewContent"
+                rows="4"
+                placeholder="Chia sẻ cảm nhận của bạn..."
+            ></textarea>
+
+            <button
+                type="button"
+                class="submit-review"
+                onclick="dangBinhLuan()"
+            >
+                ĐĂNG BÌNH LUẬN
+            </button>
+
+            <p id="reviewMessage"></p>
+
+        </div>
+
+        <!-- DANH SÁCH ĐÁNH GIÁ -->
+        <div class="review-list">
+
+            <h3>Đánh giá từ khách hàng</h3>
+
+            <div id="reviewList"></div>
+
+        </div>
+
+    </div>
+
 </section>
 
 <!-- SẢN PHẨM LIÊN QUAN -->
 <section class="related">
+
     <h2>Sản phẩm liên quan</h2>
 
     <div class="products">
 
-        <div class="card" data-sizes="150g=100000; 250g=165000" data-old="185000" data-tags="hot,new">
-            <a href="thamcamnguhat.html"><img src="https://www.the350f.com/wp-content/uploads/2025/07/TT26-BN-Ngu-Vi-1-scaled.jpg" alt="Thập cẩm ngũ hạt"></a>
+        <!-- THẬP CẨM NGŨ HẠT -->
+        <div
+            class="card"
+            data-sizes="150g=100000; 250g=165000"
+            data-old="185000"
+            data-tags="hot,new"
+        >
+
+            <a href="thamcamnguhat.html">
+                <img
+                    src="https://www.the350f.com/wp-content/uploads/2025/07/TT26-BN-Ngu-Vi-1-scaled.jpg"
+                    alt="Thập cẩm ngũ hạt"
+                >
+            </a>
+
             <div class="card-body">
-                <div class="card-pick"><h3>Thập cẩm ngũ hạt</h3></div>
+
+                <div class="card-pick">
+                    <h3>Thập cẩm ngũ hạt</h3>
+                </div>
+
                 <p class="gia"></p>
+
             </div>
+
         </div>
 
-        <div class="card" data-sizes="150g=95000; 250g=155000" data-old="175000" data-tags="hot">
-            <a href="buoihong.html"><img src="https://www.the350f.com/wp-content/uploads/2026/08/TT26-BN-Buoi-hong-2-scaled.jpg" alt="Bưởi hồng"></a>
+        <!-- BƯỞI HỒNG -->
+        <div
+            class="card"
+            data-sizes="150g=95000; 250g=155000"
+            data-old="175000"
+            data-tags="hot"
+        >
+
+            <a href="buoihong.html">
+                <img
+                    src="https://www.the350f.com/wp-content/uploads/2026/08/TT26-BN-Buoi-hong-2-scaled.jpg"
+                    alt="Bưởi hồng"
+                >
+            </a>
+
             <div class="card-body">
-                <div class="card-pick"><h3>Bưởi hồng</h3></div>
+
+                <div class="card-pick">
+                    <h3>Bưởi hồng</h3>
+                </div>
+
                 <p class="gia"></p>
+
             </div>
+
         </div>
 
-        <div class="card" data-sizes="150g=104000; 250g=165000" data-old="185000" data-tags="new">
-            <a href="vaithieuthanhlongdo.html"><img src="https://www.the350f.com/wp-content/uploads/2026/08/TT26-Vai-Thieu-Thanh-Long-2-1-scaled.jpg" alt="Vải Thiều Thanh Long Đỏ"></a>
+        <!-- VẢI THIỀU THANH LONG ĐỎ -->
+        <div
+            class="card"
+            data-sizes="150g=104000; 250g=165000"
+            data-old="185000"
+            data-tags="new"
+        >
+
+            <a href="vaithieuthanhlongdo.html">
+                <img
+                    src="https://www.the350f.com/wp-content/uploads/2026/08/TT26-Vai-Thieu-Thanh-Long-2-1-scaled.jpg"
+                    alt="Vải Thiều Thanh Long Đỏ"
+                >
+            </a>
+
             <div class="card-body">
-                <div class="card-pick"><h3>Vải Thiều Thanh Long Đỏ</h3></div>
+
+                <div class="card-pick">
+                    <h3>Vải Thiều Thanh Long Đỏ</h3>
+                </div>
+
                 <p class="gia"></p>
+
             </div>
+
         </div>
 
-        <div class="card" data-sizes="150g=95000; 250g=155000" data-old="175000" data-tags="hot,new">
-            <a href="thapcamxaxiu.html"><img src="https://www.the350f.com/wp-content/uploads/2025/07/TT26-BN-Xa-Xiu-1-scaled.jpg" alt="Thập cẩm xá xíu"></a>
+        <!-- THẬP CẨM XÁ XÍU -->
+        <div
+            class="card"
+            data-sizes="150g=95000; 250g=155000"
+            data-old="175000"
+            data-tags="hot,new"
+        >
+
+            <a href="thapcamxaxiu.html">
+                <img
+                    src="https://www.the350f.com/wp-content/uploads/2025/07/TT26-BN-Xa-Xiu-1-scaled.jpg"
+                    alt="Thập cẩm xá xíu"
+                >
+            </a>
+
             <div class="card-body">
-                <div class="card-pick"><h3>Thập cẩm xá xíu</h3></div>
+
+                <div class="card-pick">
+                    <h3>Thập cẩm xá xíu</h3>
+                </div>
+
                 <p class="gia"></p>
+
             </div>
+
         </div>
 
     </div>
+
 </section>
 
 <!-- KHUNG GIỎ HÀNG TRƯỢT BÊN PHẢI -->
 <div class="cd-overlay" id="cartOverlay"></div>
 
-<aside class="cd-drawer" id="cartDrawer" aria-label="Giỏ hàng" aria-hidden="true">
+<aside
+    class="cd-drawer"
+    id="cartDrawer"
+    aria-label="Giỏ hàng"
+    aria-hidden="true"
+>
+
     <div class="cd-head">
-        <button class="cd-back" id="cartClose" type="button" aria-label="Đóng giỏ hàng">←</button>
+
+        <button
+            class="cd-back"
+            id="cartClose"
+            type="button"
+            aria-label="Đóng giỏ hàng"
+        >
+            ←
+        </button>
+
         <h2>GIỎ HÀNG</h2>
+
     </div>
 
     <div class="cd-items" id="cartItems"></div>
 
     <div class="cd-foot">
+
         <div class="cd-row">
             <span>Số lượng</span>
             <span id="cartCountText">0 sản phẩm</span>
@@ -164,11 +500,15 @@
             <span id="cartTotal">0VND</span>
         </div>
 
-        <a class="cd-go" href="../giohang.html">Xem giỏ hàng →</a>
+        <a class="cd-go" href="../giohang.html">
+            Xem giỏ hàng →
+        </a>
+
     </div>
+
 </aside>
 
-<!-- JS phải nằm SAU khung giỏ hàng -->
+<!-- JS PHẢI NẰM SAU KHUNG GIỎ HÀNG -->
 <script src="../chitietsanpham.js"></script>
 
 </body>

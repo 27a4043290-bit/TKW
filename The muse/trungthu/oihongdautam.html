@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -20,7 +19,7 @@
 
 <body>
 
-<!-- CHỖ CHỨA HEADER -->
+<!-- HEADER -->
 <div id="site-header"></div>
 
 <!-- THANH ĐƯỜNG DẪN -->
@@ -28,17 +27,25 @@
     <div class="breadcrumb-inner">
         <a href="../trangchu.html">Trang chủ</a>
         <span>/</span>
-        <a href="../sanpham.html">Sản phẩm</a>
+        <a href="../sanppham.html">Sản phẩm</a>
         <span>/</span>
         <a href="../sanpham.html#banhtrungthu">Bánh Trung Thu</a>
+        <span>/</span>
+        <span>Ổi Hồng Dâu Tằm</span>
     </div>
 </nav>
 
 <!-- CHI TIẾT BÁNH -->
 <div class="product" data-id="oi-hong-dau-tam">
-    <img class="main-img" src="https://www.the350f.com/wp-content/uploads/2025/07/TT26-Oi-Hong-scaled.jpg" alt="Ổi Hồng Dâu Tằm">
+
+    <img
+        class="main-img"
+        src="https://www.the350f.com/wp-content/uploads/2025/07/TT26-Oi-Hong-scaled.jpg"
+        alt="Ổi Hồng Dâu Tằm"
+    >
 
     <div class="info">
+
         <div class="product-tags">
             <span class="tag-hot">Hot</span>
             <span class="tag-new">Mới</span>
@@ -46,19 +53,31 @@
 
         <h1>Ổi Hồng Dâu Tằm</h1>
 
+        <!-- GIÁ BÁNH -->
         <div class="price-box">
             <span class="price-new" id="price"></span>
             <span class="price-old an" id="priceOld"></span>
             <span class="badge-sale an" id="badgeSale"></span>
         </div>
 
-        <h3 class="ingredients">Ổi hồng, dâu tằm và các nguyên liệu tuyển chọn.</h3>
+        <h3 class="ingredients">
+            Ổi hồng, dâu tằm và các nguyên liệu tuyển chọn.
+        </h3>
 
-        <p class="desc">Một bản phối giao thoa giữa trái cây nhiệt đới và quả mọng ôn đới. Giữa nguyên liệu bản địa kết hợp với nhiều nguyên liệu nhập khẩu thượng hạng được tuyển chọn khắt khe. Phần nhân dâu tằm ở chính giữa giúp kết nối các tầng hương vị, tạo nên tổng thể hài hòa trong lớp vỏ bánh đậu trắng mềm mịn. Đặc biệt, sắc hồng pastel trong trẻo không chỉ khơi gợi cảm giác thanh khiết mà còn phản chiếu đúng tinh thần thanh lịch của chiếc bánh.</p>
+        <p class="desc">
+            Một bản phối giao thoa giữa trái cây nhiệt đới và quả mọng ôn đới.
+            Giữa nguyên liệu bản địa kết hợp với nhiều nguyên liệu nhập khẩu
+            thượng hạng được tuyển chọn khắt khe. Phần nhân dâu tằm ở chính
+            giữa giúp kết nối các tầng hương vị, tạo nên tổng thể hài hòa
+            trong lớp vỏ bánh đậu trắng mềm mịn. Đặc biệt, sắc hồng pastel
+            trong trẻo không chỉ khơi gợi cảm giác thanh khiết mà còn phản
+            chiếu đúng tinh thần thanh lịch của chiếc bánh.
+        </p>
 
         <!-- CHỌN SIZE -->
         <div class="size-row">
             <label for="size">Size</label>
+
             <select id="size" onchange="doiGia()">
                 <option value="100000" data-old="115000">150g</option>
                 <option value="165000" data-old="190000" selected>250g</option>
@@ -67,103 +86,442 @@
 
         <!-- KHUNG MUA HÀNG -->
         <div class="buy-box">
+
             <div class="buy-row">
+
                 <div class="qty">
-                    <button type="button" onclick="doiSL(-1)" aria-label="Giảm số lượng">−</button>
+                    <button
+                        type="button"
+                        onclick="doiSL(-1)"
+                        aria-label="Giảm số lượng"
+                    >−</button>
+
                     <span id="sl">1</span>
-                    <button type="button" onclick="doiSL(1)" aria-label="Tăng số lượng">+</button>
+
+                    <button
+                        type="button"
+                        onclick="doiSL(1)"
+                        aria-label="Tăng số lượng"
+                    >+</button>
                 </div>
-                <button type="button" class="btn btn-cart" onclick="mua()">Thêm vào giỏ hàng</button>
+
+                <button
+                    type="button"
+                    class="btn btn-cart"
+                    onclick="mua()"
+                >
+                    Thêm vào giỏ hàng
+                </button>
+
             </div>
 
             <div class="buy-row">
-                <button type="button" class="btn btn-now" onclick="muaNgay()">Mua ngay <span aria-hidden="true">→</span></button>
+                <button
+                    type="button"
+                    class="btn btn-now"
+                    onclick="muaNgay()"
+                >
+                    Mua ngay <span aria-hidden="true">→</span>
+                </button>
             </div>
+
         </div>
+
     </div>
 </div>
 
-<!-- THÔNG TIN BÁNH -->
+<!-- MÔ TẢ CHI TIẾT SẢN PHẨ -->
 <section class="details">
+
     <h2>Mô tả sản phẩm</h2>
+
     <div class="details-card">
 
-        <p>Bánh trung thu Ổi Hồng Dâu Tằm là bản phối giao thoa tinh tế giữa vị trái cây nhiệt đới và quả mọng ôn đới, nổi bật với màu hồng pastel trong trẻo cùng lớp vỏ bánh đậu trắng mềm mịn ôm trọn nhân dâu tằm chua ngọt hài hòa.</p>
+        <p>
+            Bánh trung thu Ổi Hồng Dâu Tằm là bản phối giao thoa tinh tế
+            giữa vị trái cây nhiệt đới và quả mọng ôn đới, nổi bật với
+            màu hồng pastel trong trẻo cùng lớp vỏ bánh đậu trắng mềm mịn
+            ôm trọn nhân dâu tằm chua ngọt hài hòa.
+        </p>
 
-        <h3>Cấu trúc bánh:</h3>
+        <h3>Cấu trúc bánh</h3>
+
         <ul>
-            <li>Bánh sở hữu lớp vỏ bánh đậu trắng mềm mịn, khoác lên mình sắc hồng pastel trong trẻo khơi gợi cảm giác thanh khiết và mang tính thẩm mỹ cao.</li>
-            <li>Phần nhân mang hương vị ổi hồng thanh mát, béo nhẹ và thơm lừng nét trái cây nhiệt đới.</li>
-            <li>Phần nhân dâu tằm nằm ở chính giữa giúp kết nối các tầng hương vị, tạo điểm nhấn chua ngọt đậm đà và độ mềm dẻo độc đáo cho chiếc bánh.</li>
+            <li>
+                Bánh sở hữu lớp vỏ bánh đậu trắng mềm mịn, khoác lên mình
+                sắc hồng pastel trong trẻo khơi gợi cảm giác thanh khiết
+                và mang tính thẩm mỹ cao.
+            </li>
+
+            <li>
+                Phần nhân mang hương vị ổi hồng thanh mát, béo nhẹ và
+                thơm lừng nét trái cây nhiệt đới.
+            </li>
+
+            <li>
+                Phần nhân dâu tằm nằm ở chính giữa giúp kết nối các tầng
+                hương vị, tạo điểm nhấn chua ngọt đậm đà và độ mềm dẻo
+                độc đáo cho chiếc bánh.
+            </li>
         </ul>
 
-        <h3>Hướng dẫn sử dụng:</h3>
+        <h3>Hướng dẫn sử dụng</h3>
+
         <ul>
-            <li>Nên bảo quản bánh ở nơi khô ráo, thoáng mát, tránh ánh nắng trực tiếp hoặc lưu trữ trong ngăn mát tủ lạnh nếu đã cắt ra.</li>
-            <li>Sử dụng ngon nhất trước hạn sử dụng in trên bao bì; sau khi mở gói, nên dùng hết trong vòng 1-2 ngày để đảm bảo hương vị tươi ngon.</li>
-            <li>Bánh sẽ tuyệt vời hơn khi thưởng thức cùng một ngụm trà xanh hoặc trà ô long ấm nóng để cân bằng vị giác trong đêm rằm Trung thu.</li>
+            <li>
+                Nên bảo quản bánh ở nơi khô ráo, thoáng mát, tránh ánh
+                nắng trực tiếp hoặc lưu trữ trong ngăn mát tủ lạnh nếu
+                đã cắt ra.
+            </li>
+
+            <li>
+                Sử dụng ngon nhất trước hạn sử dụng in trên bao bì;
+                sau khi mở gói, nên dùng hết trong vòng 1-2 ngày để
+                đảm bảo hương vị tươi ngon.
+            </li>
+
+            <li>
+                Bánh sẽ tuyệt vời hơn khi thưởng thức cùng một ngụm
+                trà xanh hoặc trà ô long ấm nóng để cân bằng vị giác
+                trong đêm rằm Trung thu.
+            </li>
         </ul>
+
     </div>
+
+</section>
+
+<!-- MÔ TẢ VÀ BÌNH LUẬN -->
+<section class="review-section">
+
+    <div class="review-tabs">
+
+        <button
+            class="review-tab active"
+            onclick="chuyenTab('description', this)"
+        >
+            MÔ TẢ CHUNG
+        </button>
+
+        <button
+            class="review-tab"
+            onclick="chuyenTab('comments', this)"
+        >
+            BÌNH LUẬN
+        </button>
+
+    </div>
+
+    <!-- NỘI DUNG MÔ TẢ -->
+    <div class="review-panel active" id="description">
+
+        <div class="details-card">
+
+            <p>
+                Bánh trung thu Ổi Hồng Dâu Tằm là bản phối giao thoa tinh tế
+                giữa vị trái cây nhiệt đới và quả mọng ôn đới, nổi bật với
+                màu hồng pastel trong trẻo cùng lớp vỏ bánh đậu trắng mềm mịn
+                ôm trọn nhân dâu tằm chua ngọt hài hòa.
+            </p>
+
+            <h3>Cấu trúc bánh:</h3>
+
+            <ul>
+                <li>
+                    Bánh sở hữu lớp vỏ bánh đậu trắng mềm mịn, khoác lên mình
+                    sắc hồng pastel trong trẻo khơi gợi cảm giác thanh khiết
+                    và mang tính thẩm mỹ cao.
+                </li>
+
+                <li>
+                    Phần nhân mang hương vị ổi hồng thanh mát, béo nhẹ và
+                    thơm lừng nét trái cây nhiệt đới.
+                </li>
+
+                <li>
+                    Phần nhân dâu tằm nằm ở chính giữa giúp kết nối các tầng
+                    hương vị, tạo điểm nhấn chua ngọt đậm đà và độ mềm dẻo
+                    độc đáo cho chiếc bánh.
+                </li>
+            </ul>
+
+            <h3>Hướng dẫn sử dụng:</h3>
+
+            <ul>
+                <li>
+                    Nên bảo quản bánh ở nơi khô ráo, thoáng mát, tránh ánh
+                    nắng trực tiếp hoặc lưu trữ trong ngăn mát tủ lạnh nếu
+                    đã cắt ra.
+                </li>
+
+                <li>
+                    Sử dụng ngon nhất trước hạn sử dụng in trên bao bì;
+                    sau khi mở gói, nên dùng hết trong vòng 1-2 ngày để
+                    đảm bảo hương vị tươi ngon.
+                </li>
+
+                <li>
+                    Bánh sẽ tuyệt vời hơn khi thưởng thức cùng một ngụm
+                    trà xanh hoặc trà ô long ấm nóng để cân bằng vị giác
+                    trong đêm rằm Trung thu.
+                </li>
+            </ul>
+
+        </div>
+
+    </div>
+
+    <!-- NỘI DUNG BÌNH LUẬN -->
+    <div class="review-panel" id="comments">
+
+        <div class="rating-summary">
+
+            <div class="rating-average">
+                <strong id="averageRating">0.0</strong>
+
+                <div class="rating-stars" id="averageStars">
+                    ☆☆☆☆☆
+                </div>
+
+                <span id="ratingCount">0 đánh giá</span>
+            </div>
+
+        </div>
+
+        <!-- FORM ĐÁNH GIÁ -->
+        <div class="review-form">
+
+            <h3>Viết đánh giá của bạn</h3>
+
+            <label>Đánh giá sao:</label>
+
+            <div class="star-picker">
+
+                <input type="radio" name="rating" id="star5" value="5">
+                <label for="star5">★</label>
+
+                <input type="radio" name="rating" id="star4" value="4">
+                <label for="star4">★</label>
+
+                <input type="radio" name="rating" id="star3" value="3">
+                <label for="star3">★</label>
+
+                <input type="radio" name="rating" id="star2" value="2">
+                <label for="star2">★</label>
+
+                <input type="radio" name="rating" id="star1" value="1">
+                <label for="star1">★</label>
+
+            </div>
+
+            <label for="reviewName">Tên của bạn:</label>
+
+            <input
+                type="text"
+                id="reviewName"
+                placeholder="Nhập tên của bạn"
+            >
+
+            <label for="reviewContent">Nội dung bình luận:</label>
+
+            <textarea
+                id="reviewContent"
+                rows="4"
+                placeholder="Chia sẻ cảm nhận của bạn..."
+            ></textarea>
+
+            <button
+                type="button"
+                class="submit-review"
+                onclick="dangBinhLuan()"
+            >
+                ĐĂNG BÌNH LUẬN
+            </button>
+
+            <p id="reviewMessage"></p>
+
+        </div>
+
+        <!-- DANH SÁCH ĐÁNH GIÁ -->
+        <div class="review-list">
+
+            <h3>Đánh giá từ khách hàng</h3>
+
+            <div id="reviewList"></div>
+
+        </div>
+
+    </div>
+
 </section>
 
 <!-- SẢN PHẨM LIÊN QUAN -->
 <section class="related">
+
     <h2>Sản phẩm liên quan</h2>
 
-<div class="products">
-    <div class="card" data-sizes="150g=100000; 250g=165000" data-old="190000" data-tags="hot,new">
-        <a href="thamcamnguhat.html"><img src="https://www.the350f.com/wp-content/uploads/2025/07/TT26-BN-Ngu-Vi-1-scaled.jpg" alt="Thập cẩm ngũ hạt"></a>
-        <div class="card-body">
-            <div class="card-pick"><h3>Thập cẩm ngũ hạt</h3></div>
-            <p class="gia"></p>
-        </div>
-    </div>
+    <div class="products">
 
-    <div class="card" data-sizes="150g=105000; 250g=170000" data-old="195000" data-tags="hot">
-        <a href="taodo.html"><img src="https://www.the350f.com/wp-content/uploads/2025/07/TT26-BN-Tao-do-1-scaled.jpg" alt="Táo Đỏ"></a>
-        <div class="card-body">
-            <div class="card-pick"><h3>Táo Đỏ</h3></div>
-            <p class="gia"></p>
-        </div>
-    </div>
+        <!-- THẬP CẨM NGŨ HẠT -->
+        <div
+            class="card"
+            data-sizes="150g=100000; 250g=165000"
+            data-old="190000"
+            data-tags="hot,new"
+        >
 
-    <div class="card" data-sizes="150g=104000; 250g=168000" data-old="190000" data-tags="new">
-        <a href="vaithieuthanhlongdo.html"><img src="https://www.the350f.com/wp-content/uploads/2026/08/TT26-Vai-Thieu-Thanh-Long-2-1-scaled.jpg" alt="Vải Thiều Thanh Long Đỏ"></a>
-        <div class="card-body">
-            <div class="card-pick"><h3>Vải Thiều Thanh Long Đỏ</h3></div>
-            <p class="gia"></p>
-        </div>
-    </div>
+            <a href="thamcamnguhat.html">
+                <img
+                    src="https://www.the350f.com/wp-content/uploads/2025/07/TT26-BN-Ngu-Vi-1-scaled.jpg"
+                    alt="Thập cẩm ngũ hạt"
+                >
+            </a>
 
-    <div class="card" data-sizes="150g=95000; 250g=155000" data-old="180000" data-tags="hot,new">
-        <a href="thapcamxaxiu.html"><img src="https://www.the350f.com/wp-content/uploads/2025/07/TT26-BN-Xa-Xiu-1-scaled.jpg" alt="Thập cẩm xá xíu"></a>
-        <div class="card-body">
-            <div class="card-pick"><h3>Thập cẩm xá xíu</h3></div>
-            <p class="gia"></p>
+            <div class="card-body">
+
+                <div class="card-pick">
+                    <h3>Thập cẩm ngũ hạt</h3>
+                </div>
+
+                <p class="gia"></p>
+
+            </div>
+
         </div>
+
+        <!-- TÁO ĐỎ -->
+        <div
+            class="card"
+            data-sizes="150g=105000; 250g=170000"
+            data-old="195000"
+            data-tags="hot"
+        >
+
+            <a href="taodo.html">
+                <img
+                    src="https://www.the350f.com/wp-content/uploads/2025/07/TT26-BN-Tao-do-1-scaled.jpg"
+                    alt="Táo Đỏ"
+                >
+            </a>
+
+            <div class="card-body">
+
+                <div class="card-pick">
+                    <h3>Táo Đỏ</h3>
+                </div>
+
+                <p class="gia"></p>
+
+            </div>
+
+        </div>
+
+        <!-- VẢI THIỀU THANH LONG ĐỎ -->
+        <div
+            class="card"
+            data-sizes="150g=104000; 250g=168000"
+            data-old="190000"
+            data-tags="new"
+        >
+
+            <a href="vaithieuthanhlongdo.html">
+                <img
+                    src="https://www.the350f.com/wp-content/uploads/2026/08/TT26-Vai-Thieu-Thanh-Long-2-1-scaled.jpg"
+                    alt="Vải Thiều Thanh Long Đỏ"
+                >
+            </a>
+
+            <div class="card-body">
+
+                <div class="card-pick">
+                    <h3>Vải Thiều Thanh Long Đỏ</h3>
+                </div>
+
+                <p class="gia"></p>
+
+            </div>
+
+        </div>
+
+        <!-- THẬP CẨM XÁ XÍU -->
+        <div
+            class="card"
+            data-sizes="150g=95000; 250g=155000"
+            data-old="180000"
+            data-tags="hot,new"
+        >
+
+            <a href="thapcamxaxiu.html">
+                <img
+                    src="https://www.the350f.com/wp-content/uploads/2025/07/TT26-BN-Xa-Xiu-1-scaled.jpg"
+                    alt="Thập cẩm xá xíu"
+                >
+            </a>
+
+            <div class="card-body">
+
+                <div class="card-pick">
+                    <h3>Thập cẩm xá xíu</h3>
+                </div>
+
+                <p class="gia"></p>
+
+            </div>
+
+        </div>
+
     </div>
-</div>
 
 </section>
 
 <!-- KHUNG GIỎ HÀNG TRƯỢT BÊN PHẢI -->
 <div class="cd-overlay" id="cartOverlay"></div>
-<aside class="cd-drawer" id="cartDrawer" aria-label="Giỏ hàng" aria-hidden="true">
+
+<aside
+    class="cd-drawer"
+    id="cartDrawer"
+    aria-label="Giỏ hàng"
+    aria-hidden="true"
+>
+
     <div class="cd-head">
-        <button class="cd-back" id="cartClose" type="button" aria-label="Đóng giỏ hàng">←</button>
+
+        <button
+            class="cd-back"
+            id="cartClose"
+            type="button"
+            aria-label="Đóng giỏ hàng"
+        >
+            ←
+        </button>
+
         <h2>GIỎ HÀNG</h2>
+
     </div>
 
     <div class="cd-items" id="cartItems"></div>
 
     <div class="cd-foot">
-        <div class="cd-row"><span>Số lượng</span><span id="cartCountText">0 sản phẩm</span></div>
-        <div class="cd-row cd-big"><span>Tổng thanh toán</span><span id="cartTotal">0VND</span></div>
-        <a class="cd-go" href="../giohang.html">Xem giỏ hàng →</a>
+
+        <div class="cd-row">
+            <span>Số lượng</span>
+            <span id="cartCountText">0 sản phẩm</span>
+        </div>
+
+        <div class="cd-row cd-big">
+            <span>Tổng thanh toán</span>
+            <span id="cartTotal">0VND</span>
+        </div>
+
+        <a class="cd-go" href="../giohang.html">
+            Xem giỏ hàng →
+        </a>
+
     </div>
+
 </aside>
 
-<!-- JS phải nằm SAU khung giỏ hàng -->
+<!-- JS PHẢI NẰM SAU KHUNG GIỎ HÀNG -->
 <script src="../chitietsanpham.js"></script>
 
 </body>

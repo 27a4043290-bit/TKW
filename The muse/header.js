@@ -3,7 +3,9 @@
    <script src="header.js"></script>
    Muốn thêm/sửa/xóa mục menu thì sửa 2 mảng MENU_LEFT và MENU_RIGHT bên dưới. ===== */
 
+
 /* ===== HEADER DÙNG CHUNG ===== */
+
 
 const MENU_LEFT = [
   { label: "Giới thiệu", href: "gioithieu.html", sub: [
@@ -23,10 +25,12 @@ const MENU_LEFT = [
   { label: "Thiết kế",   href: "tk-theo-yc.html" }
 ];
 
+
 const MENU_RIGHT = [
   { label: "Tin tức", href: "tintuc.html" },
   { label: "Liên hệ", href: "lienhe.html" }
 ];
+
 
 /* ---------- Biểu tượng ---------- */
 const ICON = {
@@ -37,11 +41,14 @@ const ICON = {
   menu:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>'
 };
 
+
 const file = p => (p || "").split("#")[0].split("?")[0];
 const here = file(location.pathname.split("/").pop()) || "index.html";
 
+
 //  cấp cho thư mục con
 const basePath = document.currentScript ? document.currentScript.src.replace(/header\.js.*$/, '') : '';
+
 
 function itemHTML(m){
   const active = file(m.href) === here || (m.sub || []).some(s => file(s.href) === here);
@@ -52,14 +59,18 @@ function itemHTML(m){
   </div>`;
 }
 
+
 const host = document.getElementById("site-header") || document.body.insertAdjacentElement("afterbegin", document.createElement("div"));
 host.innerHTML = `
 <header class="site-header" id="siteHeader">
   <button class="icon-btn burger" id="burger" type="button" aria-label="Mở menu" aria-expanded="false">${ICON.menu}</button>
 
+
   <nav class="left" aria-label="Menu chính">${MENU_LEFT.map(itemHTML).join("")}</nav>
 
+
  <a class="logo" href="${basePath}index.html" aria-label="The Muse - Trang chủ"><img src="${basePath}image/logo.png" alt="The Muse"></a>
+
 
  <div class="right">
     <nav class="links" aria-label="Menu phụ">${MENU_RIGHT.map(itemHTML).join("")}</nav>
@@ -101,6 +112,7 @@ host.innerHTML = `
   </div>
 </header>`;
 
+
 /* ---------- Số lượng giỏ hàng ---------- */
 function updateCartCount(){
   let n = 0;
@@ -114,15 +126,18 @@ updateCartCount();
 addEventListener("cart-updated", updateCartCount);
 addEventListener("storage", updateCartCount);
 
+
 /* ---------- Mở/đóng menu, tìm kiếm ---------- */
 const header = document.getElementById("siteHeader");
 const bar = document.getElementById("searchBar");
 const mobile = () => matchMedia("(max-width:1240px), (hover:none)").matches;
 
+
 document.getElementById("burger").onclick = e => {
   const open = header.classList.toggle("open");
   e.currentTarget.setAttribute("aria-expanded", open);
 };
+
 
 header.querySelectorAll(".h-item").forEach(it => {
   const link = it.querySelector(".h-link"), sub = it.querySelector(".sub");
@@ -143,6 +158,14 @@ document.getElementById("searchInput").addEventListener("keydown", e => {
 document.addEventListener("click", e => {
   if (!header.contains(e.target)) { bar.classList.remove("open"); header.querySelectorAll(".h-item.open").forEach(x => x.classList.remove("open")); }
 });
+
+
+
+
+
+
+
+
 
 
 

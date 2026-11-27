@@ -673,6 +673,7 @@ body {
 
 
 
+
 .main-image-box {
     width: 100%;
     overflow: hidden;
@@ -1060,6 +1061,8 @@ body {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 38px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 38px;
 }
 
 
@@ -1070,9 +1073,15 @@ body {
     padding: 0 0 17px;
     border: 1px solid #071b35;
     border-radius: 30px;
+    position: relative;
+    padding: 0 0 17px;
+    border: 1px solid #071b35;
+    border-radius: 30px;
     overflow: hidden;
     background: #fff8f1;
+    background: #fff8f1;
     text-align: center;
+    transition: .25s;
     transition: .25s;
 }
 

@@ -4,8 +4,10 @@
   // false = mở được nhiều mục cùng lúc (giống bản cũ)
   const ONLY_ONE_OPEN = false;
 
+
   const items = document.querySelectorAll('.policy-container details');
   if (!items.length) return;
+
 
   // 1. Chế độ chỉ mở một mục
   if (ONLY_ONE_OPEN) {
@@ -19,6 +21,7 @@
     });
   }
 
+
   // 2. Mở sẵn mục theo địa chỉ, ví dụ: chinhsach.html#muc-08
   function openFromHash() {
     const id = location.hash.slice(1);
@@ -30,6 +33,8 @@
     }
   }
 
+
   openFromHash();
   window.addEventListener('hashchange', openFromHash);
 })();
+

@@ -7,6 +7,10 @@
 * {
     box-sizing: border-box;
 }
+/* ===== 2. CÀI ĐẶT CHUNG ===== */
+* {
+    box-sizing: border-box;
+}
 
 body.policy-page {
     margin: 0;
@@ -45,6 +49,9 @@ body.policy-page {
     max-width: 1400px;
     margin: 0 auto;
     padding: 60px 20px 80px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 60px 20px 80px;
 }
 
 
@@ -56,11 +63,21 @@ body.policy-page {
     font-weight: 700;
     color: #0b1a33;
     margin: 0 0 32px;
+    text-align: center;
+    font-family: Roboto, Arial, sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: #0b1a33;
+    margin: 0 0 32px;
 }
 
 
 /* ===== 6. CÁC MỤC CHÍNH SÁCH ===== */
 .policy-container details {
+    background: #ffffff;
+    border-radius: 16px;
+    margin-bottom: 16px;
+    overflow: hidden;
     background: #ffffff;
     border-radius: 16px;
     margin-bottom: 16px;
@@ -100,9 +117,11 @@ body.policy-page {
 /* Tên chính sách */
 .policy-container summary .title {
     flex: 1;
+    flex: 1;
 }
 
 
+/* ===== 8. MŨI TÊN ĐÓNG / MỞ ===== */
 /* ===== 8. MŨI TÊN ĐÓNG / MỞ ===== */
 .policy-container summary::after {
     content: "";
@@ -120,10 +139,12 @@ body.policy-page {
 /* Khi mở mục */
 .policy-container details[open] summary::after {
     transform: rotate(225deg);
+    transform: rotate(225deg);
 }
 
 /* Đường kẻ khi mở mục */
 .policy-container details[open] summary {
+    border-bottom: 1px solid #eee6da;
     border-bottom: 1px solid #eee6da;
 }
 
